@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/image">
+        <file alias="lb_background">../TTKResource/lb_background.png</file>
+        <file alias="lb_warning">../TTKResource/lb_warning.png</file>
+        <file alias="lb_player_logo">../TTKResource/lb_player_logo.ico</file>
+        <file alias="btn_close_hover">../TTKResource/btn_close_hover.png</file>
+        <file alias="btn_close_normal">../TTKResource/btn_close_normal.png</file>
+        <file alias="btn_min_normal">../TTKResource/btn_min_normal.png</file>
+        <file alias="btn_min_hover">../TTKResource/btn_min_hover.png</file>
+    </qresource>
+    <qresource prefix="/shadow">
+        <file alias="lb_bottom">../TTKResource/borderShadow/lb_bottom.png</file>
+        <file alias="lb_left">../TTKResource/borderShadow/lb_left.png</file>
+        <file alias="lb_right">../TTKResource/borderShadow/lb_right.png</file>
+        <file alias="lb_top">../TTKResource/borderShadow/lb_top.png</file>
+        <file alias="lb_left_top">../TTKResource/borderShadow/lb_left_top.png</file>
+        <file alias="lb_right_top">../TTKResource/borderShadow/lb_right_top.png</file>
+        <file alias="lb_left_bottom">../TTKResource/borderShadow/lb_left_bottom.png</file>
+        <file alias="lb_right_bottom">../TTKResource/borderShadow/lb_right_bottom.png</file>
+    </qresource>
+    <qresource prefix="/control">
+        <file alias="btn_checkBox_checked">../TTKResource/controls/btn_checkBox_checked.png</file>
+        <file alias="btn_checkBox_unchecked">../TTKResource/controls/btn_checkBox_unchecked.png</file>
+        <file alias="btn_checkBox2_checked">../TTKResource/controls/btn_checkBox2_checked.png</file>
+        <file alias="btn_checkBox2_unchecked">../TTKResource/controls/btn_checkBox2_unchecked.png</file>
+        <file alias="btn_radiobutton_checked">../TTKResource/controls/btn_radiobutton_checked.png</file>
+        <file alias="btn_radioButton_unchecked">../TTKResource/controls/btn_radioButton_unchecked.png</file>
+        <file alias="btn_radiobutton2_checked">../TTKResource/controls/btn_radiobutton2_checked.png</file>
+        <file alias="btn_radioButton2_unchecked">../TTKResource/controls/btn_radioButton2_unchecked.png</file>
+    </qresource>
+</RCC>
