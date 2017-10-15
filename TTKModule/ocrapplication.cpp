@@ -5,7 +5,9 @@
 #include "ocrwidgetutils.h"
 #include "ocrthread.h"
 #include "ocruiobject.h"
-
+#ifdef OCR_BUILD_BY_PDF
+#include "include/mupdf-qt.h"
+#endif
 #include <QScrollBar>
 
 OCRApplication *OCRApplication::m_instance = nullptr;
@@ -37,6 +39,7 @@ OCRApplication::OCRApplication(QWidget *parent)
 
     connect(m_ui->openButton, SIGNAL(clicked()), SLOT(openButtonClicked()));
     connect(m_ui->startButton, SIGNAL(clicked()), SLOT(startButtonClicked()));
+    connect(m_ui->clearButton, SIGNAL(clicked()), SLOT(clearButtonClicked()));
 
     m_ui->pixScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_ui->pixScrollArea->setWidgetResizable(true);
@@ -45,12 +48,12 @@ OCRApplication::OCRApplication(QWidget *parent)
     m_ui->pixScrollArea->setAlignment(Qt::AlignVCenter);
     m_ui->pixScrollArea->verticalScrollBar()->setStyleSheet(OCRUIObject::MScrollBarStyle03);
 
-    m_ui->textScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_ui->textScrollArea->setWidgetResizable(true);
     m_ui->textScrollArea->setFrameShape(QFrame::NoFrame);
     m_ui->textScrollArea->setFrameShadow(QFrame::Plain);
     m_ui->textScrollArea->setAlignment(Qt::AlignVCenter);
     m_ui->textScrollArea->verticalScrollBar()->setStyleSheet(OCRUIObject::MScrollBarStyle03);
+    m_ui->textScrollArea->horizontalScrollBar()->setStyleSheet(OCRUIObject::MScrollBarStyle04);
 
 }
 
@@ -78,13 +81,37 @@ void OCRApplication::quitWindowClose()
 
 void OCRApplication::openButtonClicked()
 {
-    QStringList lists(OCRUtils::Widget::getOpenFilesDialog(this));
+    QStringList lists(OCRUtils::Widget::getOpenFilesDialog(this, "Images (*.png *.bmp *.jpg);;PDF Files(*.pdf)"));
     if(lists.isEmpty())
     {
         return;
     }
 
     clearButtonClicked();
+
+    QString path = lists.first();
+    bool isPdf = QFileInfo(path).suffix().toLower() == "pdf";
+    if(isPdf)
+    {
+#ifdef OCR_BUILD_BY_PDF
+        lists.clear();
+        MuPDF::Document *document = MuPDF::loadDocument(path);
+        for(int i=0; i<document->numPages(); i++)
+        {
+            OCRThreadItem *item = new OCRThreadItem(this);
+            item->m_index = i;
+            item->m_path = path;
+
+            QLabel *ll = new QLabel(m_ui->pixScrollAreaWidget);
+            ll->setPixmap(QPixmap::fromImage(document->page(i)->renderImage()).scaled(405, 405, Qt::KeepAspectRatio));
+            m_ui->pixScrollAreaWidgetLayout->addWidget(ll);
+            item->m_obj = ll;
+
+            m_fileList << item;
+        }
+#endif
+        return;
+    }
 
     for(int i=0; i<lists.count(); ++i)
     {

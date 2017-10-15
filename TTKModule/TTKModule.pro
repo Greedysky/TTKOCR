@@ -20,6 +20,7 @@ TEMPLATE = lib
 CONFIG += OCR_BUILD_LIB
 
 include(../TTKOCR.pri)
+
 unix:VERSION += $$TTKOCR
 
 win32:TARGET = ../../bin/$$TTKOCR/TTKCore

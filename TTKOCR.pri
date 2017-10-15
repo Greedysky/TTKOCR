@@ -49,6 +49,7 @@ QT_VER_MINOR = $$member(QT_VER_STRING, 1)
 QT_VER_PATCH = $$member(QT_VER_STRING, 2)
 
 include(TTKVersion.pri)
+include(TTKBuild.pri)
 
 win32{
     equals(QT_MAJOR_VERSION, 5){
@@ -56,6 +57,9 @@ win32{
         msvc{
             LIBS += -lshell32 -luser32
             LIBS += -L../bin/$$TTKOCR -lTTKUi -lTTKExtras -lzlib -lTTKZip
+            contains(CONFIG, OCR_BUILD_BY_PDF){
+                LIBS += -L../lib/$$TTKOCR -lTTKPdf
+            }
             CONFIG +=c++11
             !contains(QMAKE_TARGET.arch, x86_64){
                  #support on windows XP
@@ -66,6 +70,9 @@ win32{
 
         gcc{
             LIBS += -L../bin/$$TTKOCR -lTTKUi -lTTKExtras -lzlib -lTTKZip
+            contains(CONFIG, OCR_BUILD_BY_PDF){
+                LIBS += -L../lib/$$TTKOCR -lTTKPdf
+            }
             QMAKE_CXXFLAGS += -std=c++11
             QMAKE_CXXFLAGS += -Wunused-function
             QMAKE_CXXFLAGS += -Wswitch
@@ -76,6 +83,9 @@ win32{
         QT  += multimedia
         gcc{
             LIBS += -L../bin/$$TTKOCR -lTTKUi -lTTKExtras -lzlib -lTTKZip
+            contains(CONFIG, OCR_BUILD_BY_PDF){
+                LIBS += -L../lib/$$TTKOCR -lTTKPdf
+            }
             QMAKE_CXXFLAGS += -std=c++11
             QMAKE_CXXFLAGS += -Wunused-function
             QMAKE_CXXFLAGS += -Wswitch
@@ -85,6 +95,9 @@ win32{
 
 unix:!mac{
     LIBS += -L../lib/$$TTKOCR -lTTKUi -lTTKExtras -lzlib -lTTKZip
+    contains(CONFIG, OCR_BUILD_BY_PDF){
+        LIBS += -L../lib/$$TTKOCR -lTTKPdf
+    }
     QMAKE_CXXFLAGS += -std=c++11
     QMAKE_CXXFLAGS += -Wunused-function
     QMAKE_CXXFLAGS += -Wswitch

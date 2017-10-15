@@ -20,8 +20,8 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 include(../../TTKVersion.pri)
-unix:VERSION += $$TTKOCR
 
+unix:VERSION += $$TTKOCR
 win32{
     TARGET = ../../../bin/$$TTKOCR/TTKExtras
     msvc{

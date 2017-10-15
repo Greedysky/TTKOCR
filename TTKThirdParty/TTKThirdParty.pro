@@ -17,4 +17,4 @@
 # =================================================
 
 TEMPLATE = subdirs
-SUBDIRS = Zlib TTKDumper TTKExtras
+SUBDIRS = Zlib TTKDumper TTKPdf TTKExtras

@@ -1,6 +1,6 @@
 # =================================================
 # * This file is part of the TTK OCR project
-# * Copyright (C) 2016 - 2017 Greedysky Studio
+# * Copyright (C) 2017 - 2017 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
 # * it under the terms of the GNU General Public License as published by
@@ -16,9 +16,10 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # =================================================
 
-INCLUDEPATH += \
-        $$PWD \
-        $$PWD/Zlib \
-        $$PWD/TTKDumper \
-        $$PWD/TTKPdf \
-        $$PWD/TTKExtras
+#enbale pdf module
+#CONFIG += OCR_BUILD_BY_PDF
+
+
+contains(CONFIG, OCR_BUILD_BY_PDF){
+DEFINES += OCR_BUILD_BY_PDF
+}
