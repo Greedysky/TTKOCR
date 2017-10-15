@@ -37,12 +37,12 @@ void OCRThread::start(OCRThreadItem *item)
         return;
     }
 
-    QString content = QString("form-data; name=\"pic\"; filename=\"%1\"")
-                      .arg(QFileInfo(file.fileName()).fileName());
+    QFileInfo fInfo(file.fileName());
+    QString content = QString("form-data; name=\"pic\"; filename=\"%1\"").arg(fInfo.fileName());
     QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
     QHttpPart part;
     part.setRawHeader("Content-Disposition", content.toUtf8());
-    part.setRawHeader("Content-Type", "image/jpeg");
+    part.setRawHeader("Content-Type", getContentType(fInfo.suffix().toLower()).toUtf8());
     part.setBody(file.readAll());
     multiPart->append(part);
     multiPart->setBoundary("----");
@@ -114,4 +114,15 @@ void OCRThread::errorSlot(QNetworkReply::NetworkError code)
     }
 
     qDebug() <<  "QNetworkReply::NetworkError : " + QString::number((int)code) + " \n" + m_reply->errorString();
+}
+
+QString OCRThread::getContentType(const QString &suffix)
+{
+    if(suffix== "jpg")
+        return "image/jpeg";
+    else if(suffix== "png")
+        return "image/png";
+    else if(suffix== "bmp")
+        return "application/x-bmp";
+    return QString();
 }

@@ -85,6 +85,11 @@ private Q_SLOTS:
     void errorSlot(QNetworkReply::NetworkError code);
 
 private:
+    /*!
+     * Get content type.
+     */
+    QString getContentType(const QString &suffix);
+
     QNetworkReply *m_reply;
     QNetworkAccessManager *m_manager;
 
