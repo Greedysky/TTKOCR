@@ -22,7 +22,8 @@ INCLUDEPATH += $$PWD
 HEADERS += \
     $$PWD/ocrabstractmovedialog.h \
     $$PWD/ocrabstractmovewidget.h \
-    $$PWD/ocrabstractmoveresizewidget.h
+    $$PWD/ocrabstractmoveresizewidget.h \
+    $$PWD/ocrgiflabelwidget.h
 
 }
 
@@ -30,6 +31,7 @@ contains(CONFIG, OCR_BUILD_LIB){
 SOURCES += \
     $$PWD/ocrabstractmoveresizewidget.cpp \
     $$PWD/ocrabstractmovedialog.cpp \
-    $$PWD/ocrabstractmovewidget.cpp
+    $$PWD/ocrabstractmovewidget.cpp \
+    $$PWD/ocrgiflabelwidget.cpp
 
 }

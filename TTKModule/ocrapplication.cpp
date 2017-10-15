@@ -138,7 +138,7 @@ void OCRApplication::startButtonClicked()
 {
     foreach(OCRThreadItem *item, m_fileList)
     {
-        OCRThread *tread = new OCRThread(this);
+        OCRThread *tread = new OCRThread(item);
         connect(tread, SIGNAL(findFinish()), SLOT(findFinish()));
         tread->start(item);
     }
@@ -167,16 +167,19 @@ void OCRApplication::findFinish()
         qSort(data.begin(), data.end(), qLess<int>());
 
         QString content;
-        for(int i=0; i<data.count(); ++i)
+        for(int i=0; i<m_fileList.count(); ++i)
         {
             QFile file(QString("%1/%2").arg("dir").arg(i));
             if(file.open(QFile::ReadOnly))
             {
                 content.append(file.readAll() + "\r\n");
-                content.append("============================================================\r\n");
                 file.close();
             }
-
+            else
+            {
+                content.append("No OCR Data Found \r\n");
+            }
+            content.append("============================================================\r\n");
         }
         m_ui->textScrollAreaWidget->setText(content);
         OCRUtils::Core::dirRemoveRecursively("dir");
