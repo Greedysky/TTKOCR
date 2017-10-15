@@ -1,4 +1,5 @@
 #include "ocrthread.h"
+#include "ocralgorithmutils.h"
 #include "qjson/json_parser.hh"
 
 #include <QDir>
@@ -7,6 +8,8 @@
 #include <QNetworkRequest>
 #include <QSslConfiguration>
 #include <QNetworkAccessManager>
+
+#define OCR_URL     "RU5EOEI3NnE1aUo0cHVQYlZST2s1eGZUVzY5dmFwemsvSFFJQXFzRjUvc0M1b21VOUFxU25yR1JpQjg9"
 
 OCRThread::OCRThread(QObject *parent)
     : QObject(parent)
@@ -29,7 +32,12 @@ void OCRThread::start(OCRThreadItem *item)
 {
     QNetworkRequest request;
     request.setOriginatingObject(item);
-    request.setUrl(QUrl("http://ocr.shouji.sogou.com/v2/ocr/json"));
+    request.setUrl(QUrl(OCRUtils::Algorithm::mdII(OCR_URL, false)));
+#ifndef QT_NO_SSL
+    QSslConfiguration sslConfig = request.sslConfiguration();
+    sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
+    request.setSslConfiguration(sslConfig);
+#endif
 
     QFile file(item->m_path);
     if(!file.open(QFile::ReadOnly))
@@ -98,9 +106,9 @@ void OCRThread::finishedSlot()
                     file.write(content.toUtf8());
                     file.close();
                 }
-
-                emit findFinish();
             }
+
+            emit findFinish();
         }
     }
 

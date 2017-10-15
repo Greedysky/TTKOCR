@@ -21,10 +21,10 @@
 
 #include "ocrglobaldefine.h"
 
-#define ALG_DOWNLOAD_KEY    "132;sdf15233"
-#define ALG_URL_KEY         "65sdf33sdf12;sdf"
-#define ALG_PLUS_KEY        "9d9;;dk,.132"
-#define ALG_LOW_KEY         "2318"
+#define ALG_DOWNLOAD_KEY    "132f;dfg1dg;"
+#define ALG_URL_KEY         "13.015?sdf;/?dd"
+#define ALG_PLUS_KEY        "135ds;fs0.2"
+#define ALG_LOW_KEY         "0131"
 
 /*! @brief The class of the utils algorithm object namespace.
  * @author Greedysky <greedysky@163.com>

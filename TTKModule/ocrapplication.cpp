@@ -38,6 +38,10 @@ OCRApplication::OCRApplication(QWidget *parent)
     m_ui->closeButton->setStyleSheet(OCRUIObject::MFuncClose);
     connect(m_ui->closeButton, SIGNAL(clicked()), SLOT(quitWindowClose()));
 
+    m_ui->openButton->setStyleSheet(OCRUIObject::MPushButtonStyle04);
+    m_ui->startButton->setStyleSheet(OCRUIObject::MPushButtonStyle04);
+    m_ui->clearButton->setStyleSheet(OCRUIObject::MPushButtonStyle04);
+
     connect(m_ui->openButton, SIGNAL(clicked()), SLOT(openButtonClicked()));
     connect(m_ui->startButton, SIGNAL(clicked()), SLOT(startButtonClicked()));
     connect(m_ui->clearButton, SIGNAL(clicked()), SLOT(clearButtonClicked()));

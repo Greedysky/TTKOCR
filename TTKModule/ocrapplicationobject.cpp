@@ -1,6 +1,7 @@
 #include "ocrapplicationobject.h"
 #include "ocrapplication.h"
 #include "ocrbackgroundmanager.h"
+#include "ocrcoreutils.h"
 
 #include <QTimer>
 #include <QPropertyAnimation>
@@ -53,4 +54,5 @@ void OCRApplicationObject::appAboutUs()
 void OCRApplicationObject::cleanUp()
 {
     QFile::remove(TEMPORARY_DIR);
+    OCRUtils::Core::dirRemoveRecursively("dir");
 }

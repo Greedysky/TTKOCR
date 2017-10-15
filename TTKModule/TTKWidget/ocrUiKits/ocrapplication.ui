@@ -67,8 +67,14 @@
          </property>
          <item>
           <widget class="QLabel" name="label">
+           <property name="styleSheet">
+            <string notr="true">color:white</string>
+           </property>
            <property name="text">
             <string>图片文字提取</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
            </property>
           </widget>
          </item>
@@ -206,6 +212,21 @@
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QPushButton" name="openButton">
+           <property name="minimumSize">
+            <size>
+             <width>65</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>65</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>打开文件</string>
            </property>
@@ -213,6 +234,21 @@
          </item>
          <item>
           <widget class="QPushButton" name="startButton">
+           <property name="minimumSize">
+            <size>
+             <width>65</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>65</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>识别</string>
            </property>
@@ -220,6 +256,21 @@
          </item>
          <item>
           <widget class="QPushButton" name="clearButton">
+           <property name="minimumSize">
+            <size>
+             <width>65</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>65</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>清除</string>
            </property>
@@ -237,6 +288,16 @@
             </size>
            </property>
           </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="styleSheet">
+            <string notr="true">color:white</string>
+           </property>
+           <property name="text">
+            <string>Copyright (C) 2016 - 2017 Greedysky Studio</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
