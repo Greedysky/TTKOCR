@@ -79,6 +79,10 @@ private:
      * Delete all items.
      */
     void deleteItems();
+    /*!
+     * Detect state changed.
+     */
+    void stateChanged(bool state);
 
     Ui::OCRApplication *m_ui;
 

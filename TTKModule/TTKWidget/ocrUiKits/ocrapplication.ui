@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>天天下载</string>
+   <string>TTKOCR</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <property name="spacing">
@@ -205,6 +205,16 @@
               <height>450</height>
              </rect>
             </property>
+            <widget class="OCRGifLabelWidget" name="stateLabel">
+             <property name="geometry">
+              <rect>
+               <x>177</x>
+               <y>185</y>
+               <width>58</width>
+               <height>58</height>
+              </rect>
+             </property>
+            </widget>
            </widget>
           </widget>
          </item>
@@ -323,6 +333,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>OCRGifLabelWidget</class>
+   <extends>QLabel</extends>
+   <header>ocrgiflabelwidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

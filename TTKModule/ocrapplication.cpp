@@ -136,16 +136,31 @@ void OCRApplication::openButtonClicked()
 
 void OCRApplication::startButtonClicked()
 {
+    if(m_fileList.isEmpty())
+    {
+        return;
+    }
+
+    m_count = 0;
+    OCRUtils::Core::dirRemoveRecursively("dir");
+
     foreach(OCRThreadItem *item, m_fileList)
     {
         OCRThread *tread = new OCRThread(item);
         connect(tread, SIGNAL(findFinish()), SLOT(findFinish()));
         tread->start(item);
     }
+
+    stateChanged(true);
 }
 
 void OCRApplication::clearButtonClicked()
 {
+    if(m_fileList.isEmpty())
+    {
+        return;
+    }
+
     m_count = 0;
     deleteItems();
     OCRUtils::Core::dirRemoveRecursively("dir");
@@ -181,8 +196,11 @@ void OCRApplication::findFinish()
             }
             content.append("============================================================\r\n");
         }
+
         m_ui->textScrollAreaWidget->setText(content);
         OCRUtils::Core::dirRemoveRecursively("dir");
+
+        stateChanged(false);
     }
 }
 
@@ -194,4 +212,23 @@ void OCRApplication::deleteItems()
         delete item->m_obj;
         delete item;
     }
+}
+
+void OCRApplication::stateChanged(bool state)
+{
+    if(state)
+    {
+        m_ui->stateLabel->raise();
+        m_ui->stateLabel->show();
+        m_ui->stateLabel->start();
+    }
+    else
+    {
+        m_ui->stateLabel->stop();
+        m_ui->stateLabel->hide();
+    }
+
+    m_ui->openButton->setEnabled(!state);
+    m_ui->startButton->setEnabled(!state);
+    m_ui->clearButton->setEnabled(!state);
 }
