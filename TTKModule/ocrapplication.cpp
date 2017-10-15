@@ -30,6 +30,7 @@ OCRApplication::OCRApplication(QWidget *parent)
     setMinimumSize(WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
     setMaximumSize(WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
 
+    m_ui->iconLabel->setPixmap(QPixmap(":/image/lb_player_logo").scaled(m_ui->iconLabel->size()));
     m_ui->background->setPixmap(QPixmap(":/image/lb_background").scaled(size()));
 
     m_ui->minButton->setStyleSheet(OCRUIObject::MFuncMin);

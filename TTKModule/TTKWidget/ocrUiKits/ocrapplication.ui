@@ -66,6 +66,22 @@
           <number>10</number>
          </property>
          <item>
+          <widget class="QLabel" name="iconLabel">
+           <property name="minimumSize">
+            <size>
+             <width>12</width>
+             <height>12</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>12</width>
+             <height>12</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QLabel" name="label">
            <property name="styleSheet">
             <string notr="true">color:white</string>
@@ -295,7 +311,7 @@
             <string notr="true">color:white</string>
            </property>
            <property name="text">
-            <string>Copyright (C) 2016 - 2017 Greedysky Studio</string>
+            <string>Copyright (C) 2015 - 2017 Greedysky Studio</string>
            </property>
           </widget>
          </item>
