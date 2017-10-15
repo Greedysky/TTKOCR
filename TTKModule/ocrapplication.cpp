@@ -3,6 +3,7 @@
 #include "ocrapplicationobject.h"
 #include "ocrfunctionlistuiobject.h"
 #include "ocrwidgetutils.h"
+#include "ocrcoreutils.h"
 #include "ocrthread.h"
 #include "ocruiobject.h"
 #ifdef OCR_BUILD_BY_PDF
@@ -142,7 +143,7 @@ void OCRApplication::clearButtonClicked()
 {
     m_count = 0;
     deleteItems();
-    QDir("dir").removeRecursively();
+    OCRUtils::Core::dirRemoveRecursively("dir");
     m_ui->textScrollAreaWidget->clear();
 }
 
@@ -173,7 +174,7 @@ void OCRApplication::findFinish()
 
         }
         m_ui->textScrollAreaWidget->setText(content);
-        QDir("dir").removeRecursively();
+        OCRUtils::Core::dirRemoveRecursively("dir");
     }
 }
 

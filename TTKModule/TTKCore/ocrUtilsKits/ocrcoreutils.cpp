@@ -4,11 +4,51 @@
 #include <QUrl>
 #include <QTextCodec>
 #include <QSettings>
+#include <QDirIterator>
 #include <QDesktopServices>
 #ifdef Q_OS_WIN
 #include <Windows.h>
 #include <shellapi.h>
 #endif
+
+bool OCRUtils::Core::dirRemoveRecursively(const QString &dir)
+{
+    QDir directory(dir);
+    if(!directory.exists())
+    {
+        return true;
+    }
+
+    bool success = true;
+    // not empty -- we must empty it first
+    QDirIterator di(dir, QDir::AllEntries | QDir::Hidden | QDir::System | QDir::NoDotAndDotDot);
+    while(di.hasNext())
+    {
+        di.next();
+        const QFileInfo &fi = di.fileInfo();
+        bool ok;
+        if(fi.isDir() && !fi.isSymLink())
+        {
+            ok = dirRemoveRecursively(di.filePath()); // recursive
+        }
+        else
+        {
+            ok = QFile::remove(di.filePath());
+        }
+
+        if(!ok)
+        {
+            success = false;
+        }
+    }
+
+    if(success)
+    {
+        success = directory.rmdir(directory.absolutePath());
+    }
+
+    return success;
+}
 
 quint64 OCRUtils::Core::dirSize(const QString &dirName)
 {

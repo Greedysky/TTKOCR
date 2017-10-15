@@ -30,6 +30,10 @@ namespace OCRUtils
     namespace Core
     {
         /*!
+         * Remove dir recursively.
+         */
+        OCR_UTILS_EXPORT bool dirRemoveRecursively(const QString &dir);
+        /*!
          * Get given dir size.
          */
         OCR_UTILS_EXPORT quint64 dirSize(const QString &dirName);

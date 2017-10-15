@@ -16,5 +16,10 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # =================================================
 
+include(../TTKBuild.pri)
+
 TEMPLATE = subdirs
-SUBDIRS = Zlib TTKDumper TTKPdf TTKExtras
+SUBDIRS = Zlib TTKDumper TTKExtras
+contains(CONFIG, OCR_BUILD_BY_PDF){
+SUBDIRS += TTKPdf
+}
