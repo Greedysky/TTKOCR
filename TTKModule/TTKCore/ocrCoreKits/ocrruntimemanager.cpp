@@ -1,5 +1,6 @@
 #include "ocrruntimemanager.h"
 #include "ocrcoreutils.h"
+#include "ocrcodecutils.h"
 
 #include <QFont>
 #include <QApplication>
@@ -19,7 +20,7 @@ void OCRRunTimeManager::run() const
     M_LOGGER_INFO("OCRApplication Begin");
 
 #ifndef OCR_GREATER_NEW
-    OCRUtils::Core::setLocalCodec();
+    OCRUtils::Codec::setLocalCodec();
 #endif
 
     M_LOGGER_INFO("Load Translation");
