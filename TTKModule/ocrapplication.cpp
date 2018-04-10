@@ -142,7 +142,7 @@ void OCRApplication::startButtonClicked()
     }
 
     m_count = 0;
-    OCRUtils::Core::dirRemoveRecursively("dir");
+    OCRUtils::Core::removeRecursively("dir");
 
     foreach(OCRThreadItem *item, m_fileList)
     {
@@ -163,7 +163,7 @@ void OCRApplication::clearButtonClicked()
 
     m_count = 0;
     deleteItems();
-    OCRUtils::Core::dirRemoveRecursively("dir");
+    OCRUtils::Core::removeRecursively("dir");
     m_ui->textScrollAreaWidget->clear();
 }
 
@@ -198,7 +198,7 @@ void OCRApplication::findFinish()
         }
 
         m_ui->textScrollAreaWidget->setText(content);
-        OCRUtils::Core::dirRemoveRecursively("dir");
+        OCRUtils::Core::removeRecursively("dir");
 
         stateChanged(false);
     }

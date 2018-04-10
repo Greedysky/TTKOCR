@@ -45,9 +45,9 @@ namespace OCRUtils
          */
         OCR_UTILS_EXPORT void setTransparent(QWidget *widget, int alpha);
         /*!
-         * Set Combobox text.
+         * Set ComboBox text.
          */
-        OCR_UTILS_EXPORT void setComboboxText(QComboBox *object, const QString &text);
+        OCR_UTILS_EXPORT void setComboBoxText(QComboBox *object, const QString &text);
         /*!
          * Set widget to round by ratioX and ratioY.
          */
@@ -72,6 +72,10 @@ namespace OCRUtils
          * Get bitmap mask from rect.
          */
         OCR_UTILS_EXPORT QBitmap getBitmapMask(const QRect &rect, int ratioX, int ratioY);
+        /*!
+         * Get pximap data.
+         */
+        OCR_UTILS_EXPORT QByteArray getPixmapData(const QPixmap &pix);
 
         /*!
          * Rerender the custum value.
@@ -96,7 +100,7 @@ namespace OCRUtils
         /*!
          * Image color burn transform.
          */
-        OCR_UTILS_EXPORT uint colorBurnTransform(int c, int delta);
+        OCR_UTILS_EXPORT int colorBurnTransform(int c, int delta);
 
         /*!
          * Get open file dialog.

@@ -1,53 +1,16 @@
 #include "ocrcoreutils.h"
 #include "ocrversion.h"
 
-#include <QUrl>
-#include <QTextCodec>
-#include <QSettings>
 #include <QDirIterator>
-#include <QDesktopServices>
-#ifdef Q_OS_WIN
-#include <Windows.h>
-#include <shellapi.h>
-#endif
 
-bool OCRUtils::Core::dirRemoveRecursively(const QString &dir)
+QString OCRUtils::Core::fileSuffix(const QString &name)
 {
-    QDir directory(dir);
-    if(!directory.exists())
-    {
-        return true;
-    }
+    return fileSuffix(name, ".");
+}
 
-    bool success = true;
-    // not empty -- we must empty it first
-    QDirIterator di(dir, QDir::AllEntries | QDir::Hidden | QDir::System | QDir::NoDotAndDotDot);
-    while(di.hasNext())
-    {
-        di.next();
-        const QFileInfo &fi = di.fileInfo();
-        bool ok;
-        if(fi.isDir() && !fi.isSymLink())
-        {
-            ok = dirRemoveRecursively(di.filePath()); // recursive
-        }
-        else
-        {
-            ok = QFile::remove(di.filePath());
-        }
-
-        if(!ok)
-        {
-            success = false;
-        }
-    }
-
-    if(success)
-    {
-        success = directory.rmdir(directory.absolutePath());
-    }
-
-    return success;
+QString OCRUtils::Core::fileSuffix(const QString &name, const QString &prefix)
+{
+    return name.right(name.length() - name.lastIndexOf(prefix) - 1);
 }
 
 quint64 OCRUtils::Core::dirSize(const QString &dirName)
@@ -78,7 +41,7 @@ void OCRUtils::Core::checkCacheSize(quint64 cacheSize, bool disabled, const QStr
     if(disabled)
     {
         quint64 size = dirSize( path );
-        if( size > cacheSize)
+        if(size > cacheSize)
         {
             QFileInfoList fileList = QDir(path).entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
             foreach(const QFileInfo &fileInfo, fileList)
@@ -94,23 +57,81 @@ void OCRUtils::Core::checkCacheSize(quint64 cacheSize, bool disabled, const QStr
     }
 }
 
-QFileInfoList OCRUtils::Core::findFile(const QString &path, const QStringList &filter)
+QFileInfoList OCRUtils::Core::getFileListByDir(const QString &dpath, bool recursively)
 {
-    ///Find the corresponding suffix name
-    QDir dir(path);
+    return getFileListByDir(dpath, QStringList(), recursively);
+}
+
+QFileInfoList OCRUtils::Core::getFileListByDir(const QString &dpath, const QStringList &filter, bool recursively)
+{
+    QDir dir(dpath);
     if(!dir.exists())
     {
         return QFileInfoList();
     }
 
     QFileInfoList fileList = dir.entryInfoList(filter, QDir::Files | QDir::Hidden | QDir::NoSymLinks);
-    QFileInfoList folderList = dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
-
-    foreach(const QFileInfo &folder, folderList)
+    if(recursively)
     {
-        fileList.append( findFile(folder.absoluteFilePath(), filter) );
+        QFileInfoList folderList = dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
+        foreach(const QFileInfo &fileInfo, folderList)
+        {
+            fileList.append( getFileListByDir(fileInfo.absoluteFilePath(), filter, recursively) );
+        }
     }
+
     return fileList;
+}
+
+bool OCRUtils::Core::removeRecursively(const QString &dir)
+{
+    QDir dr(dir);
+    if(!dr.exists())
+    {
+        return true;
+    }
+
+    bool success = true;
+    const QString dirPath = dr.path();
+    // not empty -- we must empty it first
+    QDirIterator di(dirPath, QDir::AllEntries | QDir::Hidden | QDir::System | QDir::NoDotAndDotDot);
+    while(di.hasNext())
+    {
+        di.next();
+        const QFileInfo &fi = di.fileInfo();
+        const QString &filePath = di.filePath();
+        bool ok;
+        if(fi.isDir() && !fi.isSymLink())
+        {
+            ok = OCRUtils::Core::removeRecursively(filePath); // recursive
+        }
+        else
+        {
+            ok = QFile::remove(filePath);
+            if(!ok)
+            {
+                // Read-only files prevent directory deletion on Windows, retry with Write permission.
+                const QFile::Permissions permissions = QFile::permissions(filePath);
+                if(!(permissions & QFile::WriteUser))
+                {
+                    ok = QFile::setPermissions(filePath, permissions | QFile::WriteUser)
+                      && QFile::remove(filePath);
+                }
+            }
+        }
+
+        if(!ok)
+        {
+            success = false;
+        }
+    }
+
+    if(success)
+    {
+        success = dr.rmdir(dr.absolutePath());
+    }
+
+    return success;
 }
 
 QString OCRUtils::Core::getLanguageName(int index)
@@ -119,71 +140,13 @@ QString OCRUtils::Core::getLanguageName(int index)
     switch(index)
     {
         case 0 : return lan.append("cn.ln");
+        case 1 : return lan.append("cn_c.ln");
+        case 2 : return lan.append("en.ln");
         default: return QString();
     }
 }
 
-bool OCRUtils::Core::openUrl(const QString &path, bool local)
-{
-#ifdef Q_OS_WIN
-    if(path.isEmpty())
-    {
-        return false;
-    }
-
-    if(local)
-    {
-        QString p = path;
-        p.replace('/', "\\");
-        p = "/select," + p;
-        HINSTANCE value = ShellExecuteA(0, "open", "explorer.exe", toLocal8Bit(p), nullptr, SW_SHOWNORMAL);
-        return (int)value >= 32;
-    }
-#else
-    Q_UNUSED(local);
-#endif
-    return QDesktopServices::openUrl(QUrl(path, QUrl::TolerantMode));
-}
-
-QString OCRUtils::Core::toUnicode(const char *chars, const char *format)
-{
-    QTextCodec *codec = QTextCodec::codecForName(format);
-    return codec->toUnicode(chars);
-}
-
-QString OCRUtils::Core::toUnicode(const QByteArray &chars, const char *format)
-{
-    QTextCodec *codec = QTextCodec::codecForName(format);
-    return codec->toUnicode(chars);
-}
-
-QByteArray OCRUtils::Core::fromUnicode(const QString &chars, const char *format)
-{
-    QTextCodec *codec = QTextCodec::codecForName(format);
-    return codec->fromUnicode(chars);
-}
-
-void OCRUtils::Core::setLocalCodec(const char *format)
-{
-    QTextCodec *codec = QTextCodec::codecForName(format);
-    QTextCodec::setCodecForLocale(codec);
-#ifndef OCR_GREATER_NEW
-    QTextCodec::setCodecForCStrings(codec);
-    QTextCodec::setCodecForTr(codec);
-#endif
-}
-
-const char* OCRUtils::Core::toLocal8Bit(const QString &str)
-{
-    return str.toLocal8Bit().constData();
-}
-
-const char* OCRUtils::Core::toUtf8(const QString &str)
-{
-    return str.toUtf8().constData();
-}
-
-bool OCRUtils::Core::versionCheck(const QStringList &ol, const QStringList &dl, int depth)
+bool OCRUtils::Core::musicVersionCheck(const QStringList &ol, const QStringList &dl, int depth)
 {
     if(depth >= ol.count())
     {
@@ -194,7 +157,7 @@ bool OCRUtils::Core::versionCheck(const QStringList &ol, const QStringList &dl, 
     {
         if(dl[depth].toInt() == ol[depth].toInt())
         {
-            return versionCheck(ol, dl, depth + 1);
+            return musicVersionCheck(ol, dl, depth + 1);
         }
         else
         {
@@ -207,7 +170,7 @@ bool OCRUtils::Core::versionCheck(const QStringList &ol, const QStringList &dl, 
     }
 }
 
-bool OCRUtils::Core::versionCheck(const QString &o, const QString &d)
+bool OCRUtils::Core::musicVersionCheck(const QString &o, const QString &d)
 {
     QStringList ol = o.split(".");
     QStringList dl = d.split(".");
@@ -217,5 +180,5 @@ bool OCRUtils::Core::versionCheck(const QString &o, const QString &d)
         return false;
     }
 
-    return versionCheck(ol, dl, 0);
+    return musicVersionCheck(ol, dl, 0);
 }

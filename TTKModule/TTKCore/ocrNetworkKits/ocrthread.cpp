@@ -1,9 +1,11 @@
 #include "ocrthread.h"
 #include "ocralgorithmutils.h"
+#include "ocrwidgetutils.h"
+
 #include "qjson/json_parser.hh"
 
 #include <QDir>
-#include <QFileInfo>
+#include <QPixmap>
 #include <QHttpMultiPart>
 #include <QNetworkRequest>
 #include <QSslConfiguration>
@@ -39,19 +41,14 @@ void OCRThread::start(OCRThreadItem *item)
     request.setSslConfiguration(sslConfig);
 #endif
 
-    QFile file(item->m_path);
-    if(!file.open(QFile::ReadOnly))
-    {
-        return;
-    }
+    QPixmap pix(item->m_path);
 
-    QFileInfo fInfo(file.fileName());
-    QString content = QString("form-data; name=\"pic\"; filename=\"%1\"").arg(fInfo.fileName());
+    QString content = QString("form-data; name=\"pic\"; filename=\"test.jpg\"");
     QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
     QHttpPart part;
     part.setRawHeader("Content-Disposition", content.toUtf8());
-    part.setRawHeader("Content-Type", getContentType(fInfo.suffix().toLower()).toUtf8());
-    part.setBody(file.readAll());
+    part.setRawHeader("Content-Type", "image/jpeg");
+    part.setBody(OCRUtils::Widget::getPixmapData(pix));
     multiPart->append(part);
     multiPart->setBoundary("----");
 
@@ -122,15 +119,4 @@ void OCRThread::errorSlot(QNetworkReply::NetworkError code)
     }
 
     qDebug() <<  "QNetworkReply::NetworkError : " + QString::number((int)code) + " \n" + m_reply->errorString();
-}
-
-QString OCRThread::getContentType(const QString &suffix)
-{
-    if(suffix== "jpg")
-        return "image/jpeg";
-    else if(suffix== "png")
-        return "image/png";
-    else if(suffix== "bmp")
-        return "application/x-bmp";
-    return QString();
 }

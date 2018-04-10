@@ -22,7 +22,10 @@ INCLUDEPATH += $$PWD
 HEADERS += \
     $$PWD/ocralgorithmutils.h \
     $$PWD/ocrcoreutils.h \
-    $$PWD/ocrwidgetutils.h
+    $$PWD/ocrwidgetutils.h \
+    $$PWD/ocrcodecutils.h \
+    $$PWD/ocrstringutils.h \
+    $$PWD/ocrurlutils.h
 
 }
 
@@ -30,6 +33,9 @@ contains(CONFIG, OCR_BUILD_LIB){
 SOURCES += \
     $$PWD/ocrcoreutils.cpp \
     $$PWD/ocralgorithmutils.cpp \
-    $$PWD/ocrwidgetutils.cpp
+    $$PWD/ocrwidgetutils.cpp \
+    $$PWD/ocrcodecutils.cpp \
+    $$PWD/ocrstringutils.cpp \
+    $$PWD/ocrurlutils.cpp
 
 }

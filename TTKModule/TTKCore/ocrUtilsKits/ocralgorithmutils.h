@@ -41,6 +41,10 @@ namespace OCRUtils
          * Get sha1 algorithm.
          */
         OCR_UTILS_EXPORT QByteArray sha1(const QByteArray &data);
+        /*!
+         * Encode the data into sha1.
+         */
+        OCR_UTILS_EXPORT QByteArray hmacSha1(const QByteArray &data, const QByteArray &key);
 
         /*!
          * Get mdII(greedysky) algorithm.

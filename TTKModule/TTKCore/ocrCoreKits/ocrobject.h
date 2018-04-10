@@ -29,6 +29,7 @@
 #define APPNAME                 "TTKOCR"
 #define APPDOT                  "TTKOCR."
 #define APPCOME                 "TTKOCR.com"
+#define APPEXE                  "TTKOCR.exe"
 ///////////////////////////////////////
 
 #define APPDATA_DIR             "AppData/"
@@ -36,6 +37,16 @@
 
 #define LANGUAGE_DIR            "MLanguage/"
 #define TEMPORARY_DIR           "temporary"
+
+#define TTS_FILE_PREFIX         "ttks"
+#define SKN_FILE_PREFIX         "skn"
+#define JPG_FILE_PREFIX         "jpg"
+#define BMP_FILE_PREFIX         "bmp"
+#define PNG_FILE_PREFIX         "png"
+#define CFG_FILE_PREFIX         "ttk"
+#define LST_FILE_PREFIX         "lis"
+#define EXE_FILE_PREFIX         "exe"
+#define XML_FILE_PREFIX         "xml"
 
 ///////////////////////////////////////
 #define APPDATA_DIR_FULL        OCRObject::getAppDir() + QString("../") + APPDATA_DIR
@@ -71,7 +82,6 @@ namespace OCRObject
     {
         return QCoreApplication::applicationDirPath() + "/";
     }
-
 }
 
 #endif // OCROBJECT_H

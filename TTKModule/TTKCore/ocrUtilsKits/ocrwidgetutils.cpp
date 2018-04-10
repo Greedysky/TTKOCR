@@ -27,7 +27,7 @@ void OCRUtils::Widget::setTransparent(QWidget *widget, int alpha)
     widget->setPalette(pal);
 }
 
-void OCRUtils::Widget::setComboboxText(QComboBox *object, const QString &text)
+void OCRUtils::Widget::setComboBoxText(QComboBox *object, const QString &text)
 {
     if(object->isEditable())
     {
@@ -50,6 +50,11 @@ void OCRUtils::Widget::widgetToRound(QWidget *w, int ratioX, int ratioY)
 
 void OCRUtils::Widget::fusionPixmap(QPixmap &bg, const QPixmap &fg, const QPoint &pt)
 {
+    if(fg.isNull())
+    {
+        return;
+    }
+
     QPainter painter(&bg);
     painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     painter.drawPixmap(pt.x(), pt.y(), fg);
@@ -75,7 +80,7 @@ QPixmap OCRUtils::Widget::pixmapToRound(const QPixmap &src, const QRect &rect, i
 
 QPixmap OCRUtils::Widget::pixmapToRound(const QPixmap &src, const QPixmap &mask, const QSize &size)
 {
-    if(src.isNull())
+    if(src.isNull() || mask.isNull())
     {
         return QPixmap();
     }
@@ -101,6 +106,23 @@ QBitmap OCRUtils::Widget::getBitmapMask(const QRect &rect, int ratioX, int ratio
     return mask;
 }
 
+QByteArray OCRUtils::Widget::getPixmapData(const QPixmap &pix)
+{
+    if(pix.isNull())
+    {
+        return QByteArray();
+    }
+
+    QByteArray data;
+    QBuffer buffer(&data);
+    if(buffer.open(QIODevice::WriteOnly))
+    {
+        pix.save(&buffer, JPG_FILE_PREFIX);
+    }
+    buffer.close();
+    return data;
+}
+
 int OCRUtils::Widget::reRenderAlpha(int alpha, int value)
 {
     return reRenderValue<int>(0xFF, alpha, value);
@@ -113,28 +135,26 @@ void OCRUtils::Widget::reRenderImage(int delta, const QImage *input, QImage *out
         for(int h=0; h<input->height(); h++)
         {
             QRgb rgb = input->pixel(w, h);
-            uint resultR = colorBurnTransform(qRed(rgb), delta);
-            uint resultG = colorBurnTransform(qGreen(rgb), delta);
-            uint resultB = colorBurnTransform(qBlue(rgb), delta);
-            uint newRgb = ((resultR & 0xFF)<<16 | (resultG & 0xFF)<<8 | (resultB & 0xFF));
-            output->setPixel(w, h, newRgb);
+            output->setPixel(w, h, qRgb(colorBurnTransform(qRed(rgb), delta),
+                                        colorBurnTransform(qGreen(rgb), delta),
+                                        colorBurnTransform(qBlue(rgb), delta)));
         }
     }
 }
 
-uint OCRUtils::Widget::colorBurnTransform(int c, int delta)
+int OCRUtils::Widget::colorBurnTransform(int c, int delta)
 {
-    Q_ASSERT(0 <= delta && delta < 0xFF);
-    if(0 <= delta || delta >= 0xFF)
+    if(0 > delta || delta > 0xFF)
     {
         return c;
     }
 
-    int result = (c - (uint)(c*delta)/(0xFF - delta));
+    int result = (c - (int)(c*delta)/(0xFF - delta));
     if(result > 0xFF)
     {
         result = 0xFF;
-    }else if(result < 0)
+    }
+    else if(result < 0)
     {
         result = 0;
     }
