@@ -62,6 +62,10 @@ public Q_SLOTS:
      */
     void openButtonClicked();
     /*!
+     * Screenshot button clicked.
+     */
+    void screenshotButtonClicked();
+    /*!
      * Start button clicked.
      */
     void startButtonClicked();
@@ -73,6 +77,10 @@ public Q_SLOTS:
      * Find finished.
      */
     void findFinish();
+    /*!
+     * Pixmap data Changed.
+     */
+    void pixmapChanged(const QPixmap &pix);
 
 private:
     /*!

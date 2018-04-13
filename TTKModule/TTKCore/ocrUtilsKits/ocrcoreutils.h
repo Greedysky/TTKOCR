@@ -67,11 +67,11 @@ namespace OCRUtils
         /*!
          * Music version check.
          */
-        OCR_UTILS_EXPORT bool musicVersionCheck(const QStringList &ol, const QStringList &dl, int depth);
+        OCR_UTILS_EXPORT bool versionCheck(const QStringList &ol, const QStringList &dl, int depth);
         /*!
          * Music version check.
          */
-        OCR_UTILS_EXPORT bool musicVersionCheck(const QString &o, const QString &d);
+        OCR_UTILS_EXPORT bool versionCheck(const QString &o, const QString &d);
 
     }
 }

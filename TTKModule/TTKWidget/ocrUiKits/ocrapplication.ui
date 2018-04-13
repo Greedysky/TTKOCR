@@ -265,6 +265,25 @@
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="screenshotButton">
+           <property name="minimumSize">
+            <size>
+             <width>65</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>65</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>截屏</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="startButton">
            <property name="minimumSize">
             <size>
@@ -315,7 +334,7 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>667</width>
+             <width>500</width>
              <height>20</height>
             </size>
            </property>

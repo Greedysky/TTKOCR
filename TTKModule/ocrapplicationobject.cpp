@@ -55,4 +55,5 @@ void OCRApplicationObject::cleanUp()
 {
     QFile::remove(TEMPORARY_DIR);
     OCRUtils::Core::removeRecursively("dir");
+    OCRUtils::Core::removeRecursively(SHOTS_DIR_FULL);
 }

@@ -35,6 +35,7 @@
 #define APPDATA_DIR             "AppData/"
 #define DOWNLOADS_DIR           "Downloads/"
 
+#define SHOTS_DIR               "Shots/"
 #define LANGUAGE_DIR            "MLanguage/"
 #define TEMPORARY_DIR           "temporary"
 
@@ -48,11 +49,22 @@
 #define EXE_FILE_PREFIX         "exe"
 #define XML_FILE_PREFIX         "xml"
 
+#define TTS_FILE                STRCAT(DOT, TTS_FILE_PREFIX)
+#define SKN_FILE                STRCAT(DOT, SKN_FILE_PREFIX)
+#define JPG_FILE                STRCAT(DOT, JPG_FILE_PREFIX)
+#define BMP_FILE                STRCAT(DOT, BMP_FILE_PREFIX)
+#define PNG_FILE                STRCAT(DOT, PNG_FILE_PREFIX)
+#define CFG_FILE                STRCAT(DOT, CFG_FILE_PREFIX)
+#define LST_FILE                STRCAT(DOT, LST_FILE_PREFIX)
+#define EXE_FILE                STRCAT(DOT, EXE_FILE_PREFIX)
+#define XML_FILE                STRCAT(DOT, XML_FILE_PREFIX)
+
 ///////////////////////////////////////
 #define APPDATA_DIR_FULL        OCRObject::getAppDir() + QString("../") + APPDATA_DIR
 #define DOWNLOADS_DIR_FULL      OCRObject::getAppDir() + QString("../") + DOWNLOADS_DIR
 
 #define TEMPORARY_DIR_FULL      DOWNLOADS_DIR_FULL + TEMPORARY_DIR
+#define SHOTS_DIR_FULL          DOWNLOADS_DIR_FULL + SHOTS_DIR
 
 #define LANGUAGE_DIR_FULL       OCRObject::getAppDir() + LANGUAGE_DIR
 

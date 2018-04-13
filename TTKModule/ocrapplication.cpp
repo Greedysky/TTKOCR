@@ -4,6 +4,7 @@
 #include "ocrfunctionlistuiobject.h"
 #include "ocrwidgetutils.h"
 #include "ocrcoreutils.h"
+#include "ocrgrabwidget.h"
 #include "ocrthread.h"
 #include "ocruiobject.h"
 #ifdef OCR_BUILD_BY_PDF
@@ -40,10 +41,12 @@ OCRApplication::OCRApplication(QWidget *parent)
     connect(m_ui->closeButton, SIGNAL(clicked()), SLOT(quitWindowClose()));
 
     m_ui->openButton->setStyleSheet(OCRUIObject::MPushButtonStyle04);
+    m_ui->screenshotButton->setStyleSheet(OCRUIObject::MPushButtonStyle04);
     m_ui->startButton->setStyleSheet(OCRUIObject::MPushButtonStyle04);
     m_ui->clearButton->setStyleSheet(OCRUIObject::MPushButtonStyle04);
 
     connect(m_ui->openButton, SIGNAL(clicked()), SLOT(openButtonClicked()));
+    connect(m_ui->screenshotButton, SIGNAL(clicked()), SLOT(screenshotButtonClicked()));
     connect(m_ui->startButton, SIGNAL(clicked()), SLOT(startButtonClicked()));
     connect(m_ui->clearButton, SIGNAL(clicked()), SLOT(clearButtonClicked()));
 
@@ -134,6 +137,13 @@ void OCRApplication::openButtonClicked()
     }
 }
 
+void OCRApplication::screenshotButtonClicked()
+{
+    OCRGrabWidget *w = new OCRGrabWidget(this);
+    connect(w, SIGNAL(pixmapChanged(QPixmap)), SLOT(pixmapChanged(QPixmap)));
+    w->show();
+}
+
 void OCRApplication::startButtonClicked()
 {
     if(m_fileList.isEmpty())
@@ -204,6 +214,28 @@ void OCRApplication::findFinish()
     }
 }
 
+void OCRApplication::pixmapChanged(const QPixmap &pix)
+{
+    if(!QDir().exists(SHOTS_DIR_FULL))
+    {
+        QDir().mkpath(SHOTS_DIR_FULL);
+    }
+
+    QString filename = SHOTS_DIR_FULL + QDateTime::currentDateTime().toString("yyyyMMddhhmmss") + JPG_FILE;
+    pix.save(filename, 0, 100);
+
+    OCRThreadItem *item = new OCRThreadItem(this);
+    item->m_index = m_fileList.count();
+    item->m_path = filename;
+
+    QLabel *ll = new QLabel(m_ui->pixScrollAreaWidget);
+    ll->setPixmap(pix.scaled(405, 405, Qt::KeepAspectRatio));
+    m_ui->pixScrollAreaWidgetLayout->addWidget(ll);
+    item->m_obj = ll;
+
+    m_fileList << item;
+}
+
 void OCRApplication::deleteItems()
 {
     while(!m_fileList.isEmpty())
@@ -229,6 +261,7 @@ void OCRApplication::stateChanged(bool state)
     }
 
     m_ui->openButton->setEnabled(!state);
+    m_ui->screenshotButton->setEnabled(!state);
     m_ui->startButton->setEnabled(!state);
     m_ui->clearButton->setEnabled(!state);
 }
