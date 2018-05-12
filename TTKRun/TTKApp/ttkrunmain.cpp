@@ -1,10 +1,10 @@
-#include "ocrrunapplication.h"
-#include "ocrrunobject.h"
+#include "ttkrunapplication.h"
+#include "ttkrunobject.h"
 #include "ocrobject.h"
 
 int main(int argc, char *argv[])
 {
-    OCRRunApplication app(argc, argv);
+    TTKRunApplication app(argc, argv);
 
     QCoreApplication::setOrganizationName(APPNAME);
     QCoreApplication::setOrganizationDomain(APPCOME);

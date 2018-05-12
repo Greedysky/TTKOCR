@@ -1,5 +1,5 @@
-#include "ocrlocalpeer.h"
-#include "ocrlockedfile.h"
+#include "ttklocalpeer.h"
+#include "ttklockedfile.h"
 
 #include <QCoreApplication>
 #include <QDataStream>
@@ -20,35 +20,35 @@ static PProcessIdToSessionId pProcessIdToSessionId = 0;
 #include <unistd.h>
 #endif
 
-namespace OCRLockedPrivate {
-#include "ocrlockedfile.cpp"
+namespace TTKLockedPrivate {
+#include "ttklockedfile.cpp"
 #if defined(Q_OS_WIN)
-#include "ocrlockedfile_win.cpp"
+#include "ttklockedfile_win.cpp"
 #else
-#include "ocrlockedfile_unix.cpp"
+#include "ttklockedfile_unix.cpp"
 #endif
 }
 
-class OCRLocalPeerPrivate : public OCRPrivate<OCRLocalPeer>
+class TTKLocalPeerPrivate : public TTKPrivate<TTKLocalPeer>
 {
 public:
-    OCRLocalPeerPrivate();
-    ~OCRLocalPeerPrivate();
+    TTKLocalPeerPrivate();
+    ~TTKLocalPeerPrivate();
 
     QString m_id;
     QString m_socketName;
     QLocalServer *m_server;
-    OCRLockedPrivate::OCRLockedFile m_lockFile;
+    TTKLockedPrivate::TTKLockedFile m_lockFile;
     static const char *m_ack;
 };
-const char *OCRLocalPeerPrivate::m_ack = "ack";
+const char *TTKLocalPeerPrivate::m_ack = "ack";
 
-OCRLocalPeerPrivate::OCRLocalPeerPrivate()
+TTKLocalPeerPrivate::TTKLocalPeerPrivate()
 {
     m_server = nullptr;
 }
 
-OCRLocalPeerPrivate::~OCRLocalPeerPrivate()
+TTKLocalPeerPrivate::~TTKLocalPeerPrivate()
 {
     delete m_server;
 }
@@ -58,11 +58,11 @@ OCRLocalPeerPrivate::~OCRLocalPeerPrivate()
 ///
 ///
 
-OCRLocalPeer::OCRLocalPeer(QObject *parent, const QString &appId)
+TTKLocalPeer::TTKLocalPeer(QObject *parent, const QString &appId)
     : QObject(parent)
 {
-    OCR_INIT_PRIVATE;
-    OCR_D(OCRLocalPeer);
+    TTK_INIT_PRIVATE;
+    TTK_D(TTKLocalPeer);
 
     QString prefix = d->m_id = appId;
     if(prefix.isEmpty())
@@ -105,15 +105,15 @@ OCRLocalPeer::OCRLocalPeer(QObject *parent, const QString &appId)
     d->m_lockFile.open(QIODevice::ReadWrite);
 }
 
-bool OCRLocalPeer::isClient()
+bool TTKLocalPeer::isClient()
 {
-    OCR_D(OCRLocalPeer);
+    TTK_D(TTKLocalPeer);
     if(d->m_lockFile.isLocked())
     {
         return false;
     }
 
-    if(!d->m_lockFile.lock(OCRLockedPrivate::OCRLockedFile::WriteLock, false))
+    if(!d->m_lockFile.lock(TTKLockedPrivate::TTKLockedFile::WriteLock, false))
     {
         return true;
     }
@@ -136,9 +136,9 @@ bool OCRLocalPeer::isClient()
     return false;
 }
 
-bool OCRLocalPeer::sendMessage(const QString &message, int timeout)
+bool TTKLocalPeer::sendMessage(const QString &message, int timeout)
 {
-    OCR_D(OCRLocalPeer);
+    TTK_D(TTKLocalPeer);
     if(!isClient())
     {
         return false;
@@ -160,7 +160,7 @@ bool OCRLocalPeer::sendMessage(const QString &message, int timeout)
         Sleep(DWORD(ms));
 #else
         struct timespec ts = { ms / 1000, (ms % 1000) * 1000 * 1000 };
-        nanosleep(&ts, NULL);
+        nanosleep(&ts, nullptr);
 #endif
     }
     if(!connOk)
@@ -184,15 +184,15 @@ bool OCRLocalPeer::sendMessage(const QString &message, int timeout)
     return res;
 }
 
-QString OCRLocalPeer::applicationId() const
+QString TTKLocalPeer::applicationId() const
 {
-    OCR_D(OCRLocalPeer);
+    TTK_D(TTKLocalPeer);
     return d->m_id;
 }
 
-void OCRLocalPeer::receiveConnection()
+void TTKLocalPeer::receiveConnection()
 {
-    OCR_D(OCRLocalPeer);
+    TTK_D(TTKLocalPeer);
     QLocalSocket *socket = d->m_server->nextPendingConnection();
     if(!socket)
     {
@@ -231,7 +231,7 @@ void OCRLocalPeer::receiveConnection()
     }while(remaining && got >= 0 && socket->waitForReadyRead(2000));
     if(got < 0)
     {
-        qWarning("OCRLocalPeer: Message reception failed %s", socket->errorString().toLatin1().constData());
+        qWarning("TTKLocalPeer: Message reception failed %s", socket->errorString().toLatin1().constData());
         delete socket;
         return;
     }

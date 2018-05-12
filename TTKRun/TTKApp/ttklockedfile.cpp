@@ -1,6 +1,6 @@
-#include "ocrlockedfile.h"
+#include "ttklockedfile.h"
 
-OCRLockedFile::OCRLockedFile()
+TTKLockedFile::TTKLockedFile()
     : QFile()
 {
 #ifdef Q_OS_WIN
@@ -10,7 +10,7 @@ OCRLockedFile::OCRLockedFile()
     m_lock_mode = NoLock;
 }
 
-OCRLockedFile::OCRLockedFile(const QString &name)
+TTKLockedFile::TTKLockedFile(const QString &name)
     : QFile(name)
 {
 #ifdef Q_OS_WIN
@@ -20,21 +20,21 @@ OCRLockedFile::OCRLockedFile(const QString &name)
     m_lock_mode = NoLock;
 }
 
-bool OCRLockedFile::open(OpenMode mode)
+bool TTKLockedFile::open(OpenMode mode)
 {
     if (mode & QIODevice::Truncate) {
-        qWarning("OCRLockedFile::open(): Truncate mode not allowed.");
+        qWarning("TTKLockedFile::open(): Truncate mode not allowed.");
         return false;
     }
     return QFile::open(mode);
 }
 
-bool OCRLockedFile::isLocked() const
+bool TTKLockedFile::isLocked() const
 {
     return m_lock_mode != NoLock;
 }
 
-OCRLockedFile::LockMode OCRLockedFile::lockMode() const
+TTKLockedFile::LockMode TTKLockedFile::lockMode() const
 {
     return m_lock_mode;
 }

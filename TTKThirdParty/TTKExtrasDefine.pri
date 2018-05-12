@@ -23,4 +23,4 @@ INCLUDEPATH += \
 HEADERS  += \
     $$PWD/ocrextrasglobaldefine.h \
     $$PWD/../ocrglobal.h \
-    $$PWD/../ocrprivate.h
+    $$PWD/../ttkprivate.h

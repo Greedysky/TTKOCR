@@ -35,7 +35,7 @@
     M_LOGGER << str << LOG_END;\
 }
 
-#ifdef OCR_DEBUG
+#ifdef TTK_DEBUG
     #define M_LOGGER_INFO(str)  M_MESSAGE(str, "[Info]")
     #define M_LOGGER_DEBUG(str) M_MESSAGE(str, "[Debug]")
     #define M_LOGGER_WARN(str)  M_MESSAGE(str, "[Warn]")
@@ -93,7 +93,7 @@ public:
      */
     inline OCRLogger&operator <<(bool t)
     {
-#ifdef OCR_DEBUG
+#ifdef TTK_DEBUG
         m_streamString.append( QString("%1 ").arg(t ? "true" : "false") );
 #else
         Q_UNUSED(t);
@@ -114,7 +114,7 @@ public:
     inline OCRLogger&operator<<(const char *t) { return debugData<const char*>(t); }
     inline OCRLogger&operator<<(const QString &t)
     {
-#ifdef OCR_DEBUG
+#ifdef TTK_DEBUG
         if(t == LOG_END)
         {
             m_stream << QString("[%1 %2]:  %3").arg(CURRENTDATE).arg(CURRENTTIME).arg(m_streamString) << endl;
@@ -139,7 +139,7 @@ private:
      */
     OCRLogger()
     {
-#ifdef OCR_DEBUG
+#ifdef TTK_DEBUG
         m_file.setFileName("logger.txt");
         m_file.open(QIODevice::WriteOnly | QIODevice::Append);
         m_stream.setDevice(&m_file);
@@ -150,7 +150,7 @@ private:
 
     ~OCRLogger()
     {
-#ifdef OCR_DEBUG
+#ifdef TTK_DEBUG
         m_file.close();
 #endif
     }
@@ -161,7 +161,7 @@ private:
     template <class T>
     OCRLogger&debugData(const T &data)
     {
-#ifdef OCR_DEBUG
+#ifdef TTK_DEBUG
         m_streamString.append( QString("%1 %2 ").arg(m_levelType).arg(data) );
 #else
         Q_UNUSED(data);

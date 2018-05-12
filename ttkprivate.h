@@ -1,5 +1,5 @@
-#ifndef OCRPRIVATE_H
-#define OCRPRIVATE_H
+#ifndef TTKPRIVATE_H
+#define TTKPRIVATE_H
 
 /* =================================================
  * This file is part of the TTK OCR project
@@ -20,34 +20,34 @@
  ================================================= */
 
 
-#define OCR_DECLARE_PRIVATE(Class) \
+#define TTK_DECLARE_PRIVATE(Class) \
     friend class Class##Private; \
-    OCRPrivateInterface<Class, Class##Private> ocr_d;
+    TTKPrivateInterface<Class, Class##Private> ttk_d;
 
-#define OCR_DECLARE_PUBLIC(Class) \
+#define TTK_DECLARE_PUBLIC(Class) \
     friend class Class;
 
-#define OCR_INIT_PRIVATE \
-    ocr_d.setPublic(this);
+#define TTK_INIT_PRIVATE \
+    ttk_d.setPublic(this);
 
-#define OCR_D(Class) Class##Private *const d = ocr_d()
-#define OCR_Q(Class) Class *const q = ocr_q()
+#define TTK_D(Class) Class##Private *const d = ttk_d()
+#define TTK_Q(Class) Class *const q = ttk_q()
 
 template <typename PUB>
-/*! @brief The class of the private base.
+/*! @brief The class of the ttk private base.
  * @author Greedysky <greedysky@163.com>
  */
-class OCRPrivate
+class TTKPrivate
 {
 public:
-    virtual ~OCRPrivate() { }
-    inline void setPublic(PUB* pub) { ocr_q_ptr = pub; }
+    virtual ~TTKPrivate() { }
+    inline void setPublic(PUB* pub) { ttk_q_ptr = pub; }
 
 protected:
-    inline PUB *ocr_q() const { return ocr_q_ptr; }
+    inline PUB *ttk_q() const { return ttk_q_ptr; }
 
 private:
-    PUB* ocr_q_ptr;
+    PUB* ttk_q_ptr;
 
 };
 
@@ -55,22 +55,22 @@ template <typename PUB, typename PVT>
 /*! @brief The class of the ttk private interface.
  * @author Greedysky <greedysky@163.com>
  */
-class OCRPrivateInterface
+class TTKPrivateInterface
 {
-    friend class OCRPrivate<PUB>;
+    friend class TTKPrivate<PUB>;
 public:
-    OCRPrivateInterface() { pvt = new PVT; }
-    ~OCRPrivateInterface() { delete pvt; }
+    TTKPrivateInterface() { pvt = new PVT; }
+    ~TTKPrivateInterface() { delete pvt; }
 
     inline void setPublic(PUB* pub) { pvt->setPublic(pub); }
     inline PVT *operator()() const { return static_cast<PVT*>(pvt); }
 
 private:
-    OCRPrivateInterface(const OCRPrivateInterface&) { }
-    OCRPrivateInterface& operator=(const OCRPrivateInterface&) { }
-    OCRPrivate<PUB>* pvt;
+    TTKPrivateInterface(const TTKPrivateInterface&) { }
+    TTKPrivateInterface& operator=(const TTKPrivateInterface&) { }
+    TTKPrivate<PUB>* pvt;
 
 };
 
 
-#endif // OCRPRIVATE_H
+#endif // TTKPRIVATE_H

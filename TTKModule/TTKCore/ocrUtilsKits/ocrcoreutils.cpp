@@ -146,7 +146,7 @@ QString OCRUtils::Core::getLanguageName(int index)
     }
 }
 
-bool OCRUtils::Core::versionCheck(const QStringList &ol, const QStringList &dl, int depth)
+bool OCRUtils::Core::appVersionCheck(const QStringList &ol, const QStringList &dl, int depth)
 {
     if(depth >= ol.count())
     {
@@ -157,7 +157,7 @@ bool OCRUtils::Core::versionCheck(const QStringList &ol, const QStringList &dl, 
     {
         if(dl[depth].toInt() == ol[depth].toInt())
         {
-            return versionCheck(ol, dl, depth + 1);
+            return appVersionCheck(ol, dl, depth + 1);
         }
         else
         {
@@ -170,7 +170,7 @@ bool OCRUtils::Core::versionCheck(const QStringList &ol, const QStringList &dl, 
     }
 }
 
-bool OCRUtils::Core::versionCheck(const QString &o, const QString &d)
+bool OCRUtils::Core::appVersionCheck(const QString &o, const QString &d)
 {
     QStringList ol = o.split(".");
     QStringList dl = d.split(".");
@@ -180,5 +180,5 @@ bool OCRUtils::Core::versionCheck(const QString &o, const QString &d)
         return false;
     }
 
-    return versionCheck(ol, dl, 0);
+    return appVersionCheck(ol, dl, 0);
 }

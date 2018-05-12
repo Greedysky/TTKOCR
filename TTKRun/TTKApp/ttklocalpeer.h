@@ -1,5 +1,5 @@
-#ifndef OCRLOCALPEER_H
-#define OCRLOCALPEER_H
+#ifndef TTKLOCALPEER_H
+#define TTKLOCALPEER_H
 
 /* =================================================
  * This file is part of the TTK OCR project
@@ -20,22 +20,22 @@
  ================================================= */
 
 #include <QObject>
-#include "ocrprivate.h"
+#include "ttkprivate.h"
 #include "ocrrunglobaldefine.h"
 
-class OCRLocalPeerPrivate;
+class TTKLocalPeerPrivate;
 
-/*! @brief The class of the ocr local peer.
+/*! @brief The class of the ttk local peer.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_RUN_EXPORT OCRLocalPeer : public QObject
+class OCR_RUN_EXPORT TTKLocalPeer : public QObject
 {
     Q_OBJECT
 public:
     /*!
      * Object contsructor.
     */
-    explicit OCRLocalPeer(QObject *parent = 0, const QString &appId = QString());
+    explicit TTKLocalPeer(QObject *parent = 0, const QString &appId = QString());
 
     /*!
      * Current client is running or not.
@@ -65,8 +65,8 @@ protected Q_SLOTS:
     void receiveConnection();
 
 private:
-    OCR_DECLARE_PRIVATE(OCRLocalPeer)
+    TTK_DECLARE_PRIVATE(TTKLocalPeer)
 
 };
 
-#endif // OCRLOCALPEER_H
+#endif // TTKLOCALPEER_H

@@ -21,7 +21,7 @@
 #ifndef QOBJECTHELPER_H
 #define QOBJECTHELPER_H
 
-#include "ocrprivate.h"
+#include "ttkprivate.h"
 #include "ocrextrasglobaldefine.h"
 
 #include <QtCore/QLatin1String>
@@ -139,7 +139,7 @@ namespace QJson {
 
     private:
       class QObjectHelperPrivate;
-      OCR_DECLARE_PRIVATE(QObjectHelper)
+      TTK_DECLARE_PRIVATE(QObjectHelper)
 
   };
 }

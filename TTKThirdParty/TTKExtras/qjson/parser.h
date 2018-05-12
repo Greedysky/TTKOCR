@@ -21,7 +21,7 @@
 #ifndef QJSON_PARSER_H
 #define QJSON_PARSER_H
 
-#include "ocrprivate.h"
+#include "ttkprivate.h"
 #include "ocrextrasglobaldefine.h"
 
 QT_BEGIN_NAMESPACE
@@ -91,7 +91,7 @@ namespace QJson {
       bool specialNumbersAllowed() const;
 
     private:
-      OCR_DECLARE_PRIVATE(Parser)
+      TTK_DECLARE_PRIVATE(Parser)
 
   };
 }

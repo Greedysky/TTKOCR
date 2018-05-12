@@ -39,20 +39,19 @@ INCLUDEPATH += \
     ../../TTKModule/TTKCore/ocrCoreKits
 
 SOURCES += \
-    ocrlocalpeer.cpp \
-    ocrrunmain.cpp \
     ocrinitobject.cpp \
-    ocrrunapplication.cpp \
-    ocrrunobject.cpp
+    ttkrunmain.cpp \
+    ttklocalpeer.cpp \
+    ttkrunapplication.cpp \
+    ttkrunobject.cpp
 
 
 HEADERS += \
     ../ocrrunglobaldefine.h \
     ocrinitobject.h \
-    ocrrunapplication.h \
-    ocrrunobject.h \
-    ocrlocalpeer.h \
-    ocrlockedfile.h
+    ttkrunobject.h \
+    ttklocalpeer.h \
+    ttkrunapplication.h
 
 
 RESOURCES += \

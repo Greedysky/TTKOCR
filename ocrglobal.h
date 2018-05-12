@@ -40,7 +40,7 @@
 #endif
 
 #ifdef QT_DEBUG
-#   define OCR_DEBUG
+#   define TTK_DEBUG
 #endif
 
 //////////////////////////////////////
@@ -95,10 +95,10 @@
 #define STRCAT(a, b)    a b
 #endif
 
-#define OCR_DECLARE_LISTS(Class) \
+#define TTK_DECLARE_LISTS(Class) \
     typedef QList<Class> Class##s;
 
-#define OCR_DECLARE_FLAGS(Flags, Enum) \
+#define TTK_DECLARE_FLAGS(Flags, Enum) \
     typedef QFlags<Enum> Flags;
 
 //////////////////////////////////////

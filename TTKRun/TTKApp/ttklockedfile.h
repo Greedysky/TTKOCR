@@ -1,5 +1,5 @@
-#ifndef OCRLOCKEDFILE_H
-#define OCRLOCKEDFILE_H
+#ifndef TTKLOCKEDFILE_H
+#define TTKLOCKEDFILE_H
 
 #include <QFile>
 #ifdef Q_OS_WIN
@@ -7,11 +7,11 @@
 #endif
 #include "ocrrunglobaldefine.h"
 
-namespace OCRLockedPrivate {
-  /*! @brief The class of the ocr local file.
+namespace TTKLockedPrivate {
+  /*! @brief The class of the ttk local file.
    * @author Greedysky <greedysky@163.com>
    */
-    class OCR_RUN_EXPORT OCRLockedFile : public QFile
+    class OCR_RUN_EXPORT TTKLockedFile : public QFile
     {
     public:
         enum LockMode
@@ -21,15 +21,15 @@ namespace OCRLockedPrivate {
             WriteLock
         };
 
-        OCRLockedFile();
+        TTKLockedFile();
        /*!
          * Object contsructor.
         */
-        explicit OCRLockedFile(const QString &name);
+        explicit TTKLockedFile(const QString &name);
         /*!
          * Object contsructor.
         */
-        ~OCRLockedFile();
+        ~TTKLockedFile();
 
         bool open(OpenMode mode);
         /*!
@@ -67,4 +67,4 @@ namespace OCRLockedPrivate {
         LockMode m_lock_mode;
     };
 }
-#endif //OCRLOCKEDFILE_H
+#endif //TTKLOCKEDFILE_H

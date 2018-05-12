@@ -21,7 +21,7 @@
 #ifndef SERIALIZERRUNNABLE_H
 #define SERIALIZERRUNNABLE_H
 
-#include "ocrprivate.h"
+#include "ttkprivate.h"
 #include "ocrextrasglobaldefine.h"
 
 #include <QtCore/QObject>
@@ -63,7 +63,7 @@ namespace QJson {
 
     private:
       class SerializerRunnablePrivate;
-      OCR_DECLARE_PRIVATE(SerializerRunnable)
+      TTK_DECLARE_PRIVATE(SerializerRunnable)
 
   };
 }

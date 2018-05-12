@@ -21,7 +21,7 @@
 #ifndef PARSERRUNNABLE_H
 #define PARSERRUNNABLE_H
 
-#include "ocrprivate.h"
+#include "ttkprivate.h"
 #include "ocrextrasglobaldefine.h"
 
 #include <QtCore/QObject>
@@ -56,7 +56,7 @@ namespace QJson {
 
     private:
       class ParserRunnablePrivate;
-      OCR_DECLARE_PRIVATE(ParserRunnable)
+      TTK_DECLARE_PRIVATE(ParserRunnable)
 
   };
 }

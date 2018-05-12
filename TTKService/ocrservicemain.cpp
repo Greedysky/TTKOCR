@@ -6,12 +6,12 @@
 #include <QTranslator>
 #include <QApplication>
 
-#define OCR_DEBUG
+#define TTK_DEBUG
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-#if !defined OCR_DEBUG && !defined Q_OS_UNIX
+#if !defined TTK_DEBUG && !defined Q_OS_UNIX
     if(argc <= 1 || QString(argv[1]) != APPNAME)
     {
         return -1;

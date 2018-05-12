@@ -20,7 +20,7 @@
  ================================================= */
 
 #include <QDebug>
-#include "ocrprivate.h"
+#include "ttkprivate.h"
 #include "ocrrunglobaldefine.h"
 
 class OCRRunObjectPrivate;
@@ -53,7 +53,7 @@ private Q_SLOTS:
     void finished(int code);
 
 private:
-   OCR_DECLARE_PRIVATE(OCRRunObject)
+   TTK_DECLARE_PRIVATE(OCRRunObject)
 
 };
 

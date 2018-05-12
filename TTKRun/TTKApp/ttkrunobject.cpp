@@ -1,10 +1,10 @@
-#include "ocrrunobject.h"
+#include "ttkrunobject.h"
 #include "ocrinitobject.h"
 
 #include <QProcess>
 #include <QApplication>
 
-class OCRRunObjectPrivate : public OCRPrivate<OCRRunObject>
+class OCRRunObjectPrivate : public TTKPrivate<OCRRunObject>
 {
 public:
     OCRRunObjectPrivate();
@@ -31,8 +31,8 @@ OCRRunObjectPrivate::~OCRRunObjectPrivate()
 OCRRunObject::OCRRunObject(QObject *parent)
     : QObject(parent)
 {
-    OCR_INIT_PRIVATE;
-    OCR_D(OCRRunObject);
+    TTK_INIT_PRIVATE;
+    TTK_D(OCRRunObject);
 
     d->m_process = new QProcess(this);
     connect(d->m_process, SIGNAL(finished(int)), SLOT(finished(int)));
@@ -46,7 +46,7 @@ void OCRRunObject::checkValid()
 
 void OCRRunObject::run(int argc, char **argv)
 {
-    OCR_D(OCRRunObject);
+    TTK_D(OCRRunObject);
     QStringList list(APPNAME);
     if(argc == 3)
     {

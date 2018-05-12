@@ -1,5 +1,5 @@
-#ifndef OCRRUNAPPLICATION_H
-#define OCRRUNAPPLICATION_H
+#ifndef TTKRUNAPPLICATION_H
+#define TTKRUNAPPLICATION_H
 
 /* =================================================
  * This file is part of the TTK OCR project
@@ -20,45 +20,45 @@
  ================================================= */
 
 #include <QApplication>
-#include "ocrprivate.h"
+#include "ttkprivate.h"
 #include "ocrrunglobaldefine.h"
 
-class OCRRunApplicationPrivate;
+class TTKRunApplicationPrivate;
 
-/*! @brief The class of the ocr run application.
+/*! @brief The class of the ttk run application.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_RUN_EXPORT OCRRunApplication : public QApplication
+class OCR_RUN_EXPORT TTKRunApplication : public QApplication
 {
     Q_OBJECT
 public:
     /*!
      * Object contsructor.
     */
-    OCRRunApplication(int &argc, char **argv, bool GUIenabled = true);
+    TTKRunApplication(int &argc, char **argv, bool GUIenabled = true);
     /*!
      * Object contsructor.
     */
-    OCRRunApplication(const QString &id, int &argc, char **argv);
+    TTKRunApplication(const QString &id, int &argc, char **argv);
 
 #if QT_VERSION < 0x050000
     /*!
      * Object contsructor.
     */
-    OCRRunApplication(int &argc, char **argv, Type type);
+    TTKRunApplication(int &argc, char **argv, Type type);
 #  if defined(Q_WS_X11)
     /*!
      * Object contsructor.
     */
-    OCRRunApplication(Display *dpy, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0);
+    TTKRunApplication(Display *dpy, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0);
     /*!
      * Object contsructor.
     */
-    OCRRunApplication(Display *dpy, int &argc, char **argv, Qt::HANDLE visual = 0, Qt::HANDLE cmap= 0);
+    TTKRunApplication(Display *dpy, int &argc, char **argv, Qt::HANDLE visual = 0, Qt::HANDLE cmap= 0);
     /*!
      * Object contsructor.
     */
-    OCRRunApplication(Display *dpy, const QString &appId, int argc, char **argv, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0);
+    TTKRunApplication(Display *dpy, const QString &appId, int argc, char **argv, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0);
 #  endif
 #endif
 
@@ -106,8 +106,8 @@ private:
     */
     void sysInit(const QString &appId = QString());
 
-    OCR_DECLARE_PRIVATE(OCRRunApplication)
+    TTK_DECLARE_PRIVATE(TTKRunApplication)
 
 };
 
-#endif // OCRRUNAPPLICATION_H
+#endif // TTKRUNAPPLICATION_H

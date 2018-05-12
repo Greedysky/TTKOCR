@@ -30,7 +30,7 @@
 using namespace QJson;
 
 class SerializerRunnable::SerializerRunnablePrivate
-        : public OCRPrivate<SerializerRunnable>
+        : public TTKPrivate<SerializerRunnable>
 {
 public:
   QVariant json;
@@ -40,19 +40,19 @@ SerializerRunnable::SerializerRunnable(QObject* parent)
     : QObject(parent),
       QRunnable()
 {
-  OCR_INIT_PRIVATE;
+  TTK_INIT_PRIVATE;
   qRegisterMetaType<QVariant>("QVariant");
 }
 
 void SerializerRunnable::setJsonObject( const QVariant& json )
 {
-  OCR_D(SerializerRunnable);
+  TTK_D(SerializerRunnable);
   d->json = json;
 }
 
 void SerializerRunnable::run()
 {
-  OCR_D(SerializerRunnable);
+  TTK_D(SerializerRunnable);
   Serializer serializer;
   bool ok;
   const QByteArray serialized = serializer.serialize( d->json, &ok);
