@@ -18,7 +18,7 @@
 
 INCLUDEPATH += $$PWD
 
-!contains(CONFIG, OCR_NO_MSVC_LINK_NEED){
+!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS += \
     $$PWD/ocralgorithmutils.h \
     $$PWD/ocrcoreutils.h \
@@ -29,7 +29,7 @@ HEADERS += \
 
 }
 
-contains(CONFIG, OCR_BUILD_LIB){
+contains(CONFIG, TTK_BUILD_LIB){
 SOURCES += \
     $$PWD/ocrcoreutils.cpp \
     $$PWD/ocralgorithmutils.cpp \

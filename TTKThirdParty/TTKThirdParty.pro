@@ -20,6 +20,6 @@ include(../TTKBuild.pri)
 
 TEMPLATE = subdirs
 SUBDIRS = Zlib TTKDumper TTKExtras
-contains(CONFIG, OCR_BUILD_BY_PDF){
+contains(CONFIG, TTK_BUILD_BY_PDF){
 SUBDIRS += TTKPdf
 }

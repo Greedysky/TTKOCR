@@ -17,7 +17,7 @@
 # =================================================
 
 TEMPLATE = lib
-CONFIG += OCR_BUILD_LIB
+CONFIG += TTK_BUILD_LIB
 
 include(../TTKOCR.pri)
 

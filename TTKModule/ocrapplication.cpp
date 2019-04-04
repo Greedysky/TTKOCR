@@ -7,7 +7,7 @@
 #include "ocrgrabwidget.h"
 #include "ocrthread.h"
 #include "ocruiobject.h"
-#ifdef OCR_BUILD_BY_PDF
+#ifdef TTK_BUILD_BY_PDF
 #include "include/mupdf-qt.h"
 #endif
 #include <QScrollBar>
@@ -102,7 +102,7 @@ void OCRApplication::openButtonClicked()
     bool isPdf = QFileInfo(path).suffix().toLower() == "pdf";
     if(isPdf)
     {
-#ifdef OCR_BUILD_BY_PDF
+#ifdef TTK_BUILD_BY_PDF
         lists.clear();
         MuPDF::Document *document = MuPDF::loadDocument(path);
         for(int i=0; i<document->numPages(); i++)

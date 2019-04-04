@@ -58,7 +58,7 @@ win32{
         msvc{
             LIBS += -lshell32 -luser32
             LIBS += -L../bin/$$TTKOCR -lTTKUi -lTTKExtras -lzlib -lTTKZip
-            contains(CONFIG, OCR_BUILD_BY_PDF){
+            contains(CONFIG, TTK_BUILD_BY_PDF){
                 LIBS += -L../lib/$$TTKOCR -lTTKPdf
             }
             CONFIG +=c++11
@@ -71,7 +71,7 @@ win32{
 
         gcc{
             LIBS += -L../bin/$$TTKOCR -lTTKUi -lTTKExtras -lzlib -lTTKZip
-            contains(CONFIG, OCR_BUILD_BY_PDF){
+            contains(CONFIG, TTK_BUILD_BY_PDF){
                 LIBS += -L../lib/$$TTKOCR -lTTKPdf
             }
             QMAKE_CXXFLAGS += -std=c++11
@@ -84,7 +84,7 @@ win32{
         QT  += multimedia
         gcc{
             LIBS += -L../bin/$$TTKOCR -lTTKUi -lTTKExtras -lzlib -lTTKZip
-            contains(CONFIG, OCR_BUILD_BY_PDF){
+            contains(CONFIG, TTK_BUILD_BY_PDF){
                 LIBS += -L../lib/$$TTKOCR -lTTKPdf
             }
             QMAKE_CXXFLAGS += -std=c++11
@@ -96,7 +96,7 @@ win32{
 
 unix:!mac{
     LIBS += -L../lib/$$TTKOCR -lTTKUi -lTTKExtras -lzlib -lTTKZip
-    contains(CONFIG, OCR_BUILD_BY_PDF){
+    contains(CONFIG, TTK_BUILD_BY_PDF){
         LIBS += -L../lib/$$TTKOCR -lTTKPdf
     }
     QMAKE_CXXFLAGS += -std=c++11

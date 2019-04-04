@@ -17,9 +17,9 @@
 # =================================================
 
 #enbale pdf module
-#CONFIG += OCR_BUILD_BY_PDF
+#CONFIG += TTK_BUILD_BY_PDF
 
 
-contains(CONFIG, OCR_BUILD_BY_PDF){
-DEFINES += OCR_BUILD_BY_PDF
+contains(CONFIG, TTK_BUILD_BY_PDF){
+DEFINES += TTK_BUILD_BY_PDF
 }

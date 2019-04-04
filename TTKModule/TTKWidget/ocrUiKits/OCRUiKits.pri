@@ -18,14 +18,14 @@
 
 INCLUDEPATH += $$PWD
 
-!contains(CONFIG, OCR_NO_MSVC_LINK_NEED){
+!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS += \
     $$PWD/ocruiobject.h \
     $$PWD/ocrfunctionlistuiobject.h
 
 }
 
-contains(CONFIG, OCR_BUILD_LIB){
+contains(CONFIG, TTK_BUILD_LIB){
 FORMS += \
     $$PWD/ocrapplication.ui
 
