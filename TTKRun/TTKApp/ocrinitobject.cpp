@@ -39,18 +39,10 @@ void OCRInitObject::checkTheDirectoryExist()
 void OCRInitObject::checkTheFileNeededExist()
 {
 #ifdef Q_OS_UNIX
-    if(!QFile::exists(S_TTKDD_FULL))
-    {
-        QFile::copy(":/data/TTKLDD.sh", S_TTKDD_FULL);
-        QFile::setPermissions(S_TTKDD_FULL, QFile::ReadOwner | QFile::WriteOwner);
-        QProcess::execute("chmod", QStringList() << "+x" << S_TTKDD_FULL);
-    }
-    if(!QFile::exists(S_TTKSERVICE_FULL))
-    {
-        QFile::copy(":/data/TTKService.sh", S_TTKSERVICE_FULL);
-        QFile::setPermissions(S_TTKSERVICE_FULL, QFile::ReadOwner | QFile::WriteOwner);
-        QProcess::execute("chmod", QStringList() << "+x" << S_TTKSERVICE_FULL);
-    }
+    copyLinuxShellFile(":/data/TTKOCR.sh", S_TTKOCR_FULL);
+    copyLinuxShellFile(":/data/TTKService.sh", S_TTKSERVICE_FULL);
+    copyLinuxShellFile(":/data/TTKRoutine.sh", S_TTKROUTINE_FULL);
+    copyLinuxShellFile(":/data/TTKRoutineCopy.sh", S_TTKROUTINECOPY_FULL);
 #endif
 
 }
@@ -72,4 +64,10 @@ void OCRInitObject::copyFile(const QString &origin, const QString &des)
         QFile::copy(origin, des);
         QFile::setPermissions(des, QFile::ReadOwner | QFile::WriteOwner);
     }
+}
+
+void OCRInitObject::copyLinuxShellFile(const QString &name, const QString &path)
+{
+    copyFileOverwrite(name, path);
+    QProcess::execute("chmod", QStringList() << "+x" << path);
 }

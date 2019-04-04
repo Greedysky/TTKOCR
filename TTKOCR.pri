@@ -30,13 +30,6 @@ MOC_DIR = ./.build/moc
 OBJECTS_DIR = ./.build/obj
 RCC_DIR = ./.build/rcc
 
-##check Qt version
-QT_VER_STRING = $$[QT_VERSION];
-QT_VER_STRING = $$split(QT_VER_STRING, ".")
-QT_VER_MAJOR = $$member(QT_VER_STRING, 0)
-QT_VER_MINOR = $$member(QT_VER_STRING, 1)
-QT_VER_PATCH = $$member(QT_VER_STRING, 2)
-
 include(TTKVersion.pri)
 include(TTKBuild.pri)
 
@@ -104,7 +97,7 @@ unix:!mac{
     QMAKE_CXXFLAGS += -Wswitch
 }
 
-DEFINES += OCR_LIBRARY
+DEFINES += TTK_LIBRARY
 
 #########################################
 HEADERS += \

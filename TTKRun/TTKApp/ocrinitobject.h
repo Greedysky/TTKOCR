@@ -36,6 +36,9 @@
 #else
 #define S_TTKDD_FULL              OCRObject::getAppDir() + OCR_VERSION_STR + "/TTKLDD.sh"
 #define S_TTKSERVICE_FULL         OCRObject::getAppDir() + OCR_VERSION_STR + "/TTKService.sh"
+#define S_TTKOCR_FULL             OCRObject::getAppDir() + "TTKOCR.sh"
+#define S_TTKROUTINE_FULL         OCRObject::getAppDir() + "TTKRoutine.sh"
+#define S_TTKROUTINECOPY_FULL     OCRObject::getAppDir() + OCR_VERSION_STR + "/TTKRoutineCopy.sh"
 #endif
 
 
@@ -80,7 +83,10 @@ public:
      * Copy file.
      */
     void copyFile(const QString &origin, const QString &des);
-
+    /*!
+     * Copy linux shell file.
+     */
+    void copyLinuxShellFile(const QString &name, const QString &path);
 };
 
 #endif // OCRINITOBJECT_H

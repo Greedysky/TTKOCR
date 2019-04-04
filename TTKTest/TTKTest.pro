@@ -32,7 +32,7 @@ win32:msvc{
 TARGET = TTKTest
 
 TEMPLATE = app
-DEFINES += OCR_LIBRARY
+DEFINES += TTK_LIBRARY
 
 INCLUDEPATH += $$PWD/../ \
                $$PWD/../TTKModule/TTKCore/ocrCoreKits

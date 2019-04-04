@@ -22,7 +22,7 @@
 #include <QtCore/qglobal.h>
 
 //////////////////////////////////////
-#ifdef OCR_LIBRARY
+#ifdef TTK_LIBRARY
 #  define OCR_NETWORK
 #  define OCR_CORE
 #  define OCR_WIDGET
