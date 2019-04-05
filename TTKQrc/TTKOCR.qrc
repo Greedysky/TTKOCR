@@ -2,7 +2,7 @@
     <qresource prefix="/image">
         <file alias="lb_background">../TTKResource/lb_background.png</file>
         <file alias="lb_warning">../TTKResource/lb_warning.png</file>
-        <file alias="lb_player_logo">../TTKResource/lb_player_logo.ico</file>
+        <file alias="lb_app_logo">../TTKResource/lb_app_logo.ico</file>
         <file alias="btn_close_hover">../TTKResource/btn_close_hover.png</file>
         <file alias="btn_close_normal">../TTKResource/btn_close_normal.png</file>
         <file alias="btn_min_normal">../TTKResource/btn_min_normal.png</file>
