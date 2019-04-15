@@ -16,5 +16,5 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # =================================================
 
-# update time 2017.10.13
-TTKOCR = 1.0.0.0
+# update time 2019.04.15
+TTKOCR = 2.0.0.0
