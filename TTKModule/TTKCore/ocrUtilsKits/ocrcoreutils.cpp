@@ -1,5 +1,5 @@
 #include "ocrcoreutils.h"
-#include "ocrversion.h"
+#include "ttkversion.h"
 
 #include <QDirIterator>
 

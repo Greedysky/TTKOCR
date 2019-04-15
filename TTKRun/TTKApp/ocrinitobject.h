@@ -21,7 +21,7 @@
 
 #include <QDebug>
 #include "ocrobject.h"
-#include "ocrversion.h"
+#include "ttkversion.h"
 #include "ocrrunglobaldefine.h"
 
 #define S_APPDATA_DIR_FULL        OCRObject::getAppDir() + APPDATA_DIR

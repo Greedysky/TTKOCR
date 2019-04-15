@@ -1,5 +1,5 @@
 #include "ttkdumper.h"
-#include "ocrversion.h"
+#include "ttkversion.h"
 #include "minidumper.h"
 
 TTKDumper::TTKDumper()
