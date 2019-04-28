@@ -19,7 +19,7 @@ OCRApplication::OCRApplication(QWidget *parent)
       m_ui(new Ui::OCRApplication)
 {
     m_instance = this;
-//#ifdef OCR_GREATER_NEW
+//#ifdef TTK_GREATER_NEW
     setAttribute(Qt::WA_TranslucentBackground, false);
 //#endif
 
@@ -183,7 +183,7 @@ void OCRApplication::findFinish()
     if(m_count == m_fileList.count())
     {
         QStringList files(QDir("dir").entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
-        OCRObject::MIntList data;
+        MIntList data;
         foreach(const QString &path, files)
         {
             QString fileName = QFileInfo(path).baseName();
@@ -222,7 +222,7 @@ void OCRApplication::pixmapChanged(const QPixmap &pix)
     }
 
     QString filename = SHOTS_DIR_FULL + QDateTime::currentDateTime().toString("yyyyMMddhhmmss") + JPG_FILE;
-    pix.save(filename, 0, 100);
+    pix.save(filename, nullptr, 100);
 
     OCRThreadItem *item = new OCRThreadItem(this);
     item->m_index = m_fileList.count();

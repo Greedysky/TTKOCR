@@ -25,7 +25,7 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     setCursor(Qt::CrossCursor);
     m_isDrawing = false;
 
-#ifndef OCR_GREATER_NEW
+#ifndef TTK_GREATER_NEW
     m_originPixmap = QPixmap::grabWindow(QApplication::desktop()->winId(),
                                          0, 0, width(), height());
 #else
@@ -119,7 +119,7 @@ void OCRGrabWidget::keyPressEvent(QKeyEvent *event)
     {
         int width = m_ptEnd.x() - m_ptStart.x();
         int height = m_ptEnd.y() - m_ptStart.y();
-#ifndef OCR_GREATER_NEW
+#ifndef TTK_GREATER_NEW
         QPixmap pix = QPixmap::grabWindow(QApplication::desktop()->winId(),
                                           m_ptStart.x(), m_ptStart.y(), width, height);
 #else

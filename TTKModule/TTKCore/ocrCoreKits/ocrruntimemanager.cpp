@@ -19,7 +19,7 @@ void OCRRunTimeManager::run() const
 {
     M_LOGGER_INFO("OCRApplication Begin");
 
-#ifndef OCR_GREATER_NEW
+#ifndef TTK_GREATER_NEW
     OCRUtils::Codec::setLocalCodec();
 #endif
 

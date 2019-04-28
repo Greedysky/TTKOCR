@@ -2,7 +2,7 @@
 #include "ocrobject.h"
 
 #include <QHostInfo>
-#ifdef OCR_GREATER_NEW
+#ifdef TTK_GREATER_NEW
 #  include <QtConcurrent/QtConcurrent>
 #else
 #  include <QtConcurrentRun>

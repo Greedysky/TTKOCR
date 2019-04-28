@@ -39,7 +39,7 @@ Features
 Screenshots
 ----
 ### Demo
-![Demo](https://github.com/Greedysky/TTKOCR/blob/master/demo.jpg?raw=true)
+![Demo](https://github.com/Greedysky/TTKOCR/blob/master/TTKResource/demo/demo.jpg?raw=true)
 
 Copyright
 -------
