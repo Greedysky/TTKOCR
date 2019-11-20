@@ -2,7 +2,7 @@
 #define TTKPRIVATE_H
 
 /* =================================================
- * This file is part of the TTK OCR project
+ * This file is part of the TTK Downloader project
  * Copyright (C) 2015 - 2019 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -30,8 +30,8 @@
 #define TTK_INIT_PRIVATE \
     ttk_d.setPublic(this);
 
-#define TTK_D(Class) Class##Private *const d = ttk_d()
-#define TTK_Q(Class) Class *const q = ttk_q()
+#define TTK_D(Class) Class##Private *const d = static_cast<Class##Private *>(ttk_d())
+#define TTK_Q(Class) Class *const q = static_cast<Class *>(ttk_q())
 
 template <typename PUB>
 /*! @brief The class of the ttk private base.
