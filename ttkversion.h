@@ -34,17 +34,17 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-//update time 2019.04.15
-#define OCR_VERSION_STR    "2.0.0.0"
-#define OCR_VERSION_WSTR   L"2.0.0.0"
-#define OCR_VER_TIME_STR   "(2019/04/15)"
+//update time 2019.11.20
+#define OCR_VERSION_STR    "2.1.0.0"
+#define OCR_VERSION_WSTR   L"2.1.0.0"
+#define OCR_VER_TIME_STR   "(2019/11/20)"
 
 #define OCR_MAJOR_VERSION 2
-#define OCR_MIDLE_VERSION 0
+#define OCR_MIDLE_VERSION 1
 #define OCR_MINOR_VERSION 0
 #define OCR_PATCH_VERSION 0
 
-#define OCR_VERSION 0x02000
+#define OCR_VERSION 0x02100
 
 #define OCR_VERSION_CHECK(major, middle, minor, patch) ((major<<12)|(middle<<8)|(minor<<4)|(patch))
 
