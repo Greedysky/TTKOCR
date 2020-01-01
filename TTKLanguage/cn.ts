@@ -30,7 +30,7 @@
     </message>
     <message>
         <location filename="../TTKModule/TTKWidget/ocrUiKits/ocrapplication.ui" line="298"/>
-        <source>Copyright (C) 2016 - 2017 Greedysky Studio</source>
+        <source>Copyright (C) 2015 - 2020 Greedysky Studio</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
