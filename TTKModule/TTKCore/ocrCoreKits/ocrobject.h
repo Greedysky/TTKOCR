@@ -49,15 +49,15 @@
 #define EXE_FILE_PREFIX         "exe"
 #define XML_FILE_PREFIX         "xml"
 
-#define TTS_FILE                STRCAT(DOT, TTS_FILE_PREFIX)
-#define SKN_FILE                STRCAT(DOT, SKN_FILE_PREFIX)
-#define JPG_FILE                STRCAT(DOT, JPG_FILE_PREFIX)
-#define BMP_FILE                STRCAT(DOT, BMP_FILE_PREFIX)
-#define PNG_FILE                STRCAT(DOT, PNG_FILE_PREFIX)
-#define CFG_FILE                STRCAT(DOT, CFG_FILE_PREFIX)
-#define LST_FILE                STRCAT(DOT, LST_FILE_PREFIX)
-#define EXE_FILE                STRCAT(DOT, EXE_FILE_PREFIX)
-#define XML_FILE                STRCAT(DOT, XML_FILE_PREFIX)
+#define TTS_FILE                TTK_STRCAT(DOT, TTS_FILE_PREFIX)
+#define SKN_FILE                TTK_STRCAT(DOT, SKN_FILE_PREFIX)
+#define JPG_FILE                TTK_STRCAT(DOT, JPG_FILE_PREFIX)
+#define BMP_FILE                TTK_STRCAT(DOT, BMP_FILE_PREFIX)
+#define PNG_FILE                TTK_STRCAT(DOT, PNG_FILE_PREFIX)
+#define CFG_FILE                TTK_STRCAT(DOT, CFG_FILE_PREFIX)
+#define LST_FILE                TTK_STRCAT(DOT, LST_FILE_PREFIX)
+#define EXE_FILE                TTK_STRCAT(DOT, EXE_FILE_PREFIX)
+#define XML_FILE                TTK_STRCAT(DOT, XML_FILE_PREFIX)
 
 ///////////////////////////////////////
 #define APPDATA_DIR_FULL        OCRObject::getAppDir() + QString("../") + APPDATA_DIR

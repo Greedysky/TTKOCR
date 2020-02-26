@@ -183,7 +183,7 @@ void OCRApplication::findFinish()
     if(m_count == m_fileList.count())
     {
         QStringList files(QDir("dir").entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
-        MIntList data;
+        TTKIntList data;
         foreach(const QString &path, files)
         {
             QString fileName = QFileInfo(path).baseName();

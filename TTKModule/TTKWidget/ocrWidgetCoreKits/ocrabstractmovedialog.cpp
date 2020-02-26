@@ -110,6 +110,6 @@ void OCRAbstractMoveDialog::setBackgroundPixmap(QLabel *label, const QSize &size
 
 void OCRAbstractMoveDialog::setBackgroundPixmap(const QSize &size)
 {
-    QLabel *label = MStatic_cast(QLabel*, m_background);
+    QLabel *label = TTKStatic_cast(QLabel*, m_background);
     label->setPixmap(QPixmap(M_BACKGROUND_PTR->getMBackground()).scaled(size));
 }
