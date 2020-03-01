@@ -78,6 +78,6 @@
 
 //////////////////////////////////////
 ///load logger
-#include "ocrlogger.h"
+#include "ttklogger.h"
 
 #endif // OCRGLOBALDEFINE_H

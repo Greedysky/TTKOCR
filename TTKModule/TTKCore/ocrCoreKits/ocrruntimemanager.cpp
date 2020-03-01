@@ -17,13 +17,13 @@ QString OCRRunTimeManager::getClassName()
 
 void OCRRunTimeManager::run() const
 {
-    M_LOGGER_INFO("OCRApplication Begin");
+    TTK_LOGGER_INFO("OCRApplication Begin");
 
 #ifndef TTK_GREATER_NEW
     OCRUtils::Codec::setLocalCodec();
 #endif
 
-    M_LOGGER_INFO("Load Translation");
+    TTK_LOGGER_INFO("Load Translation");
     ///////////////////////////////////////////////////////
     QFont font;
 #ifdef Q_OS_UNIX
@@ -31,7 +31,7 @@ void OCRRunTimeManager::run() const
 #endif
     qApp->setFont(font);
     ///////////////////////////////////////////////////////
-    M_LOGGER_INFO("End load translation");
+    TTK_LOGGER_INFO("End load translation");
 }
 
 QString OCRRunTimeManager::translator() const

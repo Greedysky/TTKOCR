@@ -20,13 +20,13 @@ INCLUDEPATH += $$PWD
 
 !contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS += \
+    $$PWD/ttklogger.h \
     $$PWD/ocrbackgroundmanager.h \
     $$PWD/ocrcryptographichash.h \
     $$PWD/ocrglobaldefine.h \
     $$PWD/ocrlicensecore.h \
     $$PWD/ocrobject.h \
     $$PWD/ocrsingleton.h \
-    $$PWD/ocrlogger.h \
     $$PWD/ocrruntimemanager.h
 
 }
