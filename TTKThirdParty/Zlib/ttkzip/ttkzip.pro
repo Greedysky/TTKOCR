@@ -34,13 +34,10 @@ DEFINES += \
 INCLUDEPATH += $$PWD/../
 
 win32{
-    LIBS += -L../../../bin/$$TTKOCR -lzlib
     HEADERS  += $$PWD/iowin32.h
     SOURCES += $$PWD/iowin32.c
 }
-unix:!mac{
-    LIBS += -L../../../lib/$$TTKOCR -lzlib
-}
+LIBS += -L$$DESTDIR -lzlib
 
 HEADERS  += \
     $$PWD/zip.h \
