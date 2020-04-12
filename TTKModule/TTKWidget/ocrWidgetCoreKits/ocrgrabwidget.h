@@ -32,7 +32,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit OCRGrabWidget(QWidget *parent = 0);
+    explicit OCRGrabWidget(QWidget *parent = nullptr);
 
     /*!
      * Get class object name.

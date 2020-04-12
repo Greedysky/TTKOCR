@@ -38,7 +38,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit OCRApplication(QWidget *parent = 0);
+    explicit OCRApplication(QWidget *parent = nullptr);
 
     virtual ~OCRApplication();
 

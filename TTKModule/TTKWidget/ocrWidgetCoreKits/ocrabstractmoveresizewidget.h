@@ -58,7 +58,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit OCRAbstractMoveResizeWidget(QWidget *parent = 0);
+    explicit OCRAbstractMoveResizeWidget(QWidget *parent = nullptr);
 
     /*!
      * Get class object name.

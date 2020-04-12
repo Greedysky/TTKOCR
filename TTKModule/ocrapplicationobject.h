@@ -34,7 +34,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit OCRApplicationObject(QObject *parent = 0);
+    explicit OCRApplicationObject(QObject *parent = nullptr);
 
     virtual ~OCRApplicationObject();
 

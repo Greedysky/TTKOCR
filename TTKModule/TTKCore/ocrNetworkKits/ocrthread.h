@@ -32,7 +32,7 @@ class OCR_NETWORK_EXPORT OCRThreadItem : public QObject
 {
     Q_OBJECT
 public:
-    explicit OCRThreadItem(QObject *parent = 0)
+    explicit OCRThreadItem(QObject *parent = nullptr)
         : QObject(parent)
     {
         m_index = -1;
@@ -55,7 +55,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit OCRThread(QObject *parent = 0);
+    explicit OCRThread(QObject *parent = nullptr);
 
     ~OCRThread();
 

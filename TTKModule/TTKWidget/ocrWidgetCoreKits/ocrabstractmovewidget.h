@@ -33,11 +33,11 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit OCRAbstractMoveWidget(QWidget *parent = 0);
+    explicit OCRAbstractMoveWidget(QWidget *parent = nullptr);
     /*!
      * Object contsructor.
      */
-    explicit OCRAbstractMoveWidget(bool transparent, QWidget *parent = 0);
+    explicit OCRAbstractMoveWidget(bool transparent, QWidget *parent = nullptr);
 
     virtual ~OCRAbstractMoveWidget();
 
@@ -95,11 +95,11 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit OCRAbstractMoveSingleWidget(QWidget *parent = 0);
+    explicit OCRAbstractMoveSingleWidget(QWidget *parent = nullptr);
     /*!
      * Object contsructor.
      */
-    explicit OCRAbstractMoveSingleWidget(bool transparent, QWidget *parent = 0);
+    explicit OCRAbstractMoveSingleWidget(bool transparent, QWidget *parent = nullptr);
 
     virtual ~OCRAbstractMoveSingleWidget();
 

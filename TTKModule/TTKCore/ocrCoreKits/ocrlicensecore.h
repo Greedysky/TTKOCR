@@ -32,7 +32,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit OCRLicenseCore(QObject *parent = 0);
+    explicit OCRLicenseCore(QObject *parent = nullptr);
 
     /*!
      * Check license string.

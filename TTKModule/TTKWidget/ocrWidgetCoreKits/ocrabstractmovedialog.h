@@ -33,11 +33,11 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit OCRAbstractMoveDialog(QWidget *parent = 0);
+    explicit OCRAbstractMoveDialog(QWidget *parent = nullptr);
     /*!
      * Object contsructor.
      */
-    explicit OCRAbstractMoveDialog(bool transparent, QWidget *parent = 0);
+    explicit OCRAbstractMoveDialog(bool transparent, QWidget *parent = nullptr);
 
     virtual ~OCRAbstractMoveDialog();
 

@@ -39,11 +39,11 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit OCRGifLabelWidget(QWidget *parent = 0);
+    explicit OCRGifLabelWidget(QWidget *parent = nullptr);
     /*!
      * Object contsructor.
      */
-    explicit OCRGifLabelWidget(Type type, QWidget *parent = 0);
+    explicit OCRGifLabelWidget(Type type, QWidget *parent = nullptr);
 
     ~OCRGifLabelWidget();
 

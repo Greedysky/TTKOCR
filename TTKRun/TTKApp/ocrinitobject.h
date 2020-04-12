@@ -51,7 +51,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit OCRInitObject(QObject *parent = 0);
+    explicit OCRInitObject(QObject *parent = nullptr);
 
     /*!
      * Check current setting file's validation.

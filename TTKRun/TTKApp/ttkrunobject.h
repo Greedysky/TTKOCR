@@ -33,7 +33,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit OCRRunObject(QObject *parent = 0);
+    explicit OCRRunObject(QObject *parent = nullptr);
 
     /*!
      * Check current setting file's validation.
