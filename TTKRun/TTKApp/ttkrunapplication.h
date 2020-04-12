@@ -20,7 +20,6 @@
  ================================================= */
 
 #include <QApplication>
-#include "ttkprivate.h"
 #include "ocrrunglobaldefine.h"
 
 class TTKRunApplicationPrivate;

@@ -19,8 +19,8 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "ocrglobal.h"
 #include "ttkprivate.h"
+#include "ocrglobal.h"
 
 //////////////////////////////////////
 ///exoprt
