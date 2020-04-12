@@ -19,7 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include <QtCore/qglobal.h>
+#include "ocrglobal.h"
 
 //////////////////////////////////////
 #ifdef TTK_LIBRARY
@@ -75,9 +75,5 @@
 #    define OCR_UTILS_IMPORT Q_DECL_IMPORT
 #  endif
 #endif
-
-//////////////////////////////////////
-///load logger
-#include "ttklogger.h"
 
 #endif // OCRGLOBALDEFINE_H
