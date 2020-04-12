@@ -10,11 +10,11 @@ int main(int argc, char *argv[])
     int failures = AutoTest::run(argc, argv);
     if(failures == 0)
     {
-        qDebug() << "ALL TESTS PASSED";
+        TTK_LOGGER_INFO("ALL TESTS PASSED");
     }
     else
     {
-        qDebug() << failures << " TESTS FAILED!";
+        TTK_LOGGER_ERROR(failures << " TESTS FAILED!");
     }
     return app.exec();
 }

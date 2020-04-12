@@ -58,14 +58,14 @@ void OCRRunObject::run(int argc, char **argv)
 
 void OCRRunObject::finished(int code)
 {
-     if(code == 0)
-     {
-         qDebug() << "Application exit success!";
-     }
-     else
-     {
-         qDebug() << "Application run error, please run TTKService instead!";
-     }
+    if(code == 0)
+    {
+        TTK_LOGGER_INFO("Application exit success!");
+    }
+    else
+    {
+        TTK_LOGGER_INFO("Application run error, please run TTKService instead!");
+    }
 
-     qApp->quit();
+    qApp->quit();
 }

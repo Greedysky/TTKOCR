@@ -40,7 +40,6 @@ void OCRThread::start(OCRThreadItem *item)
     sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
     request.setSslConfiguration(sslConfig);
 #endif
-
     QPixmap pix(item->m_path);
 
     QString content = QString("form-data; name=\"pic\"; filename=\"pic.jpg\"");
@@ -118,5 +117,5 @@ void OCRThread::errorSlot(QNetworkReply::NetworkError code)
         return;
     }
 
-    qDebug() <<  "QNetworkReply::NetworkError : " + QString::number((int)code) + " \n" + m_reply->errorString();
+    TTK_LOGGER_ERROR("QNetworkReply::NetworkError : " + QString::number((int)code) + " \n" + m_reply->errorString());
 }

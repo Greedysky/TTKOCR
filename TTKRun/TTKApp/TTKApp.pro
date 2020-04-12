@@ -19,11 +19,12 @@
 QT       += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-include(../../TTKVersion.pri)
+include($$PWD/../../TTKVersion.pri)
 unix:VERSION += $$TTKOCR
 
-win32:TARGET = ../../../bin/TTKOCR
-unix:TARGET = ../../lib/TTKOCR
+win32:DESTDIR = $$OUT_PWD/../../bin
+unix:DESTDIR = $$OUT_PWD/../../lib
+TARGET = TTKOCR
 
 TEMPLATE = app
 
@@ -34,9 +35,11 @@ win32:msvc{
 }
 
 INCLUDEPATH += \
-    ../ \
-    ../../ \
-    ../../TTKModule/TTKCore/ocrCoreKits
+    $$PWD/../ \
+    $$PWD/../../ \
+    $$PWD/../../TTKThirdParty \
+    $$PWD/../../TTKThirdParty/TTKDumper \
+    $$PWD/../../TTKModule/TTKCore/ocrCoreKits
 
 SOURCES += \
     ocrinitobject.cpp \
@@ -47,7 +50,7 @@ SOURCES += \
 
 
 HEADERS += \
-    ../ocrrunglobaldefine.h \
+    $$PWD/../ocrrunglobaldefine.h \
     ocrinitobject.h \
     ttkrunobject.h \
     ttklocalpeer.h \
@@ -55,7 +58,7 @@ HEADERS += \
 
 
 RESOURCES += \
-    ../../TTKQrc/OCRApp.qrc
+    $$PWD/../../TTKQrc/OCRApp.qrc
 
 win32{
     RC_FILE = TTKApp.rc

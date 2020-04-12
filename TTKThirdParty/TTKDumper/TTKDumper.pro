@@ -20,10 +20,11 @@ QT       += core
 
 TEMPLATE = lib
 
-include(../../TTKVersion.pri)
+include($$PWD/../../TTKVersion.pri)
 
-win32:TARGET = ../../../bin/$$TTKOCR/TTKDumper
-unix:TARGET = ../../lib/$$TTKOCR/TTKDumper
+win32:DESTDIR = $$OUT_PWD/../../bin/$$TTKOCR
+unix:DESTDIR = $$OUT_PWD/../../lib/$$TTKOCR
+TARGET = TTKDumper
 
 CONFIG       += warn_off
 unix:VERSION += 1.0.0
@@ -41,10 +42,11 @@ SOURCES += \
 HEADERS += \
     $$PWD/mini.h \
     $$PWD/minidumper.h \
-    $$PWD/ttkdumper.h
+    $$PWD/ttkdumper.h \
+    $$PWD/ttklogger.h
 
 #load extra define
-include(../TTKExtrasDefine.pri)
+include($$PWD/../TTKExtrasDefine.pri)
 
 win32{
     RC_FILE = TTKDumper.rc

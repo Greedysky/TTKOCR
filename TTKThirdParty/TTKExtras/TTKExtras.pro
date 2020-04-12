@@ -19,30 +19,27 @@
 QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-include(../../TTKVersion.pri)
-
+include($$PWD/../../TTKVersion.pri)
 unix:VERSION += $$TTKOCR
-win32{
-    TARGET = ../../../bin/$$TTKOCR/TTKExtras
-    msvc{
-        CONFIG += staticlib
-        LIBS += -luser32
-    }
-}
-unix:TARGET = ../../lib/$$TTKOCR/TTKExtras
+
+win32:DESTDIR = $$OUT_PWD/../../bin/$$TTKOCR
+unix:DESTDIR = $$OUT_PWD/../../lib/$$TTKOCR
+TARGET = TTKExtras
+
 TEMPLATE = lib
 
 win32:msvc{
+    LIBS += -luser32
     CONFIG +=c++11
 }else{
     QMAKE_CXXFLAGS += -std=c++11
 }
 
-include(../TTKExtrasDefine.pri)
+include($$PWD/../TTKExtrasDefine.pri)
 
-include(qaes/QAes.pri)
-include(qjson/QJson.pri)
-include(qshortcut/QShortCut.pri)
+include($$PWD/qaes/QAes.pri)
+include($$PWD/qjson/QJson.pri)
+include($$PWD/qshortcut/QShortCut.pri)
 
 win32{
     RC_FILE = TTKExtras.rc

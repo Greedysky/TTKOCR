@@ -19,12 +19,10 @@
 TEMPLATE = lib
 CONFIG += TTK_BUILD_LIB
 
-include(../TTKOCR.pri)
-
+include($$PWD/../TTKOCR.pri)
 unix:VERSION += $$TTKOCR
 
-win32:TARGET = ../../bin/$$TTKOCR/TTKCore
-unix:TARGET = ../lib/$$TTKOCR/TTKCore
+TARGET = TTKCore
 
 INCLUDEPATH += $$PWD
 
@@ -37,7 +35,7 @@ HEADERS  += \
     ocrapplication.h \
     ocrapplicationobject.h
     
-    
+
 win32{
     RC_FILE = TTKCore.rc
 }

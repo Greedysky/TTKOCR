@@ -16,7 +16,7 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # =================================================
 
-include(../TTKBuild.pri)
+include($$PWD/../TTKBuild.pri)
 
 TEMPLATE = subdirs
 SUBDIRS = Zlib TTKDumper TTKExtras

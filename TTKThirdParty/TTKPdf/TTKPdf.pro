@@ -21,17 +21,14 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TEMPLATE = lib
 
-include(../../TTKVersion.pri)
-include(../../TTKBuild.pri)
+include($$PWD/../../TTKVersion.pri)
+include($$PWD/../../TTKBuild.pri)
 
-win32{
-    TARGET = ../../../bin/$$TTKOCR/TTKPdf
-    LIBS += -L../../bin/$$TTKOCR -lmupdf -lfreetype -ljbig2dec -ljpeg -lmujs -lopenjpeg -lz
-}
-unix{
-    TARGET = ../../lib/$$TTKOCR/TTKPdf
-    LIBS += -L../lib/$$TTKOCR -lmupdf -lfreetype -ljbig2dec -ljpeg -lmujs -lopenjpeg -lz
-}
+win32:DESTDIR = $$OUT_PWD/../../bin/$$TTKPdf
+unix:DESTDIR = $$OUT_PWD/../../lib/$$TTKPdf
+TARGET = TTKPdf
+
+LIBS += -L$$DESTDIR -lmupdf -lfreetype -ljbig2dec -ljpeg -lmujs -lopenjpeg -lz
 
 CONFIG       += warn_off
 unix:VERSION += 1.0.0
@@ -62,7 +59,7 @@ SOURCES += \
     $$PWD/src/mupdf-textbox.cpp
 
 #load extra define
-include(../TTKExtrasDefine.pri)
+include($$PWD/../TTKExtrasDefine.pri)
 
 win32{
     RC_FILE = TTKPdf.rc

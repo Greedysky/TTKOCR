@@ -18,10 +18,11 @@
 
 TEMPLATE = lib
 
-include(../../../TTKVersion.pri)
+include($$PWD/../../../TTKVersion.pri)
 
-win32:TARGET = ../../../../bin/$$TTKOCR/zlib
-unix:TARGET = ../../../lib/$$TTKOCR/zlib
+win32:DESTDIR = $$OUT_PWD/../../../bin/$$TTKOCR
+unix:DESTDIR = $$OUT_PWD/../../../lib/$$TTKOCR
+TARGET = zlib
 
 CONFIG       += warn_off
 unix:VERSION += 1.2.11
