@@ -20,7 +20,7 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose, true);
     setAttribute(Qt::WA_QuitOnClose, true);
 
-    setWindowFlags( Qt::Widget | Qt::FramelessWindowHint );
+    setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
     resize(QApplication::desktop()->width(), QApplication::desktop()->height());
     setCursor(Qt::CrossCursor);
     m_isDrawing = false;

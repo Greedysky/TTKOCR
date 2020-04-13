@@ -45,7 +45,7 @@ void OCRUtils::Widget::setComboBoxText(QComboBox *object, const QString &text)
 
 void OCRUtils::Widget::widgetToRound(QWidget *w, int ratioX, int ratioY)
 {
-    w->setMask( getBitmapMask(w->rect(), ratioX, ratioY) );
+    w->setMask(getBitmapMask(w->rect(), ratioX, ratioY));
 }
 
 void OCRUtils::Widget::fusionPixmap(QPixmap &bg, const QPixmap &fg, const QPoint &pt)
@@ -74,7 +74,7 @@ QPixmap OCRUtils::Widget::pixmapToRound(const QPixmap &src, const QRect &rect, i
     }
 
     QPixmap image = src.scaled(rect.size());
-    image.setMask( getBitmapMask(rect, ratioX, ratioY) );
+    image.setMask(getBitmapMask(rect, ratioX, ratioY));
     return image;
 }
 

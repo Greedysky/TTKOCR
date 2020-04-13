@@ -18,7 +18,7 @@ OCRAbstractMoveWidget::OCRAbstractMoveWidget(bool transparent, QWidget *parent)
     : QWidget(parent)
 {
     ///Remove the title bar
-    setWindowFlags( Qt::Window | Qt::FramelessWindowHint );
+    setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground, transparent);
 
     m_moveOption = false;
@@ -74,7 +74,7 @@ void OCRAbstractMoveWidget::paintEvent(QPaintEvent *event)
 void OCRAbstractMoveWidget::mousePressEvent(QMouseEvent *event)
 {
     QWidget::mousePressEvent(event);
-    if( event->button() == Qt::LeftButton && !m_moveOption)///Press the left key
+    if(event->button() == Qt::LeftButton && !m_moveOption)///Press the left key
     {
         m_leftButtonPress = true;
     }
@@ -84,7 +84,7 @@ void OCRAbstractMoveWidget::mousePressEvent(QMouseEvent *event)
 void OCRAbstractMoveWidget::mouseMoveEvent(QMouseEvent *event)
 {
     QWidget::mouseMoveEvent(event);
-    if( !m_leftButtonPress )///Not press the left key
+    if(!m_leftButtonPress)///Not press the left key
     {
         event->ignore();
         return;
@@ -92,7 +92,7 @@ void OCRAbstractMoveWidget::mouseMoveEvent(QMouseEvent *event)
     int xpos = event->globalX() - m_pressAt.x();
     int ypos = event->globalY() - m_pressAt.y();
     m_pressAt = event->globalPos();
-    move( x() + xpos, y() + ypos);
+    move(x() + xpos, y() + ypos);
 }
 
 void OCRAbstractMoveWidget::mouseReleaseEvent(QMouseEvent *event)

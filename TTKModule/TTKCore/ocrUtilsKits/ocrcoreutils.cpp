@@ -40,7 +40,7 @@ void OCRUtils::Core::checkCacheSize(quint64 cacheSize, bool disabled, const QStr
 {
     if(disabled)
     {
-        quint64 size = dirSize( path );
+        quint64 size = dirSize(path);
         if(size > cacheSize)
         {
             QFileInfoList fileList = QDir(path).entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
@@ -76,7 +76,7 @@ QFileInfoList OCRUtils::Core::getFileListByDir(const QString &dpath, const QStri
         QFileInfoList folderList = dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
         foreach(const QFileInfo &fileInfo, folderList)
         {
-            fileList.append( getFileListByDir(fileInfo.absoluteFilePath(), filter, recursively) );
+            fileList.append(getFileListByDir(fileInfo.absoluteFilePath(), filter, recursively));
         }
     }
 

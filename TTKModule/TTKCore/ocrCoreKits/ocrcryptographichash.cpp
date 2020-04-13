@@ -148,7 +148,7 @@ std::string OCRCryptographicHash::base64Decode(std::string const& encoded_string
     unsigned char char_array_4[4], char_array_3[3];
     std::string ret;
 
-    while (in_len-- && ( encoded_string[in_] != '=') && isBase64(encoded_string[in_]))
+    while (in_len-- && (encoded_string[in_] != '=') && isBase64(encoded_string[in_]))
     {
         char_array_4[i++] = encoded_string[in_]; in_++;
         if (i ==4)

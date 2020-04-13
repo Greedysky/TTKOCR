@@ -80,46 +80,46 @@ void OCRAbstractMoveResizeWidget::mouseReleaseEvent(QMouseEvent *event)
 void OCRAbstractMoveResizeWidget::sizeDirection()
 {
     QPoint point = mapFromGlobal(QCursor::pos());
-    if( point.x() > width() - DISTANCE && point.y() < height() - DISTANCE &&
-        point.y() > DISTANCE )//right side
+    if(point.x() > width() - DISTANCE && point.y() < height() - DISTANCE &&
+        point.y() > DISTANCE)//right side
     {
         setCursor(Qt::SizeHorCursor);
         m_direction = Direction_Right;
     }
-    else if( point.x() < DISTANCE && point.y() < height() - DISTANCE &&
-             point.y() > DISTANCE )
+    else if(point.x() < DISTANCE && point.y() < height() - DISTANCE &&
+             point.y() > DISTANCE)
     {
         setCursor(Qt::SizeHorCursor);
         m_direction = Direction_Left;
     }
-    else if( point.y() > height() - DISTANCE && point.x() > DISTANCE &&
-             point.x() < width() - DISTANCE )
+    else if(point.y() > height() - DISTANCE && point.x() > DISTANCE &&
+             point.x() < width() - DISTANCE)
     {
         setCursor(Qt::SizeVerCursor);
         m_direction = Direction_Bottom;
     }
-    else if( point.y() < DISTANCE && point.x() > DISTANCE &&
-             point.x() < width() - DISTANCE )
+    else if(point.y() < DISTANCE && point.x() > DISTANCE &&
+             point.x() < width() - DISTANCE)
     {
         setCursor(Qt::SizeVerCursor);
         m_direction = Direction_Top;
     }
-    else if( point.y() < DISTANCE && point.x() > width() - DISTANCE )
+    else if(point.y() < DISTANCE && point.x() > width() - DISTANCE)
     {
         setCursor(Qt::SizeBDiagCursor);
         m_direction = Direction_RightTop;
     }
-    else if( point.y() < DISTANCE && point.x() < DISTANCE)
+    else if(point.y() < DISTANCE && point.x() < DISTANCE)
     {
         setCursor(Qt::SizeFDiagCursor);
         m_direction = Direction_LeftTop;
     }
-    else if( point.x() > DISTANCE && point.y() > height() - DISTANCE )
+    else if(point.x() > DISTANCE && point.y() > height() - DISTANCE)
     {
         setCursor(Qt::SizeFDiagCursor);
         m_direction = Direction_RightBottom;
     }
-    else if( point.x() < DISTANCE && point.y() > height() - DISTANCE )
+    else if(point.x() < DISTANCE && point.y() > height() - DISTANCE)
     {
         setCursor(Qt::SizeBDiagCursor);
         m_direction = Direction_LeftBottom;
@@ -194,7 +194,7 @@ void OCRAbstractMoveResizeWidget::moveDirection()
             int yValue = QCursor::pos().y();
             int xValue = QCursor::pos().x();
 
-            int wValue = pos().x() + width( )- xValue;
+            int wValue = pos().x() + width()- xValue;
             int hValue = pos().y() + height() - yValue;
             int twValue = m_struct.m_windowPos.x() + m_struct.m_pressedSize.width();
             int thValue = m_struct.m_windowPos.y() + m_struct.m_pressedSize.height();
