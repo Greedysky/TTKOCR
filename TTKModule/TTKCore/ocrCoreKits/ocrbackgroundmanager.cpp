@@ -5,11 +5,6 @@ OCRBackgroundManager::OCRBackgroundManager()
     m_skinColor = QColor(Qt::white);
 }
 
-QString OCRBackgroundManager::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void OCRBackgroundManager::addObserver(QObject *object)
 {
     m_observer << object;

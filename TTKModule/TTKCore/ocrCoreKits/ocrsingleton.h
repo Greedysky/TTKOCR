@@ -30,15 +30,12 @@ template <typename T>
  */
 class OCR_CORE_EXPORT OCRSingleton
 {
+    TTK_DECLARE_MODULE(OCRSingleton)
 public:
     /*!
      * Get object instance ptr.
      */
     static T* createInstance();
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
 private:
     /*!
@@ -76,12 +73,6 @@ T* OCRSingleton<T>::createInstance()
         m_mutex.unlock();
     }
     return m_instance.data();
-}
-
-template<typename T>
-QString OCRSingleton<T>::getClassName()
-{
-    return "OCRSingleton";
 }
 
     ////////////////////////////////////////////////////////////////

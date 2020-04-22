@@ -26,11 +26,6 @@ OCRApplicationObject::~OCRApplicationObject()
     delete m_animation;
 }
 
-QString OCRApplicationObject::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 OCRApplicationObject *OCRApplicationObject::instance()
 {
     return m_instance;

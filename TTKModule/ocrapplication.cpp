@@ -73,11 +73,6 @@ OCRApplication::~OCRApplication()
     delete m_ui;
 }
 
-QString OCRApplication::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 OCRApplication *OCRApplication::instance()
 {
     return m_instance;

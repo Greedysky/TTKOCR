@@ -19,11 +19,6 @@ OCRNetworkThread::~OCRNetworkThread()
     m_timer.stop();
 }
 
-QString OCRNetworkThread::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void OCRNetworkThread::start()
 {
     TTK_LOGGER_INFO("Load NetworkThread");

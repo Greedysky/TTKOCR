@@ -81,10 +81,7 @@ public:
         m_child->setObjectName(name);
         OCRAutoTest::addTest(m_child.data());
     }
-    static QString getClassName()
-    {
-        return "OCRTest";
-    }
+
 };
 
 #define DECLARE_TEST(className) static OCRTest<className> t(#className);

@@ -34,11 +34,6 @@ OCRAbstractMoveDialog::~OCRAbstractMoveDialog()
     M_BACKGROUND_PTR->removeObserver(this);
 }
 
-QString OCRAbstractMoveDialog::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void OCRAbstractMoveDialog::backgroundChanged()
 {
     if(m_background)

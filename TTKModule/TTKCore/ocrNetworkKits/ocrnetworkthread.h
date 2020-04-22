@@ -32,12 +32,8 @@
 class OCR_NETWORK_EXPORT OCRNetworkThread : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(OCRNetworkThread)
 public:
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
-
     /*!
      * Strat thread now.
      */

@@ -34,11 +34,6 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
 #endif
 }
 
-QString OCRGrabWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void OCRGrabWidget::mouseMoveEvent(QMouseEvent *event)
 {
     QWidget::mouseMoveEvent(event);

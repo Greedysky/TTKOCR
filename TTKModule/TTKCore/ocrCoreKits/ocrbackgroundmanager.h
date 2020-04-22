@@ -32,12 +32,8 @@
 class OCR_CORE_EXPORT OCRBackgroundManager : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(OCRBackgroundManager)
 public:
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
-
     /*!
      * Add observer.
      */

@@ -28,16 +28,12 @@
 class OCR_WIDGET_EXPORT OCRGrabWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(OCRGrabWidget)
 public:
     /*!
      * Object contsructor.
      */
     explicit OCRGrabWidget(QWidget *parent = nullptr);
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
 Q_SIGNALS:
     /*!

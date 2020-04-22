@@ -43,6 +43,7 @@ typedef uint32_t xxtea_uint;
  */
 class OCR_CORE_EXPORT OCRCryptographicHash
 {
+    TTK_DECLARE_MODULE(OCRCryptographicHash)
 public:
     enum Priority
     {
@@ -58,10 +59,6 @@ public:
      */
     OCRCryptographicHash();
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * encrypt by QString data.
      */

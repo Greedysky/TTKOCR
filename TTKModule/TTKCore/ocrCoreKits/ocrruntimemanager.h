@@ -26,16 +26,12 @@
  */
 class OCR_CORE_EXPORT OCRRunTimeManager
 {
+    TTK_DECLARE_MODULE(OCRRunTimeManager)
 public:
     /*!
      * Object contsructor.
      */
     OCRRunTimeManager();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Run.

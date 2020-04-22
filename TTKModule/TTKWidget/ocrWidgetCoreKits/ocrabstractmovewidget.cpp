@@ -34,11 +34,6 @@ OCRAbstractMoveWidget::~OCRAbstractMoveWidget()
     M_BACKGROUND_PTR->removeObserver(this);
 }
 
-QString OCRAbstractMoveWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void OCRAbstractMoveWidget::backgroundChanged()
 {
     if(m_background)
@@ -135,9 +130,4 @@ OCRAbstractMoveSingleWidget::OCRAbstractMoveSingleWidget(bool transparent, QWidg
 OCRAbstractMoveSingleWidget::~OCRAbstractMoveSingleWidget()
 {
     delete m_container;
-}
-
-QString OCRAbstractMoveSingleWidget::getClassName()
-{
-    return staticMetaObject.className();
 }

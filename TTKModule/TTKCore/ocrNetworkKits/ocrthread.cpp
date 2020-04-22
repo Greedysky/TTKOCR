@@ -25,11 +25,6 @@ OCRThread::~OCRThread()
     delete m_manager;
 }
 
-QString OCRThread::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void OCRThread::start(OCRThreadItem *item)
 {
     QNetworkRequest request;

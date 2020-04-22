@@ -10,11 +10,6 @@ OCRRunTimeManager::OCRRunTimeManager()
 
 }
 
-QString OCRRunTimeManager::getClassName()
-{
-    return "OCRRunTimeManager";
-}
-
 void OCRRunTimeManager::run() const
 {
     TTK_LOGGER_INFO("OCRApplication Begin");

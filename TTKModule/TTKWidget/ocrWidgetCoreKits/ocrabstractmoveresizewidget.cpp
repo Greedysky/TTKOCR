@@ -18,11 +18,6 @@ OCRAbstractMoveResizeWidget::OCRAbstractMoveResizeWidget(QWidget *parent)
     setMouseTracking(true);
 }
 
-QString OCRAbstractMoveResizeWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 bool OCRAbstractMoveResizeWidget::eventFilter(QObject *object, QEvent *event)
 {
     QWidget::eventFilter(object, event);

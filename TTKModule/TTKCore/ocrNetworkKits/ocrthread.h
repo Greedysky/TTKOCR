@@ -51,6 +51,7 @@ public:
 class OCR_NETWORK_EXPORT OCRThread : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(OCRThread)
 public:
     /*!
      * Object contsructor.
@@ -59,10 +60,6 @@ public:
 
     ~OCRThread();
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Start to query by thread item.
      */

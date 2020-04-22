@@ -34,6 +34,7 @@ class OCRApplication;
 class OCR_GUI_EXPORT OCRApplication : public OCRAbstractMoveResizeWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(OCRApplication)
 public:
     /*!
      * Object contsructor.
@@ -41,11 +42,6 @@ public:
     explicit OCRApplication(QWidget *parent = nullptr);
 
     virtual ~OCRApplication();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Get class object instance.

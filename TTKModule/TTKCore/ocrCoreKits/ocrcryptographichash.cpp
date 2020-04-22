@@ -13,11 +13,6 @@ OCRCryptographicHash::OCRCryptographicHash()
 
 }
 
-QString OCRCryptographicHash::getClassName()
-{
-    return "OCRCryptographicHash";
-}
-
 QString OCRCryptographicHash::encrypt(const QString &data, const QString &key, Priority p)
 {
     QString d = data;

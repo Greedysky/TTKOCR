@@ -29,6 +29,7 @@
 class OCR_WIDGET_EXPORT OCRAbstractMoveWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(OCRAbstractMoveWidget)
 public:
     /*!
      * Object contsructor.
@@ -41,10 +42,6 @@ public:
 
     virtual ~OCRAbstractMoveWidget();
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Set or not draw window bound shadow.
      */
@@ -91,6 +88,7 @@ protected:
 class OCR_WIDGET_EXPORT OCRAbstractMoveSingleWidget : public OCRAbstractMoveWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(OCRAbstractMoveSingleWidget)
 public:
     /*!
      * Object contsructor.
@@ -102,11 +100,6 @@ public:
     explicit OCRAbstractMoveSingleWidget(bool transparent, QWidget *parent = nullptr);
 
     virtual ~OCRAbstractMoveSingleWidget();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
 protected:
     QWidget *m_container;
