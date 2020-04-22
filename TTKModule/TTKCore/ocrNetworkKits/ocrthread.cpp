@@ -2,7 +2,7 @@
 #include "ocralgorithmutils.h"
 #include "ocrwidgetutils.h"
 
-#include "qjson/json_parser.hh"
+#include "qjson/parser.h"
 
 #include <QDir>
 #include <QPixmap>
