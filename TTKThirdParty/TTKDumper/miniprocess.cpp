@@ -1,26 +1,4 @@
-#ifndef MINI_H
-#define MINI_H
-
-/* =================================================
- * This file is part of the TTK OCR project
- * Copyright (C) 2015 - 2020 Greedysky Studio
-
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3 of the License, or
- * (at your option) any later version.
-
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
-
- * You should have received a copy of the GNU General Public License along
- * with this program; If not, see <http://www.gnu.org/licenses/>.
- ================================================= */
-
-#include "ocrobject.h"
-#include "ocrextrasglobaldefine.h"
+#include "miniprocess.h"
 
 #ifdef Q_OS_WIN
 #include "psapi.h"
@@ -89,7 +67,7 @@ static inline bool killProcess(LPCWSTR processName)
 
    //Kill The Process
    HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, id);
-   if(hProcess != nullptr)
+   if(hProcess)
    {
        TerminateProcess(hProcess,0);
        CloseHandle(hProcess);
@@ -98,10 +76,8 @@ static inline bool killProcess(LPCWSTR processName)
    return true;
 }
 
-static inline void checkExtraProcessQuit()
+static inline void checkExtraProcessQuit(const QStringList &origin)
 {
-    QStringList origin;
-
     QStringList list(getProcessLists());
     foreach(const QString &process, origin)
     {
@@ -114,7 +90,7 @@ static inline void checkExtraProcessQuit()
 #elif defined Q_OS_UNIX
 #include <QProcess>
 
-typedef struct OCR_EXTRAS_EXPORT PID_INFO
+typedef struct PID_INFO
 {
     int m_pid;
     QString m_path;
@@ -154,10 +130,8 @@ static inline bool killProcess(int pid)
     return true;
 }
 
-static inline void checkExtraProcessQuit()
+void killProcessByName(const QStringList &origin)
 {
-    QStringList origin;
-
     QList<PID_INFO>  list(getProcessLists());
     foreach(const PID_INFO &info, list)
     {
@@ -170,6 +144,4 @@ static inline void checkExtraProcessQuit()
         }
     }
 }
-#endif
-
 #endif
