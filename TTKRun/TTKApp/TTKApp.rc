@@ -29,7 +29,7 @@ BEGIN
                 VALUE "FileDescription", "TTKOCR"
                 VALUE "FileVersion", "2.2.0.0"
                 VALUE "InternalName", "TTKOCR.exe"
-                VALUE "LegalCopyright", "Copyright By Greedysky studio(C)2020"
+                VALUE "LegalCopyright", "Copyright By Greedysky studio(C)2021"
                 VALUE "OriginalFilename", "TTKOCR.exe"
                 VALUE "ProductName", "TTKOCR"
                 VALUE "ProductVersion", "2.2.0.0"
