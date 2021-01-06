@@ -26,8 +26,7 @@ QT       += widgets
 }
 
 include($$PWD/TTKVersion.pri)
-win32:DESTDIR = $$OUT_PWD/../bin/$$TTKOCR
-unix:DESTDIR = $$OUT_PWD/../lib/$$TTKOCR
+DESTDIR = $$OUT_PWD/../bin/$$TTKOCR
 
 include($$PWD/TTKBuild.pri)
 

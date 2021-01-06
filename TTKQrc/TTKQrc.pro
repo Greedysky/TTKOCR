@@ -22,10 +22,9 @@ msvc{
 }
 
 include($$PWD/../TTKVersion.pri)
-unix:VERSION += $$TTKOCR
+CONFIG += plugin lib
 
-win32:DESTDIR = $$OUT_PWD/../bin/$$TTKOCR
-unix:DESTDIR = $$OUT_PWD/../lib/$$TTKOCR
+DESTDIR = $$OUT_PWD/../bin/$$TTKOCR
 TARGET = TTKUi
 
 RESOURCES += \

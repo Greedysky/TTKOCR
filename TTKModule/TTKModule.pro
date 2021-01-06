@@ -20,7 +20,7 @@ TEMPLATE = lib
 CONFIG += TTK_BUILD_LIB
 
 include($$PWD/../TTKOCR.pri)
-unix:VERSION += $$TTKOCR
+CONFIG += plugin lib
 
 TARGET = TTKCore
 

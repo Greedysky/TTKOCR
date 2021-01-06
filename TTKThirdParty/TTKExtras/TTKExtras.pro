@@ -20,10 +20,9 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 include($$PWD/../../TTKVersion.pri)
-unix:VERSION += $$TTKOCR
+CONFIG += plugin lib
 
-win32:DESTDIR = $$OUT_PWD/../../bin/$$TTKOCR
-unix:DESTDIR = $$OUT_PWD/../../lib/$$TTKOCR
+DESTDIR = $$OUT_PWD/../../bin/$$TTKOCR
 TARGET = TTKExtras
 
 TEMPLATE = lib

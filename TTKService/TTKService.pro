@@ -28,7 +28,6 @@ win32:msvc{
 }
 
 include($$PWD/../TTKOCR.pri)
-unix:VERSION += $$TTKOCR
 
 TARGET = TTKService
 
