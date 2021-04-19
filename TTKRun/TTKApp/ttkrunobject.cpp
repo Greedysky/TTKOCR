@@ -31,7 +31,7 @@ OCRRunObjectPrivate::~OCRRunObjectPrivate()
 OCRRunObject::OCRRunObject(QObject *parent)
     : QObject(parent)
 {
-    TTK_INIT_PRIVATE;
+    TTK_INIT_PRIVATE(OCRRunObject);
     TTK_D(OCRRunObject);
 
     d->m_process = new QProcess(this);
