@@ -4,6 +4,9 @@
 #include <QProcess>
 #include <QApplication>
 
+/*! @brief The class of the ttk run object private.
+ * @author Greedysky <greedysky@163.com>
+ */
 class OCRRunObjectPrivate : public TTKPrivate<OCRRunObject>
 {
 public:
