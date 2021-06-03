@@ -18,23 +18,16 @@
 
 INCLUDEPATH += $$PWD
 
-!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS += \
     $$PWD/ocrbackgroundmanager.h \
     $$PWD/ocrcryptographichash.h \
     $$PWD/ocrglobaldefine.h \
     $$PWD/ocrlicensecore.h \
     $$PWD/ocrobject.h \
-    $$PWD/ocrsingleton.h \
     $$PWD/ocrruntimemanager.h
 
-}
-
-contains(CONFIG, TTK_BUILD_LIB){
 SOURCES += \
     $$PWD/ocrbackgroundmanager.cpp \
     $$PWD/ocrlicensecore.cpp \
     $$PWD/ocrcryptographichash.cpp \
     $$PWD/ocrruntimemanager.cpp
-
-}

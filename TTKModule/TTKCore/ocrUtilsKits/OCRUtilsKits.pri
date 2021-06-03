@@ -18,7 +18,6 @@
 
 INCLUDEPATH += $$PWD
 
-!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS += \
     $$PWD/ocralgorithmutils.h \
     $$PWD/ocrcoreutils.h \
@@ -27,9 +26,6 @@ HEADERS += \
     $$PWD/ocrstringutils.h \
     $$PWD/ocrurlutils.h
 
-}
-
-contains(CONFIG, TTK_BUILD_LIB){
 SOURCES += \
     $$PWD/ocrcoreutils.cpp \
     $$PWD/ocralgorithmutils.cpp \
@@ -37,5 +33,3 @@ SOURCES += \
     $$PWD/ocrcodecutils.cpp \
     $$PWD/ocrstringutils.cpp \
     $$PWD/ocrurlutils.cpp
-
-}

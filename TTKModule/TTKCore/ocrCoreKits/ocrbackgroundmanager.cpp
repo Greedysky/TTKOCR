@@ -1,5 +1,7 @@
 #include "ocrbackgroundmanager.h"
 
+#define MAX_INDEX 5
+
 OCRBackgroundManager::OCRBackgroundManager()
 {
     m_skinColor = QColor(Qt::white);

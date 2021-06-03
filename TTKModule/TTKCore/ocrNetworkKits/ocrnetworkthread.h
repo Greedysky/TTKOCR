@@ -20,11 +20,10 @@
  ================================================= */
 
 #include <QTimer>
-#include "ocrsingleton.h"
+#include "ttksingleton.h"
+#include "ocrglobaldefine.h"
 
-#define M_NETWORK_PTR (OCRSingleton<OCRNetworkThread>::createInstance())
-#define NETWORK_DETECT_INTERVAL     5000             // second
-#define NETWORK_REQUEST_ADDRESS     "www.baidu.com"  // ip
+#define M_NETWORK_PTR (TTKSingleton<OCRNetworkThread>::createInstance())
 
 /*! @brief The class of thread to check current network.
  * @author Greedysky <greedysky@163.com>

@@ -18,7 +18,6 @@
 
 INCLUDEPATH += $$PWD
 
-!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS += \
     $$PWD/ocrabstractmovedialog.h \
     $$PWD/ocrabstractmovewidget.h \
@@ -26,14 +25,9 @@ HEADERS += \
     $$PWD/ocrgiflabelwidget.h \
     $$PWD/ocrgrabwidget.h
 
-}
-
-contains(CONFIG, TTK_BUILD_LIB){
 SOURCES += \
     $$PWD/ocrabstractmoveresizewidget.cpp \
     $$PWD/ocrabstractmovedialog.cpp \
     $$PWD/ocrabstractmovewidget.cpp \
     $$PWD/ocrgiflabelwidget.cpp \
     $$PWD/ocrgrabwidget.cpp
-
-}

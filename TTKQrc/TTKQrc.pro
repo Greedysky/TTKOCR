@@ -30,6 +30,4 @@ TARGET = TTKUi
 RESOURCES += \
     TTKOCR.qrc
     
-win32{
-    RC_FILE = TTKQrc.rc
-}
+win32:RC_FILE = TTKQrc.rc

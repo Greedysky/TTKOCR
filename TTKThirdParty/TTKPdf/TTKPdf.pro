@@ -59,6 +59,4 @@ SOURCES += \
 #load extra define
 include($$PWD/../TTKExtrasDefine.pri)
 
-win32{
-    RC_FILE = TTKPdf.rc
-}
+win32:RC_FILE = TTKPdf.rc

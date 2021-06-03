@@ -1,5 +1,5 @@
-#ifndef OCRVERSION_H
-#define OCRVERSION_H
+#ifndef TTKVERSION_H
+#define TTKVERSION_H
 
 /**
  * C
@@ -46,7 +46,6 @@
 
 #define OCR_VERSION 0x02200
 
-#define OCR_VERSION_CHECK(major, middle, minor, patch) ((major<<12)|(middle<<8)|(minor<<4)|(patch))
+#define TTK_VERSION_CHECK(major, middle, minor, patch) ((major<<12)|(middle<<8)|(minor<<4)|(patch))
 
-
-#endif // OCRVERSION_H
+#endif // TTKVERSION_H

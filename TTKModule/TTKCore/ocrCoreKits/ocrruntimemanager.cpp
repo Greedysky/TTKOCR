@@ -14,7 +14,7 @@ void OCRRunTimeManager::run() const
 {
     TTK_LOGGER_INFO("OCRApplication Begin");
 
-#ifndef TTK_GREATER_NEW
+#if !TTK_QT_VERSION_CHECK(5,0,0)
     OCRUtils::Codec::setLocalCodec();
 #endif
 

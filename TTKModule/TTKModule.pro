@@ -17,8 +17,8 @@
 # =================================================
 
 TEMPLATE = lib
-CONFIG += TTK_BUILD_LIB
 
+include($$PWD/TTKModule.pri)
 include($$PWD/../TTKOCR.pri)
 CONFIG += plugin lib
 
@@ -35,7 +35,4 @@ HEADERS  += \
     ocrapplication.h \
     ocrapplicationobject.h
     
-
-win32{
-    RC_FILE = TTKCore.rc
-}
+win32:RC_FILE = TTKCore.rc

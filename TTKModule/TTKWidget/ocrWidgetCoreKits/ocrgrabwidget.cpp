@@ -25,12 +25,10 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     setCursor(Qt::CrossCursor);
     m_isDrawing = false;
 
-#ifndef TTK_GREATER_NEW
-    m_originPixmap = QPixmap::grabWindow(QApplication::desktop()->winId(),
-                                         0, 0, width(), height());
+#if !TTK_QT_VERSION_CHECK(5,0,0)
+    m_originPixmap = QPixmap::grabWindow(QApplication::desktop()->winId(), 0, 0, width(), height());
 #else
-    m_originPixmap = QApplication::primaryScreen()->grabWindow(QApplication::desktop()->winId(),
-                                         0, 0, width(), height());
+    m_originPixmap = QApplication::primaryScreen()->grabWindow(QApplication::desktop()->winId(), 0, 0, width(), height());
 #endif
 }
 
@@ -114,12 +112,10 @@ void OCRGrabWidget::keyPressEvent(QKeyEvent *event)
     {
         int width = m_ptEnd.x() - m_ptStart.x();
         int height = m_ptEnd.y() - m_ptStart.y();
-#ifndef TTK_GREATER_NEW
-        QPixmap pix = QPixmap::grabWindow(QApplication::desktop()->winId(),
-                                          m_ptStart.x(), m_ptStart.y(), width, height);
+#if !TTK_QT_VERSION_CHECK(5,0,0)
+        QPixmap pix = QPixmap::grabWindow(QApplication::desktop()->winId(), m_ptStart.x(), m_ptStart.y(), width, height);
 #else
-        QPixmap pix = QApplication::primaryScreen()->grabWindow(QApplication::desktop()->winId(),
-                                          m_ptStart.x(), m_ptStart.y(), width, height);
+        QPixmap pix = QApplication::primaryScreen()->grabWindow(QApplication::desktop()->winId(), m_ptStart.x(), m_ptStart.y(), width, height);
 #endif
 
         emit pixmapChanged(pix);

@@ -18,24 +18,18 @@
 
 TEMPLATE = app
 
-contains(CONFIG, TTK_BUILD_LIB){
-    CONFIG -= TTK_BUILD_LIB
-}
-
-CONFIG += TTK_NO_MSVC_LINK_NEED
-win32:msvc{
-    CONFIG -= TTK_NO_MSVC_LINK_NEED
-}
-
 include($$PWD/../TTKOCR.pri)
 
 TARGET = TTKService
 
 LIBS += -L$$DESTDIR -lTTKCore -lTTKDumper
 
-INCLUDEPATH += $$PWD/../TTKModule
+INCLUDEPATH +=  \
+    $$PWD/../TTKModule \
+    $$PWD/../TTKModule/TTKCore/ocrCoreKits \
+    $$PWD/../TTKModule/TTKWidget/ocrWidgetCoreKits
 
-!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
+win32:msvc{
 HEADERS  += \
     $$PWD/../TTKModule/ocrapplication.h
 }
@@ -43,6 +37,4 @@ HEADERS  += \
 SOURCES += \
     ocrservicemain.cpp
 
-win32{
-    RC_FILE = TTKService.rc
-}
+win32:RC_FILE = TTKService.rc

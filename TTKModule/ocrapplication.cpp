@@ -19,7 +19,7 @@ OCRApplication::OCRApplication(QWidget *parent)
       m_ui(new Ui::OCRApplication)
 {
     m_instance = this;
-//#ifdef TTK_GREATER_NEW
+//#if TTK_QT_VERSION_CHECK(5,0,0)
     setAttribute(Qt::WA_TranslucentBackground, false);
 //#endif
 

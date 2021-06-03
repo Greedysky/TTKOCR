@@ -20,11 +20,10 @@
  ================================================= */
 
 #include <QColor>
-#include "ocrsingleton.h"
+#include "ttksingleton.h"
+#include "ocrglobaldefine.h"
 
-#define M_BACKGROUND_PTR (OCRSingleton<OCRBackgroundManager>::createInstance())
-
-#define MAX_INDEX 5
+#define M_BACKGROUND_PTR (TTKSingleton<OCRBackgroundManager>::createInstance())
 
 /*! @brief The class of the manager of dealing with artist pictures.
  * @author Greedysky <greedysky@163.com>

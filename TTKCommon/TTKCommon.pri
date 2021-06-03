@@ -16,7 +16,10 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # =================================================
 
-INCLUDEPATH += \
-    $$PWD/ \
-    $$PWD/../TTKCommon \
-    $$PWD/TTKDumper
+INCLUDEPATH += $$PWD
+HEADERS  += \
+    $$PWD/ocrglobal.h \
+    $$PWD/ttkglobal.h \
+    $$PWD/ttkprivate.h \
+    $$PWD/ttksingleton.h \
+    $$PWD/ttkversion.h

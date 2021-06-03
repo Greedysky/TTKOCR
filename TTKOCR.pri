@@ -43,14 +43,11 @@ unix:!mac{
 
 win32{
     equals(QT_MAJOR_VERSION, 5){
-        greaterThan(QT_VER_MINOR, 1):QT  += winextras
         msvc{
             LIBS += -lshell32 -luser32
             LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
-            contains(CONFIG, TTK_BUILD_BY_PDF){
-                LIBS += -L$$DESTDIR -lTTKPdf
-            }
-            CONFIG +=c++11
+            contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
+            CONFIG += c++11
             !contains(QMAKE_TARGET.arch, x86_64){
                  #support on windows XP
                  QMAKE_LFLAGS_WINDOWS = /SUBSYSTEM:WINDOWS,5.01
@@ -60,9 +57,7 @@ win32{
 
         gcc{
             LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
-            contains(CONFIG, TTK_BUILD_BY_PDF){
-                LIBS += -L$$DESTDIR -lTTKPdf
-            }
+            contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
             QMAKE_CXXFLAGS += -std=c++11 -Wunused-function -Wswitch
         }
     }
@@ -71,9 +66,7 @@ win32{
         QT  += multimedia
         gcc{
             LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
-            contains(CONFIG, TTK_BUILD_BY_PDF){
-                LIBS += -L$$DESTDIR -lTTKPdf
-            }
+            contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
             QMAKE_CXXFLAGS += -std=c++11 -Wunused-function -Wswitch
         }
     }
@@ -81,19 +74,13 @@ win32{
 
 unix:!mac{
     LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
-    contains(CONFIG, TTK_BUILD_BY_PDF){
-        LIBS += -L$$DESTDIR -lTTKPdf
-    }
+    contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
     QMAKE_CXXFLAGS += -std=c++11 -Wunused-function -Wswitch
 }
 
 DEFINES += TTK_LIBRARY
 
 #########################################
-HEADERS += $$PWD/ocrglobal.h
-INCLUDEPATH += $$PWD
-#########################################
+include($$PWD/TTKCommon/TTKCommon.pri)
 include($$PWD/TTKThirdParty/TTKThirdParty.pri)
 #########################################
-include($$PWD/TTKModule/TTKModule.pri)
-
