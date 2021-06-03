@@ -38,7 +38,7 @@ void OCRThread::start(OCRThreadItem *item)
     QPixmap pix(item->m_path);
 
     QString content = QString("form-data; name=\"pic\"; filename=\"pic.jpg\"");
-    QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
+    QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType, this);
     QHttpPart part;
     part.setRawHeader("Content-Disposition", content.toUtf8());
     part.setRawHeader("Content-Type", "image/jpeg");
