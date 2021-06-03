@@ -31,7 +31,8 @@ INCLUDEPATH +=  \
 
 win32:msvc{
 HEADERS  += \
-    $$PWD/../TTKModule/ocrapplication.h
+    $$PWD/../TTKModule/ocrapplication.h \
+    $$PWD/../TTKModule/TTKWidget/ocrWidgetCoreKits/ocrabstractmoveresizewidget.h
 }
 
 SOURCES += \

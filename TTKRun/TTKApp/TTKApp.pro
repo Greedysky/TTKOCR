@@ -57,6 +57,6 @@ HEADERS += \
 
 
 RESOURCES += \
-    $$PWD/../../TTKQrc/OCRApp.qrc
+    $$PWD/../../TTKUi/OCRApp.qrc
 
 win32:RC_FILE = TTKApp.rc
