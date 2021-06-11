@@ -21,7 +21,7 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     setAttribute(Qt::WA_QuitOnClose, true);
 
     setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
-    resize(QApplication::desktop()->width(), QApplication::desktop()->height());
+    setFixedSize(QApplication::desktop()->width(), QApplication::desktop()->height());
     setCursor(Qt::CrossCursor);
     m_isDrawing = false;
 
@@ -117,7 +117,6 @@ void OCRGrabWidget::keyPressEvent(QKeyEvent *event)
 #else
         QPixmap pix = QApplication::primaryScreen()->grabWindow(QApplication::desktop()->winId(), m_ptStart.x(), m_ptStart.y(), width, height);
 #endif
-
         emit pixmapChanged(pix);
         close();
     }

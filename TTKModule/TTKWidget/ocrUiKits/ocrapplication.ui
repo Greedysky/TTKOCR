@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>TTKOCR</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../../../TTKUi/TTKOCR.qrc">
+    <normaloff>:/image/lb_app_logo</normaloff>:/image/lb_app_logo</iconset>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <property name="spacing">
     <number>0</number>
@@ -259,6 +263,9 @@
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="text">
             <string>打开文件</string>
            </property>
@@ -277,6 +284,9 @@
              <width>65</width>
              <height>25</height>
             </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
            </property>
            <property name="text">
             <string>截屏</string>
@@ -300,6 +310,9 @@
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="text">
             <string>识别</string>
            </property>
@@ -321,6 +334,9 @@
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
            </property>
            <property name="text">
             <string>清除</string>
@@ -365,6 +381,8 @@
    <header>ocrgiflabelwidget.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../../../TTKUi/TTKOCR.qrc"/>
+ </resources>
  <connections/>
 </ui>
