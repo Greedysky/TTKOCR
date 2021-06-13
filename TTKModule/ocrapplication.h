@@ -31,7 +31,7 @@ class OCRApplication;
 /*! @brief The class of the app main widget.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_GUI_EXPORT OCRApplication : public OCRAbstractMoveResizeWidget
+class TTK_MODULE_EXPORT OCRApplication : public OCRAbstractMoveResizeWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(OCRApplication)

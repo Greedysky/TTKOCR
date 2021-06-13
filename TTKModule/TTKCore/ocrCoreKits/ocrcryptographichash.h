@@ -20,7 +20,7 @@
  ================================================= */
 
 #include <QString>
-#include "ocrglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 #ifdef Q_CC_GNU
     #pragma GCC diagnostic ignored "-Wparentheses"
@@ -41,7 +41,7 @@ typedef uint32_t xxtea_uint;
 /*! @brief The class of the string cryptographic hash.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_CORE_EXPORT OCRCryptographicHash
+class TTK_MODULE_EXPORT OCRCryptographicHash
 {
     TTK_DECLARE_MODULE(OCRCryptographicHash)
 public:

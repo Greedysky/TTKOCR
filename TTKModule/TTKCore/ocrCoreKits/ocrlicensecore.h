@@ -20,12 +20,12 @@
  ================================================= */
 
 #include <QObject>
-#include "ocrglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the license core module.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_CORE_EXPORT OCRLicenseCore : public QObject
+class TTK_MODULE_EXPORT OCRLicenseCore : public QObject
 {
     Q_OBJECT
 public:

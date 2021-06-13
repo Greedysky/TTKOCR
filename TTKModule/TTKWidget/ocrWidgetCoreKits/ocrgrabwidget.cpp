@@ -1,12 +1,10 @@
 #include "ocrgrabwidget.h"
 #include "ocrwidgetutils.h"
+#include "ttkdesktopwrapper.h"
 
 #include <QMenu>
-#include <QScreen>
 #include <QPainter>
 #include <QMouseEvent>
-#include <QApplication>
-#include <QDesktopWidget>
 
 #ifdef Q_CC_GNU
 #  pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
@@ -21,15 +19,11 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     setAttribute(Qt::WA_QuitOnClose, true);
 
     setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
-    setFixedSize(QApplication::desktop()->width(), QApplication::desktop()->height());
+    setFixedSize(TTKDesktopWrapper::geometry().size());
     setCursor(Qt::CrossCursor);
-    m_isDrawing = false;
 
-#if !TTK_QT_VERSION_CHECK(5,0,0)
-    m_originPixmap = QPixmap::grabWindow(QApplication::desktop()->winId(), 0, 0, width(), height());
-#else
-    m_originPixmap = QApplication::primaryScreen()->grabWindow(QApplication::desktop()->winId(), 0, 0, width(), height());
-#endif
+    m_isDrawing = false;
+    m_originPixmap = TTKDesktopWrapper::grabWindow(0, 0, width(), height());
 }
 
 void OCRGrabWidget::mouseMoveEvent(QMouseEvent *event)
@@ -110,13 +104,9 @@ void OCRGrabWidget::keyPressEvent(QKeyEvent *event)
     QWidget::keyPressEvent(event);
     if(event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return)
     {
-        int width = m_ptEnd.x() - m_ptStart.x();
-        int height = m_ptEnd.y() - m_ptStart.y();
-#if !TTK_QT_VERSION_CHECK(5,0,0)
-        QPixmap pix = QPixmap::grabWindow(QApplication::desktop()->winId(), m_ptStart.x(), m_ptStart.y(), width, height);
-#else
-        QPixmap pix = QApplication::primaryScreen()->grabWindow(QApplication::desktop()->winId(), m_ptStart.x(), m_ptStart.y(), width, height);
-#endif
+        const int width = m_ptEnd.x() - m_ptStart.x();
+        const int height = m_ptEnd.y() - m_ptStart.y();
+        const QPixmap &pix = TTKDesktopWrapper::grabWindow(m_ptStart.x(), m_ptStart.y(), width, height);
         emit pixmapChanged(pix);
         close();
     }

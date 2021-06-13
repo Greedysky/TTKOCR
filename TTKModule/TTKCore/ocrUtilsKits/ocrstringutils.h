@@ -19,7 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "ocrglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the utils string object namespace.
  * @author Greedysky <greedysky@163.com>
@@ -31,37 +31,37 @@ namespace OCRUtils
         /*!
          * Remove given key in string, default is space.
          */
-        OCR_UTILS_EXPORT QString removeStringBy(const QString &value, const QString &key = " ");
+        TTK_MODULE_EXPORT QString removeStringBy(const QString &value, const QString &key = " ");
         /*!
          * Get split string value.
          */
-        OCR_UTILS_EXPORT QStringList splitString(const QString &value, const QString &key = "-");
+        TTK_MODULE_EXPORT QStringList splitString(const QString &value, const QString &key = "-");
 
         /*!
          * Illegal characters check.
          */
-        OCR_UTILS_EXPORT QStringList illegalCharacters();
+        TTK_MODULE_EXPORT QStringList illegalCharacters();
         /*!
          * Illegal characters check.
          */
-        OCR_UTILS_EXPORT bool illegalCharactersCheck(const QString &value);
+        TTK_MODULE_EXPORT bool illegalCharactersCheck(const QString &value);
         /*!
          * Illegal characters replaced.
          */
-        OCR_UTILS_EXPORT QString illegalCharactersReplaced(const QString &value);
+        TTK_MODULE_EXPORT QString illegalCharactersReplaced(const QString &value);
 
         /*!
          * Transform colors string to color list.
          */
-        OCR_UTILS_EXPORT QList<QColor> readColorConfig(const QString &value);
+        TTK_MODULE_EXPORT QList<QColor> readColorConfig(const QString &value);
         /*!
          * Transform color to color string.
          */
-        OCR_UTILS_EXPORT QString writeColorConfig(const QColor &color);
+        TTK_MODULE_EXPORT QString writeColorConfig(const QColor &color);
         /*!
          * Transform color list to colors string.
          */
-        OCR_UTILS_EXPORT QString writeColorConfig(const QList<QColor> &colors);
+        TTK_MODULE_EXPORT QString writeColorConfig(const QList<QColor> &colors);
 
     }
 }

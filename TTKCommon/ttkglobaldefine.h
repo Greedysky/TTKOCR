@@ -1,5 +1,5 @@
-#ifndef QAESWRAP_H
-#define QAESWRAP_H
+#ifndef TTKGLOBALDEFINE_H
+#define TTKGLOBALDEFINE_H
 
 /* =================================================
  * This file is part of the TTK OCR project
@@ -19,23 +19,12 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "ocrextrasglobaldefine.h"
+#include "ttkglobal.h"
 
-/*! @brief The namespace of the aes wrapper.
- * @author Greedysky <greedysky@163.com>
- */
-class OCR_EXTRAS_EXPORT QAesWrap
-{
-public:
-    /*!
-     * Encrypt aes by input.
-     */
-    static QByteArray encrypt(const QByteArray &in, const QByteArray &key, const QByteArray &iv);
-    /*!
-     * Decrypt aes by input.
-     */
-    static QByteArray decrypt(const QByteArray &in, const QByteArray &key, const QByteArray &iv);
+#ifdef TTK_LIBRARY
+#  define TTK_MODULE_EXPORT Q_DECL_EXPORT
+#else
+#  define TTK_MODULE_EXPORT Q_DECL_IMPORT
+#endif
 
-};
-
-#endif // QAESWRAP_H
+#endif // TTKGLOBALDEFINE_H

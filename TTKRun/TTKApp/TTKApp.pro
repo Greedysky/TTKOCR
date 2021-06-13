@@ -49,7 +49,6 @@ SOURCES += \
 
 
 HEADERS += \
-    $$PWD/../ocrrunglobaldefine.h \
     ocrinitobject.h \
     ttkrunobject.h \
     ttklocalpeer.h \

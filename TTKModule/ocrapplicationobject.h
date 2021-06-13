@@ -20,14 +20,14 @@
  ================================================= */
 
 #include "ocrobject.h"
-#include "ocrglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 class QPropertyAnimation;
 
 /*! @brief The class of the app object widget.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_GUI_EXPORT OCRApplicationObject : public QObject
+class TTK_MODULE_EXPORT OCRApplicationObject : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(OCRApplicationObject)

@@ -1,5 +1,5 @@
-#ifndef OCRGLOBAL_H
-#define OCRGLOBAL_H
+#ifndef QAESWRAPPER_H
+#define QAESWRAPPER_H
 
 /* =================================================
  * This file is part of the TTK OCR project
@@ -19,25 +19,23 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "ttkglobal.h"
+#include "ttkglobaldefine.h"
 
-///
-#ifndef OCR_NAMESPACE
-#define OCR_NAMESPACE OCR
-#endif //OCR_NAMESPACE
+/*! @brief The namespace of the aes wrapper.
+ * @author Greedysky <greedysky@163.com>
+ */
+class TTK_MODULE_EXPORT QAesWrapper
+{
+public:
+    /*!
+     * Encrypt aes by input.
+     */
+    static QByteArray encrypt(const QByteArray &in, const QByteArray &key, const QByteArray &iv);
+    /*!
+     * Decrypt aes by input.
+     */
+    static QByteArray decrypt(const QByteArray &in, const QByteArray &key, const QByteArray &iv);
 
-#if !TTK_QT_VERSION_CHECK(4,5,0)
-#define OCR_NO_NAMESPACE_SUPPORT
-#endif
+};
 
-#ifndef OCR_NO_NAMESPACE_SUPPORT
-#define OCR_BEGIN_NAMESPACE namespace OCR_NAMESPACE {
-#define OCR_END_NAMESPACE }
-#define OCR_USE_NAMESPACE using namespace ::OCR_NAMESPACE;
-#else
-#define OCR_BEGIN_NAMESPACE
-#define OCR_END_NAMESPACE
-#define OCR_USE_NAMESPACE
-#endif //OCR_NAMESPACE_SUPPORT
-
-#endif // OCRGLOBAL_H
+#endif // QAESWRAPPER_H

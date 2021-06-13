@@ -21,12 +21,12 @@
 
 #include <QLabel>
 #include <QDialog>
-#include "ocrglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the moving dialog base.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_WIDGET_EXPORT OCRAbstractMoveDialog : public QDialog
+class TTK_MODULE_EXPORT OCRAbstractMoveDialog : public QDialog
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(OCRAbstractMoveDialog)

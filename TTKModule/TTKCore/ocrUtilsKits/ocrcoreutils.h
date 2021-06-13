@@ -20,7 +20,7 @@
  ================================================= */
 
 #include "ocrobject.h"
-#include "ocrglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the utils core object namespace.
  * @author Greedysky <greedysky@163.com>
@@ -32,46 +32,46 @@ namespace OCRUtils
         /*!
          * Get file suffix path.
          */
-        OCR_UTILS_EXPORT QString fileSuffix(const QString &name);
+        TTK_MODULE_EXPORT QString fileSuffix(const QString &name);
         /*!
          * Get file suffix path.
          */
-        OCR_UTILS_EXPORT QString fileSuffix(const QString &name, const QString &prefix);
+        TTK_MODULE_EXPORT QString fileSuffix(const QString &name, const QString &prefix);
 
         /*!
          * Get given dir size.
          */
-        OCR_UTILS_EXPORT quint64 dirSize(const QString &dirName);
+        TTK_MODULE_EXPORT quint64 dirSize(const QString &dirName);
         /*!
          * Check given dir size is bigger than given size.
          */
-        OCR_UTILS_EXPORT void checkCacheSize(quint64 cacheSize, bool disabled, const QString &path);
+        TTK_MODULE_EXPORT void checkCacheSize(quint64 cacheSize, bool disabled, const QString &path);
         /*!
          * Get all files in given dir.
          */
-        OCR_UTILS_EXPORT QFileInfoList getFileListByDir(const QString &dpath, bool recursively);
+        TTK_MODULE_EXPORT QFileInfoList getFileListByDir(const QString &dpath, bool recursively);
         /*!
          * Get all files in given dir.
          */
-        OCR_UTILS_EXPORT QFileInfoList getFileListByDir(const QString &dpath, const QStringList &filter, bool recursively);
+        TTK_MODULE_EXPORT QFileInfoList getFileListByDir(const QString &dpath, const QStringList &filter, bool recursively);
         /*!
          * Dir remove recursively.
          */
-        OCR_UTILS_EXPORT bool removeRecursively(const QString &dir);
+        TTK_MODULE_EXPORT bool removeRecursively(const QString &dir);
 
         /*!
          * Get Language Name by given index.
          */
-        OCR_UTILS_EXPORT QString getLanguageName(int index);
+        TTK_MODULE_EXPORT QString getLanguageName(int index);
 
         /*!
          * App version check.
          */
-        OCR_UTILS_EXPORT bool appVersionCheck(const QStringList &ol, const QStringList &dl, int depth);
+        TTK_MODULE_EXPORT bool appVersionCheck(const QStringList &ol, const QStringList &dl, int depth);
         /*!
          * App version check.
          */
-        OCR_UTILS_EXPORT bool appVersionCheck(const QString &o, const QString &d);
+        TTK_MODULE_EXPORT bool appVersionCheck(const QString &o, const QString &d);
 
     }
 }

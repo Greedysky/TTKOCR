@@ -21,12 +21,12 @@
 
 #include <QLabel>
 #include <QMouseEvent>
-#include "ocrglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the moving widget base.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_WIDGET_EXPORT OCRAbstractMoveWidget : public QWidget
+class TTK_MODULE_EXPORT OCRAbstractMoveWidget : public QWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(OCRAbstractMoveWidget)
@@ -85,7 +85,7 @@ protected:
 /*! @brief The class of the moving widget single without ui widget.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_WIDGET_EXPORT OCRAbstractMoveSingleWidget : public OCRAbstractMoveWidget
+class TTK_MODULE_EXPORT OCRAbstractMoveSingleWidget : public OCRAbstractMoveWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(OCRAbstractMoveSingleWidget)

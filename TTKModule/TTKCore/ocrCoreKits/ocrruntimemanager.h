@@ -19,12 +19,12 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "ocrglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the app run time needed.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_CORE_EXPORT OCRRunTimeManager
+class TTK_MODULE_EXPORT OCRRunTimeManager
 {
     TTK_DECLARE_MODULE(OCRRunTimeManager)
 public:

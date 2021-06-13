@@ -20,7 +20,7 @@
  ================================================= */
 
 #include <QNetworkReply>
-#include "ocrglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 class QFile;
 class QNetworkAccessManager;
@@ -28,7 +28,7 @@ class QNetworkAccessManager;
 /*! @brief The class of ocr thread item.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_NETWORK_EXPORT OCRThreadItem : public QObject
+class TTK_MODULE_EXPORT OCRThreadItem : public QObject
 {
     Q_OBJECT
 public:
@@ -48,7 +48,7 @@ public:
 /*! @brief The class of ocr thread.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_NETWORK_EXPORT OCRThread : public QObject
+class TTK_MODULE_EXPORT OCRThread : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(OCRThread)

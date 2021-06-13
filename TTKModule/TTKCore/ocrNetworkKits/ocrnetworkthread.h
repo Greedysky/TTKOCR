@@ -21,14 +21,14 @@
 
 #include <QTimer>
 #include "ttksingleton.h"
-#include "ocrglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 #define M_NETWORK_PTR (TTKSingleton<OCRNetworkThread>::createInstance())
 
 /*! @brief The class of thread to check current network.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_NETWORK_EXPORT OCRNetworkThread : public QObject
+class TTK_MODULE_EXPORT OCRNetworkThread : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(OCRNetworkThread)

@@ -21,7 +21,7 @@
 
 #include "ocrobject.h"
 #include "ttkversion.h"
-#include "ocrrunglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 #define S_APPDATA_DIR_FULL        OCRObject::getAppDir() + APPDATA_DIR
 #define S_DOWNLOADS_DIR_FULL      OCRObject::getAppDir() + DOWNLOADS_DIR
@@ -44,7 +44,7 @@
 /*! @brief The class of the ocr init object.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_RUN_EXPORT OCRInitObject : public QObject
+class TTK_MODULE_EXPORT OCRInitObject : public QObject
 {
     Q_OBJECT
 public:

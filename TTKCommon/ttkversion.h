@@ -1,21 +1,6 @@
 #ifndef TTKVERSION_H
 #define TTKVERSION_H
 
-/**
- * C
- *
- * opyright (c) 2015 - 2021 Greedysky Studio <greedysky@163.com>
- *
- * TTKOCR, based on Qt for windows. 
- */
-
-/** \mainpage
- *
- * \section encoding Attention
- * 
- *
- */
- 
 /* =================================================
  * This file is part of the TTK OCR project
  * Copyright (C) 2015 - 2021 Greedysky Studio

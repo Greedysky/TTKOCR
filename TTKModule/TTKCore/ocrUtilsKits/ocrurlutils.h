@@ -19,7 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "ocrglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the utils url object namespace.
  * @author Greedysky <greedysky@163.com>
@@ -31,29 +31,29 @@ namespace OCRUtils
         /*!
          * Open file from local by path or net url.
          */
-        OCR_UTILS_EXPORT bool openUrl(const QString &exe, const QString &path);
+        TTK_MODULE_EXPORT bool openUrl(const QString &exe, const QString &path);
 
         /*!
          * Open file from local by path or net url.
          */
-        OCR_UTILS_EXPORT bool openUrl(const QString &path, bool local = true);
+        TTK_MODULE_EXPORT bool openUrl(const QString &path, bool local = true);
 
         /*!
          * Encode the data into url.
          */
-        OCR_UTILS_EXPORT void urlEncode(QString &data);
+        TTK_MODULE_EXPORT void urlEncode(QString &data);
         /*!
          * Decode the data into url.
          */
-        OCR_UTILS_EXPORT void urlDecode(QString &data);
+        TTK_MODULE_EXPORT void urlDecode(QString &data);
         /*!
          * Encode the data into url.
          */
-        OCR_UTILS_EXPORT void urlEncode(QByteArray &data);
+        TTK_MODULE_EXPORT void urlEncode(QByteArray &data);
         /*!
          * Decode the data into url.
          */
-        OCR_UTILS_EXPORT void urlDecode(QByteArray &data);
+        TTK_MODULE_EXPORT void urlDecode(QByteArray &data);
 
     }
 }

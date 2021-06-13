@@ -21,14 +21,14 @@
 
 #include <QColor>
 #include "ttksingleton.h"
-#include "ocrglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 #define M_BACKGROUND_PTR (TTKSingleton<OCRBackgroundManager>::createInstance())
 
 /*! @brief The class of the manager of dealing with artist pictures.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_CORE_EXPORT OCRBackgroundManager : public QObject
+class TTK_MODULE_EXPORT OCRBackgroundManager : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(OCRBackgroundManager)

@@ -19,14 +19,14 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "ocrrunglobaldefine.h"
+#include "ttkprivate.h"
 
 class OCRRunObjectPrivate;
 
 /*! @brief The class of the ocr run object.
  * @author Greedysky <greedysky@163.com>
  */
-class OCR_RUN_EXPORT OCRRunObject : public QObject
+class TTK_MODULE_EXPORT OCRRunObject : public QObject
 {
     Q_OBJECT
 public:

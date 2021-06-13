@@ -1,9 +1,9 @@
-#include "qaeswrap.h"
+#include "qaeswrapper.h"
 extern "C" {
 #include "aes.h"
 }
 
-QByteArray QAesWrap::encrypt(const QByteArray &in, const QByteArray &key, const QByteArray &iv)
+QByteArray QAesWrapper::encrypt(const QByteArray &in, const QByteArray &key, const QByteArray &iv)
 {
     AES_KEY aes;
     char encrypt_string[1024] = {0};
@@ -28,7 +28,7 @@ QByteArray QAesWrap::encrypt(const QByteArray &in, const QByteArray &key, const 
     return QByteArray(encrypt_string).toBase64();
 }
 
-QByteArray QAesWrap::decrypt(const QByteArray &in, const QByteArray &key, const QByteArray &iv)
+QByteArray QAesWrapper::decrypt(const QByteArray &in, const QByteArray &key, const QByteArray &iv)
 {
     AES_KEY aes;
     char encrypt_string[1024] = {0};
