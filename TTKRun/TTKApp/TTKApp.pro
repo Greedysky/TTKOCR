@@ -26,6 +26,7 @@ DESTDIR = $$OUT_PWD/../../bin
 TARGET = TTKOCR
 
 TEMPLATE = app
+DEFINES += TTK_LIBRARY
 
 win32:msvc{
     CONFIG += c++11

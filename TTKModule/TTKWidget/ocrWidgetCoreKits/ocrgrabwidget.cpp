@@ -63,7 +63,7 @@ void OCRGrabWidget::paintEvent(QPaintEvent *event)
     QPolygon listMarker;
     listMarker.push_back(QPoint(m_ptStart.x(), m_ptStart.y()));
     listMarker.push_back(QPoint(m_ptStart.x() + w, m_ptStart.y()));
-    listMarker.push_back(QPoint(m_ptStart.x() , h + m_ptStart.y()));
+    listMarker.push_back(QPoint(m_ptStart.x(), h + m_ptStart.y()));
     listMarker.push_back(QPoint(m_ptStart.x() + w, h + m_ptStart.y()));
 
     listMarker.push_back(QPoint(m_ptStart.x() + (w >> 1), m_ptStart.y()));

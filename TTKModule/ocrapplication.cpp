@@ -184,7 +184,7 @@ void OCRApplication::findFinish()
             QString fileName = QFileInfo(path).baseName();
             data << fileName.trimmed().toInt();
         }
-        qSort(data.begin(), data.end(), qLess<int>());
+        std::sort(data.begin(), data.end(), std::less<int>());
 
         QString content;
         for(int i=0; i<m_fileList.count(); ++i)
