@@ -19,17 +19,17 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-//update time 2020.07.05
-#define OCR_VERSION_STR    "2.2.0.0"
-#define OCR_VERSION_WSTR   L"2.2.0.0"
-#define OCR_VER_TIME_STR   "(2020/07/05)"
+//update time 2021.06.06
+#define OCR_VERSION_STR    "2.3.0.0"
+#define OCR_VERSION_WSTR   L"2.3.0.0"
+#define OCR_VER_TIME_STR   "(2021/06/26)"
 
 #define OCR_MAJOR_VERSION 2
-#define OCR_MIDLE_VERSION 2
+#define OCR_MIDLE_VERSION 3
 #define OCR_MINOR_VERSION 0
 #define OCR_PATCH_VERSION 0
 
-#define OCR_VERSION 0x02200
+#define OCR_VERSION 0x02300
 
 #define TTK_VERSION_CHECK(major, middle, minor, patch) ((major<<12)|(middle<<8)|(minor<<4)|(patch))
 
