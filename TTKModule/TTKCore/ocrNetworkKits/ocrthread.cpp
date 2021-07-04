@@ -72,7 +72,7 @@ void OCRThread::finishedSlot()
             if(value["success"].toInt() == 1)
             {
                 QVariantList datas = value["result"].toList();
-                foreach(const QVariant &var, datas)
+                for(const QVariant &var : qAsConst(datas))
                 {
                     if(var.isNull())
                     {

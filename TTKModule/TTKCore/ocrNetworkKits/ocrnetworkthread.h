@@ -64,7 +64,6 @@ private:
      * Object contsructor.
      */
     OCRNetworkThread();
-
     ~OCRNetworkThread();
 
     QTimer m_timer;

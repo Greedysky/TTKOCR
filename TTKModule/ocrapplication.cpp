@@ -149,7 +149,7 @@ void OCRApplication::startButtonClicked()
     m_count = 0;
     OCRUtils::Core::removeRecursively("dir");
 
-    foreach(OCRThreadItem *item, m_fileList)
+    for(OCRThreadItem *item : qAsConst(m_fileList))
     {
         OCRThread *tread = new OCRThread(item);
         connect(tread, SIGNAL(findFinish()), SLOT(findFinish()));
@@ -179,7 +179,7 @@ void OCRApplication::findFinish()
     {
         QStringList files(QDir("dir").entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
         TTKIntList data;
-        foreach(const QString &path, files)
+        for(const QString &path : qAsConst(files))
         {
             QString fileName = QFileInfo(path).baseName();
             data << fileName.trimmed().toInt();

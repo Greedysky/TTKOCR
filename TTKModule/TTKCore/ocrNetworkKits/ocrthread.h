@@ -57,7 +57,6 @@ public:
      * Object contsructor.
      */
     explicit OCRThread(QObject *parent = nullptr);
-
     ~OCRThread();
 
     /*!

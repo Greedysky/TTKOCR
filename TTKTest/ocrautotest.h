@@ -40,7 +40,8 @@ namespace OCRAutoTest
         {
             return true;
         }
-        foreach(QObject* test, list)
+
+        for(QObject* test : qAsConst(list))
         {
             if(test->objectName() == object->objectName())
             {
@@ -62,7 +63,7 @@ namespace OCRAutoTest
     inline int run(int argc, char *argv[])
     {
         int ret = 0;
-        foreach(QObject* test, testList())
+        for(QObject* test : testList())
         {
             ret += QTest::qExec(test, argc, argv);
         }

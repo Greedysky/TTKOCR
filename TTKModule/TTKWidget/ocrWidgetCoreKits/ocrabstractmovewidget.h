@@ -39,7 +39,6 @@ public:
      * Object contsructor.
      */
     explicit OCRAbstractMoveWidget(bool transparent, QWidget *parent = nullptr);
-
     virtual ~OCRAbstractMoveWidget();
 
     /*!
@@ -98,7 +97,6 @@ public:
      * Object contsructor.
      */
     explicit OCRAbstractMoveSingleWidget(bool transparent, QWidget *parent = nullptr);
-
     virtual ~OCRAbstractMoveSingleWidget();
 
 protected:

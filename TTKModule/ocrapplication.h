@@ -40,8 +40,7 @@ public:
      * Object contsructor.
      */
     explicit OCRApplication(QWidget *parent = nullptr);
-
-    virtual ~OCRApplication();
+    ~OCRApplication();
 
     /*!
      * Get class object instance.

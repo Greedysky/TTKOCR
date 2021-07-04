@@ -39,7 +39,6 @@ public:
      * Object contsructor.
      */
     explicit OCRAbstractMoveDialog(bool transparent, QWidget *parent = nullptr);
-
     virtual ~OCRAbstractMoveDialog();
 
     /*!

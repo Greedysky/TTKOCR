@@ -44,7 +44,6 @@ public:
      * Object contsructor.
      */
     explicit OCRGifLabelWidget(Type type, QWidget *parent = nullptr);
-
     ~OCRGifLabelWidget();
 
     /*!

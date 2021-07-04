@@ -86,7 +86,7 @@ void CodeLinesTest::codeLines()
 
     TTK_LOGGER_INFO("All File Count " << fileCount);
     TTK_LOGGER_INFO("All Meet The Requirements Line Count " << lineCount);
-    foreach(const QString &key, categorys.keys())
+    for(const QString &key : categorys.keys())
     {
         TTK_LOGGER_INFO(QString(".%1 Type  All count %2").arg(key).arg(categorys[key]));
     }

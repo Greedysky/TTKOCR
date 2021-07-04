@@ -36,8 +36,7 @@ public:
      * Object contsructor.
      */
     explicit OCRApplicationObject(QObject *parent = nullptr);
-
-    virtual ~OCRApplicationObject();
+    ~OCRApplicationObject();
 
     /*!
      * Get class object instance.

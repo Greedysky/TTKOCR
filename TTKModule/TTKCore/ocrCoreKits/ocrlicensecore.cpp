@@ -20,7 +20,7 @@ QString OCRLicenseCore::getEncodeKey(const QString &key)
 
 bool OCRLicenseCore::checkLicense(const QString &str)
 {
-    foreach(const QString &key, getCharacteristicStrings())
+    for(const QString &key : getCharacteristicStrings())
     {
         if(str == getEncodeKey(key))
         {
@@ -55,7 +55,7 @@ QString OCRLicenseCore::getCharacteristicStringNormal()
 QStringList OCRLicenseCore::getCharacteristicStrings()
 {
     QStringList data;
-    foreach(const QNetworkInterface &nets, QNetworkInterface::allInterfaces())
+    for(const QNetworkInterface &nets : QNetworkInterface::allInterfaces())
     {
         data << splitString(nets.hardwareAddress().toUtf8(), VALUE0);
     }

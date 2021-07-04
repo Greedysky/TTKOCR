@@ -336,10 +336,10 @@ void Document::setBackgroundColor(int r, int g, int b, int a)
 
 DocumentPrivate::~DocumentPrivate()
 {
-    foreach (OutlinePrivate *outlinep, outlines) {
+    for (OutlinePrivate *outlinep : outlines) {
         outlinep->deleteData();
     }
-    foreach (PagePrivate *pagep, pages) {
+    for (PagePrivate *pagep : pages) {
         pagep->deleteData();
     }
 

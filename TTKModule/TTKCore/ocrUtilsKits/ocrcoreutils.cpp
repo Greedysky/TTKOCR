@@ -21,7 +21,7 @@ quint64 OCRUtils::Core::dirSize(const QString &dirName)
         QDir dir(dirName);
         QFileInfoList list = dir.entryInfoList(QDir::Files | QDir::Dirs |  QDir::Hidden |
                                                QDir::NoSymLinks | QDir::NoDotAndDotDot);
-        foreach(const QFileInfo &fileInfo, list)
+        for(const QFileInfo &fileInfo : qAsConst(list))
         {
             if(fileInfo.isDir())
             {
@@ -44,7 +44,7 @@ void OCRUtils::Core::checkCacheSize(quint64 cacheSize, bool disabled, const QStr
         if(size > cacheSize)
         {
             QFileInfoList fileList = QDir(path).entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
-            foreach(const QFileInfo &fileInfo, fileList)
+            for(const QFileInfo &fileInfo : qAsConst(fileList))
             {
                 size -= fileInfo.size();
                 QFile::remove(fileInfo.absoluteFilePath());
@@ -73,8 +73,8 @@ QFileInfoList OCRUtils::Core::getFileListByDir(const QString &dpath, const QStri
     QFileInfoList fileList = dir.entryInfoList(filter, QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     if(recursively)
     {
-        QFileInfoList folderList = dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
-        foreach(const QFileInfo &fileInfo, folderList)
+        const QFileInfoList &folderList = dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
+        for(const QFileInfo &fileInfo : qAsConst(folderList))
         {
             fileList.append(getFileListByDir(fileInfo.absoluteFilePath(), filter, recursively));
         }

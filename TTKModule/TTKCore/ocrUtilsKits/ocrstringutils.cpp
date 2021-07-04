@@ -34,7 +34,7 @@ bool OCRUtils::String::illegalCharactersCheck(const QString &value)
 {
     QStringList acs(illegalCharacters());
 
-    foreach(const QString &ac, acs)
+    for(const QString &ac : qAsConst(acs))
     {
         if(value.contains(ac))
         {
@@ -50,7 +50,7 @@ QString OCRUtils::String::illegalCharactersReplaced(const QString &value)
     QStringList acs(illegalCharacters());
     QString s(value);
 
-    foreach(const QString &ac, acs)
+    for(const QString &ac : qAsConst(acs))
     {
         if(s.contains(ac))
         {
@@ -65,7 +65,7 @@ QList<QColor> OCRUtils::String::readColorConfig(const QString &value)
 {
     QList<QColor> colors;
     QStringList rgbs = value.split(';', QString::SkipEmptyParts);
-    foreach(const QString &rgb, rgbs)
+    for(const QString &rgb : qAsConst(rgbs))
     {
         QStringList var = rgb.split(',');
         if(var.count() != 3)
@@ -87,7 +87,7 @@ QString OCRUtils::String::writeColorConfig(const QColor &color)
 QString OCRUtils::String::writeColorConfig(const QList<QColor> &colors)
 {
     QString value;
-    foreach(const QColor &rgb, colors)
+    for(const QColor &rgb : qAsConst(colors))
     {
         value.append(writeColorConfig(rgb) + ";");
     }
