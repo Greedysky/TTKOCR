@@ -64,7 +64,7 @@ QString OCRUtils::String::illegalCharactersReplaced(const QString &value)
 QList<QColor> OCRUtils::String::readColorConfig(const QString &value)
 {
     QList<QColor> colors;
-#if TTK_QT_VERSION_CHECK(6,0,0)
+#if TTK_QT_VERSION_CHECK(5,15,0)
     const QStringList &rgbs = value.split(';', Qt::SkipEmptyParts);
 #else
     const QStringList &rgbs = value.split(';', QString::SkipEmptyParts);
