@@ -90,7 +90,7 @@ public:
 #define TEST_MAIN \
     int main(int argc, char *argv[]) \
     { \
-        QApplication app(argc, argv); \
+        QCoreApplication app(argc, argv); \
         QCoreApplication::setOrganizationName(APPNAME); \
         QCoreApplication::setOrganizationDomain(APPCOME); \
         QCoreApplication::setApplicationName(APPNAME); \

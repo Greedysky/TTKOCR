@@ -17,7 +17,12 @@
 # =================================================
 
 QT       += core gui
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4){ #Qt5
+    QT   += widgets
+    equals(QT_MAJOR_VERSION, 6){ #Qt6
+        QT   += core5compat
+    }
+}
 
 include($$PWD/../../TTKVersion.pri)
 CONFIG += plugin lib

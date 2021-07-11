@@ -64,10 +64,14 @@ QString OCRUtils::String::illegalCharactersReplaced(const QString &value)
 QList<QColor> OCRUtils::String::readColorConfig(const QString &value)
 {
     QList<QColor> colors;
-    QStringList rgbs = value.split(';', QString::SkipEmptyParts);
+#if TTK_QT_VERSION_CHECK(6,0,0)
+    const QStringList &rgbs = value.split(';', Qt::SkipEmptyParts);
+#else
+    const QStringList &rgbs = value.split(';', QString::SkipEmptyParts);
+#endif
     for(const QString &rgb : qAsConst(rgbs))
     {
-        QStringList var = rgb.split(',');
+        const QStringList &var = rgb.split(',');
         if(var.count() != 3)
         {
             continue;

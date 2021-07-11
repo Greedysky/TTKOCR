@@ -30,10 +30,11 @@ void OCRNetworkThread::start()
 
 void OCRNetworkThread::networkStateChanged()
 {
-    QtConcurrent::run([&]
+    const auto status = QtConcurrent::run([&]
     {
         QHostInfo info = QHostInfo::fromName(NETWORK_REQUEST_ADDRESS);
         m_networkState = !info.addresses().isEmpty();
         emit networkConnectionStateChanged(m_networkState);
     });
+    Q_UNUSED(status);
 }

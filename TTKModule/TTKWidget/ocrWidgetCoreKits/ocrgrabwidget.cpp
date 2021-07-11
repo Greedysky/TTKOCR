@@ -29,8 +29,13 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
 void OCRGrabWidget::mouseMoveEvent(QMouseEvent *event)
 {
     QWidget::mouseMoveEvent(event);
+#if TTK_QT_VERSION_CHECK(6,0,0)
+    m_ptCursor.setX(event->position().x());
+    m_ptCursor.setY(event->position().y());
+#else
     m_ptCursor.setX(event->x());
     m_ptCursor.setY(event->y());
+#endif
     update();
 }
 

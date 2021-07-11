@@ -47,7 +47,11 @@ void OCRThread::start(OCRThreadItem *item)
     multiPart->setBoundary("----");
 
     m_reply = m_manager->post(request, multiPart);
+#if TTK_QT_VERSION_CHECK(5,15,0)
+    connect(m_reply, SIGNAL(errorOccurred(QNetworkReply::NetworkError)), SLOT(errorSlot(QNetworkReply::NetworkError)));
+#else
     connect(m_reply, SIGNAL(error(QNetworkReply::NetworkError)), SLOT(errorSlot(QNetworkReply::NetworkError)));
+#endif
     connect(m_reply, SIGNAL(finished()), SLOT(finishedSlot()));
 }
 
@@ -55,6 +59,7 @@ void OCRThread::finishedSlot()
 {
     if(!m_reply)
     {
+        emit findFinish();
         return;
     }
 
@@ -65,6 +70,7 @@ void OCRThread::finishedSlot()
         QJson::Parser parser;
         bool ok;
         QVariant data = parser.parse(bytes, &ok);
+
         if(ok)
         {
             QString content;
@@ -98,11 +104,9 @@ void OCRThread::finishedSlot()
                     file.close();
                 }
             }
-
-            emit findFinish();
         }
     }
-
+    emit findFinish();
 }
 
 void OCRThread::errorSlot(QNetworkReply::NetworkError code)

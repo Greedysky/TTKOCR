@@ -48,7 +48,7 @@ void CodeLinesTest::codeLines()
     QMap<QString, int> categorys;
 
     QEventLoop eventLoop;
-    QtConcurrent::run([&]()
+    const auto status = QtConcurrent::run([&]()
     {
         foreachFileFromDirectory({ currentPath }, [&](const QFileInfo &info)
         {
@@ -82,6 +82,7 @@ void CodeLinesTest::codeLines()
 
         eventLoop.quit();
     });
+    Q_UNUSED(status);
     eventLoop.exec();
 
     TTK_LOGGER_INFO("All File Count " << fileCount);
