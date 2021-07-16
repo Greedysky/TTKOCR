@@ -42,7 +42,6 @@ win32:msvc{
 
 include($$PWD/../TTKExtrasDefine.pri)
 
-include($$PWD/qalgorithm/QAlgorithm.pri)
 include($$PWD/qjson/QJson.pri)
 
 win32:RC_FILE = TTKExtras.rc

@@ -97,17 +97,13 @@ QByteArray Serializer::SerializerPrivate::serialize( const QVariant &v, bool *ok
 #if TTK_QT_VERSION_CHECK(6,0,0)
   const int type = v.metaType().id();
 #else
-  const QVariant::Type type = v.type();
+  const int type = v.type();
 #endif
 
   if ( ! v.isValid() ) { // invalid or null?
     str = "null";
   }
-#if TTK_QT_VERSION_CHECK(6,0,0)
   else if (( type == QMetaType::QVariantList ) || ( type == QMetaType::QStringList ))
-#else
-  else if (( type == QVariant::List ) || ( type == QVariant::StringList ))
-#endif
   { // an array or a stringlist?
     const QVariantList list = v.toList();
     QList<QByteArray> values;
@@ -149,11 +145,7 @@ QByteArray Serializer::SerializerPrivate::serialize( const QVariant &v, bool *ok
       str = "[ " + join( values, ", " ) + " ]";
     }
   }
-#if TTK_QT_VERSION_CHECK(6,0,0)
   else if ( type == QMetaType::QVariantMap )
-#else
-  else if ( type == QVariant::Map )
-#endif
   { // variant is a map?
     const QVariantMap vmap = v.toMap();
 
@@ -212,11 +204,7 @@ QByteArray Serializer::SerializerPrivate::serialize( const QVariant &v, bool *ok
       str += " }";
     }
   }
-#if TTK_QT_VERSION_CHECK(6,0,0)
   else if ( type == QMetaType::QVariantHash )
-#else
-  else if ( type == QVariant::Hash )
-#endif
   { // variant is a hash?
     const QVariantHash vhash = v.toHash();
 
@@ -288,19 +276,11 @@ QByteArray Serializer::SerializerPrivate::serialize( const QVariant &v, bool *ok
         break;
     }
 
-#if TTK_QT_VERSION_CHECK(6,0,0)
     if (( type == QMetaType::QString ) ||  ( type == QMetaType::QByteArray ))
-#else
-    if (( type == QVariant::String ) ||  ( type == QVariant::ByteArray ))
-#endif
     { // a string or a byte array?
       str += escapeString( v.toString() );
     }
-#if TTK_QT_VERSION_CHECK(6,0,0)
     else if (( type == QMetaType::Double) || (type == QMetaType::Float))
-#else
-    else if (( type == QVariant::Double) || ((QMetaType::Type)type == QMetaType::Float))
-#endif
     { // a double or a float?
       const double value = v.toDouble();
 //  #if defined _WIN32 && !defined(Q_OS_SYMBIAN)
@@ -339,27 +319,15 @@ QByteArray Serializer::SerializerPrivate::serialize( const QVariant &v, bool *ok
         }
       }
     }
-#if TTK_QT_VERSION_CHECK(6,0,0)
     else if (( type == QMetaType::Bool))
-#else
-    else if (( type == QVariant::Bool))
-#endif
     { // boolean value?
       str += ( v.toBool() ? "true" : "false" );
     }
-#if TTK_QT_VERSION_CHECK(6,0,0)
     else if (( type == QMetaType::ULongLong))
-#else
-    else if (( type == QVariant::ULongLong))
-#endif
     { // large unsigned number?
       str += QByteArray::number( v.value<qulonglong>() );
     }
-#if TTK_QT_VERSION_CHECK(6,0,0)
     else if (( type == QMetaType::UInt))
-#else
-    else if (( type == QVariant::UInt))
-#endif
     { // unsigned int number?
       str += QByteArray::number( v.value<quint32>() );
     } else if ( v.canConvert<qlonglong>() ) { // any signed number?
