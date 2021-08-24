@@ -65,11 +65,9 @@ void OCRThread::finishedSlot()
 
     if(m_reply->error() == QNetworkReply::NoError)
     {
-        QByteArray bytes = m_reply->readAll();
-
-        QJson::Parser parser;
+        QJson::Parser json;
         bool ok;
-        QVariant data = parser.parse(bytes, &ok);
+        QVariant data = json.parse(m_reply->readAll(), &ok);
 
         if(ok)
         {
