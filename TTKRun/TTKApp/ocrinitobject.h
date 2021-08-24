@@ -65,7 +65,7 @@ public:
     /*!
      * Check current dir is exist, no, just create it.
      */
-    void dirIsExist(const QString &name);
+    void directoryExist(const QString &name);
     /*!
      * Check the related dir is exist.
      */
@@ -86,6 +86,7 @@ public:
      * Copy linux shell file.
      */
     void copyLinuxShellFile(const QString &name, const QString &path);
+
 };
 
 #endif // OCRINITOBJECT_H

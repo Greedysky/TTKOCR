@@ -19,7 +19,7 @@ void OCRInitObject::init()
     checkTheFileNeededExist();
 }
 
-void OCRInitObject::dirIsExist(const QString &name)
+void OCRInitObject::directoryExist(const QString &name)
 {
     QDir dir;
     if(!dir.exists(name))
@@ -30,10 +30,10 @@ void OCRInitObject::dirIsExist(const QString &name)
 
 void OCRInitObject::checkTheDirectoryExist()
 {
-    dirIsExist(S_APPDATA_DIR_FULL);
-    dirIsExist(S_DOWNLOADS_DIR_FULL);
+    directoryExist(S_APPDATA_DIR_FULL);
+    directoryExist(S_DOWNLOADS_DIR_FULL);
 
-    dirIsExist(S_LANGUAGE_DIR_FULL);
+    directoryExist(S_LANGUAGE_DIR_FULL);
 }
 
 void OCRInitObject::checkTheFileNeededExist()
