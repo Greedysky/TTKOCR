@@ -21,11 +21,6 @@
 
 #include "ttkglobaldefine.h"
 
-#define ALG_DOWNLOAD_KEY    "132f;dfg1dg;"
-#define ALG_URL_KEY         "13.015?sdf;/?dd"
-#define ALG_PLUS_KEY        "135ds;fs0.2"
-#define ALG_LOW_KEY         "0131"
-
 /*! @brief The class of the utils algorithm object namespace.
  * @author Greedysky <greedysky@163.com>
  */
@@ -34,26 +29,13 @@ namespace OCRUtils
     namespace Algorithm
     {
         /*!
-         * Get md5 algorithm.
-         */
-        TTK_MODULE_EXPORT QByteArray md5(const QByteArray &data);
-        /*!
          * Get sha1 algorithm.
          */
         TTK_MODULE_EXPORT QByteArray sha1(const QByteArray &data);
         /*!
-         * Encode the data into sha1.
-         */
-        TTK_MODULE_EXPORT QByteArray hmacSha1(const QByteArray &data, const QByteArray &key);
-
-        /*!
          * Get mdII(greedysky) algorithm.
          */
         TTK_MODULE_EXPORT QString mdII(const QString &data, bool encode);
-        /*!
-         * Get mdII(greedysky) algorithm.
-         */
-        TTK_MODULE_EXPORT QString mdII(const QString &data, const QString &key, bool encode);
 
     }
 }

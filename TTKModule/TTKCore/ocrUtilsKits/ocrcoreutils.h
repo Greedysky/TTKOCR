@@ -19,7 +19,6 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "ocrobject.h"
 #include "ttkglobaldefine.h"
 
 /*! @brief The class of the utils core object namespace.
@@ -30,31 +29,6 @@ namespace OCRUtils
     namespace Core
     {
         /*!
-         * Get file suffix path.
-         */
-        TTK_MODULE_EXPORT QString fileSuffix(const QString &name);
-        /*!
-         * Get file suffix path.
-         */
-        TTK_MODULE_EXPORT QString fileSuffix(const QString &name, const QString &prefix);
-
-        /*!
-         * Get given dir size.
-         */
-        TTK_MODULE_EXPORT quint64 dirSize(const QString &dirName);
-        /*!
-         * Check given dir size is bigger than given size.
-         */
-        TTK_MODULE_EXPORT void checkCacheSize(quint64 cacheSize, bool disabled, const QString &path);
-        /*!
-         * Get all files in given dir.
-         */
-        TTK_MODULE_EXPORT QFileInfoList getFileListByDir(const QString &dpath, bool recursively);
-        /*!
-         * Get all files in given dir.
-         */
-        TTK_MODULE_EXPORT QFileInfoList getFileListByDir(const QString &dpath, const QStringList &filter, bool recursively);
-        /*!
          * Dir remove recursively.
          */
         TTK_MODULE_EXPORT bool removeRecursively(const QString &dir);
@@ -63,15 +37,6 @@ namespace OCRUtils
          * Get Language Name by given index.
          */
         TTK_MODULE_EXPORT QString getLanguageName(int index);
-
-        /*!
-         * App version check.
-         */
-        TTK_MODULE_EXPORT bool appVersionCheck(const QStringList &ol, const QStringList &dl, int depth);
-        /*!
-         * App version check.
-         */
-        TTK_MODULE_EXPORT bool appVersionCheck(const QString &o, const QString &d);
 
     }
 }

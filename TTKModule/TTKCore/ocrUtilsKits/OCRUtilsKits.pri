@@ -23,7 +23,6 @@ HEADERS += \
     $$PWD/ocrcoreutils.h \
     $$PWD/ocrwidgetutils.h \
     $$PWD/ocrcodecutils.h \
-    $$PWD/ocrstringutils.h \
     $$PWD/ocrurlutils.h
 
 SOURCES += \
@@ -31,5 +30,4 @@ SOURCES += \
     $$PWD/ocralgorithmutils.cpp \
     $$PWD/ocrwidgetutils.cpp \
     $$PWD/ocrcodecutils.cpp \
-    $$PWD/ocrstringutils.cpp \
     $$PWD/ocrurlutils.cpp

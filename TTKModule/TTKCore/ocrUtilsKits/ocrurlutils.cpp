@@ -40,31 +40,3 @@ bool OCRUtils::Url::openUrl(const QString &path, bool local)
 #endif
     return QDesktopServices::openUrl(QUrl(path, QUrl::TolerantMode));
 }
-
-void OCRUtils::Url::urlEncode(QString &data)
-{
-    data.replace('+', "%2B");
-    data.replace('/', "%2F");
-    data.replace('=', "%3D");
-}
-
-void OCRUtils::Url::urlDecode(QString &data)
-{
-    data.replace("%2B", "+");
-    data.replace("%2F", "/");
-    data.replace("%3D", "=");
-}
-
-void OCRUtils::Url::urlEncode(QByteArray &data)
-{
-    data.replace('+', "%2B");
-    data.replace('/', "%2F");
-    data.replace('=', "%3D");
-}
-
-void OCRUtils::Url::urlDecode(QByteArray &data)
-{
-    data.replace("%2B", "+");
-    data.replace("%2F", "/");
-    data.replace("%3D", "=");
-}
