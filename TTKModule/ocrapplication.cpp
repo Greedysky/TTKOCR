@@ -85,20 +85,20 @@ void OCRApplication::quitWindowClose()
 
 void OCRApplication::openButtonClicked()
 {
-    QStringList lists(OCRUtils::Widget::getOpenFilesDialog(this, "Images (*.png *.bmp *.jpg);;PDF Files(*.pdf)"));
-    if(lists.isEmpty())
+    QStringList list(OCRUtils::Widget::getOpenFilesDialog(this, "Images (*.png *.bmp *.jpg);;PDF Files(*.pdf)"));
+    if(list.isEmpty())
     {
         return;
     }
 
     clearButtonClicked();
 
-    QString path = lists.first();
+    QString path = list.first();
     bool isPdf = QFileInfo(path).suffix().toLower() == "pdf";
     if(isPdf)
     {
 #ifdef TTK_BUILD_BY_PDF
-        lists.clear();
+        list.clear();
         MuPDF::Document *document = MuPDF::loadDocument(path);
         for(int i=0; i<document->numPages(); i++)
         {
@@ -117,11 +117,11 @@ void OCRApplication::openButtonClicked()
         return;
     }
 
-    for(int i=0; i<lists.count(); ++i)
+    for(int i=0; i<list.count(); ++i)
     {
         OCRThreadItem *item = new OCRThreadItem(this);
         item->m_index = i;
-        item->m_path = lists[i];
+        item->m_path = list[i];
 
         QLabel *ll = new QLabel(m_ui->pixScrollAreaWidget);
         ll->setPixmap(QPixmap(item->m_path).scaled(405, 405, Qt::KeepAspectRatio));
