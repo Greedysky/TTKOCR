@@ -30,21 +30,18 @@ void OCRInitObject::directoryExist(const QString &name)
 
 void OCRInitObject::checkTheDirectoryExist()
 {
-    directoryExist(S_APPDATA_DIR_FULL);
-    directoryExist(S_DOWNLOADS_DIR_FULL);
-
-    directoryExist(S_LANGUAGE_DIR_FULL);
+    directoryExist(TTK_DOWNLOAD_DIR_FULL);
+    directoryExist(TTK_LANGUAGE_DIR_FULL);
 }
 
 void OCRInitObject::checkTheFileNeededExist()
 {
 #ifdef Q_OS_UNIX
-    copyLinuxShellFile(":/data/TTKOCR.sh", S_TTKOCR_FULL);
-    copyLinuxShellFile(":/data/TTKService.sh", S_TTKSERVICE_FULL);
-    copyLinuxShellFile(":/data/TTKRoutine.sh", S_TTKROUTINE_FULL);
-    copyLinuxShellFile(":/data/TTKRoutineCopy.sh", S_TTKROUTINECOPY_FULL);
+    copyLinuxShellFile(":/data/TTKOCR.sh", TTK_OCR_FULL);
+    copyLinuxShellFile(":/data/TTKService.sh", TTK_SERVICE_FULL);
+    copyLinuxShellFile(":/data/TTKRoutine.sh", TTK_ROUTINE_FULL);
+    copyLinuxShellFile(":/data/TTKRoutineCopy.sh", TTK_ROUTINECOPY_FULL);
 #endif
-
 }
 
 void OCRInitObject::copyFileOverwrite(const QString &origin, const QString &des)

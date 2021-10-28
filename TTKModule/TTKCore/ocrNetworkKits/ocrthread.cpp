@@ -1,6 +1,7 @@
 #include "ocrthread.h"
 #include "ocralgorithmutils.h"
 #include "ocrwidgetutils.h"
+#include "ocrobject.h"
 
 #include "qjson/parser.h"
 
@@ -91,11 +92,11 @@ void OCRThread::finishedSlot()
             if(!content.isEmpty())
             {
                 OCRThreadItem *item = qobject_cast<OCRThreadItem*>(m_reply->request().originatingObject());
-                if(!QDir("dir").exists())
+                if(!QDir(DIR_PREFIX).exists())
                 {
-                    QDir().mkdir("dir");
+                    QDir().mkdir(DIR_PREFIX);
                 }
-                QFile file(QString("%1/%2").arg("dir").arg(item->m_index));
+                QFile file(QString("%1/%2").arg(DIR_PREFIX).arg(item->m_index));
                 if(file.open(QFile::WriteOnly))
                 {
                     file.write(content.toUtf8());

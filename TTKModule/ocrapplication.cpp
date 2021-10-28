@@ -147,7 +147,7 @@ void OCRApplication::startButtonClicked()
     }
 
     m_count = 0;
-    OCRUtils::Core::removeRecursively("dir");
+    OCRUtils::Core::removeRecursively(DIR_PREFIX);
 
     for(OCRThreadItem *item : qAsConst(m_fileList))
     {
@@ -168,7 +168,7 @@ void OCRApplication::clearButtonClicked()
 
     m_count = 0;
     deleteItems();
-    OCRUtils::Core::removeRecursively("dir");
+    OCRUtils::Core::removeRecursively(DIR_PREFIX);
     m_ui->textScrollAreaWidget->clear();
 }
 
@@ -177,7 +177,7 @@ void OCRApplication::findFinish()
     ++m_count;
     if(m_count == m_fileList.count())
     {
-        QStringList files(QDir("dir").entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
+        QStringList files(QDir(DIR_PREFIX).entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
         TTKIntList data;
         for(const QString &path : qAsConst(files))
         {
@@ -189,7 +189,7 @@ void OCRApplication::findFinish()
         QString content;
         for(int i=0; i<m_fileList.count(); ++i)
         {
-            QFile file(QString("%1/%2").arg("dir").arg(i));
+            QFile file(QString("%1/%2").arg(DIR_PREFIX).arg(i));
             if(file.open(QFile::ReadOnly))
             {
                 content.append(file.readAll() + "\r\n");
@@ -203,7 +203,7 @@ void OCRApplication::findFinish()
         }
 
         m_ui->textScrollAreaWidget->setText(content);
-        OCRUtils::Core::removeRecursively("dir");
+        OCRUtils::Core::removeRecursively(DIR_PREFIX);
 
         stateChanged(false);
     }
@@ -211,12 +211,12 @@ void OCRApplication::findFinish()
 
 void OCRApplication::pixmapChanged(const QPixmap &pix)
 {
-    if(!QDir().exists(SHOTS_DIR_FULL))
+    if(!QDir().exists(DOWNLOAD_DIR_FULL))
     {
-        QDir().mkpath(SHOTS_DIR_FULL);
+        QDir().mkpath(DOWNLOAD_DIR_FULL);
     }
 
-    QString filename = SHOTS_DIR_FULL + QDateTime::currentDateTime().toString("yyyyMMddhhmmss") + JPG_FILE;
+    QString filename = DOWNLOAD_DIR_FULL + QDateTime::currentDateTime().toString("yyyyMMddhhmmss") + JPG_FILE;
     pix.save(filename, nullptr, 100);
 
     OCRThreadItem *item = new OCRThreadItem(this);

@@ -23,21 +23,16 @@
 #include "ttkversion.h"
 #include "ttkglobaldefine.h"
 
-#define S_APPDATA_DIR_FULL        OCRObject::getAppDir() + APPDATA_DIR
-#define S_DOWNLOADS_DIR_FULL      OCRObject::getAppDir() + DOWNLOADS_DIR
-
-#define S_TEMPORARY_DIR_FULL      S_DOWNLOADS_DIR_FULL + TEMPORARY_DIR
-
-#define S_LANGUAGE_DIR_FULL       OCRObject::getAppDir() + OCR_VERSION_STR + "/" + LANGUAGE_DIR
+#define TTK_DOWNLOAD_DIR_FULL    OCRObject::getAppDir() + DOWNLOAD_DIR
+#define TTK_LANGUAGE_DIR_FULL    OCRObject::getAppDir() + OCR_VERSION_STR + "/" + LANGUAGE_DIR
 
 #ifdef Q_OS_WIN
-#define S_TTKSERVICE_FULL         OCRObject::getAppDir() + OCR_VERSION_STR + "/TTKService.exe"
+#define TTK_SERVICE_FULL         OCRObject::getAppDir() + OCR_VERSION_STR + "/TTKService.exe"
 #else
-#define S_TTKDD_FULL              OCRObject::getAppDir() + OCR_VERSION_STR + "/TTKLDD.sh"
-#define S_TTKSERVICE_FULL         OCRObject::getAppDir() + OCR_VERSION_STR + "/TTKService.sh"
-#define S_TTKOCR_FULL             OCRObject::getAppDir() + "TTKOCR.sh"
-#define S_TTKROUTINE_FULL         OCRObject::getAppDir() + "TTKRoutine.sh"
-#define S_TTKROUTINECOPY_FULL     OCRObject::getAppDir() + OCR_VERSION_STR + "/TTKRoutineCopy.sh"
+#define TTK_OCR_FULL             OCRObject::getAppDir() + "TTKOCR.sh"
+#define TTK_ROUTINE_FULL         OCRObject::getAppDir() + "TTKRoutine.sh"
+#define TTK_SERVICE_FULL         OCRObject::getAppDir() + OCR_VERSION_STR + "/TTKService.sh"
+#define TTK_ROUTINECOPY_FULL     OCRObject::getAppDir() + OCR_VERSION_STR + "/TTKRoutineCopy.sh"
 #endif
 
 
