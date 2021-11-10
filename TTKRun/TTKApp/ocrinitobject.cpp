@@ -8,18 +8,18 @@ OCRInitObject::OCRInitObject(QObject *parent)
 
 }
 
-void OCRInitObject::checkValid()
+void OCRInitObject::valid() const
 {
-    checkTheDirectoryExist();
-    checkTheFileNeededExist();
+    checkDirectoryExist();
+    checkFileNeededExist();
 }
 
-void OCRInitObject::init()
+void OCRInitObject::init() const
 {
-    checkTheFileNeededExist();
+    checkFileNeededExist();
 }
 
-void OCRInitObject::directoryExist(const QString &name)
+void OCRInitObject::directoryExist(const QString &name) const
 {
     QDir dir;
     if(!dir.exists(name))
@@ -28,13 +28,13 @@ void OCRInitObject::directoryExist(const QString &name)
     }
 }
 
-void OCRInitObject::checkTheDirectoryExist()
+void OCRInitObject::checkDirectoryExist() const
 {
     directoryExist(TTK_DOWNLOAD_DIR_FULL);
     directoryExist(TTK_LANGUAGE_DIR_FULL);
 }
 
-void OCRInitObject::checkTheFileNeededExist()
+void OCRInitObject::checkFileNeededExist() const
 {
 #ifdef Q_OS_UNIX
     copyLinuxShellFile(":/data/TTKOCR.sh", TTK_OCR_FULL);
@@ -44,17 +44,18 @@ void OCRInitObject::checkTheFileNeededExist()
 #endif
 }
 
-void OCRInitObject::copyFileOverwrite(const QString &origin, const QString &des)
+void OCRInitObject::copyFileOverwrite(const QString &origin, const QString &des) const
 {
     if(QFile::exists(des))
     {
         QFile::remove(des);
     }
+
     QFile::copy(origin, des);
     QFile::setPermissions(des, QFile::ReadOwner | QFile::WriteOwner);
 }
 
-void OCRInitObject::copyFile(const QString &origin, const QString &des)
+void OCRInitObject::copyFile(const QString &origin, const QString &des) const
 {
     if(!QFile::exists(des))
     {
@@ -63,8 +64,8 @@ void OCRInitObject::copyFile(const QString &origin, const QString &des)
     }
 }
 
-void OCRInitObject::copyLinuxShellFile(const QString &name, const QString &path)
+void OCRInitObject::copyLinuxShellFile(const QString &name, const QString &path) const
 {
     copyFileOverwrite(name, path);
-    QProcess::execute("chmod", QStringList() << "+x" << path);
+    QProcess::execute("chmod", {"+x", path});
 }

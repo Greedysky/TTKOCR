@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     }
 
     OCRRunObject object;
-    object.checkValid();
+    object.valid();
     object.run(argc, argv);
 
     return app.exec();

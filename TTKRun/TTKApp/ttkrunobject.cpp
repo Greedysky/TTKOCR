@@ -41,13 +41,13 @@ OCRRunObject::OCRRunObject(QObject *parent)
     connect(d->m_process, SIGNAL(finished(int)), SLOT(finished(int)));
 }
 
-void OCRRunObject::checkValid()
+void OCRRunObject::valid() const
 {
     OCRInitObject object;
-    object.checkValid();
+    object.valid();
 }
 
-void OCRRunObject::run(int argc, char **argv)
+void OCRRunObject::run(int argc, char **argv) const
 {
     TTK_D(OCRRunObject);
     QStringList list(APP_NAME);
