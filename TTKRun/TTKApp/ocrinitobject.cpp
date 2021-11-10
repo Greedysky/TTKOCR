@@ -67,5 +67,5 @@ void OCRInitObject::copyFile(const QString &origin, const QString &des) const
 void OCRInitObject::copyLinuxShellFile(const QString &name, const QString &path) const
 {
     copyFileOverwrite(name, path);
-    QProcess::execute("chmod", {"+x", path});
+    QProcess::execute("chmod", QStringList() << "+x" << path);
 }
