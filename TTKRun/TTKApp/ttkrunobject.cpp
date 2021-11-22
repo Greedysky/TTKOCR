@@ -50,6 +50,7 @@ void OCRRunObject::valid() const
 void OCRRunObject::run(int argc, char **argv) const
 {
     TTK_D(OCRRunObject);
+
     QStringList list(APP_NAME);
     if(argc == 3)
     {
