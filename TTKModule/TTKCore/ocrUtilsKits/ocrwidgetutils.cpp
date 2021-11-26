@@ -24,5 +24,5 @@ QByteArray OCRUtils::Widget::GeneratePixmapData(const QPixmap &pix)
 
 QStringList OCRUtils::Widget::getOpenFilesDialog(QWidget *obj, const QString &filter)
 {
-    return QFileDialog::getOpenFileNames(obj, QObject::tr("choose a filename to open under"), filter);
+    return QFileDialog::getOpenFileNames(obj, QObject::tr("choose a filename to open under"), QDir::currentPath(), filter);
 }

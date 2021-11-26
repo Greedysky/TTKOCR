@@ -26,7 +26,7 @@
 #define DOT                     "."
 //
 #define DOWNLOAD_DIR            "Downloads/"
-#define LANGUAGE_DIR            "MLanguage/"
+#define LANGUAGE_DIR            "GLanguage/"
 
 
 #define DIR_PREFIX              "dir"
