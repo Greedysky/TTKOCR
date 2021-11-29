@@ -23,10 +23,9 @@
 #include <QCoreApplication>
 #include "ttkglobal.h"
 
-#define DOT                     "."
 //
-#define DOWNLOAD_DIR            "Downloads/"
-#define LANGUAGE_DIR            "GLanguage/"
+#define DOWNLOAD_DIR            TTK_STRCAT("Downloads", TTK_SEPARATOR)
+#define LANGUAGE_DIR            TTK_STRCAT("GLanguage", TTK_SEPARATOR)
 
 
 #define DIR_PREFIX              "dir"
@@ -35,18 +34,18 @@
 #define EXE_FILE_PREFIX         "exe"
 #define COM_FILE_PREFIX         "com"
 
-#define JPG_FILE                TTK_STRCAT(DOT, JPG_FILE_PREFIX)
-#define EXE_FILE                TTK_STRCAT(DOT, EXE_FILE_PREFIX)
-#define COM_FILE                TTK_STRCAT(DOT, COM_FILE_PREFIX)
+#define JPG_FILE                TTK_STRCAT(TTK_DOT, JPG_FILE_PREFIX)
+#define EXE_FILE                TTK_STRCAT(TTK_DOT, EXE_FILE_PREFIX)
+#define COM_FILE                TTK_STRCAT(TTK_DOT, COM_FILE_PREFIX)
 
 
 #define APP_NAME                "TTKOCR"
-#define APP_DOT_NAME            TTK_STRCAT(APP_NAME, DOT)
+#define APP_DOT_NAME            TTK_STRCAT(APP_NAME, TTK_DOT)
 #define APP_COME_NAME           TTK_STRCAT(APP_NAME, COM_FILE)
 #define APP_EXE_NAME            TTK_STRCAT(APP_NAME, EXE_FILE)
 
 
-#define DOWNLOAD_DIR_FULL       OCRObject::getAppDir() + QString("../") + DOWNLOAD_DIR
+#define DOWNLOAD_DIR_FULL       OCRObject::getAppDir() + TTK_PDIR + DOWNLOAD_DIR
 #define LANGUAGE_DIR_FULL       OCRObject::getAppDir() + LANGUAGE_DIR
 
 
@@ -59,9 +58,6 @@
 #define DEFAULT_INDEX_LEVEL3    -777
 #define DEFAULT_INDEX_LEVEL4    -666
 #define DEFAULT_INDEX_LEVEL5    -555
-//
-#define STRING_NULL             "-"
-#define URL_NULL                "null"
 
 
 /*! @brief The namespace of the application object.
@@ -70,11 +66,11 @@
 namespace OCRObject
 {
     /*!
-     * Get application dir.
+     * Get application work dir.
      */
     static QString getAppDir()
     {
-        return QCoreApplication::applicationDirPath() + "/";
+        return QCoreApplication::applicationDirPath() + TTK_SEPARATOR;
     }
 }
 

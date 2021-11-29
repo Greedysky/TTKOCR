@@ -8,7 +8,7 @@
 #include "ocrthread.h"
 #include "ocruiobject.h"
 #ifdef TTK_BUILD_BY_PDF
-#include "include/mupdf-qt.h"
+#  include "include/mupdf-qt.h"
 #endif
 #include <QScrollBar>
 
@@ -19,9 +19,7 @@ OCRApplication::OCRApplication(QWidget *parent)
       m_ui(new Ui::OCRApplication)
 {
     m_instance = this;
-//#if TTK_QT_VERSION_CHECK(5,0,0)
     setAttribute(Qt::WA_TranslucentBackground, false);
-//#endif
 
     m_count = 0;
     m_applicationObject = new OCRApplicationObject(this);

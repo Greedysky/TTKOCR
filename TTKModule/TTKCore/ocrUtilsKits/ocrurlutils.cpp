@@ -4,8 +4,8 @@
 #include <QProcess>
 #include <QDesktopServices>
 #ifdef Q_OS_WIN
-#include <qt_windows.h>
-#include <shellapi.h>
+#  include <qt_windows.h>
+#  include <shellapi.h>
 #endif
 
 bool OCRUtils::Url::openUrl(const QString &exe, const QString &path)
