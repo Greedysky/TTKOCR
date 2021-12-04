@@ -116,7 +116,7 @@ void OCRAbstractMoveWidget::setBackgroundPixmap(QLabel *label, const QSize &size
 void OCRAbstractMoveWidget::setBackgroundPixmap(const QSize &size)
 {
     QLabel *label = TTKStatic_cast(QLabel*, m_background);
-    label->setPixmap(QPixmap(M_BACKGROUND_PTR->getMBackground()).scaled(size));
+    label->setPixmap(QPixmap(M_BACKGROUND_PTR->background()).scaled(size));
 }
 
 

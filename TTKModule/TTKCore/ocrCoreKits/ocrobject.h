@@ -1,9 +1,9 @@
 #ifndef OCROBJECT_H
 #define OCROBJECT_H
 
-/* =================================================
+/***************************************************************************
  * This file is part of the TTK OCR project
- * Copyright (C) 2015 - 2021 Greedysky Studio
+ * Copyright (C) 2015 - 2022 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 
  * You should have received a copy of the GNU General Public License along
  * with this program; If not, see <http://www.gnu.org/licenses/>.
- ================================================= */
+ ***************************************************************************/
 
 #include <QDir>
 #include <QCoreApplication>
@@ -45,8 +45,8 @@
 #define APP_EXE_NAME            TTK_STRCAT(APP_NAME, EXE_FILE)
 
 
-#define DOWNLOAD_DIR_FULL       OCRObject::getAppDir() + TTK_PDIR + DOWNLOAD_DIR
-#define LANGUAGE_DIR_FULL       OCRObject::getAppDir() + LANGUAGE_DIR
+#define DOWNLOAD_DIR_FULL       OCRObject::applicationPath() + TTK_PDIR + DOWNLOAD_DIR
+#define LANGUAGE_DIR_FULL       OCRObject::applicationPath() + LANGUAGE_DIR
 
 
 #define WINDOW_WIDTH_MIN        850
@@ -68,7 +68,7 @@ namespace OCRObject
     /*!
      * Get application work dir.
      */
-    static QString getAppDir()
+    static QString applicationPath()
     {
         return QCoreApplication::applicationDirPath() + TTK_SEPARATOR;
     }

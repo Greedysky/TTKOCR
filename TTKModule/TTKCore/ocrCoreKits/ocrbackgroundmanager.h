@@ -1,9 +1,9 @@
 #ifndef OCRBACKGROUNDMANAGER_H
 #define OCRBACKGROUNDMANAGER_H
 
-/* =================================================
+/***************************************************************************
  * This file is part of the TTK OCR project
- * Copyright (C) 2015 - 2021 Greedysky Studio
+ * Copyright (C) 2015 - 2022 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 
  * You should have received a copy of the GNU General Public License along
  * with this program; If not, see <http://www.gnu.org/licenses/>.
- ================================================= */
+ ***************************************************************************/
 
 #include <QColor>
 #include "ttksingleton.h"
@@ -45,20 +45,20 @@ public:
     /*!
      * Set background picture by path.
      */
-    void setMBackground(const QString &path);
+    void setBackground(const QString &path);
     /*!
      * Get background picture path.
      */
-    QString getMBackground() const;
+    QString background() const;
 
     /*!
      * Set background picture color.
      */
-    void setMBackgroundColor(const QColor &color);
+    void setBackgroundColor(const QColor &color);
     /*!
      * Get background picture color.
      */
-    QColor getMBackgroundColor() const;
+    QColor backgroundColor() const;
 
     /*!
      * Get artist background picture path.

@@ -14,7 +14,7 @@ OCRApplicationObject::OCRApplicationObject(QObject *parent)
     Q_INIT_RESOURCE(TTKOCR);
     m_instance = this;
 
-    M_BACKGROUND_PTR->setMBackground(":/image/lb_background");
+    M_BACKGROUND_PTR->setBackground(":/image/lb_background");
 
     m_animation = new QPropertyAnimation(OCRApplication::instance(), "windowOpacity", this);
 }

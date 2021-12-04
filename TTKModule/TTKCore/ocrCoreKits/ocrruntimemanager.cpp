@@ -31,5 +31,5 @@ void OCRRunTimeManager::run() const
 
 QString OCRRunTimeManager::translator() const
 {
-    return OCRUtils::Core::getLanguageName(0);
+    return OCRUtils::Core::languageName(0);
 }

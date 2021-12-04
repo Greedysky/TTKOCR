@@ -54,7 +54,7 @@ bool OCRUtils::Core::removeRecursively(const QString &dir)
     return success;
 }
 
-QString OCRUtils::Core::getLanguageName(int index)
+QString OCRUtils::Core::languageName(int index)
 {
     QString lan(LANGUAGE_DIR_FULL);
     switch(index)

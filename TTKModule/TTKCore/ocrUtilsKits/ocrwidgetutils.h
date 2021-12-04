@@ -1,9 +1,9 @@
 #ifndef OCRWIDGETUTILS_H
 #define OCRWIDGETUTILS_H
 
-/* =================================================
+/***************************************************************************
  * This file is part of the TTK OCR project
- * Copyright (C) 2015 - 2021 Greedysky Studio
+ * Copyright (C) 2015 - 2022 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 
  * You should have received a copy of the GNU General Public License along
  * with this program; If not, see <http://www.gnu.org/licenses/>.
- ================================================= */
+ ***************************************************************************/
 
 #include "ttkglobaldefine.h"
 
@@ -31,11 +31,11 @@ namespace OCRUtils
         /*!
          * Get pximap data.
          */
-        TTK_MODULE_EXPORT QByteArray GeneratePixmapData(const QPixmap &pix);
+        TTK_MODULE_EXPORT QByteArray generatePixmapData(const QPixmap &pix);
         /*!
          * Get open file dialog.
          */
-        TTK_MODULE_EXPORT QStringList getOpenFilesDialog(QWidget *obj, const QString &filter);
+        TTK_MODULE_EXPORT QStringList openFilesDialog(QWidget *obj, const QString &filter);
 
     }
 }

@@ -5,7 +5,7 @@
 #include <QPainter>
 #include <QFileDialog>
 
-QByteArray OCRUtils::Widget::GeneratePixmapData(const QPixmap &pix)
+QByteArray OCRUtils::Widget::generatePixmapData(const QPixmap &pix)
 {
     if(pix.isNull())
     {
@@ -22,7 +22,7 @@ QByteArray OCRUtils::Widget::GeneratePixmapData(const QPixmap &pix)
     return data;
 }
 
-QStringList OCRUtils::Widget::getOpenFilesDialog(QWidget *obj, const QString &filter)
+QStringList OCRUtils::Widget::openFilesDialog(QWidget *obj, const QString &filter)
 {
     return QFileDialog::getOpenFileNames(obj, QObject::tr("choose a filename to open under"), QDir::currentPath(), filter);
 }

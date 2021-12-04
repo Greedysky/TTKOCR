@@ -1,9 +1,9 @@
 #ifndef OCRINITOBJECT_H
 #define OCRINITOBJECT_H
 
-/* =================================================
+/***************************************************************************
  * This file is part of the TTK OCR project
- * Copyright (C) 2015 - 2021 Greedysky Studio
+ * Copyright (C) 2015 - 2022 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,22 +17,22 @@
 
  * You should have received a copy of the GNU General Public License along
  * with this program; If not, see <http://www.gnu.org/licenses/>.
- ================================================= */
+ ***************************************************************************/
 
 #include "ocrobject.h"
 #include "ttkversion.h"
 #include "ttkglobaldefine.h"
 
-#define TTK_DOWNLOAD_DIR_FULL    OCRObject::getAppDir() + DOWNLOAD_DIR
-#define TTK_LANGUAGE_DIR_FULL    OCRObject::getAppDir() + OCR_VERSION_STR + TTK_SEPARATOR + LANGUAGE_DIR
+#define TTK_DOWNLOAD_DIR_FULL    OCRObject::applicationPath() + DOWNLOAD_DIR
+#define TTK_LANGUAGE_DIR_FULL    OCRObject::applicationPath() + OCR_VERSION_STR + TTK_SEPARATOR + LANGUAGE_DIR
 
 #ifdef Q_OS_WIN
-#  define TTK_SERVICE_FULL         OCRObject::getAppDir() + OCR_VERSION_STR + TTK_SEPARATOR + "TTKService.exe"
+#  define TTK_SERVICE_FULL       OCRObject::applicationPath() + OCR_VERSION_STR + TTK_SEPARATOR + "TTKService.exe"
 #else
-#  define TTK_OCR_FULL             OCRObject::getAppDir() + "TTKOCR.sh"
-#  define TTK_ROUTINE_FULL         OCRObject::getAppDir() + "TTKRoutine.sh"
-#  define TTK_SERVICE_FULL         OCRObject::getAppDir() + OCR_VERSION_STR + TTK_SEPARATOR + "TTKService.sh"
-#  define TTK_ROUTINECOPY_FULL     OCRObject::getAppDir() + OCR_VERSION_STR + TTK_SEPARATOR + "TTKRoutineCopy.sh"
+#  define TTK_OCR_FULL           OCRObject::applicationPath() + "TTKOCR.sh"
+#  define TTK_ROUTINE_FULL       OCRObject::applicationPath() + "TTKRoutine.sh"
+#  define TTK_SERVICE_FULL       OCRObject::applicationPath() + OCR_VERSION_STR + TTK_SEPARATOR + "TTKService.sh"
+#  define TTK_ROUTINECOPY_FULL   OCRObject::applicationPath() + OCR_VERSION_STR + TTK_SEPARATOR + "TTKRoutineCopy.sh"
 #endif
 
 

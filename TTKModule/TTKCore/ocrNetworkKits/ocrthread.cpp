@@ -43,7 +43,7 @@ void OCRThread::start(OCRThreadItem *item)
     QHttpPart part;
     part.setRawHeader("Content-Disposition", content.toUtf8());
     part.setRawHeader("Content-Type", "image/jpeg");
-    part.setBody(OCRUtils::Widget::GeneratePixmapData(pix));
+    part.setBody(OCRUtils::Widget::generatePixmapData(pix));
     multiPart->append(part);
     multiPart->setBoundary("----");
 

@@ -38,7 +38,7 @@ void OCRGifLabelWidget::setType(Type type)
     }
 }
 
-OCRGifLabelWidget::Type OCRGifLabelWidget::getType() const
+OCRGifLabelWidget::Type OCRGifLabelWidget::type() const
 {
     return m_type;
 }
@@ -48,7 +48,7 @@ void OCRGifLabelWidget::setInterval(int value)
     m_timer->setInterval(value);
 }
 
-int OCRGifLabelWidget::getInterval() const
+int OCRGifLabelWidget::interval() const
 {
     return m_timer->interval();
 }
@@ -58,7 +58,7 @@ void OCRGifLabelWidget::setInfinited(bool s)
     m_infinited = s;
 }
 
-bool OCRGifLabelWidget::getInfinited() const
+bool OCRGifLabelWidget::infinited() const
 {
     return m_infinited;
 }
