@@ -45,11 +45,11 @@ protected:
     /*!
      * Override the widget event.
      */
-    virtual void paintEvent(QPaintEvent *event) override;
-    virtual void mouseMoveEvent(QMouseEvent *event) override;
-    virtual void mousePressEvent(QMouseEvent *event) override;
-    virtual void mouseReleaseEvent(QMouseEvent *event) override;
-    virtual void keyPressEvent(QKeyEvent *event) override;
+    virtual void paintEvent(QPaintEvent *event) override final;
+    virtual void mouseMoveEvent(QMouseEvent *event) override final;
+    virtual void mousePressEvent(QMouseEvent *event) override final;
+    virtual void mouseReleaseEvent(QMouseEvent *event) override final;
+    virtual void keyPressEvent(QKeyEvent *event) override final;
 
     bool m_isDrawing;
     QPixmap m_originPixmap;

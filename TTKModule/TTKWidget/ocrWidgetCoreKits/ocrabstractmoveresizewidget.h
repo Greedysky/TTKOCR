@@ -65,10 +65,10 @@ protected:
     /*!
      * Override the widget event.
      */
-    virtual bool eventFilter(QObject *object, QEvent *event) override;
-    virtual void mousePressEvent(QMouseEvent *event) override;
-    virtual void mouseReleaseEvent(QMouseEvent *event) override;
-    virtual void mouseMoveEvent(QMouseEvent *event) override;
+    virtual bool eventFilter(QObject *object, QEvent *event) override final;
+    virtual void mousePressEvent(QMouseEvent *event) override final;
+    virtual void mouseReleaseEvent(QMouseEvent *event) override final;
+    virtual void mouseMoveEvent(QMouseEvent *event) override final;
 
     /*!
      * Size direction detected.

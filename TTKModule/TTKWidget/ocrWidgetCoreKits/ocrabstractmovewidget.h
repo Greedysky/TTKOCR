@@ -39,7 +39,7 @@ public:
      * Object contsructor.
      */
     explicit OCRAbstractMoveWidget(bool transparent, QWidget *parent = nullptr);
-    virtual ~OCRAbstractMoveWidget();
+    ~OCRAbstractMoveWidget();
 
     /*!
      * Set or not draw window bound shadow.
@@ -60,10 +60,10 @@ protected:
     /*!
      * Override the widget event.
      */
-    virtual void paintEvent(QPaintEvent *event) override;
-    virtual void mousePressEvent(QMouseEvent *event) override;
-    virtual void mouseMoveEvent(QMouseEvent *event) override;
-    virtual void mouseReleaseEvent(QMouseEvent *event) override;
+    virtual void paintEvent(QPaintEvent *event) override final;
+    virtual void mousePressEvent(QMouseEvent *event) override final;
+    virtual void mouseMoveEvent(QMouseEvent *event) override final;
+    virtual void mouseReleaseEvent(QMouseEvent *event) override final;
     /*!
      * Set background pixmap.
      */
@@ -97,7 +97,7 @@ public:
      * Object contsructor.
      */
     explicit OCRAbstractMoveSingleWidget(bool transparent, QWidget *parent = nullptr);
-    virtual ~OCRAbstractMoveSingleWidget();
+    ~OCRAbstractMoveSingleWidget();
 
 protected:
     QWidget *m_container;
