@@ -18,7 +18,7 @@
 
 INCLUDEPATH += $$PWD
 
-HEADERS  += \
+HEADERS += \
     $$PWD/ocrnetworkthread.h \
     $$PWD/ocrthread.h
 

@@ -30,12 +30,11 @@ INCLUDEPATH +=  \
     $$PWD/../TTKModule/TTKWidget/ocrWidgetCoreKits
 
 win32:msvc{
-HEADERS  += \
+HEADERS += \
     $$PWD/../TTKModule/ocrapplication.h \
     $$PWD/../TTKModule/TTKWidget/ocrWidgetCoreKits/ocrabstractmoveresizewidget.h
 }
 
-SOURCES += \
-    ocrservicemain.cpp
+SOURCES += $$PWD/ocrservicemain.cpp
 
-win32:RC_FILE = TTKService.rc
+win32:RC_FILE = $$PWD/TTKService.rc

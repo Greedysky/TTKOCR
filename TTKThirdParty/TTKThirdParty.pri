@@ -17,8 +17,8 @@
 # ***************************************************************************
 
 INCLUDEPATH += \
-        $$PWD \
-        $$PWD/Zlib \
-        $$PWD/TTKDumper \
-        $$PWD/TTKPdf \
-        $$PWD/TTKExtras
+    $$PWD \
+    $$PWD/Zlib \
+    $$PWD/TTKDumper \
+    $$PWD/TTKPdf \
+    $$PWD/TTKExtras

@@ -16,8 +16,8 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # ***************************************************************************
 
-QT       += core gui
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += core gui
+greaterThan(QT_MAJOR_VERSION, 4):QT += widgets
 
 TEMPLATE = lib
 
@@ -31,12 +31,13 @@ LIBS += -L$$DESTDIR -lmupdf -lfreetype -ljbig2dec -ljpeg -lmujs -lopenjpeg -lz
 
 CONFIG += plugin lib
 
-INCLUDEPATH += $$PWD \
-               $$PWD/include \
-               $$PWD/src/private \
-               $$PWD/mupdf
+INCLUDEPATH += \
+    $$PWD \
+    $$PWD/include \
+    $$PWD/src/private \
+    $$PWD/mupdf
 
-HEADERS  += \
+HEADERS += \
     $$PWD/include/mupdf-document.h \
     $$PWD/include/mupdf-link.h \
     $$PWD/include/mupdf-outline.h \
@@ -59,4 +60,4 @@ SOURCES += \
 #load extra define
 include($$PWD/../TTKExtrasDefine.pri)
 
-win32:RC_FILE = TTKPdf.rc
+win32:RC_FILE = $$PWD/TTKPdf.rc

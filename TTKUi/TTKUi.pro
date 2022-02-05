@@ -17,17 +17,15 @@
 # ***************************************************************************
 
 TEMPLATE = lib
-msvc{
-    CONFIG += staticlib
-}
+msvc:CONFIG += staticlib
 
 include($$PWD/../TTKVersion.pri)
+
 CONFIG += plugin lib
 
 DESTDIR = $$OUT_PWD/../bin/$$TTKOCR
 TARGET = TTKUi
 
-RESOURCES += \
-    TTKOCR.qrc
+RESOURCES += $$PWD/TTKOCR.qrc
     
-win32:RC_FILE = TTKUi.rc
+win32:RC_FILE = $$PWD/TTKUi.rc

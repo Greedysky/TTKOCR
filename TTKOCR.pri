@@ -16,24 +16,26 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # ***************************************************************************
 
-QT       += core gui network
+QT += core gui network
 equals(QT_MAJOR_VERSION, 4){ #Qt4
-CONFIG   += gcc
+    CONFIG += gcc
 }
+
 greaterThan(QT_MAJOR_VERSION, 4){ #Qt5
-    QT   += widgets
+    QT += widgets
     equals(QT_MAJOR_VERSION, 6){ #Qt6
-        QT   += core5compat
+        QT += core5compat
     }
 }
 
 include($$PWD/TTKVersion.pri)
+
 DESTDIR = $$OUT_PWD/../bin/$$TTKOCR
 
 include($$PWD/TTKBuild.pri)
 
 ##openssl lib check
-win32:{
+win32{
     SSL_DEPANDS = $$DESTDIR/ssleay32.dll
     SSL_DEPANDS = $$replace(SSL_DEPANDS, /, \\)
     exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
@@ -44,40 +46,41 @@ unix:!mac{
 }
 
 win32{
-    greaterThan(QT_MAJOR_VERSION, 4){
-        msvc{
-            LIBS += -lshell32 -luser32
-            LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
-            contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
-            CONFIG += c++11
-            !contains(QMAKE_TARGET.arch, x86_64){
-                 #support on windows XP
-                 QMAKE_LFLAGS_WINDOWS = /SUBSYSTEM:WINDOWS,5.01
-                 QMAKE_LFLAGS_CONSOLE = /SUBSYSTEM:CONSOLE,5.01
-            }
-        }
-
-        gcc{
-            LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
-            contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
-            QMAKE_CXXFLAGS += -std=c++11 -Wunused-function -Wswitch
+    msvc{
+        LIBS += -lshell32 -luser32
+        LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
+        contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
+        CONFIG += c++11
+        !contains(QMAKE_TARGET.arch, x86_64){
+             #support on windows XP
+             QMAKE_LFLAGS_WINDOWS = /SUBSYSTEM:WINDOWS,5.01
+             QMAKE_LFLAGS_CONSOLE = /SUBSYSTEM:CONSOLE,5.01
         }
     }
 
-    equals(QT_MAJOR_VERSION, 4){
-        QT  += multimedia
-        gcc{
-            LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
-            contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
-            QMAKE_CXXFLAGS += -std=c++11 -Wunused-function -Wswitch
+    gcc{
+        LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
+        contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
+        equals(QT_MAJOR_VERSION, 6){ #Qt6
+            QMAKE_CXXFLAGS += -std=c++17
+        }else{
+            QMAKE_CXXFLAGS += -std=c++11
         }
+        QMAKE_CXXFLAGS += -Wunused-function -Wswitch
     }
+
+    equals(QT_MAJOR_VERSION, 4):QT += multimedia
 }
 
 unix:!mac{
     LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
     contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
-    QMAKE_CXXFLAGS += -std=c++11 -Wunused-function -Wswitch
+    equals(QT_MAJOR_VERSION, 6){ #Qt6
+        QMAKE_CXXFLAGS += -std=c++17
+    }else{
+        QMAKE_CXXFLAGS += -std=c++11
+    }
+    QMAKE_CXXFLAGS += -Wunused-function -Wswitch
 }
 
 DEFINES += TTK_LIBRARY

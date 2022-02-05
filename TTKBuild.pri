@@ -19,7 +19,6 @@
 #enbale pdf module
 #CONFIG += TTK_BUILD_BY_PDF
 
-
 contains(CONFIG, TTK_BUILD_BY_PDF){
-DEFINES += TTK_BUILD_BY_PDF
+    DEFINES += TTK_BUILD_BY_PDF
 }

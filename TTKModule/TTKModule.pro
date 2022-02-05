@@ -20,19 +20,19 @@ TEMPLATE = lib
 
 include($$PWD/TTKModule.pri)
 include($$PWD/../TTKOCR.pri)
+
 CONFIG += plugin lib
 
 TARGET = TTKCore
 
 INCLUDEPATH += $$PWD
 
+HEADERS += \
+    $$PWD/ocrapplication.h \
+    $$PWD/ocrapplicationobject.h
+
 SOURCES += \
-    ocrapplicationobject.cpp \
-    ocrapplication.cpp
-
-
-HEADERS  += \
-    ocrapplication.h \
-    ocrapplicationobject.h
+    $$PWD/ocrapplicationobject.cpp \
+    $$PWD/ocrapplication.cpp
     
-win32:RC_FILE = TTKCore.rc
+win32:RC_FILE = $$PWD/TTKCore.rc

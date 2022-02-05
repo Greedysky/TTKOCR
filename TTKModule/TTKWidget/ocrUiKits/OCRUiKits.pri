@@ -22,5 +22,4 @@ HEADERS += \
     $$PWD/ocruiobject.h \
     $$PWD/ocrfunctionlistuiobject.h
 
-FORMS += \
-    $$PWD/ocrapplication.ui
+FORMS += $$PWD/ocrapplication.ui
