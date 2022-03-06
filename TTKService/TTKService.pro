@@ -27,12 +27,12 @@ LIBS += -L$$DESTDIR -lTTKCore -lTTKDumper
 INCLUDEPATH +=  \
     $$PWD/../TTKModule \
     $$PWD/../TTKModule/TTKCore/ocrCoreKits \
-    $$PWD/../TTKModule/TTKWidget/ocrWidgetCoreKits
+    $$PWD/../TTKModule/TTKWidget/ocrCoreKits
 
 win32:msvc{
 HEADERS += \
     $$PWD/../TTKModule/ocrapplication.h \
-    $$PWD/../TTKModule/TTKWidget/ocrWidgetCoreKits/ocrabstractmoveresizewidget.h
+    $$PWD/../TTKModule/TTKWidget/ocrCoreKits/ocrabstractmoveresizewidget.h
 }
 
 SOURCES += $$PWD/ocrservicemain.cpp
