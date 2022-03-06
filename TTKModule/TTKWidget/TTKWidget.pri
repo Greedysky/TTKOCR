@@ -17,4 +17,4 @@
 # ***************************************************************************
 
 include($$PWD/ocrUiKits/OCRUiKits.pri)
-include($$PWD/ocrWidgetCoreKits/OCRWidgetCoreKits.pri)
+include($$PWD/ocrCoreKits/OCRCoreKits.pri)

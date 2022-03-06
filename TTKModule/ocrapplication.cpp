@@ -83,7 +83,7 @@ void OCRApplication::quitWindowClose()
 
 void OCRApplication::openButtonClicked()
 {
-    QStringList list(OCRUtils::Widget::openFilesDialog(this, "Images (*.png *.bmp *.jpg);;PDF Files(*.pdf)"));
+    const QStringList list(OCRUtils::Widget::openFilesDialog(this, "Images (*.png *.bmp *.jpg);;PDF Files(*.pdf)"));
     if(list.isEmpty())
     {
         return;
@@ -91,9 +91,8 @@ void OCRApplication::openButtonClicked()
 
     clearButtonClicked();
 
-    QString path = list.first();
-    bool isPdf = QFileInfo(path).suffix().toLower() == "pdf";
-    if(isPdf)
+    const QString &path = list.first();
+    if(QFileInfo(path).suffix().toLower() == "pdf")
     {
 #ifdef TTK_BUILD_BY_PDF
         list.clear();
@@ -175,11 +174,11 @@ void OCRApplication::findFinish()
     ++m_count;
     if(m_count == m_fileList.count())
     {
-        QStringList files(QDir(DIR_PREFIX).entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
+        const QStringList files(QDir(DIR_PREFIX).entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
         TTKIntList data;
         for(const QString &path : qAsConst(files))
         {
-            QString fileName = QFileInfo(path).baseName();
+            const QString &fileName = QFileInfo(path).baseName();
             data << fileName.trimmed().toInt();
         }
         std::sort(data.begin(), data.end(), std::less<int>());
@@ -214,7 +213,7 @@ void OCRApplication::pixmapChanged(const QPixmap &pix)
         QDir().mkpath(DOWNLOAD_DIR_FULL);
     }
 
-    QString filename = DOWNLOAD_DIR_FULL + QDateTime::currentDateTime().toString("yyyyMMddhhmmss") + JPG_FILE;
+    const QString &filename = DOWNLOAD_DIR_FULL + QDateTime::currentDateTime().toString("yyyyMMddhhmmss") + JPG_FILE;
     pix.save(filename, nullptr, 100);
 
     OCRThreadItem *item = new OCRThreadItem(this);

@@ -1,6 +1,5 @@
 #include "ocrabstractmoveresizewidget.h"
 
-#include <QPainter>
 #include <QMouseEvent>
 #include <QApplication>
 
@@ -10,6 +9,7 @@ OCRAbstractMoveResizeWidget::OCRAbstractMoveResizeWidget(QWidget *parent)
     : QWidget(parent)
 {
     m_struct.m_mouseLeftPress = false;
+    m_struct.m_isPressBorder = false;
     m_direction = Direction_No;
 
     setWindowFlags(Qt::FramelessWindowHint);
@@ -27,6 +27,22 @@ bool OCRAbstractMoveResizeWidget::eventFilter(QObject *object, QEvent *event)
         QApplication::sendEvent(this, mouseEvent);
     }
     return false;
+}
+
+void OCRAbstractMoveResizeWidget::paintEvent(QPaintEvent *event)
+{
+    QWidget::paintEvent(event);
+    if(m_struct.m_isPressBorder || m_direction == Direction_No)
+    {
+        return;
+    }
+
+    const QPoint &point = mapFromGlobal(QCursor::pos());
+    if(point.y() > DISTANCE && point.y() < height() - DISTANCE && point.x() > DISTANCE && point.x() < width() - DISTANCE)
+    {
+        setCursor(Qt::ArrowCursor);
+        m_direction = Direction_No;
+    }
 }
 
 void OCRAbstractMoveResizeWidget::mousePressEvent(QMouseEvent *event)
@@ -60,14 +76,14 @@ void OCRAbstractMoveResizeWidget::mouseMoveEvent(QMouseEvent *event)
 {
     QWidget::mouseMoveEvent(event);
     !m_struct.m_isPressBorder ? sizeDirection() : moveDirection();
+
     if(m_struct.m_mouseLeftPress)
     {
 #if TTK_QT_VERSION_CHECK(6,0,0)
-        const QPoint &pt = event->globalPosition().toPoint();
+        move(m_struct.m_windowPos + (event->globalPosition().toPoint() - m_struct.m_mousePos));
 #else
-        const QPoint &pt = event->globalPos();
+        move(m_struct.m_windowPos + (event->globalPos() - m_struct.m_mousePos));
 #endif
-        move(m_struct.m_windowPos + (pt - m_struct.m_mousePos));
     }
 }
 
@@ -77,11 +93,12 @@ void OCRAbstractMoveResizeWidget::mouseReleaseEvent(QMouseEvent *event)
     m_struct.m_isPressBorder = false;
     m_struct.m_mouseLeftPress = false;
     setCursor(QCursor(Qt::ArrowCursor));
+    m_direction = Direction_No;
 }
 
 void OCRAbstractMoveResizeWidget::sizeDirection()
 {
-    QPoint point = mapFromGlobal(QCursor::pos());
+    const QPoint &point = mapFromGlobal(QCursor::pos());
     if(point.x() > width() - DISTANCE && point.y() < height() - DISTANCE && point.y() > DISTANCE)
     {
         setCursor(Qt::SizeHorCursor);
@@ -135,7 +152,7 @@ void OCRAbstractMoveResizeWidget::moveDirection()
     {
         case Direction_Right:
         {
-            int wValue = QCursor::pos().x() - x();
+            const int wValue = QCursor::pos().x() - x();
             if(minimumWidth() <= wValue && wValue <= maximumWidth())
             {
                 setGeometry(x(), y(), wValue, height());
@@ -144,7 +161,7 @@ void OCRAbstractMoveResizeWidget::moveDirection()
         }
         case Direction_Left:
         {
-            int wValue = x() + width() - QCursor::pos().x();
+            const int wValue = x() + width() - QCursor::pos().x();
             if(minimumWidth() <= wValue && wValue <= maximumWidth())
             {
                 setGeometry(QCursor::pos().x(), y(), wValue, height());
@@ -153,7 +170,7 @@ void OCRAbstractMoveResizeWidget::moveDirection()
         }
         case Direction_Bottom:
         {
-            int hValue = QCursor::pos().y() - y();
+            const int hValue = QCursor::pos().y() - y();
             if(minimumHeight() <= hValue && hValue <= maximumHeight())
             {
                 setGeometry(x(), y(), width(), hValue);
@@ -162,7 +179,7 @@ void OCRAbstractMoveResizeWidget::moveDirection()
         }
         case Direction_Top:
         {
-            int hValue = y() - QCursor::pos().y() + height();
+            const int hValue = y() - QCursor::pos().y() + height();
             if(minimumHeight() <= hValue && hValue <= maximumHeight())
             {
                 setGeometry(x(), QCursor::pos().y(), width(), hValue);
@@ -172,13 +189,14 @@ void OCRAbstractMoveResizeWidget::moveDirection()
         case Direction_RightTop:
         {
             int hValue = y() + height() - QCursor::pos().y();
-            int wValue = QCursor::pos().x() - x();
+            const int wValue = QCursor::pos().x() - x();
             int yValue = QCursor::pos().y();
             if(hValue >= maximumHeight())
             {
                 yValue = m_struct.m_windowPos.y() + m_struct.m_pressedSize.height() - height();
                 hValue = maximumHeight();
             }
+
             if(hValue <= minimumHeight())
             {
                 yValue = m_struct.m_windowPos.y() + m_struct.m_pressedSize.height() - height();
@@ -194,24 +212,28 @@ void OCRAbstractMoveResizeWidget::moveDirection()
 
             int wValue = pos().x() + width()- xValue;
             int hValue = pos().y() + height() - yValue;
-            int twValue = m_struct.m_windowPos.x() + m_struct.m_pressedSize.width();
-            int thValue = m_struct.m_windowPos.y() + m_struct.m_pressedSize.height();
+
+            const int twValue = m_struct.m_windowPos.x() + m_struct.m_pressedSize.width();
+            const int thValue = m_struct.m_windowPos.y() + m_struct.m_pressedSize.height();
 
             if(twValue - xValue >= maximumWidth())
             {
                 xValue = twValue - maximumWidth();
                 wValue = maximumWidth();
             }
+
             if(twValue - xValue <= minimumWidth())
             {
                 xValue = twValue - minimumWidth();
                 wValue = minimumWidth();
             }
+
             if(thValue - yValue >= maximumHeight())
             {
                 yValue = thValue - maximumHeight();
                 hValue = maximumHeight();
             }
+
             if(thValue - yValue <= minimumHeight())
             {
                 yValue = thValue - minimumHeight();
@@ -222,22 +244,24 @@ void OCRAbstractMoveResizeWidget::moveDirection()
         }
         case Direction_RightBottom:
         {
-            int wValue = QCursor::pos().x() - x();
-            int hValue = QCursor::pos().y() - y();
+            const int wValue = QCursor::pos().x() - x();
+            const int hValue = QCursor::pos().y() - y();
             setGeometry(m_struct.m_windowPos.x(), m_struct.m_windowPos.y(), wValue, hValue);
             break;
         }
         case Direction_LeftBottom:
         {
             int wValue = x() + width() - QCursor::pos().x();
-            int hValue = QCursor::pos().y() - m_struct.m_windowPos.y();
+            const int hValue = QCursor::pos().y() - m_struct.m_windowPos.y();
             int xValue = QCursor::pos().x();
-            int twValue = m_struct.m_windowPos.x() + m_struct.m_pressedSize.width();
+            const int twValue = m_struct.m_windowPos.x() + m_struct.m_pressedSize.width();
+
             if(twValue - xValue >= maximumWidth())
             {
                 xValue = twValue - maximumWidth();
                 wValue = maximumWidth();
             }
+
             if(twValue - xValue <= minimumWidth())
             {
                 xValue = twValue - minimumWidth();
@@ -248,18 +272,4 @@ void OCRAbstractMoveResizeWidget::moveDirection()
         }
         default: break;
     }
-}
-
-QObjectList OCRAbstractMoveResizeWidget::foreachWidget(QObject *object)
-{
-    QObjectList result;
-    foreach(QObject *obj, object->children())
-    {
-        if("QWidget" == QString(obj->metaObject()->className()))
-        {
-            result.append(obj);
-        }
-        result += foreachWidget(obj);
-    }
-    return result;
 }

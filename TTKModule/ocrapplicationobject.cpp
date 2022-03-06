@@ -13,10 +13,9 @@ OCRApplicationObject::OCRApplicationObject(QObject *parent)
 {
     Q_INIT_RESOURCE(TTKOCR);
     m_instance = this;
-
-    M_BACKGROUND_PTR->setBackground(":/image/lb_background");
-
     m_animation = new QPropertyAnimation(OCRApplication::instance(), "windowOpacity", this);
+
+    G_BACKGROUND_PTR->setBackground(":/image/lb_background");
 }
 
 OCRApplicationObject::~OCRApplicationObject()
@@ -39,11 +38,6 @@ void OCRApplicationObject::windowCloseAnimation()
     m_animation->setEndValue(0.0f);
     m_animation->start();
     QTimer::singleShot(1000, qApp, SLOT(quit()));
-}
-
-void OCRApplicationObject::appAboutUs()
-{
-
 }
 
 void OCRApplicationObject::cleanUp()

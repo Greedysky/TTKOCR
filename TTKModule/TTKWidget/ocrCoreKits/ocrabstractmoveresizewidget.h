@@ -26,14 +26,14 @@
 /*! @brief The class of the moving resize struct.
  * @author Greedysky <greedysky@163.com>
  */
-struct TTK_MODULE_EXPORT MoveResizeStruct
+typedef struct TTK_MODULE_EXPORT MoveResizeData
 {
     bool m_mouseLeftPress;
     bool m_isPressBorder;
     QPoint m_mousePos;
     QPoint m_windowPos;
     QSize m_pressedSize;
-};
+}MoveResizeData;
 
 /*! @brief The class of the moving resize widget base.
  * @author Greedysky <greedysky@163.com>
@@ -65,10 +65,11 @@ protected:
     /*!
      * Override the widget event.
      */
-    virtual bool eventFilter(QObject *object, QEvent *event) override final;
-    virtual void mousePressEvent(QMouseEvent *event) override final;
-    virtual void mouseReleaseEvent(QMouseEvent *event) override final;
+    virtual bool eventFilter(QObject *object, QEvent *event) override;
+    virtual void paintEvent(QPaintEvent *event) override final;
+    virtual void mousePressEvent(QMouseEvent *event) override;
     virtual void mouseMoveEvent(QMouseEvent *event) override final;
+    virtual void mouseReleaseEvent(QMouseEvent *event) override;
 
     /*!
      * Size direction detected.
@@ -78,12 +79,8 @@ protected:
      * Move direction to be.
      */
     void moveDirection();
-    /*!
-     * Get all inside widgets.
-     */
-    QObjectList foreachWidget(QObject *object);
 
-    MoveResizeStruct m_struct;
+    MoveResizeData m_struct;
     Direction m_direction;
 
 };

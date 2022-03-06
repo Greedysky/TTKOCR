@@ -1,21 +1,21 @@
-#include "ocrabstractmovedialog.h"
+#include "ocrabstractmovewidget.h"
 #include "ocrbackgroundmanager.h"
 #include "ocrobject.h"
 
-#include <QMouseEvent>
 #include <QPainter>
+#include <QBoxLayout>
 
 #define WIDTH  4
 #define HEIGHT 4
 
-OCRAbstractMoveDialog::OCRAbstractMoveDialog(QWidget *parent)
-    : OCRAbstractMoveDialog(true, parent)
+OCRAbstractMoveWidget::OCRAbstractMoveWidget(QWidget *parent)
+    : OCRAbstractMoveWidget(true, parent)
 {
 
 }
 
-OCRAbstractMoveDialog::OCRAbstractMoveDialog(bool transparent, QWidget *parent)
-    : QDialog(parent)
+OCRAbstractMoveWidget::OCRAbstractMoveWidget(bool transparent, QWidget *parent)
+    : QWidget(parent)
 {
     ///Remove the title bar
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
@@ -26,15 +26,15 @@ OCRAbstractMoveDialog::OCRAbstractMoveDialog(bool transparent, QWidget *parent)
     m_showShadow = true;
     m_background = nullptr;
 
-    M_BACKGROUND_PTR->addObserver(this);
+    G_BACKGROUND_PTR->addObserver(this);
 }
 
-OCRAbstractMoveDialog::~OCRAbstractMoveDialog()
+OCRAbstractMoveWidget::~OCRAbstractMoveWidget()
 {
-    M_BACKGROUND_PTR->removeObserver(this);
+    G_BACKGROUND_PTR->removeObserver(this);
 }
 
-void OCRAbstractMoveDialog::backgroundChanged()
+void OCRAbstractMoveWidget::backgroundChanged()
 {
     if(m_background)
     {
@@ -42,9 +42,9 @@ void OCRAbstractMoveDialog::backgroundChanged()
     }
 }
 
-void OCRAbstractMoveDialog::paintEvent(QPaintEvent *event)
+void OCRAbstractMoveWidget::paintEvent(QPaintEvent *event)
 {
-    QDialog::paintEvent(event);
+    QWidget::paintEvent(event);
 
     if(m_showShadow)
     {
@@ -62,10 +62,10 @@ void OCRAbstractMoveDialog::paintEvent(QPaintEvent *event)
     }
 }
 
-void OCRAbstractMoveDialog::mousePressEvent(QMouseEvent *event)
+void OCRAbstractMoveWidget::mousePressEvent(QMouseEvent *event)
 {
     QWidget::mousePressEvent(event);
-    if(event->button() == Qt::LeftButton && !m_moveOption)///Press the left key
+    if(event->button() == Qt::LeftButton && !m_moveOption)
     {
         m_leftButtonPress = true;
     }
@@ -76,10 +76,10 @@ void OCRAbstractMoveDialog::mousePressEvent(QMouseEvent *event)
 #endif
 }
 
-void OCRAbstractMoveDialog::mouseMoveEvent(QMouseEvent *event)
+void OCRAbstractMoveWidget::mouseMoveEvent(QMouseEvent *event)
 {
     QWidget::mouseMoveEvent(event);
-    if(!m_leftButtonPress)///Not press the left key
+    if(!m_leftButtonPress)
     {
         event->ignore();
         return;
@@ -96,7 +96,7 @@ void OCRAbstractMoveDialog::mouseMoveEvent(QMouseEvent *event)
     move(x() + xpos, y() + ypos);
 }
 
-void OCRAbstractMoveDialog::mouseReleaseEvent(QMouseEvent *event)
+void OCRAbstractMoveWidget::mouseReleaseEvent(QMouseEvent *event)
 {
     QWidget::mouseReleaseEvent(event);
 #if TTK_QT_VERSION_CHECK(6,0,0)
@@ -107,14 +107,37 @@ void OCRAbstractMoveDialog::mouseReleaseEvent(QMouseEvent *event)
     m_leftButtonPress = false;
 }
 
-void OCRAbstractMoveDialog::setBackgroundPixmap(QLabel *label, const QSize &size)
+void OCRAbstractMoveWidget::setBackgroundPixmap(QLabel *label, const QSize &size)
 {
     m_background = label;
     setBackgroundPixmap(size);
 }
 
-void OCRAbstractMoveDialog::setBackgroundPixmap(const QSize &size)
+void OCRAbstractMoveWidget::setBackgroundPixmap(const QSize &size)
 {
     QLabel *label = TTKStatic_cast(QLabel*, m_background);
-    label->setPixmap(QPixmap(M_BACKGROUND_PTR->background()).scaled(size));
+    label->setPixmap(QPixmap(G_BACKGROUND_PTR->background()).scaled(size));
+}
+
+
+OCRAbstractMoveSingleWidget::OCRAbstractMoveSingleWidget(QWidget *parent)
+    : OCRAbstractMoveSingleWidget(true, parent)
+{
+
+}
+
+OCRAbstractMoveSingleWidget::OCRAbstractMoveSingleWidget(bool transparent, QWidget *parent)
+    : OCRAbstractMoveWidget(transparent, parent)
+{
+    QVBoxLayout *l = new QVBoxLayout(this);
+    l->setContentsMargins(WIDTH, HEIGHT, WIDTH, HEIGHT);
+    l->setSpacing(0);
+    m_container = new QWidget(this);
+    l->addWidget(m_container);
+    setLayout(l);
+}
+
+OCRAbstractMoveSingleWidget::~OCRAbstractMoveSingleWidget()
+{
+    delete m_container;
 }

@@ -1,23 +1,22 @@
-#include "ocrabstractmovewidget.h"
+#include "ocrabstractmovedialog.h"
 #include "ocrbackgroundmanager.h"
 #include "ocrobject.h"
 
+#include <QMouseEvent>
 #include <QPainter>
-#include <QBoxLayout>
 
 #define WIDTH  4
 #define HEIGHT 4
 
-OCRAbstractMoveWidget::OCRAbstractMoveWidget(QWidget *parent)
-    : OCRAbstractMoveWidget(true, parent)
+OCRAbstractMoveDialog::OCRAbstractMoveDialog(QWidget *parent)
+    : OCRAbstractMoveDialog(true, parent)
 {
 
 }
 
-OCRAbstractMoveWidget::OCRAbstractMoveWidget(bool transparent, QWidget *parent)
-    : QWidget(parent)
+OCRAbstractMoveDialog::OCRAbstractMoveDialog(bool transparent, QWidget *parent)
+    : QDialog(parent)
 {
-    ///Remove the title bar
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground, transparent);
 
@@ -26,15 +25,15 @@ OCRAbstractMoveWidget::OCRAbstractMoveWidget(bool transparent, QWidget *parent)
     m_showShadow = true;
     m_background = nullptr;
 
-    M_BACKGROUND_PTR->addObserver(this);
+    G_BACKGROUND_PTR->addObserver(this);
 }
 
-OCRAbstractMoveWidget::~OCRAbstractMoveWidget()
+OCRAbstractMoveDialog::~OCRAbstractMoveDialog()
 {
-    M_BACKGROUND_PTR->removeObserver(this);
+    G_BACKGROUND_PTR->removeObserver(this);
 }
 
-void OCRAbstractMoveWidget::backgroundChanged()
+void OCRAbstractMoveDialog::backgroundChanged()
 {
     if(m_background)
     {
@@ -42,9 +41,9 @@ void OCRAbstractMoveWidget::backgroundChanged()
     }
 }
 
-void OCRAbstractMoveWidget::paintEvent(QPaintEvent *event)
+void OCRAbstractMoveDialog::paintEvent(QPaintEvent *event)
 {
-    QWidget::paintEvent(event);
+    QDialog::paintEvent(event);
 
     if(m_showShadow)
     {
@@ -62,10 +61,10 @@ void OCRAbstractMoveWidget::paintEvent(QPaintEvent *event)
     }
 }
 
-void OCRAbstractMoveWidget::mousePressEvent(QMouseEvent *event)
+void OCRAbstractMoveDialog::mousePressEvent(QMouseEvent *event)
 {
     QWidget::mousePressEvent(event);
-    if(event->button() == Qt::LeftButton && !m_moveOption)///Press the left key
+    if(event->button() == Qt::LeftButton && !m_moveOption)
     {
         m_leftButtonPress = true;
     }
@@ -76,10 +75,10 @@ void OCRAbstractMoveWidget::mousePressEvent(QMouseEvent *event)
 #endif
 }
 
-void OCRAbstractMoveWidget::mouseMoveEvent(QMouseEvent *event)
+void OCRAbstractMoveDialog::mouseMoveEvent(QMouseEvent *event)
 {
     QWidget::mouseMoveEvent(event);
-    if(!m_leftButtonPress)///Not press the left key
+    if(!m_leftButtonPress)
     {
         event->ignore();
         return;
@@ -96,7 +95,7 @@ void OCRAbstractMoveWidget::mouseMoveEvent(QMouseEvent *event)
     move(x() + xpos, y() + ypos);
 }
 
-void OCRAbstractMoveWidget::mouseReleaseEvent(QMouseEvent *event)
+void OCRAbstractMoveDialog::mouseReleaseEvent(QMouseEvent *event)
 {
     QWidget::mouseReleaseEvent(event);
 #if TTK_QT_VERSION_CHECK(6,0,0)
@@ -107,37 +106,14 @@ void OCRAbstractMoveWidget::mouseReleaseEvent(QMouseEvent *event)
     m_leftButtonPress = false;
 }
 
-void OCRAbstractMoveWidget::setBackgroundPixmap(QLabel *label, const QSize &size)
+void OCRAbstractMoveDialog::setBackgroundPixmap(QLabel *label, const QSize &size)
 {
     m_background = label;
     setBackgroundPixmap(size);
 }
 
-void OCRAbstractMoveWidget::setBackgroundPixmap(const QSize &size)
+void OCRAbstractMoveDialog::setBackgroundPixmap(const QSize &size)
 {
     QLabel *label = TTKStatic_cast(QLabel*, m_background);
-    label->setPixmap(QPixmap(M_BACKGROUND_PTR->background()).scaled(size));
-}
-
-
-OCRAbstractMoveSingleWidget::OCRAbstractMoveSingleWidget(QWidget *parent)
-    : OCRAbstractMoveSingleWidget(true, parent)
-{
-
-}
-
-OCRAbstractMoveSingleWidget::OCRAbstractMoveSingleWidget(bool transparent, QWidget *parent)
-    : OCRAbstractMoveWidget(transparent, parent)
-{
-    QVBoxLayout *l = new QVBoxLayout(this);
-    l->setContentsMargins(WIDTH, HEIGHT, WIDTH, HEIGHT);
-    l->setSpacing(0);
-    m_container = new QWidget(this);
-    l->addWidget(m_container);
-    setLayout(l);
-}
-
-OCRAbstractMoveSingleWidget::~OCRAbstractMoveSingleWidget()
-{
-    delete m_container;
+    label->setPixmap(QPixmap(G_BACKGROUND_PTR->background()).scaled(size));
 }

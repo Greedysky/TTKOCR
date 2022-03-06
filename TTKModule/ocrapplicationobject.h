@@ -48,10 +48,6 @@ public Q_SLOTS:
      * Window close animation.
      */
     void windowCloseAnimation();
-    /*!
-     * Show about us widget.
-     */
-    void appAboutUs();
 
 private:
     /*!

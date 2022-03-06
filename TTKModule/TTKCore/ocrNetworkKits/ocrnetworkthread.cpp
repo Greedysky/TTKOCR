@@ -32,7 +32,7 @@ void OCRNetworkThread::networkStateChanged()
 {
     const auto status = QtConcurrent::run([&]()
     {
-        QHostInfo info = QHostInfo::fromName(NETWORK_REQUEST_ADDRESS);
+        const QHostInfo &info = QHostInfo::fromName(NETWORK_REQUEST_ADDRESS);
         m_networkState = !info.addresses().isEmpty();
         emit networkConnectionStateChanged(m_networkState);
     });
