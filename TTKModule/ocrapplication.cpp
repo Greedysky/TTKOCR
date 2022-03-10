@@ -90,7 +90,7 @@ void OCRApplication::openButtonClicked()
 
     clearButtonClicked();
 
-    const QString &path = list.first();
+    const QString &path = list.front();
     if(QFileInfo(path).suffix().toLower() == "pdf")
     {
 #ifdef TTK_BUILD_BY_PDF

@@ -7,49 +7,47 @@
 /*! @brief The class of the ttk run object private.
  * @author Greedysky <greedysky@163.com>
  */
-class OCRRunObjectPrivate : public TTKPrivate<OCRRunObject>
+class TTKRunObjectPrivate : public TTKPrivate<TTKRunObject>
 {
 public:
-    OCRRunObjectPrivate();
-    ~OCRRunObjectPrivate();
+    TTKRunObjectPrivate();
+    ~TTKRunObjectPrivate();
 
     QProcess *m_process;
 
 };
 
-OCRRunObjectPrivate::OCRRunObjectPrivate()
+TTKRunObjectPrivate::TTKRunObjectPrivate()
 {
     m_process = nullptr;
 }
 
-OCRRunObjectPrivate::~OCRRunObjectPrivate()
+TTKRunObjectPrivate::~TTKRunObjectPrivate()
 {
     delete m_process;
 }
 
-//////////////////////////////////////////////////////
-//////////////////////////////////////////////////////
-///
-///
-OCRRunObject::OCRRunObject(QObject *parent)
+
+
+TTKRunObject::TTKRunObject(QObject *parent)
     : QObject(parent)
 {
-    TTK_INIT_PRIVATE(OCRRunObject);
-    TTK_D(OCRRunObject);
+    TTK_INIT_PRIVATE(TTKRunObject);
+    TTK_D(TTKRunObject);
 
     d->m_process = new QProcess(this);
     connect(d->m_process, SIGNAL(finished(int)), SLOT(finished(int)));
 }
 
-void OCRRunObject::valid() const
+void TTKRunObject::valid() const
 {
     OCRInitObject object;
     object.valid();
 }
 
-void OCRRunObject::run(int argc, char **argv) const
+void TTKRunObject::run(int argc, char **argv) const
 {
-    TTK_D(OCRRunObject);
+    TTK_D(TTKRunObject);
 
     QStringList list(APP_NAME);
     if(argc == 3)
@@ -60,15 +58,15 @@ void OCRRunObject::run(int argc, char **argv) const
     d->m_process->start(TTK_SERVICE_FULL, list);
 }
 
-void OCRRunObject::finished(int code)
+void TTKRunObject::finished(int code)
 {
     if(code == 0)
     {
-        TTK_LOGGER_INFO("Application exit success!");
+        TTK_LOGGER_INFO("Application exit success");
     }
     else
     {
-        TTK_LOGGER_INFO("Application run error, please run TTKService instead!");
+        TTK_LOGGER_INFO("Application run error, please run TTKService instead");
     }
 
     qApp->quit();

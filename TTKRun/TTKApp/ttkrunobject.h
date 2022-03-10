@@ -1,5 +1,5 @@
-#ifndef OCRRUNOBJECT_H
-#define OCRRUNOBJECT_H
+#ifndef TTKRUNOBJECT_H
+#define TTKRUNOBJECT_H
 
 /***************************************************************************
  * This file is part of the TTK OCR project
@@ -21,19 +21,19 @@
 
 #include "ttkprivate.h"
 
-class OCRRunObjectPrivate;
+class TTKRunObjectPrivate;
 
-/*! @brief The class of the ocr run object.
+/*! @brief The class of the ttk run object.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT OCRRunObject : public QObject
+class TTK_MODULE_EXPORT TTKRunObject : public QObject
 {
     Q_OBJECT
 public:
     /*!
      * Object contsructor.
      */
-    explicit OCRRunObject(QObject *parent = nullptr);
+    explicit TTKRunObject(QObject *parent = nullptr);
 
     /*!
      * Check current setting file's validation.
@@ -51,8 +51,8 @@ private Q_SLOTS:
     void finished(int code);
 
 private:
-   TTK_DECLARE_PRIVATE(OCRRunObject)
+    TTK_DECLARE_PRIVATE(TTKRunObject)
 
 };
 
-#endif // OCRRUNOBJECT_H
+#endif // TTKRUNOBJECT_H

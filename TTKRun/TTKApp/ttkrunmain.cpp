@@ -12,11 +12,11 @@ int main(int argc, char *argv[])
 
     if(app.isRunning())
     {
-        TTK_LOGGER_INFO("One app has already run!");
+        TTK_LOGGER_INFO("One app has already run");
         return -1;
     }
 
-    OCRRunObject object;
+    TTKRunObject object;
     object.valid();
     object.run(argc, argv);
 
