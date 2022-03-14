@@ -6,10 +6,6 @@
 #include <QPainter>
 #include <QMouseEvent>
 
-#ifdef Q_CC_GNU
-#  pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
-#endif
-
 OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     : QWidget(nullptr)
 {
@@ -48,21 +44,18 @@ void OCRGrabWidget::paintEvent(QPaintEvent *event)
 
     painter.drawPixmap(0, 0, width(), height(), m_originPixmap);
 
-    int w, h;
+    int w = 0, h = 0;
     if(m_isDrawing)
     {
         w = m_ptCursor.x() - m_ptStart.x();
         h = m_ptCursor.y() - m_ptStart.y();
         painter.drawRect(m_ptStart.x(), m_ptStart.y(), w, h);
     }
-    else
+    else if(m_ptEnd != m_ptStart)
     {
-        if(m_ptEnd != m_ptStart)
-        {
-            w = m_ptEnd.x() - m_ptStart.x();
-            h = m_ptEnd.y() - m_ptStart.y();
-            painter.drawRect(m_ptStart.x(), m_ptStart.y(), w, h);
-        }
+        w = m_ptEnd.x() - m_ptStart.x();
+        h = m_ptEnd.y() - m_ptStart.y();
+        painter.drawRect(m_ptStart.x(), m_ptStart.y(), w, h);
     }
 
     QPolygon listMarker;
