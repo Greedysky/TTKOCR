@@ -96,7 +96,7 @@ void OCRApplication::openButtonClicked()
 #ifdef TTK_BUILD_BY_PDF
         list.clear();
         MuPDF::Document *document = MuPDF::loadDocument(path);
-        for(int i=0; i<document->numPages(); i++)
+        for(int i = 0; i < document->numPages(); ++i)
         {
             OCRThreadItem *item = new OCRThreadItem(this);
             item->m_index = i;
@@ -113,7 +113,7 @@ void OCRApplication::openButtonClicked()
         return;
     }
 
-    for(int i=0; i<list.count(); ++i)
+    for(int i = 0; i < list.count(); ++i)
     {
         OCRThreadItem *item = new OCRThreadItem(this);
         item->m_index = i;
@@ -183,7 +183,7 @@ void OCRApplication::findFinish()
         std::sort(data.begin(), data.end(), std::less<int>());
 
         QString content;
-        for(int i=0; i<m_fileList.count(); ++i)
+        for(int i = 0; i < m_fileList.count(); ++i)
         {
             QFile file(QString("%1/%2").arg(DIR_PREFIX).arg(i));
             if(file.open(QFile::ReadOnly))
