@@ -56,7 +56,7 @@ public:
     /*!
      * Init all parameter.
      */
-    void init() const;
+    void initialize() const;
     /*!
      * Check current dir is exist, no, just create it.
      */

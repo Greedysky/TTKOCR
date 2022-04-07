@@ -14,7 +14,7 @@ void OCRInitObject::valid() const
     checkFileNeededExist();
 }
 
-void OCRInitObject::init() const
+void OCRInitObject::initialize() const
 {
     checkFileNeededExist();
 }

@@ -11,7 +11,6 @@ OCRApplicationObject *OCRApplicationObject::m_instance = nullptr;
 OCRApplicationObject::OCRApplicationObject(QObject *parent)
     : QObject(parent)
 {
-    Q_INIT_RESOURCE(TTKOCR);
     m_instance = this;
     m_animation = new QPropertyAnimation(OCRApplication::instance(), "windowOpacity", this);
 
