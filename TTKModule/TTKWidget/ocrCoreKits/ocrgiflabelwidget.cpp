@@ -33,7 +33,7 @@ void OCRGifLabelWidget::setType(Type type)
 {
     switch(m_type = type)
     {
-        case Gif_Cicle_Blue: setFixedSize(GIF_CICLE_BLUE, GIF_CICLE_BLUE); break;
+        case CicleBlue: setFixedSize(GIF_CICLE_BLUE, GIF_CICLE_BLUE); break;
         default: break;
     }
 }
@@ -80,7 +80,7 @@ void OCRGifLabelWidget::timeout()
     ++m_index;
     switch(m_type)
     {
-        case Gif_Cicle_Blue:
+        case CicleBlue:
             {
                 if(m_index == 12 && infinitedModeCheck())
                 {
