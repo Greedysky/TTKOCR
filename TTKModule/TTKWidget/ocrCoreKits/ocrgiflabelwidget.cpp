@@ -18,7 +18,7 @@ OCRGifLabelWidget::OCRGifLabelWidget(QWidget *parent)
     connect(m_timer, SIGNAL(timeout()), SLOT(timeout()));
 }
 
-OCRGifLabelWidget::OCRGifLabelWidget(Type type, QWidget *parent)
+OCRGifLabelWidget::OCRGifLabelWidget(Module type, QWidget *parent)
     : OCRGifLabelWidget(parent)
 {
     setType(type);
@@ -29,16 +29,16 @@ OCRGifLabelWidget::~OCRGifLabelWidget()
     delete m_timer;
 }
 
-void OCRGifLabelWidget::setType(Type type)
+void OCRGifLabelWidget::setType(Module type)
 {
     switch(m_type = type)
     {
-        case CicleBlue: setFixedSize(GIF_CICLE_BLUE, GIF_CICLE_BLUE); break;
+        case Module::CicleBlue: setFixedSize(GIF_CICLE_BLUE, GIF_CICLE_BLUE); break;
         default: break;
     }
 }
 
-OCRGifLabelWidget::Type OCRGifLabelWidget::type() const
+OCRGifLabelWidget::Module OCRGifLabelWidget::type() const
 {
     return m_type;
 }
@@ -80,7 +80,7 @@ void OCRGifLabelWidget::timeout()
     ++m_index;
     switch(m_type)
     {
-        case CicleBlue:
+        case Module::CicleBlue:
             {
                 if(m_index == 12 && infinitedModeCheck())
                 {

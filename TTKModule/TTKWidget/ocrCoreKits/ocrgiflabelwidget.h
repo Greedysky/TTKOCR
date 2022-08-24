@@ -31,7 +31,7 @@ class TTK_MODULE_EXPORT OCRGifLabelWidget : public QLabel
 {
     Q_OBJECT
 public:
-    enum Type
+    enum class Module
     {
         CicleBlue             /*!< gif cicle blue*/
     };
@@ -43,17 +43,17 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit OCRGifLabelWidget(Type type, QWidget *parent = nullptr);
+    explicit OCRGifLabelWidget(Module type, QWidget *parent = nullptr);
     ~OCRGifLabelWidget();
 
     /*!
      * Set the gif type.
      */
-    void setType(Type type);
+    void setType(Module type);
     /*!
      * Get the gif type.
      */
-    Type type() const;
+    Module type() const;
 
     /*!
      * Set the gif interval.
@@ -99,7 +99,7 @@ protected:
     bool infinitedModeCheck();
 
     int m_index;
-    Type m_type;
+    Module m_type;
     QTimer *m_timer;
     bool m_isRunning, m_infinited;
 
