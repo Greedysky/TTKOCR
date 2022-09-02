@@ -1,5 +1,4 @@
 #include "ocrcoreutils.h"
-#include "ocrobject.h"
 
 #include <QDirIterator>
 
@@ -52,16 +51,4 @@ bool OCRUtils::Core::removeRecursively(const QString &dir)
     }
 
     return success;
-}
-
-QString OCRUtils::Core::languageName(int index)
-{
-    QString lan(LANGUAGE_DIR_FULL);
-    switch(index)
-    {
-        case 0 : return lan.append("cn.ln");
-        case 1 : return lan.append("cn_c.ln");
-        case 2 : return lan.append("en.ln");
-        default: return QString();
-    }
 }

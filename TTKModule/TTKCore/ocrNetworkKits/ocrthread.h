@@ -33,10 +33,11 @@ class TTK_MODULE_EXPORT OCRThreadItem : public QObject
     Q_OBJECT
 public:
     explicit OCRThreadItem(QObject *parent = nullptr)
-        : QObject(parent)
+        : QObject(parent),
+          m_index(-1),
+          m_obj(nullptr)
     {
-        m_index = -1;
-        m_obj = nullptr;
+
     }
 
     QString m_path;

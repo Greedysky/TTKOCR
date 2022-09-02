@@ -15,15 +15,14 @@ OCRAbstractMoveWidget::OCRAbstractMoveWidget(QWidget *parent)
 }
 
 OCRAbstractMoveWidget::OCRAbstractMoveWidget(bool transparent, QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
+      m_moveOption(false),
+      m_showShadow(true),
+      m_leftButtonPress(false),
+      m_background(nullptr)
 {
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground, transparent);
-
-    m_moveOption = false;
-    m_leftButtonPress = false;
-    m_showShadow = true;
-    m_background = nullptr;
 
     G_BACKGROUND_PTR->addObserver(this);
 }

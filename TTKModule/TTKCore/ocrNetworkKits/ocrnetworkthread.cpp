@@ -12,7 +12,8 @@
 #define NETWORK_REQUEST_ADDRESS     "www.baidu.com"  // ip
 
 OCRNetworkThread::OCRNetworkThread()
-    : QObject(nullptr), m_networkState(true)
+    : QObject(nullptr),
+      m_networkState(true)
 {
     connect(&m_timer, SIGNAL(timeout()), SLOT(networkStateChanged()));
 }

@@ -33,11 +33,6 @@ namespace OCRUtils
          */
         TTK_MODULE_EXPORT bool removeRecursively(const QString &dir);
 
-        /*!
-         * Get Language Name by given index.
-         */
-        TTK_MODULE_EXPORT QString languageName(int index);
-
     }
 }
 

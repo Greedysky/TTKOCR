@@ -3,8 +3,9 @@
 #define MAX_INDEX 5
 
 OCRBackgroundManager::OCRBackgroundManager()
+    : m_skinColor(Qt::white)
 {
-    m_skinColor = QColor(Qt::white);
+
 }
 
 void OCRBackgroundManager::addObserver(QObject *object)

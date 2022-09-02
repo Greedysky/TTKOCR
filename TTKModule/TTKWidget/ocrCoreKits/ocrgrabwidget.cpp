@@ -7,7 +7,8 @@
 #include <QMouseEvent>
 
 OCRGrabWidget::OCRGrabWidget(QWidget *parent)
-    : QWidget(nullptr)
+    : QWidget(nullptr),
+      m_isDrawing(false)
 {
     Q_UNUSED(parent);
 
@@ -18,7 +19,6 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     setFixedSize(TTKDesktopWrapper::geometry().size());
     setCursor(Qt::CrossCursor);
 
-    m_isDrawing = false;
     m_originPixmap = TTKDesktopWrapper::grabWindow(0, 0, width(), height());
 }
 

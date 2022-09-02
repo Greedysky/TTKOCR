@@ -15,9 +15,9 @@
 #define OCR_URL     "RU5EOEI3NnE1aUo0cHVQYlZST2s1eGZUVzY5dmFwemsvSFFJQXFzRjUvc0M1b21VOUFxU25yR1JpQjg9"
 
 OCRThread::OCRThread(QObject *parent)
-    : QObject(parent)
+    : QObject(parent),
+      m_reply(nullptr)
 {
-    m_reply = nullptr;
     m_manager = new QNetworkAccessManager(this);
 }
 

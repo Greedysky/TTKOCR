@@ -16,12 +16,12 @@ OCRApplication *OCRApplication::m_instance = nullptr;
 
 OCRApplication::OCRApplication(QWidget *parent)
     : OCRAbstractMoveResizeWidget(parent),
-      m_ui(new Ui::OCRApplication)
+      m_ui(new Ui::OCRApplication),
+      m_count(0)
 {
     m_instance = this;
     setAttribute(Qt::WA_TranslucentBackground, false);
 
-    m_count = 0;
     m_applicationObject = new OCRApplicationObject(this);
     ////////////////////////////////////////////////
     m_ui->setupUi(this);

@@ -1,9 +1,25 @@
 #include "ocrruntimemanager.h"
-#include "ocrcoreutils.h"
 #include "ocrcodecutils.h"
+#include "ocrobject.h"
 
 #include <QFont>
 #include <QApplication>
+
+namespace OCRObject
+{
+static QString languageName(int index)
+{
+    QString lan(LANGUAGE_DIR_FULL);
+    switch(index)
+    {
+        case 0: return lan.append("cn.ln");
+        case 1: return lan.append("tc.ln");
+        case 2: return lan.append("en.ln");
+        default: return QString();
+    }
+}
+}
+
 
 OCRRunTimeManager::OCRRunTimeManager()
 {
@@ -31,5 +47,5 @@ void OCRRunTimeManager::run() const
 
 QString OCRRunTimeManager::translator() const
 {
-    return OCRUtils::Core::languageName(0);
+    return OCRObject::languageName(0);
 }

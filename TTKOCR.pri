@@ -48,7 +48,7 @@ unix:!mac{
 win32{
     msvc{
         LIBS += -lshell32 -luser32
-        LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
+        LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras
         contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
         CONFIG += c++11
         !contains(QMAKE_TARGET.arch, x86_64){
@@ -59,7 +59,7 @@ win32{
     }
 
     gcc{
-        LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
+        LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras
         contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
         equals(QT_MAJOR_VERSION, 6){ #Qt6
             QMAKE_CXXFLAGS += -std=c++17
@@ -73,7 +73,7 @@ win32{
 }
 
 unix:!mac{
-    LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
+    LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras
     contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
     equals(QT_MAJOR_VERSION, 6){ #Qt6
         QMAKE_CXXFLAGS += -std=c++17
