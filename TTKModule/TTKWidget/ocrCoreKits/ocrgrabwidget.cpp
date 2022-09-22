@@ -35,7 +35,7 @@ void OCRGrabWidget::paintEvent(QPaintEvent *event)
 {
     QWidget::paintEvent(event);
     QPainter painter(this);
-    QPen pen(QColor("#158FE1"), 1);
+    QPen pen(QColor(0x15, 0x8F, 0xE1), 1);
     painter.setPen(pen);
 
     painter.drawPixmap(0, 0, width(), height(), m_originPixmap);
