@@ -61,6 +61,14 @@ OCRApplication::OCRApplication(QWidget *parent)
     m_ui->textScrollArea->setAlignment(Qt::AlignVCenter);
     m_ui->textScrollArea->verticalScrollBar()->setStyleSheet(OCRUIObject::MScrollBarStyle03);
     m_ui->textScrollArea->horizontalScrollBar()->setStyleSheet(OCRUIObject::MScrollBarStyle04);
+
+    /////////// Mouse tracking
+    for(QObject *obj : foreachWidget(this))
+    {
+        QWidget *w = TTKStatic_cast(QWidget*, obj);
+        w->installEventFilter(this);
+        w->setMouseTracking(true);
+    }
 }
 
 OCRApplication::~OCRApplication()
