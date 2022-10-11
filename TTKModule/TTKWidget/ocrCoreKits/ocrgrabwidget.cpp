@@ -101,7 +101,7 @@ void OCRGrabWidget::keyPressEvent(QKeyEvent *event)
         const int width = m_ptEnd.x() - m_ptStart.x();
         const int height = m_ptEnd.y() - m_ptStart.y();
         const QPixmap &pix = TTKDesktopWrapper::grabWindow(m_ptStart.x(), m_ptStart.y(), width, height);
-        emit pixmapChanged(pix);
+        Q_EMIT pixmapChanged(pix);
         close();
     }
     else if(event->key() == Qt::Key_Escape)

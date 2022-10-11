@@ -56,7 +56,7 @@ void OCRThread::finishedSlot()
 {
     if(!m_reply)
     {
-        emit findFinish();
+        Q_EMIT findFinish();
         return;
     }
 
@@ -101,7 +101,7 @@ void OCRThread::finishedSlot()
             }
         }
     }
-    emit findFinish();
+    Q_EMIT findFinish();
 }
 
 void OCRThread::errorSlot(QNetworkReply::NetworkError code)

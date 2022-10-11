@@ -41,7 +41,7 @@ Q_SIGNALS:
      */
     void pixmapChanged(const QPixmap &pix);
 
-protected:
+private:
     /*!
      * Override the widget event.
      */

@@ -92,7 +92,7 @@ public Q_SLOTS:
      */
     void timeout();
 
-protected:
+private:
     /*!
      * Infinited mode check.
      */

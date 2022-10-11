@@ -70,6 +70,7 @@ private:
     bool m_networkState;
 
     DECLARE_SINGLETON_CLASS(OCRNetworkThread)
+
 };
 
 #endif // OCRNETWORKTHREAD_H

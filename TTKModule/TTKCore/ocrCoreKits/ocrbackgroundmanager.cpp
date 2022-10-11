@@ -42,5 +42,5 @@ QColor OCRBackgroundManager::backgroundColor() const
 
 void OCRBackgroundManager::backgroundHasChanged()
 {
-    emit backgroundChanged();
+    Q_EMIT backgroundChanged();
 }

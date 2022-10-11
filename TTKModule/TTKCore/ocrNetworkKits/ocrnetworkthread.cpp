@@ -35,7 +35,7 @@ void OCRNetworkThread::networkStateChanged()
     {
         const QHostInfo &info = QHostInfo::fromName(NETWORK_REQUEST_ADDRESS);
         m_networkState = !info.addresses().isEmpty();
-        emit networkConnectionStateChanged(m_networkState);
+        Q_EMIT networkConnectionStateChanged(m_networkState);
     });
     Q_UNUSED(status);
 }
