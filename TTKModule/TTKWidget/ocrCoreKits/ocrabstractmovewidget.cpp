@@ -34,10 +34,13 @@ OCRAbstractMoveWidget::~OCRAbstractMoveWidget()
 
 void OCRAbstractMoveWidget::backgroundChanged()
 {
-    if(m_background)
-    {
-        setBackgroundPixmap(size());
-    }
+    setBackgroundPixmap(size());
+}
+
+void OCRAbstractMoveWidget::show()
+{
+    setBackgroundPixmap(size());
+    QWidget::show();
 }
 
 void OCRAbstractMoveWidget::paintEvent(QPaintEvent *event)
@@ -91,12 +94,6 @@ void OCRAbstractMoveWidget::mouseReleaseEvent(QMouseEvent *event)
     QWidget::mouseReleaseEvent(event);
     m_pressAt = QtMouseEventGlobalPos(event);
     m_leftButtonPress = false;
-}
-
-void OCRAbstractMoveWidget::setBackgroundPixmap(QLabel *label, const QSize &size)
-{
-    m_background = label;
-    setBackgroundPixmap(size);
 }
 
 void OCRAbstractMoveWidget::setBackgroundPixmap(const QSize &size)
