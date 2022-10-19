@@ -7,7 +7,7 @@
 
 namespace OCRObject
 {
-static QString languageName(int index)
+static QString languageCore(int index)
 {
     QString lan(LANGUAGE_DIR_FULL);
     switch(index)
@@ -47,5 +47,5 @@ void OCRRunTimeManager::run() const
 
 QString OCRRunTimeManager::translator() const
 {
-    return OCRObject::languageName(0);
+    return OCRObject::languageCore(0);
 }
