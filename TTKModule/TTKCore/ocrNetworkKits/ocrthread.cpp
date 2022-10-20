@@ -111,5 +111,5 @@ void OCRThread::errorSlot(QNetworkReply::NetworkError code)
         return;
     }
 
-    TTK_LOGGER_ERROR("QNetworkReply::NetworkError : " + QString::number((int)code) + " \n" + m_reply->errorString());
+    TTK_ERROR_STREAM("QNetworkReply::NetworkError : " + QString::number((int)code) + " \n" + m_reply->errorString());
 }
