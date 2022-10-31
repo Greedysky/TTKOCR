@@ -40,22 +40,18 @@ win32:msvc{
 INCLUDEPATH += \
     $$PWD/../ \
     $$PWD/../../TTKCommon \
-    $$PWD/../../TTKThirdParty \
-    $$PWD/../../TTKThirdParty/TTKDumper \
     $$PWD/../../TTKModule/TTKCore/ocrCoreKits
 
 HEADERS += \
     $$PWD/ocrinitobject.h \
-    $$PWD/ttkrunobject.h \
-    $$PWD/ttklocalpeer.h \
-    $$PWD/ttkrunapplication.h
+    $$PWD/ttkrunobject.h
 
 SOURCES += \
     $$PWD/ocrinitobject.cpp \
     $$PWD/ttkrunmain.cpp \
-    $$PWD/ttklocalpeer.cpp \
-    $$PWD/ttkrunapplication.cpp \
     $$PWD/ttkrunobject.cpp
+
+include($$PWD/../../TTKCommon/TTKApplication/TTKApplication.pri)
 
 RESOURCES += $$PWD/../../TTKUi/OCRApp.qrc
 

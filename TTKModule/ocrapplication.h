@@ -19,7 +19,8 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "ocrabstractmoveresizewidget.h"
+#include "ocrobject.h"
+#include "ttkabstractmoveresizewidget.h"
 
 class OCRThreadItem;
 class OCRApplicationObject;
@@ -31,7 +32,7 @@ class OCRApplication;
 /*! @brief The class of the app main widget.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT OCRApplication : public OCRAbstractMoveResizeWidget
+class TTK_MODULE_EXPORT OCRApplication : public TTKAbstractMoveResizeWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(OCRApplication)

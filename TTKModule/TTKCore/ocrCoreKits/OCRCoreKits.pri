@@ -20,11 +20,9 @@ INCLUDEPATH += $$PWD
 
 HEADERS += \
     $$PWD/ocrbackgroundmanager.h \
-    $$PWD/ocrcryptographichash.h \
     $$PWD/ocrobject.h \
     $$PWD/ocrruntimemanager.h
 
 SOURCES += \
     $$PWD/ocrbackgroundmanager.cpp \
-    $$PWD/ocrcryptographichash.cpp \
     $$PWD/ocrruntimemanager.cpp

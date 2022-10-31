@@ -19,14 +19,13 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include <QLabel>
-#include <QMouseEvent>
-#include "ttkglobaldefine.h"
+#include "ocrwidgetrenderer.h"
+#include "ttkabstractmovewidget.h"
 
 /*! @brief The class of the moving widget base.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT OCRAbstractMoveWidget : public QWidget
+class TTK_MODULE_EXPORT OCRAbstractMoveWidget : public TTKAbstractMoveWidget, protected OCRWidgetRenderer
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(OCRAbstractMoveWidget)
@@ -41,19 +40,6 @@ public:
     explicit OCRAbstractMoveWidget(bool transparent, QWidget *parent = nullptr);
     ~OCRAbstractMoveWidget();
 
-    /*!
-     * Set or not draw window bound shadow.
-     */
-    inline void drawWindowShadow(bool show) { m_showShadow = show;}
-    /*!
-     * Set or not block widget moving.
-     */
-    inline void blockMoveOption(bool block) { m_moveOption = block;}
-    /*!
-     * Set background label.
-     */
-    inline void setBackgroundLabel(QLabel *label) { m_background = label; }
-
 public Q_SLOTS:
     /*!
      * Background image changed.
@@ -63,48 +49,6 @@ public Q_SLOTS:
      * Override show function.
      */
     void show();
-
-protected:
-    /*!
-     * Override the widget event.
-     */
-    virtual void paintEvent(QPaintEvent *event) override final;
-    virtual void mousePressEvent(QMouseEvent *event) override final;
-    virtual void mouseMoveEvent(QMouseEvent *event) override final;
-    virtual void mouseReleaseEvent(QMouseEvent *event) override final;
-    /*!
-     * Set background pixmap.
-     */
-    void setBackgroundPixmap(const QSize &size);
-
-    QPoint m_pressAt;
-    bool m_moveOption, m_showShadow;
-    bool m_leftButtonPress;
-    QLabel *m_background;
-
-};
-
-
-/*! @brief The class of the moving widget single without ui widget.
- * @author Greedysky <greedysky@163.com>
- */
-class TTK_MODULE_EXPORT OCRAbstractMoveSingleWidget : public OCRAbstractMoveWidget
-{
-    Q_OBJECT
-    TTK_DECLARE_MODULE(OCRAbstractMoveSingleWidget)
-public:
-    /*!
-     * Object contsructor.
-     */
-    explicit OCRAbstractMoveSingleWidget(QWidget *parent = nullptr);
-    /*!
-     * Object contsructor.
-     */
-    explicit OCRAbstractMoveSingleWidget(bool transparent, QWidget *parent = nullptr);
-    ~OCRAbstractMoveSingleWidget();
-
-protected:
-    QWidget *m_container;
 
 };
 

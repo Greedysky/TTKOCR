@@ -58,6 +58,6 @@ SOURCES += \
     $$PWD/src/mupdf-textbox.cpp
 
 #load extra define
-include($$PWD/../TTKExtrasDefine.pri)
+include($$PWD/../TTKThirdParty.pri)
 
 win32:RC_FILE = $$PWD/TTKPdf.rc

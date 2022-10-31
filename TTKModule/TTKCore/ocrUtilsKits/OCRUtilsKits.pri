@@ -20,14 +20,12 @@ INCLUDEPATH += $$PWD
 
 HEADERS += \
     $$PWD/ocralgorithmutils.h \
-    $$PWD/ocrcoreutils.h \
-    $$PWD/ocrwidgetutils.h \
+    $$PWD/ocrfileutils.h \
     $$PWD/ocrcodecutils.h \
-    $$PWD/ocrurlutils.h
+    $$PWD/ocrimageutils.h
 
 SOURCES += \
-    $$PWD/ocrcoreutils.cpp \
     $$PWD/ocralgorithmutils.cpp \
-    $$PWD/ocrwidgetutils.cpp \
+    $$PWD/ocrfileutils.cpp \
     $$PWD/ocrcodecutils.cpp \
-    $$PWD/ocrurlutils.cpp
+    $$PWD/ocrimageutils.cpp

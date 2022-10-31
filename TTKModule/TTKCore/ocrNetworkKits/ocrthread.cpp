@@ -1,6 +1,6 @@
 #include "ocrthread.h"
 #include "ocralgorithmutils.h"
-#include "ocrwidgetutils.h"
+#include "ocrimageutils.h"
 #include "ocrobject.h"
 
 #include "qjson/parser.h"
@@ -43,7 +43,7 @@ void OCRThread::start(OCRThreadItem *item)
     QHttpPart part;
     part.setRawHeader("Content-Disposition", content.toUtf8());
     part.setRawHeader("Content-Type", "image/jpeg");
-    part.setBody(OCRUtils::Widget::generatePixmapData(pix));
+    part.setBody(OCRUtils::Image::generatePixmapData(pix));
     multiPart->append(part);
     multiPart->setBoundary("----");
 

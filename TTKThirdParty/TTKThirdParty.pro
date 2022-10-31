@@ -20,7 +20,7 @@ include($$PWD/../TTKBuild.pri)
 
 TEMPLATE = subdirs
 CONFIG += ordered
-SUBDIRS = TTKDumper TTKExtras
+SUBDIRS = TTKExtras
 
 contains(CONFIG, TTK_BUILD_BY_PDF){
     SUBDIRS += TTKPdf

@@ -21,7 +21,7 @@
 
 #include "ttkglobaldefine.h"
 
-/*! @brief The class of the utils core object namespace.
+/*! @brief The class of the utils codec.
  * @author Greedysky <greedysky@163.com>
  */
 namespace OCRUtils

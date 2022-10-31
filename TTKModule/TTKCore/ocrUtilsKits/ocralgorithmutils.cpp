@@ -1,5 +1,5 @@
 #include "ocralgorithmutils.h"
-#include "ocrcryptographichash.h"
+#include "ttkcryptographichash.h"
 
 #include <QCryptographicHash>
 
@@ -10,7 +10,7 @@ QByteArray OCRUtils::Algorithm::sha1(const QByteArray &data)
 
 QString OCRUtils::Algorithm::mdII(const QString &data, bool encode)
 {
-    OCRCryptographicHash hash;
+    TTKCryptographicHash hash;
     return encode ? hash.encrypt(data, "13.015?sdf;/?dd") : hash.decrypt(data, "13.015?sdf;/?dd");
 }
 

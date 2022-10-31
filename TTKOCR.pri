@@ -30,7 +30,7 @@ greaterThan(QT_MAJOR_VERSION, 4){ #Qt5
 
 include($$PWD/TTKVersion.pri)
 
-DESTDIR = $$OUT_PWD/../bin/$$TTKOCR
+DESTDIR = $$OUT_PWD/../bin/$$TTKVersion
 
 include($$PWD/TTKBuild.pri)
 
@@ -47,40 +47,39 @@ unix:!mac{
 
 win32{
     msvc{
-        LIBS += -lshell32 -luser32
-        LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras
-        contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
         CONFIG += c++11
         !contains(QMAKE_TARGET.arch, x86_64){
              #support on windows XP
              QMAKE_LFLAGS_WINDOWS = /SUBSYSTEM:WINDOWS,5.01
              QMAKE_LFLAGS_CONSOLE = /SUBSYSTEM:CONSOLE,5.01
         }
+        contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
+        LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras -lshell32 -luser32
     }
 
     gcc{
-        LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras
-        contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
         equals(QT_MAJOR_VERSION, 6){ #Qt6
             QMAKE_CXXFLAGS += -std=c++17
         }else{
             QMAKE_CXXFLAGS += -std=c++11
         }
+        contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
         QMAKE_CXXFLAGS += -Wunused-function -Wswitch
+        LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras
     }
 
     equals(QT_MAJOR_VERSION, 4):QT += multimedia
 }
 
 unix:!mac{
-    LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras
-    contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
     equals(QT_MAJOR_VERSION, 6){ #Qt6
         QMAKE_CXXFLAGS += -std=c++17
     }else{
         QMAKE_CXXFLAGS += -std=c++11
     }
+    contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
     QMAKE_CXXFLAGS += -Wunused-function -Wswitch
+    LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras
 }
 
 DEFINES += TTK_LIBRARY

@@ -8,16 +8,6 @@
         <file alias="btn_min_normal">../TTKResource/btn_min_normal.png</file>
         <file alias="btn_min_hover">../TTKResource/btn_min_hover.png</file>
     </qresource>
-    <qresource prefix="/shadow">
-        <file alias="lb_bottom">../TTKResource/borderShadow/lb_bottom.png</file>
-        <file alias="lb_left">../TTKResource/borderShadow/lb_left.png</file>
-        <file alias="lb_right">../TTKResource/borderShadow/lb_right.png</file>
-        <file alias="lb_top">../TTKResource/borderShadow/lb_top.png</file>
-        <file alias="lb_left_top">../TTKResource/borderShadow/lb_left_top.png</file>
-        <file alias="lb_right_top">../TTKResource/borderShadow/lb_right_top.png</file>
-        <file alias="lb_left_bottom">../TTKResource/borderShadow/lb_left_bottom.png</file>
-        <file alias="lb_right_bottom">../TTKResource/borderShadow/lb_right_bottom.png</file>
-    </qresource>
     <qresource prefix="/gif">
         <file alias="lb_cicle_blue">../TTKResource/gif/lb_cicle_blue.png</file>
     </qresource>

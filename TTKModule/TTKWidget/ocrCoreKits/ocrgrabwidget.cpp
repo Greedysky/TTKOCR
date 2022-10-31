@@ -1,5 +1,4 @@
 #include "ocrgrabwidget.h"
-#include "ocrwidgetutils.h"
 #include "ttkdesktopwrapper.h"
 
 #include <QMenu>

@@ -21,13 +21,13 @@ INCLUDEPATH += $$PWD
 HEADERS += \
     $$PWD/ocrabstractmovedialog.h \
     $$PWD/ocrabstractmovewidget.h \
-    $$PWD/ocrabstractmoveresizewidget.h \
     $$PWD/ocrgiflabelwidget.h \
-    $$PWD/ocrgrabwidget.h
+    $$PWD/ocrgrabwidget.h \
+    $$PWD/ocrwidgetrenderer.h
 
 SOURCES += \
-    $$PWD/ocrabstractmoveresizewidget.cpp \
     $$PWD/ocrabstractmovedialog.cpp \
     $$PWD/ocrabstractmovewidget.cpp \
     $$PWD/ocrgiflabelwidget.cpp \
-    $$PWD/ocrgrabwidget.cpp
+    $$PWD/ocrgrabwidget.cpp \
+    $$PWD/ocrwidgetrenderer.cpp

@@ -2,8 +2,7 @@
 #include "ui_ocrapplication.h"
 #include "ocrapplicationobject.h"
 #include "ocrfunctionlistuiobject.h"
-#include "ocrwidgetutils.h"
-#include "ocrcoreutils.h"
+#include "ocrfileutils.h"
 #include "ocrgrabwidget.h"
 #include "ocrthread.h"
 #include "ocruiobject.h"
@@ -15,7 +14,7 @@
 OCRApplication *OCRApplication::m_instance = nullptr;
 
 OCRApplication::OCRApplication(QWidget *parent)
-    : OCRAbstractMoveResizeWidget(parent),
+    : TTKAbstractMoveResizeWidget(parent),
       m_ui(new Ui::OCRApplication),
       m_count(0)
 {
@@ -90,7 +89,7 @@ void OCRApplication::quitWindowClose()
 
 void OCRApplication::openButtonClicked()
 {
-    const QStringList list(OCRUtils::Widget::openFilesDialog(this, "Images (*.png *.bmp *.jpg);;PDF Files(*.pdf)"));
+    const QStringList list(OCRUtils::File::getOpenFileNames(this, "Images (*.png *.bmp *.jpg);;PDF Files(*.pdf)"));
     if(list.isEmpty())
     {
         return;
@@ -151,7 +150,7 @@ void OCRApplication::startButtonClicked()
     }
 
     m_count = 0;
-    OCRUtils::Core::removeRecursively(DIR_PREFIX);
+    OCRUtils::File::removeRecursively(DIR_PREFIX);
 
     for(OCRThreadItem *item : qAsConst(m_fileList))
     {
@@ -172,7 +171,7 @@ void OCRApplication::clearButtonClicked()
 
     m_count = 0;
     deleteItems();
-    OCRUtils::Core::removeRecursively(DIR_PREFIX);
+    OCRUtils::File::removeRecursively(DIR_PREFIX);
     m_ui->textScrollAreaWidget->clear();
 }
 
@@ -207,7 +206,7 @@ void OCRApplication::findFinish()
         }
 
         m_ui->textScrollAreaWidget->setText(content);
-        OCRUtils::Core::removeRecursively(DIR_PREFIX);
+        OCRUtils::File::removeRecursively(DIR_PREFIX);
 
         stateChanged(false);
     }

@@ -1,7 +1,7 @@
 #include "ocrapplicationobject.h"
 #include "ocrapplication.h"
 #include "ocrbackgroundmanager.h"
-#include "ocrcoreutils.h"
+#include "ocrfileutils.h"
 
 #include <QTimer>
 #include <QPropertyAnimation>
@@ -41,6 +41,6 @@ void OCRApplicationObject::windowCloseAnimation()
 
 void OCRApplicationObject::cleanUp()
 {
-    OCRUtils::Core::removeRecursively(DIR_PREFIX);
-    OCRUtils::Core::removeRecursively(DOWNLOAD_DIR_FULL);
+    OCRUtils::File::removeRecursively(DIR_PREFIX);
+    OCRUtils::File::removeRecursively(DOWNLOAD_DIR_FULL);
 }
