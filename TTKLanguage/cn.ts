@@ -42,7 +42,7 @@
 <context>
     <name>QJson::ParserRunnable</name>
     <message>
-        <location filename="../TTKThirdParty/TTKExtras/qjson/parserrunnable.cpp" line="64"/>
+        <location filename="../TTKThirdParty/TTKExtras/qjson/parserrunnable.cpp" line="63"/>
         <source>An error occurred while parsing json: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -50,7 +50,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../TTKModule/TTKCore/ocrUtilsKits/ocrwidgetutils.cpp" line="27"/>
+        <location filename="../TTKModule/TTKCore/ocrUtilsKits/ocrfileutils.cpp" line="58"/>
         <source>choose a filename to open under</source>
         <translation>打开文件</translation>
     </message>
