@@ -25,7 +25,7 @@
 class QFile;
 class QNetworkAccessManager;
 
-/*! @brief The class of ocr thread item.
+/*! @brief The class of the ocr thread item.
  * @author Greedysky <greedysky@163.com>
  */
 class TTK_MODULE_EXPORT OCRThreadItem : public QObject
@@ -46,7 +46,7 @@ public:
 
 };
 
-/*! @brief The class of ocr thread.
+/*! @brief The class of the ocr thread.
  * @author Greedysky <greedysky@163.com>
  */
 class TTK_MODULE_EXPORT OCRThread : public QObject
