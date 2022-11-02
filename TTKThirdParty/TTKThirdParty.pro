@@ -16,11 +16,11 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # ***************************************************************************
 
-include($$PWD/../TTKBuild.pri)
-
 TEMPLATE = subdirs
 CONFIG += ordered
 SUBDIRS = TTKExtras
+
+include($$PWD/../TTKBuild.pri)
 
 contains(CONFIG, TTK_BUILD_BY_PDF){
     SUBDIRS += TTKPdf

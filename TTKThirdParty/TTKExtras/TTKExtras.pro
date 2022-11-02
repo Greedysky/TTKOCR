@@ -24,14 +24,14 @@ greaterThan(QT_MAJOR_VERSION, 4){ #Qt5
     }
 }
 
-include($$PWD/../../TTKVersion.pri)
-
+TEMPLATE = lib
 CONFIG += plugin lib
+
+include($$PWD/../../TTKVersion.pri)
 
 DESTDIR = $$OUT_PWD/../../bin/$$TTKVersion
 TARGET = TTKExtras
 
-TEMPLATE = lib
 DEFINES += TTK_LIBRARY
 
 win32:msvc{
@@ -45,6 +45,7 @@ win32:msvc{
     }
 }
 
+#load extra define
 include($$PWD/../TTKThirdParty.pri)
 
 include($$PWD/qjson/QJson.pri)

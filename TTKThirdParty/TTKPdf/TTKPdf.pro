@@ -17,9 +17,12 @@
 # ***************************************************************************
 
 QT += core gui
-greaterThan(QT_MAJOR_VERSION, 4):QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4){ #Qt5
+    QT += widgets
+}
 
 TEMPLATE = lib
+CONFIG += plugin lib
 
 include($$PWD/../../TTKVersion.pri)
 include($$PWD/../../TTKBuild.pri)
@@ -28,8 +31,6 @@ DESTDIR = $$OUT_PWD/../../bin/$$TTKPdf
 TARGET = TTKPdf
 
 LIBS += -L$$DESTDIR -lmupdf -lfreetype -ljbig2dec -ljpeg -lmujs -lopenjpeg -lz
-
-CONFIG += plugin lib
 
 INCLUDEPATH += \
     $$PWD \
