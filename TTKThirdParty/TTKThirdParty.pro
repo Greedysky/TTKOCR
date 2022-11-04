@@ -18,7 +18,7 @@
 
 TEMPLATE = subdirs
 CONFIG += ordered
-SUBDIRS = TTKExtras
+SUBDIRS += TTKExtras
 
 include($$PWD/../TTKBuild.pri)
 
