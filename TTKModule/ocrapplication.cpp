@@ -193,7 +193,7 @@ void OCRApplication::findFinish()
         for(int i = 0; i < m_fileList.count(); ++i)
         {
             QFile file(QString("%1/%2").arg(DIR_PREFIX).arg(i));
-            if(file.open(QFile::ReadOnly))
+            if(file.open(QIODevice::ReadOnly))
             {
                 content.append(file.readAll() + "\r\n");
                 file.close();

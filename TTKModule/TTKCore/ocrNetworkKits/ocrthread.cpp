@@ -93,7 +93,7 @@ void OCRThread::finishedSlot()
                     QDir().mkdir(DIR_PREFIX);
                 }
                 QFile file(QString("%1/%2").arg(DIR_PREFIX).arg(item->m_index));
-                if(file.open(QFile::WriteOnly))
+                if(file.open(QIODevice::WriteOnly))
                 {
                     file.write(content.toUtf8());
                     file.close();
