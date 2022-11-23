@@ -30,9 +30,7 @@ void OCRRunTimeManager::run() const
 {
     TTK_INFO_STREAM("OCRApplication Begin");
 
-#if !TTK_QT_VERSION_CHECK(5,0,0)
     OCRUtils::Codec::setLocalCodec();
-#endif
 
     TTK_INFO_STREAM("Load Translation");
     ///////////////////////////////////////////////////////
