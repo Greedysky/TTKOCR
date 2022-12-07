@@ -24,8 +24,6 @@ include($$PWD/../TTKOCR.pri)
 
 TARGET = TTKCore
 
-INCLUDEPATH += $$PWD
-
 HEADERS += \
     $$PWD/ocrapplication.h \
     $$PWD/ocrapplicationobject.h
