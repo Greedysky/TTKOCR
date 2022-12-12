@@ -30,13 +30,13 @@
 
 #define DIR_PREFIX              "dir"
 
-#define JPG_FILE_PREFIX         "jpg"
-#define EXE_FILE_PREFIX         "exe"
-#define COM_FILE_PREFIX         "com"
+#define JPG_FILE_SUFFIX         "jpg"
+#define EXE_FILE_SUFFIX         "exe"
+#define COM_FILE_SUFFIX         "com"
 
-#define JPG_FILE                TTK_STRCAT(TTK_DOT, JPG_FILE_PREFIX)
-#define EXE_FILE                TTK_STRCAT(TTK_DOT, EXE_FILE_PREFIX)
-#define COM_FILE                TTK_STRCAT(TTK_DOT, COM_FILE_PREFIX)
+#define JPG_FILE                TTK_STRCAT(TTK_DOT, JPG_FILE_SUFFIX)
+#define EXE_FILE                TTK_STRCAT(TTK_DOT, EXE_FILE_SUFFIX)
+#define COM_FILE                TTK_STRCAT(TTK_DOT, COM_FILE_SUFFIX)
 
 
 #define APP_NAME                "TTKOCR"
