@@ -82,7 +82,7 @@ private:
     QObjectList m_observer;
     QString m_background;
 
-    DECLARE_SINGLETON_CLASS(OCRBackgroundManager)
+    TTK_DECLARE_SINGLETON_CLASS(OCRBackgroundManager)
 
 };
 
