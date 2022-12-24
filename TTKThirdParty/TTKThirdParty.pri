@@ -18,7 +18,6 @@
 
 INCLUDEPATH += \
     $$PWD \
-    $$PWD/Zlib \
     $$PWD/TTKPdf \
     $$PWD/TTKExtras \
     $$PWD/../TTKCommon
