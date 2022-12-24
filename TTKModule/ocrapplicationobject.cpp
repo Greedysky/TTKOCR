@@ -2,6 +2,7 @@
 #include "ocrapplication.h"
 #include "ocrbackgroundmanager.h"
 #include "ocrfileutils.h"
+#include "ttknumberdefine.h"
 
 #include <QTimer>
 #include <QPropertyAnimation>
@@ -32,11 +33,12 @@ OCRApplicationObject *OCRApplicationObject::instance()
 void OCRApplicationObject::windowCloseAnimation()
 {
     m_animation->stop();
-    m_animation->setDuration(500);
+    m_animation->setDuration(MT_S2MS / 2);
     m_animation->setStartValue(1.0f);
     m_animation->setEndValue(0.0f);
     m_animation->start();
-    QTimer::singleShot(1000, qApp, SLOT(quit()));
+
+    QTimer::singleShot(MT_S2MS, qApp, SLOT(quit()));
 }
 
 void OCRApplicationObject::cleanUp()
