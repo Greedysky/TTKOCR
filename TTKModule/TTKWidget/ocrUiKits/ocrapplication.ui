@@ -362,7 +362,7 @@
             <string notr="true">color:white</string>
            </property>
            <property name="text">
-            <string>Copyright (C) 2015 - 2022 Greedysky Studio</string>
+            <string>Copyright (C) 2015 - 2023 Greedysky Studio</string>
            </property>
           </widget>
          </item>
