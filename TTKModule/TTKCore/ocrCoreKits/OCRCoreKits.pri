@@ -21,6 +21,7 @@ INCLUDEPATH += $$PWD
 HEADERS += \
     $$PWD/ocrbackgroundmanager.h \
     $$PWD/ocrobject.h \
+    $$PWD/ocrotherdefine.h \
     $$PWD/ocrruntimemanager.h
 
 SOURCES += \
