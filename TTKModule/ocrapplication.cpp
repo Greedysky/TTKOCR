@@ -31,16 +31,16 @@ OCRApplication::OCRApplication(QWidget *parent)
     m_ui->iconLabel->setPixmap(QPixmap(":/image/lb_app_logo").scaled(m_ui->iconLabel->size()));
     m_ui->background->setPixmap(QPixmap(":/image/lb_background").scaled(size()));
 
-    m_ui->minButton->setStyleSheet(OCRUIObject::MFuncMin);
+    m_ui->minButton->setStyleSheet(OCRUIObject::FuncMin);
     connect(m_ui->minButton, SIGNAL(clicked()), SLOT(showMinimized()));
 
-    m_ui->closeButton->setStyleSheet(OCRUIObject::MFuncClose);
+    m_ui->closeButton->setStyleSheet(OCRUIObject::FuncClose);
     connect(m_ui->closeButton, SIGNAL(clicked()), SLOT(quitWindowClose()));
 
-    m_ui->openButton->setStyleSheet(OCRUIObject::MPushButtonStyle04);
-    m_ui->screenshotButton->setStyleSheet(OCRUIObject::MPushButtonStyle04);
-    m_ui->startButton->setStyleSheet(OCRUIObject::MPushButtonStyle04);
-    m_ui->clearButton->setStyleSheet(OCRUIObject::MPushButtonStyle04);
+    m_ui->openButton->setStyleSheet(OCRUIObject::PushButtonStyle01);
+    m_ui->screenshotButton->setStyleSheet(OCRUIObject::PushButtonStyle01);
+    m_ui->startButton->setStyleSheet(OCRUIObject::PushButtonStyle01);
+    m_ui->clearButton->setStyleSheet(OCRUIObject::PushButtonStyle01);
 
     connect(m_ui->openButton, SIGNAL(clicked()), SLOT(openButtonClicked()));
     connect(m_ui->screenshotButton, SIGNAL(clicked()), SLOT(screenshotButtonClicked()));
@@ -52,14 +52,14 @@ OCRApplication::OCRApplication(QWidget *parent)
     m_ui->pixScrollArea->setFrameShape(QFrame::NoFrame);
     m_ui->pixScrollArea->setFrameShadow(QFrame::Plain);
     m_ui->pixScrollArea->setAlignment(Qt::AlignVCenter);
-    m_ui->pixScrollArea->verticalScrollBar()->setStyleSheet(OCRUIObject::MScrollBarStyle03);
+    m_ui->pixScrollArea->verticalScrollBar()->setStyleSheet(OCRUIObject::ScrollBarStyle03);
 
     m_ui->textScrollArea->setWidgetResizable(true);
     m_ui->textScrollArea->setFrameShape(QFrame::NoFrame);
     m_ui->textScrollArea->setFrameShadow(QFrame::Plain);
     m_ui->textScrollArea->setAlignment(Qt::AlignVCenter);
-    m_ui->textScrollArea->verticalScrollBar()->setStyleSheet(OCRUIObject::MScrollBarStyle03);
-    m_ui->textScrollArea->horizontalScrollBar()->setStyleSheet(OCRUIObject::MScrollBarStyle04);
+    m_ui->textScrollArea->verticalScrollBar()->setStyleSheet(OCRUIObject::ScrollBarStyle03);
+    m_ui->textScrollArea->horizontalScrollBar()->setStyleSheet(OCRUIObject::ScrollBarStyle04);
 
     /////////// Mouse tracking
     for(QObject *obj : foreachWidget(this))

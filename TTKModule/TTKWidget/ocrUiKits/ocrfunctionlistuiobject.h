@@ -26,17 +26,15 @@
  */
 namespace OCRUIObject
 {
-    const QString MFuncClose = " \
+    const QString FuncClose = " \
             QToolButton{ border:none; \
             background-image: url(:/image/btn_close_normal);} \
             QToolButton:hover{ background-image: url(:/image/btn_close_hover);}";
 
-
-    const QString MFuncMin= " \
+    const QString FuncMin= " \
             QToolButton{ border:none; \
             background-image: url(:/image/btn_min_normal);} \
             QToolButton:hover{ background-image: url(:/image/btn_min_hover);}";
-
 
 }
 

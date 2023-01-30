@@ -85,8 +85,7 @@ void OCRGifLabelWidget::timeout()
                 {
                     break;
                 }
-                setStyleSheet(QString("background-image: url(':/gif/lb_cicle_blue'); \
-                                       margin-left:-%1px;").arg(GIF_CICLE_BLUE*m_index));
+                setStyleSheet(QString("background-image: url(':/gif/lb_cicle_blue'); margin-left:-%1px;").arg(GIF_CICLE_BLUE * m_index));
                 break;
             }
         default: break;
