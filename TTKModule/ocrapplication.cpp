@@ -14,15 +14,14 @@
 OCRApplication *OCRApplication::m_instance = nullptr;
 
 OCRApplication::OCRApplication(QWidget *parent)
-    : TTKAbstractMoveResizeWidget(parent),
+    : TTKAbstractMoveResizeWidget(false, parent),
       m_ui(new Ui::OCRApplication),
       m_count(0)
 {
     m_instance = this;
-    setAttribute(Qt::WA_TranslucentBackground, false);
 
     m_applicationObject = new OCRApplicationObject(this);
-    ////////////////////////////////////////////////
+
     m_ui->setupUi(this);
 
     setMinimumSize(WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
@@ -62,12 +61,7 @@ OCRApplication::OCRApplication(QWidget *parent)
     m_ui->textScrollArea->horizontalScrollBar()->setStyleSheet(OCRUIObject::ScrollBarStyle04);
 
     /////////// Mouse tracking
-    for(QObject *obj : foreachWidget(this))
-    {
-        QWidget *w = TTKObject_cast(QWidget*, obj);
-        w->installEventFilter(this);
-        w->setMouseTracking(true);
-    }
+    setObjectsTracking(QWidgetList() << m_ui->background);
 }
 
 OCRApplication::~OCRApplication()
