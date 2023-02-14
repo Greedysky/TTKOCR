@@ -36,7 +36,7 @@ namespace OCRUtils
         /*!
          * Get open file names dialog.
          */
-        TTK_MODULE_EXPORT QStringList getOpenFileNames(QWidget *parent, const QString &filter = "Images (*.png *.bmp *.jpg)");
+        TTK_MODULE_EXPORT QStringList getOpenFileNames(QWidget *parent, const QString &filter = "Image Files (*.png *.bmp *.jpg)");
 
     }
 }

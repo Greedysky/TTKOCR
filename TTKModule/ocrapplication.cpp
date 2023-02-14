@@ -83,7 +83,7 @@ void OCRApplication::quitWindowClose()
 
 void OCRApplication::openButtonClicked()
 {
-    const QStringList list(OCRUtils::File::getOpenFileNames(this, "Images (*.png *.bmp *.jpg);;PDF Files(*.pdf)"));
+    const QStringList list(OCRUtils::File::getOpenFileNames(this, "Image Files (*.png *.bmp *.jpg);;PDF Files (*.pdf)"));
     if(list.isEmpty())
     {
         return;
