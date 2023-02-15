@@ -23,7 +23,6 @@
 #include "ttkglobaldefine.h"
 
 class QFile;
-class QNetworkAccessManager;
 
 /*! @brief The class of the ocr thread item.
  * @author Greedysky <greedysky@163.com>

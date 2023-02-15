@@ -8,9 +8,7 @@
 #include <QDir>
 #include <QPixmap>
 #include <QHttpMultiPart>
-#include <QNetworkRequest>
 #include <QSslConfiguration>
-#include <QNetworkAccessManager>
 
 #define OCR_URL     "RU5EOEI3NnE1aUo0cHVQYlZST2s1eGZUVzY5dmFwemsvSFFJQXFzRjUvc0M1b21VOUFxU25yR1JpQjg9"
 
