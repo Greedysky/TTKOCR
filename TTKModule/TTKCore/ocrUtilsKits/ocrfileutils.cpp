@@ -21,7 +21,7 @@ bool OCRUtils::File::removeRecursively(const QString &dir, bool self)
         const QFileInfo &fin = di.fileInfo();
         const QString &filePath = di.filePath();
 
-        bool ok;
+        bool ok = false;
         if(fin.isDir() && !fin.isSymLink())
         {
             ok = OCRUtils::File::removeRecursively(filePath, self); // recursive

@@ -59,7 +59,7 @@ void OCRThread::finishedSlot()
     if(m_reply->error() == QNetworkReply::NoError)
     {
         QJson::Parser json;
-        bool ok;
+        bool ok = false;
         QVariant data = json.parse(m_reply->readAll(), &ok);
 
         if(ok)
