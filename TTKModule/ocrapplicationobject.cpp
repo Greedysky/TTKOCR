@@ -43,6 +43,6 @@ void OCRApplicationObject::windowCloseAnimation()
 
 void OCRApplicationObject::cleanUp()
 {
-    OCRUtils::File::removeRecursively(DIR_PREFIX);
-    OCRUtils::File::removeRecursively(DOWNLOAD_DIR_FULL);
+    TTK::File::removeRecursively(DIR_PREFIX);
+    TTK::File::removeRecursively(DOWNLOAD_DIR_FULL);
 }

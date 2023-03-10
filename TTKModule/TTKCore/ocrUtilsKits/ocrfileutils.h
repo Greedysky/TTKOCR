@@ -24,7 +24,7 @@
 /*! @brief The class of the utils file.
  * @author Greedysky <greedysky@163.com>
  */
-namespace OCRUtils
+namespace TTK
 {
     namespace File
     {

@@ -23,16 +23,16 @@
 #include "ttkversion.h"
 #include "ttkglobaldefine.h"
 
-#define TTK_DOWNLOAD_DIR_FULL    OCRObject::applicationPath() + DOWNLOAD_DIR
-#define TTK_LANGUAGE_DIR_FULL    OCRObject::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + LANGUAGE_DIR
+#define TTK_DOWNLOAD_DIR_FULL    TTK::applicationPath() + DOWNLOAD_DIR
+#define TTK_LANGUAGE_DIR_FULL    TTK::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + LANGUAGE_DIR
 
 #ifdef Q_OS_WIN
-#  define TTK_SERVICE_FULL       OCRObject::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + "TTKService.exe"
+#  define TTK_SERVICE_FULL       TTK::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + "TTKService.exe"
 #else
-#  define TTK_OCR_FULL           OCRObject::applicationPath() + "TTKOCR.sh"
-#  define TTK_ROUTINE_FULL       OCRObject::applicationPath() + "TTKRoutine.sh"
-#  define TTK_SERVICE_FULL       OCRObject::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + "TTKService.sh"
-#  define TTK_ROUTINECOPY_FULL   OCRObject::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + "TTKRoutineCopy.sh"
+#  define TTK_OCR_FULL           TTK::applicationPath() + "TTKOCR.sh"
+#  define TTK_ROUTINE_FULL       TTK::applicationPath() + "TTKRoutine.sh"
+#  define TTK_SERVICE_FULL       TTK::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + "TTKService.sh"
+#  define TTK_ROUTINECOPY_FULL   TTK::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + "TTKRoutineCopy.sh"
 #endif
 
 

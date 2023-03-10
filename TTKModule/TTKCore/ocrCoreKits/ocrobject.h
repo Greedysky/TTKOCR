@@ -45,8 +45,8 @@
 #define DOWNLOAD_DIR            TTK_STRCAT("Downloads", TTK_SEPARATOR)
 #define LANGUAGE_DIR            TTK_STRCAT("GLanguage", TTK_SEPARATOR)
 
-#define DOWNLOAD_DIR_FULL       OCRObject::applicationPath() + TTK_PDIR + DOWNLOAD_DIR
-#define LANGUAGE_DIR_FULL       OCRObject::applicationPath() + LANGUAGE_DIR
+#define DOWNLOAD_DIR_FULL       TTK::applicationPath() + TTK_PDIR + DOWNLOAD_DIR
+#define LANGUAGE_DIR_FULL       TTK::applicationPath() + LANGUAGE_DIR
 
 
 #define WINDOW_WIDTH_MIN        850
@@ -56,7 +56,7 @@
 /*! @brief The namespace of the application object.
  * @author Greedysky <greedysky@163.com>
  */
-namespace OCRObject
+namespace TTK
 {
     /*!
      * Get application work dir.

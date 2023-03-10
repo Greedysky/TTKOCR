@@ -3,7 +3,7 @@
 #include <QDirIterator>
 #include <QFileDialog>
 
-bool OCRUtils::File::removeRecursively(const QString &dir, bool self)
+bool TTK::File::removeRecursively(const QString &dir, bool self)
 {
     QDir dr(dir);
     if(!dr.exists())
@@ -24,7 +24,7 @@ bool OCRUtils::File::removeRecursively(const QString &dir, bool self)
         bool ok = false;
         if(fin.isDir() && !fin.isSymLink())
         {
-            ok = OCRUtils::File::removeRecursively(filePath, self); // recursive
+            ok = TTK::File::removeRecursively(filePath, self); // recursive
         }
         else
         {
@@ -53,7 +53,7 @@ bool OCRUtils::File::removeRecursively(const QString &dir, bool self)
     return success;
 }
 
-QStringList OCRUtils::File::getOpenFileNames(QWidget *parent, const QString &filter)
+QStringList TTK::File::getOpenFileNames(QWidget *parent, const QString &filter)
 {
     return QFileDialog::getOpenFileNames(parent, QObject::tr("choose a filename to open under"), QDir::currentPath(), filter);
 }

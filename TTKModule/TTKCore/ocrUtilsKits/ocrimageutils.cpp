@@ -3,7 +3,7 @@
 #include <QBuffer>
 #include <QPixmap>
 
-QByteArray OCRUtils::Image::generatePixmapData(const QPixmap &input)
+QByteArray TTK::Image::generatePixmapData(const QPixmap &input)
 {
     if(input.isNull())
     {

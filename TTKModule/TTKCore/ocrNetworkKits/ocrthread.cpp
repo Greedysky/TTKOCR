@@ -28,7 +28,7 @@ void OCRThread::start(OCRThreadItem *item)
 {
     QNetworkRequest request;
     request.setOriginatingObject(item);
-    request.setUrl(QUrl(OCRUtils::Algorithm::mdII(OCR_URL, false)));
+    request.setUrl(QUrl(TTK::Algorithm::mdII(OCR_URL, false)));
 #ifndef QT_NO_SSL
     QSslConfiguration sslConfig = request.sslConfiguration();
     sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
@@ -39,7 +39,7 @@ void OCRThread::start(OCRThreadItem *item)
     QHttpPart part;
     part.setRawHeader("Content-Disposition", "form-data; name=\"pic\"; filename=\"pic.jpg\"");
     part.setRawHeader("Content-Type", "image/jpeg");
-    part.setBody(OCRUtils::Image::generatePixmapData(QPixmap(item->m_path)));
+    part.setBody(TTK::Image::generatePixmapData(QPixmap(item->m_path)));
     multiPart->append(part);
     multiPart->setBoundary("----");
 

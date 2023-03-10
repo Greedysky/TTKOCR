@@ -30,16 +30,16 @@ OCRApplication::OCRApplication(QWidget *parent)
     m_ui->iconLabel->setPixmap(QPixmap(":/image/lb_app_logo").scaled(m_ui->iconLabel->size()));
     m_ui->background->setPixmap(QPixmap(":/image/lb_background").scaled(size()));
 
-    m_ui->minButton->setStyleSheet(OCRUIObject::FuncMin);
+    m_ui->minButton->setStyleSheet(TTK::UI::FuncMin);
     connect(m_ui->minButton, SIGNAL(clicked()), SLOT(showMinimized()));
 
-    m_ui->closeButton->setStyleSheet(OCRUIObject::FuncClose);
+    m_ui->closeButton->setStyleSheet(TTK::UI::FuncClose);
     connect(m_ui->closeButton, SIGNAL(clicked()), SLOT(quitWindowClose()));
 
-    m_ui->openButton->setStyleSheet(OCRUIObject::PushButtonStyle01);
-    m_ui->screenshotButton->setStyleSheet(OCRUIObject::PushButtonStyle01);
-    m_ui->startButton->setStyleSheet(OCRUIObject::PushButtonStyle01);
-    m_ui->clearButton->setStyleSheet(OCRUIObject::PushButtonStyle01);
+    m_ui->openButton->setStyleSheet(TTK::UI::PushButtonStyle01);
+    m_ui->screenshotButton->setStyleSheet(TTK::UI::PushButtonStyle01);
+    m_ui->startButton->setStyleSheet(TTK::UI::PushButtonStyle01);
+    m_ui->clearButton->setStyleSheet(TTK::UI::PushButtonStyle01);
 
     connect(m_ui->openButton, SIGNAL(clicked()), SLOT(openButtonClicked()));
     connect(m_ui->screenshotButton, SIGNAL(clicked()), SLOT(screenshotButtonClicked()));
@@ -51,14 +51,14 @@ OCRApplication::OCRApplication(QWidget *parent)
     m_ui->pixScrollArea->setFrameShape(QFrame::NoFrame);
     m_ui->pixScrollArea->setFrameShadow(QFrame::Plain);
     m_ui->pixScrollArea->setAlignment(Qt::AlignVCenter);
-    m_ui->pixScrollArea->verticalScrollBar()->setStyleSheet(OCRUIObject::ScrollBarStyle03);
+    m_ui->pixScrollArea->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle03);
 
     m_ui->textScrollArea->setWidgetResizable(true);
     m_ui->textScrollArea->setFrameShape(QFrame::NoFrame);
     m_ui->textScrollArea->setFrameShadow(QFrame::Plain);
     m_ui->textScrollArea->setAlignment(Qt::AlignVCenter);
-    m_ui->textScrollArea->verticalScrollBar()->setStyleSheet(OCRUIObject::ScrollBarStyle03);
-    m_ui->textScrollArea->horizontalScrollBar()->setStyleSheet(OCRUIObject::ScrollBarStyle04);
+    m_ui->textScrollArea->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle03);
+    m_ui->textScrollArea->horizontalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle04);
 
     /////////// Mouse tracking
     setObjectsTracking(QWidgetList() << m_ui->background);
@@ -83,7 +83,7 @@ void OCRApplication::quitWindowClose()
 
 void OCRApplication::openButtonClicked()
 {
-    const QStringList list(OCRUtils::File::getOpenFileNames(this, "Image Files (*.png *.bmp *.jpg);;PDF Files (*.pdf)"));
+    const QStringList list(TTK::File::getOpenFileNames(this, "Image Files (*.png *.bmp *.jpg);;PDF Files (*.pdf)"));
     if(list.isEmpty())
     {
         return;
@@ -144,7 +144,7 @@ void OCRApplication::startButtonClicked()
     }
 
     m_count = 0;
-    OCRUtils::File::removeRecursively(DIR_PREFIX);
+    TTK::File::removeRecursively(DIR_PREFIX);
 
     for(OCRThreadItem *item : qAsConst(m_fileList))
     {
@@ -165,7 +165,7 @@ void OCRApplication::clearButtonClicked()
 
     m_count = 0;
     deleteItems();
-    OCRUtils::File::removeRecursively(DIR_PREFIX);
+    TTK::File::removeRecursively(DIR_PREFIX);
     m_ui->textScrollAreaWidget->clear();
 }
 
@@ -200,7 +200,7 @@ void OCRApplication::findFinish()
         }
 
         m_ui->textScrollAreaWidget->setText(content);
-        OCRUtils::File::removeRecursively(DIR_PREFIX);
+        TTK::File::removeRecursively(DIR_PREFIX);
 
         stateChanged(false);
     }

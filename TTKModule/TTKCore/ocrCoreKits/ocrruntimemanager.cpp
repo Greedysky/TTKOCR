@@ -5,7 +5,7 @@
 #include <QFont>
 #include <QApplication>
 
-namespace OCRObject
+namespace TTK
 {
 static QString languageCore(int index)
 {
@@ -30,7 +30,7 @@ void OCRRunTimeManager::run() const
 {
     TTK_INFO_STREAM("OCRApplication Begin");
 
-    OCRUtils::Codec::setLocalCodec();
+    TTK::Codec::setLocalCodec();
 
     TTK_INFO_STREAM("Load Translation");
     ///////////////////////////////////////////////////////
@@ -45,5 +45,5 @@ void OCRRunTimeManager::run() const
 
 QString OCRRunTimeManager::translator() const
 {
-    return OCRObject::languageCore(0);
+    return TTK::languageCore(0);
 }

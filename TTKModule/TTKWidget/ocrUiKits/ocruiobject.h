@@ -24,37 +24,40 @@
 /*! @brief The namespace of the application ui object.
  * @author Greedysky <greedysky@163.com>
  */
-namespace OCRUIObject
+namespace TTK
 {
-///PushButton
-    const QString PushButtonStyle01 = " \
-            QPushButton{ border:1px solid #AAAAAA; background:#FFFFFF; color:#777777;} \
-            QPushButton::hover{ border:1px solid #555555; color:#444444;} \
-            QPushButton::disabled{ color:#999999;}";
+    namespace UI
+    {
+		///PushButton
+        const QString PushButtonStyle01 = " \
+                QPushButton{ border:1px solid #AAAAAA; background:#FFFFFF; color:#777777;} \
+                QPushButton::hover{ border:1px solid #555555; color:#444444;} \
+                QPushButton::disabled{ color:#999999;}";
 
-///ScrollBar
-    const QString ScrollBarStyle01 = " \
-            QScrollBar{ background:#FFFFFF; width:8px; padding-top:0px; padding-bottom:0px;} \
-            QScrollBar::handle:vertical{ border-radius:4px; background:#CFCFCF; min-height: 30px;} \
-            QScrollBar::handle:vertical::disabled{ background:#DBDBDB;} \
-            QScrollBar::handle:vertical:hover{ background:#BBBBBB;} \
-            QScrollBar::add-line, QScrollBar::sub-line{ background:none; border:none;} \
-            QScrollBar::add-page, QScrollBar::sub-page{ background:none;}";
+		///ScrollBar
+        const QString ScrollBarStyle01 = " \
+                QScrollBar{ background:#FFFFFF; width:8px; padding-top:0px; padding-bottom:0px;} \
+                QScrollBar::handle:vertical{ border-radius:4px; background:#CFCFCF; min-height: 30px;} \
+                QScrollBar::handle:vertical::disabled{ background:#DBDBDB;} \
+                QScrollBar::handle:vertical:hover{ background:#BBBBBB;} \
+                QScrollBar::add-line, QScrollBar::sub-line{ background:none; border:none;} \
+                QScrollBar::add-page, QScrollBar::sub-page{ background:none;}";
 
-    const QString ScrollBarStyle02 = " \
-            QScrollBar{ background:#FFFFFF; height:8px; padding-left:0px; padding-right:0px;} \
-            QScrollBar::handle:horizontal{ border-radius:4px; background:#CFCFCF; min-width: 30px;} \
-            QScrollBar::handle:horizontal::disabled{ background:#DBDBDB;} \
-            QScrollBar::handle:horizontal:hover{ background:#BBBBBB;} \
-            QScrollBar::add-line, QScrollBar::sub-line{ background:none; border:none;} \
-            QScrollBar::add-page, QScrollBar::sub-page{ background:none;}";
+        const QString ScrollBarStyle02 = " \
+                QScrollBar{ background:#FFFFFF; height:8px; padding-left:0px; padding-right:0px;} \
+                QScrollBar::handle:horizontal{ border-radius:4px; background:#CFCFCF; min-width: 30px;} \
+                QScrollBar::handle:horizontal::disabled{ background:#DBDBDB;} \
+                QScrollBar::handle:horizontal:hover{ background:#BBBBBB;} \
+                QScrollBar::add-line, QScrollBar::sub-line{ background:none; border:none;} \
+                QScrollBar::add-page, QScrollBar::sub-page{ background:none;}";
 
-    const QString ScrollBarStyle03 = ScrollBarStyle01 + " \
-            QScrollBar{ background:transparent;}";
+        const QString ScrollBarStyle03 = ScrollBarStyle01 + " \
+                QScrollBar{ background:transparent;}";
 
-    const QString ScrollBarStyle04 = ScrollBarStyle02 + " \
-            QScrollBar{ background:transparent;}";
+        const QString ScrollBarStyle04 = ScrollBarStyle02 + " \
+                QScrollBar{ background:transparent;}";
 
+    }
 }
 
 #endif // OCRUIOBJECT_H
