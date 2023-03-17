@@ -61,7 +61,7 @@ OCRApplication::OCRApplication(QWidget *parent)
     m_ui->textScrollArea->horizontalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle04);
 
     /////////// Mouse tracking
-    setObjectsTracking(QWidgetList() << m_ui->background);
+    setObjectsTracking({m_ui->background});
 }
 
 OCRApplication::~OCRApplication()
