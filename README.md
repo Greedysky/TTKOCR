@@ -1,7 +1,9 @@
 # TTKOCR
-![QtCreator](https://img.shields.io/badge/Coded%20with-QtCreator%20IDE-blue.svg?style=flat-square)
-![License](https://img.shields.io/badge/license-GPL%20V3-yellowgreen.svg?style=flat-square)
 ![TTKOCR](https://img.shields.io/badge/Greedysky-TTKOCR-green.svg?style=flat-square)
+![Version](https://img.shields.io/badge/Version-2.6.0.0-blue.svg?style=flat-square)
+![License](https://img.shields.io/badge/License-GPL%20V3-yellowgreen.svg?style=flat-square)
+
+![LOGO](https://github.com/Greedysky/TTKOCR/blob/master/TTKResource/logo_banner.png?raw=true)
 
 ### **|[About](https://github.com/Greedysky/TTKOCR#usage)|[License](https://github.com/Greedysky/TTKOCR#license)|[Download](https://github.com/Greedysky/TTKOCR#download)|[Features](https://github.com/Greedysky/TTKOCR#features)|[Screenshots](https://github.com/Greedysky/TTKOCR#screenshots)|[Copyright](https://github.com/Greedysky/TTKOCR#copyright)|[Contribute](https://github.com/Greedysky/TTKOCR#how-to-contribute)|**
 
