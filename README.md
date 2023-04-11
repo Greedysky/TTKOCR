@@ -35,7 +35,9 @@ TTKOCR is free software licensed under the term of [Licence GPL v3](https://gith
 
 Download
 --------
-Github: **<u>https://github.com/Greedysky/TTKOCR</u>**
+Gitee URL: **<u>https://gitee.com/Greedysky/TTKOCR</u>**
+
+Github URL: **<u>https://github.com/Greedysky/TTKOCR</u>**
 
 Features
 --------
