@@ -9,32 +9,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../TTKModule/TTKWidget/ocrUiKits/ocrapplication.ui" line="100"/>
+        <location filename="../TTKModule/TTKWidget/ocrUiKits/ocrapplication.ui" line="91"/>
         <source>图片文字提取</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../TTKModule/TTKWidget/ocrUiKits/ocrapplication.ui" line="270"/>
+        <location filename="../TTKModule/TTKWidget/ocrUiKits/ocrapplication.ui" line="251"/>
         <source>打开文件</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../TTKModule/TTKWidget/ocrUiKits/ocrapplication.ui" line="292"/>
+        <location filename="../TTKModule/TTKWidget/ocrUiKits/ocrapplication.ui" line="273"/>
         <source>截屏</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../TTKModule/TTKWidget/ocrUiKits/ocrapplication.ui" line="317"/>
+        <location filename="../TTKModule/TTKWidget/ocrUiKits/ocrapplication.ui" line="298"/>
         <source>识别</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../TTKModule/TTKWidget/ocrUiKits/ocrapplication.ui" line="342"/>
+        <location filename="../TTKModule/TTKWidget/ocrUiKits/ocrapplication.ui" line="323"/>
         <source>清除</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../TTKModule/TTKWidget/ocrUiKits/ocrapplication.ui" line="365"/>
+        <location filename="../TTKModule/TTKWidget/ocrUiKits/ocrapplication.ui" line="346"/>
         <source>Copyright (C) 2015 - 2023 Greedysky Studio</source>
         <translation type="unfinished"></translation>
     </message>
