@@ -28,19 +28,15 @@ OCRRunTimeManager::OCRRunTimeManager()
 
 void OCRRunTimeManager::run() const
 {
-    TTK_INFO_STREAM("OCRApplication Begin");
+    TTK_INFO_STREAM("OCRApplication Run");
 
-    TTK::Codec::setLocalCodec();
+//    TTK::Codec::setLocalCodec();
 
-    TTK_INFO_STREAM("Load Translation");
-    ///////////////////////////////////////////////////////
-    QFont font;
 #ifdef Q_OS_UNIX
+    QFont font;
     font.setPixelSize(13);
-#endif
     qApp->setFont(font);
-    ///////////////////////////////////////////////////////
-    TTK_INFO_STREAM("End load translation");
+#endif
 }
 
 QString OCRRunTimeManager::translator() const
