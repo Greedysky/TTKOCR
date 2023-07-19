@@ -20,7 +20,7 @@
  ***************************************************************************/
 
 #include "ocrobject.h"
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 class QPropertyAnimation;
 

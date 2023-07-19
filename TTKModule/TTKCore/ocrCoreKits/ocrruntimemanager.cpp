@@ -30,7 +30,9 @@ void OCRRunTimeManager::run() const
 {
     TTK_INFO_STREAM("OCRApplication Run");
 
-//    TTK::Codec::setLocalCodec();
+#if !TTK_QT_VERSION_CHECK(5,0,0)
+    TTK::Codec::setLocalCodec();
+#endif
 
 #ifdef Q_OS_UNIX
     QFont font;

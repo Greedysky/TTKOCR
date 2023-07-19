@@ -19,13 +19,12 @@
 QT += core
 
 TEMPLATE = app
+CONFIG += console
 
 include($$PWD/../../TTKVersion.pri)
 
-DESTDIR = $$OUT_PWD/../../bin
-TARGET = TTKOCR
-
-DEFINES += TTK_LIBRARY
+DESTDIR = $$OUT_PWD/../../bin/$$TTK_VERSION
+TARGET = TTKInit
 
 win32:msvc{
     CONFIG += c++11
@@ -37,14 +36,13 @@ win32:msvc{
     }
 }
 
-win32:QMAKE_LFLAGS_CONSOLE = -mwindows
+LIBS += -L$$DESTDIR -lTTKConfig
 
-INCLUDEPATH += $$PWD/../../TTKCommon
+INCLUDEPATH += \
+    $$PWD/../../TTKCommon \
+    $$PWD/../../TTKConfig \
+    $$PWD/../../TTKModule/TTKCore/ocrCoreKits
 
-HEADERS += $$PWD/ttkrunobject.h
+SOURCES += $$PWD/ocrinitmain.cpp
 
-SOURCES += \
-    $$PWD/ttkrunmain.cpp \
-    $$PWD/ttkrunobject.cpp
-
-win32:RC_FILE = $$PWD/TTKApp.rc
+win32:RC_FILE = $$PWD/TTKInit.rc

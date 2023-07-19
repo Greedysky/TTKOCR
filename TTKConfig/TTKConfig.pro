@@ -18,12 +18,13 @@
 
 QT += core
 
-TEMPLATE = app
+TEMPLATE = lib
+CONFIG += plugin lib
 
-include($$PWD/../../TTKVersion.pri)
+include($$PWD/../TTKVersion.pri)
 
-DESTDIR = $$OUT_PWD/../../bin
-TARGET = TTKOCR
+DESTDIR = $$OUT_PWD/../bin/$$TTK_VERSION
+TARGET = TTKConfig
 
 DEFINES += TTK_LIBRARY
 
@@ -37,14 +38,16 @@ win32:msvc{
     }
 }
 
-win32:QMAKE_LFLAGS_CONSOLE = -mwindows
+INCLUDEPATH += \
+    $$PWD/../TTKCommon \
+    $$PWD/../TTKModule/TTKCore/ocrCoreKits
 
-INCLUDEPATH += $$PWD/../../TTKCommon
+HEADERS += \
+    $$PWD/ocrconfigdefine.h \
+    $$PWD/ocrconfigobject.h
 
-HEADERS += $$PWD/ttkrunobject.h
+SOURCES += $$PWD/ocrconfigobject.cpp
 
-SOURCES += \
-    $$PWD/ttkrunmain.cpp \
-    $$PWD/ttkrunobject.cpp
+RESOURCES += $$PWD/../TTKUi/OCRApp.qrc
 
-win32:RC_FILE = $$PWD/TTKApp.rc
+win32:RC_FILE = $$PWD/TTKConfig.rc

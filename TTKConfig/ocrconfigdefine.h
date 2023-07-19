@@ -1,5 +1,5 @@
-#ifndef OCRALGORITHMUTILS_H
-#define OCRALGORITHMUTILS_H
+#ifndef OCRCONFIGDEFINE_H
+#define OCRCONFIGDEFINE_H
 
 /***************************************************************************
  * This file is part of the TTK OCR project
@@ -19,29 +19,20 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
+#include "ocrobject.h"
 #include "ttkmoduleexport.h"
 
-/*! @brief The class of the utils algorithm.
- * @author Greedysky <greedysky@163.com>
- */
-namespace TTK
-{
-    namespace Algorithm
-    {
-        /*!
-         * Get sha1 algorithm.
-         */
-        TTK_MODULE_EXPORT QByteArray sha1(const QByteArray &data);
-        /*!
-         * Get mdII(greedysky) algorithm.
-         */
-        TTK_MODULE_EXPORT QString mdII(const QString &data, bool encode);
-        /*!
-         * Get mdII(greedysky) algorithm.
-         */
-        TTK_MODULE_EXPORT QString mdII(const QString &data, const QString &key, bool encode);
+//
+#define TTK_DOWNLOAD_DIR_FULL   DOWNLOAD_DIR_FULL
+#define TTK_LANGUAGE_DIR_FULL   LANGUAGE_DIR_FULL
 
-    }
-}
+#ifdef Q_OS_WIN
+#  define TTK_SERVICE_FULL      TTK::applicationPath() + SERVICE_EXE_NAME
+#else
+#  define TTK_ROUTINE_FULL      TTK::applicationPath() + TTK_PDIR + "TTKRoutine.sh"
+#  define TTK_OCR_FULL          TTK::applicationPath() + TTK_PDIR + APP_SHL_NAME
+#  define TTK_SERVICE_FULL      TTK::applicationPath() + SERVICE_SHL_NAME
+#  define TTK_ROUTINECOPY_FULL  TTK::applicationPath() + "TTKRoutineCopy.sh"
+#endif
 
-#endif // OCRALGORITHMUTILS_H
+#endif // OCRCONFIGDEFINE_H

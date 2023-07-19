@@ -1,5 +1,5 @@
-#ifndef OCRINITOBJECT_H
-#define OCRINITOBJECT_H
+#ifndef OCRCONFIGOBJECT_H
+#define OCRCONFIGOBJECT_H
 
 /***************************************************************************
  * This file is part of the TTK OCR project
@@ -19,44 +19,34 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "ocrobject.h"
-#include "ttkversion.h"
-#include "ttkglobaldefine.h"
+#include "ocrconfigdefine.h"
 
-#define TTK_DOWNLOAD_DIR_FULL    TTK::applicationPath() + DOWNLOAD_DIR
-#define TTK_LANGUAGE_DIR_FULL    TTK::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + LANGUAGE_DIR
-
-#ifdef Q_OS_WIN
-#  define TTK_SERVICE_FULL       TTK::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + "TTKService.exe"
-#else
-#  define TTK_OCR_FULL           TTK::applicationPath() + "TTKOCR.sh"
-#  define TTK_ROUTINE_FULL       TTK::applicationPath() + "TTKRoutine.sh"
-#  define TTK_SERVICE_FULL       TTK::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + "TTKService.sh"
-#  define TTK_ROUTINECOPY_FULL   TTK::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + "TTKRoutineCopy.sh"
-#endif
-
-
-/*! @brief The class of the ocr init object.
+/*! @brief The class of the ocr initialize object.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT OCRInitObject : public QObject
+class TTK_MODULE_EXPORT OCRConfigObject : public QObject
 {
     Q_OBJECT
 public:
     /*!
      * Object contsructor.
      */
-    explicit OCRInitObject(QObject *parent = nullptr);
+    explicit OCRConfigObject(QObject *parent = nullptr);
 
     /*!
      * Check current setting file's validation.
      */
     void valid() const;
-
     /*!
-     * Init all parameter.
+     * Init parameters.
      */
     void initialize() const;
+    /*!
+     * Reset config parameters.
+     */
+    void reset() const;
+
+private:
     /*!
      * Check current dir is exist, no, just create it.
      */
@@ -86,4 +76,4 @@ public:
 
 };
 
-#endif // OCRINITOBJECT_H
+#endif // OCRCONFIGOBJECT_H

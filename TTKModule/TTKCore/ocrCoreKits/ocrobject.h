@@ -21,38 +21,23 @@
 
 #include <QDir>
 #include <QCoreApplication>
-#include "ttkglobal.h"
+
+#include "ttkqtglobal.h"
 
 //
 #define DIR_PREFIX              "dir"
 
 #define JPG_FILE_SUFFIX         "jpg"
-#define EXE_FILE_SUFFIX         "exe"
-#define COM_FILE_SUFFIX         "com"
-
 
 #define JPG_FILE                TTK_STRCAT(TTK_DOT, JPG_FILE_SUFFIX)
-#define EXE_FILE                TTK_STRCAT(TTK_DOT, EXE_FILE_SUFFIX)
-#define COM_FILE                TTK_STRCAT(TTK_DOT, COM_FILE_SUFFIX)
-
-
-#define SERVICE_NAME            "TTKService"
-#define APP_NAME                "TTKOCR"
-#define APP_DOT_NAME            TTK_STRCAT(APP_NAME, TTK_DOT)
-#define APP_COME_NAME           TTK_STRCAT(APP_NAME, COM_FILE)
-#ifdef Q_OS_WIN
-#  define APP_EXE_NAME          TTK_STRCAT(APP_NAME, EXE_FILE)
-#  define SERVICE_EXE_NAME      TTK_STRCAT(SERVICE_NAME, EXE_FILE)
-#else
-#  define APP_EXE_NAME          APP_NAME
-#  define SERVICE_EXE_NAME      SERVICE_NAME
-#endif
 
 
 #define DOWNLOAD_DIR            TTK_STRCAT("Downloads", TTK_SEPARATOR)
 #define LANGUAGE_DIR            TTK_STRCAT("GLanguage", TTK_SEPARATOR)
 
-#define DOWNLOAD_DIR_FULL       TTK::applicationPath() + TTK_PDIR + DOWNLOAD_DIR
+#define MAIN_DIR_FULL           TTK::applicationPath() + TTK_PDIR
+//
+#define DOWNLOAD_DIR_FULL       MAIN_DIR_FULL + DOWNLOAD_DIR
 #define LANGUAGE_DIR_FULL       TTK::applicationPath() + LANGUAGE_DIR
 
 

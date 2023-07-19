@@ -1,25 +1,30 @@
-#include "ocrinitobject.h"
+#include "ocrconfigobject.h"
 
 #include <QProcess>
 
-OCRInitObject::OCRInitObject(QObject *parent)
+OCRConfigObject::OCRConfigObject(QObject *parent)
     : QObject(parent)
 {
 
 }
 
-void OCRInitObject::valid() const
+void OCRConfigObject::valid() const
 {
     checkDirectoryExist();
     checkFileNeededExist();
 }
 
-void OCRInitObject::initialize() const
+void OCRConfigObject::initialize() const
 {
-    checkFileNeededExist();
+    valid();
 }
 
-void OCRInitObject::directoryExist(const QString &name) const
+void OCRConfigObject::reset() const
+{
+
+}
+
+void OCRConfigObject::directoryExist(const QString &name) const
 {
     QDir dir;
     if(!dir.exists(name))
@@ -28,23 +33,23 @@ void OCRInitObject::directoryExist(const QString &name) const
     }
 }
 
-void OCRInitObject::checkDirectoryExist() const
+void OCRConfigObject::checkDirectoryExist() const
 {
     directoryExist(TTK_DOWNLOAD_DIR_FULL);
     directoryExist(TTK_LANGUAGE_DIR_FULL);
 }
 
-void OCRInitObject::checkFileNeededExist() const
+void OCRConfigObject::checkFileNeededExist() const
 {
 #ifdef Q_OS_UNIX
-    copyLinuxShellFile(":/data/TTKOCR.sh", TTK_OCR_FULL);
-    copyLinuxShellFile(":/data/TTKService.sh", TTK_SERVICE_FULL);
     copyLinuxShellFile(":/data/TTKRoutine.sh", TTK_ROUTINE_FULL);
+    copyLinuxShellFile(":/data/TTKOCR.sh", TTK_OCR_FULL);
     copyLinuxShellFile(":/data/TTKRoutineCopy.sh", TTK_ROUTINECOPY_FULL);
+    copyLinuxShellFile(":/data/TTKService.sh", TTK_SERVICE_FULL);
 #endif
 }
 
-void OCRInitObject::copyFileOverwrite(const QString &origin, const QString &des) const
+void OCRConfigObject::copyFileOverwrite(const QString &origin, const QString &des) const
 {
     if(QFile::exists(des))
     {
@@ -55,7 +60,7 @@ void OCRInitObject::copyFileOverwrite(const QString &origin, const QString &des)
     QFile::setPermissions(des, QFile::ReadOwner | QFile::WriteOwner);
 }
 
-void OCRInitObject::copyFile(const QString &origin, const QString &des) const
+void OCRConfigObject::copyFile(const QString &origin, const QString &des) const
 {
     if(!QFile::exists(des))
     {
@@ -65,7 +70,7 @@ void OCRInitObject::copyFile(const QString &origin, const QString &des) const
 }
 
 #ifdef Q_OS_UNIX
-void OCRInitObject::copyLinuxShellFile(const QString &name, const QString &path) const
+void OCRConfigObject::copyLinuxShellFile(const QString &name, const QString &path) const
 {
     copyFileOverwrite(name, path);
     QProcess::execute("chmod", {"+x", path});

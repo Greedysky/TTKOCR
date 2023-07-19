@@ -19,19 +19,20 @@
 TEMPLATE = app
 
 include($$PWD/../TTKOCR.pri)
+include($$PWD/../TTKCommon/TTKApplication/TTKApplication.pri)
 
 TARGET = TTKService
 
-LIBS += -L$$DESTDIR -lTTKCore -lTTKDumper
+LIBS += -L$$DESTDIR -lTTKCore -lTTKDumper -lTTKConfig
 
-INCLUDEPATH +=  \
+INCLUDEPATH += \
+    $$PWD/../TTKConfig \
     $$PWD/../TTKModule \
     $$PWD/../TTKModule/TTKCore/ocrCoreKits \
     $$PWD/../TTKModule/TTKWidget/ocrCoreKits
 
 win32:msvc{
-HEADERS += \
-    $$PWD/../TTKModule/ocrapplication.h
+HEADERS += $$PWD/../TTKModule/ocrapplication.h
 }
 
 SOURCES += $$PWD/ocrservicemain.cpp
