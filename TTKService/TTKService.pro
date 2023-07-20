@@ -32,7 +32,9 @@ INCLUDEPATH += \
     $$PWD/../TTKModule/TTKWidget/ocrCoreKits
 
 win32:msvc{
-HEADERS += $$PWD/../TTKModule/ocrapplication.h
+HEADERS += \
+    $$PWD/../TTKConfig/ocrconfigobject.h \
+    $$PWD/../TTKModule/ocrapplication.h
 }
 
 SOURCES += $$PWD/ocrservicemain.cpp

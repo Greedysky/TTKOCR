@@ -36,6 +36,14 @@ win32:msvc{
     }
 }
 
+win32{
+    msvc{
+        HEADERS += $$PWD/../../TTKConfig/ocrconfigobject.h
+    }else{
+        QMAKE_LFLAGS_CONSOLE = -mwindows
+    }
+}
+
 LIBS += -L$$DESTDIR -lTTKConfig
 
 INCLUDEPATH += \

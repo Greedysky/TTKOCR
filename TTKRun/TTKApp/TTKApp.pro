@@ -16,8 +16,6 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # ***************************************************************************
 
-QT += core
-
 TEMPLATE = app
 
 include($$PWD/../../TTKVersion.pri)
@@ -37,7 +35,7 @@ win32:msvc{
     }
 }
 
-win32:QMAKE_LFLAGS_CONSOLE = -mwindows
+win32:!msvc:QMAKE_LFLAGS_CONSOLE = -mwindows
 
 INCLUDEPATH += $$PWD/../../TTKCommon
 
