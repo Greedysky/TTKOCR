@@ -1,8 +1,8 @@
-#ifndef OCRCONFIGDEFINE_H
-#define OCRCONFIGDEFINE_H
+#ifndef TTKRUNOBJECT_H
+#define TTKRUNOBJECT_H
 
 /***************************************************************************
- * This file is part of the TTK OCR project
+ * This file is part of the TTK Library Module project
  * Copyright (C) 2015 - 2023 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -19,21 +19,25 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "ocrobject.h"
-#include "ttkmoduleexport.h"
+#include "ttkglobal.h"
 
-//
-#define TTK_DOWNLOAD_DIR_FULL   DOWNLOAD_DIR_FULL
-#define TTK_LANGUAGE_DIR_FULL   LANGUAGE_DIR_FULL
-
-#ifdef Q_OS_WIN
-#  define TTK_SERVICE_FULL      TTK::applicationPath() + SERVICE_EXE_NAME
-#else
-#  define TTK_ROUTINE_FULL      TTK::applicationPath() + TTK_PDIR + "TTKRoutine.sh"
-#  define TTK_OCR_FULL          TTK::applicationPath() + TTK_PDIR + APP_SHL_NAME
-#  define TTK_INIT_FULL         TTK::applicationPath() + "TTKInit.sh"
-#  define TTK_SERVICE_FULL      TTK::applicationPath() + SERVICE_SHL_NAME
-#  define TTK_ROUTINECOPY_FULL  TTK::applicationPath() + "TTKRoutineCopy.sh"
+#ifdef _MSC_VER
+#  pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
 #endif
 
-#endif // OCRCONFIGDEFINE_H
+/*! @brief The class of the ttk run object.
+ * @author Greedysky <greedysky@163.com>
+ */
+class TTKRunObject
+{
+public:
+    TTKRunObject() = default;
+
+    /*!
+     * To run main window.
+     */
+    void run(int argc, char **argv) const;
+
+};
+
+#endif // TTKRUNOBJECT_H

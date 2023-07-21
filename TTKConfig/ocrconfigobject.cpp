@@ -45,6 +45,7 @@ void OCRConfigObject::checkFileNeededExist() const
     copyLinuxShellFile(":/data/TTKRoutine.sh", TTK_ROUTINE_FULL);
     copyLinuxShellFile(":/data/TTKOCR.sh", TTK_OCR_FULL);
     copyLinuxShellFile(":/data/TTKRoutineCopy.sh", TTK_ROUTINECOPY_FULL);
+    copyLinuxShellFile(":/data/TTKInit.sh", TTK_INIT_FULL);
     copyLinuxShellFile(":/data/TTKService.sh", TTK_SERVICE_FULL);
 #endif
 }

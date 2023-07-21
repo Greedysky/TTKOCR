@@ -3,6 +3,7 @@
         <file alias="TTKRoutine.sh">../TTKResource/_extras/TTKRoutine.sh</file>
         <file alias="TTKRoutineCopy.sh">../TTKResource/_extras/TTKRoutineCopy.sh</file>
         <file alias="TTKService.sh">../TTKResource/_extras/TTKService.sh</file>
+        <file alias="TTKInit.sh">../TTKResource/_extras/TTKInit.sh</file>
         <file alias="TTKOCR.sh">../TTKResource/_extras/TTKOCR.sh</file>
     </qresource>
 </RCC>
