@@ -50,8 +50,8 @@ win32{
         CONFIG += c++11
         !contains(QMAKE_TARGET.arch, x86_64){
              #support on windows XP
-             QMAKE_LFLAGS_WINDOWS = /SUBSYSTEM:WINDOWS,5.01
-             QMAKE_LFLAGS_CONSOLE = /SUBSYSTEM:CONSOLE,5.01
+             QMAKE_LFLAGS_WINDOWS += /SUBSYSTEM:WINDOWS,5.01
+             QMAKE_LFLAGS_CONSOLE += /SUBSYSTEM:CONSOLE,5.01
         }
         contains(CONFIG, TTK_BUILD_BY_PDF):LIBS += -L$$DESTDIR -lTTKPdf
         LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras -lshell32 -luser32
