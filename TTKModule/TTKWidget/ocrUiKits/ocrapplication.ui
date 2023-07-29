@@ -197,7 +197,7 @@
          <property name="widgetResizable">
           <bool>true</bool>
          </property>
-         <widget class="QLabel" name="textScrollAreaWidget">
+         <widget class="QPlainTextEdit" name="textScrollAreaWidget">
           <property name="geometry">
            <rect>
             <x>0</x>

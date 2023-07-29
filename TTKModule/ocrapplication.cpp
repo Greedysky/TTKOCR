@@ -60,6 +60,10 @@ OCRApplication::OCRApplication(QWidget *parent)
     m_ui->textScrollArea->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle03);
     m_ui->textScrollArea->horizontalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle04);
 
+    m_ui->textScrollAreaWidget->setReadOnly(true);
+    m_ui->textScrollAreaWidget->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle03);
+    m_ui->textScrollAreaWidget->horizontalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle04);
+
     /////////// Mouse tracking
     setObjectsTracking({m_ui->background});
 }
@@ -165,6 +169,7 @@ void OCRApplication::clearButtonClicked()
 
     m_count = 0;
     deleteItems();
+
     TTK::File::removeRecursively(DIR_PREFIX);
     m_ui->textScrollAreaWidget->clear();
 }
@@ -196,10 +201,10 @@ void OCRApplication::findFinish()
             {
                 content.append("No OCR Data Found \r\n");
             }
-            content.append("============================================================\r\n");
+            content.append("=====================================================\r\n");
         }
 
-        m_ui->textScrollAreaWidget->setText(content);
+        m_ui->textScrollAreaWidget->appendPlainText(content);
         TTK::File::removeRecursively(DIR_PREFIX);
 
         stateChanged(false);
