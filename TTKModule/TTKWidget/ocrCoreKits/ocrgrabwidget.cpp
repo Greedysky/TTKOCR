@@ -44,13 +44,13 @@ void OCRGrabWidget::paintEvent(QPaintEvent *event)
     {
         w = m_ptCursor.x() - m_ptStart.x();
         h = m_ptCursor.y() - m_ptStart.y();
-        painter.drawRect(m_ptStart.x(), m_ptStart.y(), w, h);
+        painter.drawRect(m_ptStart.x() - 1, m_ptStart.y() - 1, w + 1, h + 1);
     }
     else if(m_ptEnd != m_ptStart)
     {
         w = m_ptEnd.x() - m_ptStart.x();
         h = m_ptEnd.y() - m_ptStart.y();
-        painter.drawRect(m_ptStart.x(), m_ptStart.y(), w, h);
+        painter.drawRect(m_ptStart.x() - 1, m_ptStart.y() - 1, w + 1, h + 1);
     }
 
     QPolygon listMarker;

@@ -194,14 +194,19 @@ void OCRApplication::findFinish()
             QFile file(QString("%1/%2").arg(DIR_PREFIX).arg(i));
             if(file.open(QIODevice::ReadOnly))
             {
-                content.append(file.readAll() + "\r\n");
+                content.append(file.readAll());
                 file.close();
             }
             else
             {
                 content.append("No OCR Data Found \r\n");
             }
-            content.append("=====================================================\r\n");
+
+            content.append("===========================================");
+#ifdef Q_OS_UNIX
+            content.append("==========");
+#endif
+            content.append("\r\n");
         }
 
         m_ui->textScrollAreaWidget->appendPlainText(content);
