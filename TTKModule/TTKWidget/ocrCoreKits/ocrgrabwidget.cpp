@@ -18,7 +18,8 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     setFixedSize(TTKDesktopWrapper::geometry().size());
     setCursor(Qt::CrossCursor);
 
-    m_originPixmap = TTKDesktopWrapper::grabWindow(0, 0, width(), height());
+    const QRect &rect = TTKDesktopWrapper::availableGeometry();
+    m_originPixmap = TTKDesktopWrapper::grabWindow(rect.x(), rect.y(), rect.width(), rect.height());
 }
 
 void OCRGrabWidget::mouseMoveEvent(QMouseEvent *event)
@@ -99,7 +100,8 @@ void OCRGrabWidget::keyPressEvent(QKeyEvent *event)
     {
         const int width = m_ptEnd.x() - m_ptStart.x();
         const int height = m_ptEnd.y() - m_ptStart.y();
-        const QPixmap &pix = TTKDesktopWrapper::grabWindow(m_ptStart.x(), m_ptStart.y(), width, height);
+        const QRect &rect = TTKDesktopWrapper::availableGeometry();
+        const QPixmap &pix = TTKDesktopWrapper::grabWindow(m_ptStart.x() + rect.x(), m_ptStart.y() + rect.y(), width, height);
         Q_EMIT pixmapChanged(pix);
         close();
     }
