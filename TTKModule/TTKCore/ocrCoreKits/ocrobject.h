@@ -20,9 +20,9 @@
  ***************************************************************************/
 
 #include <QDir>
-#include <QCoreApplication>
 
 #include "ttkqtglobal.h"
+#include "ttkqtobject.h"
 
 //
 #define DIR_PREFIX              "dir"
@@ -43,20 +43,5 @@
 
 #define WINDOW_WIDTH_MIN        850
 #define WINDOW_HEIGHT_MIN       550
-
-
-/*! @brief The namespace of the application object.
- * @author Greedysky <greedysky@163.com>
- */
-namespace TTK
-{
-    /*!
-     * Get application work dir.
-     */
-    static QString applicationPath()
-    {
-        return QCoreApplication::applicationDirPath() + TTK_SEPARATOR;
-    }
-}
 
 #endif // OCROBJECT_H

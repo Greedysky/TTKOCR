@@ -1,6 +1,7 @@
 #include "ocrgiflabelwidget.h"
 
 #include <QTimer>
+#include <QPainter>
 
 #define GIF_CICLE_BLUE          58
 
@@ -14,7 +15,7 @@ OCRGifLabelWidget::OCRGifLabelWidget(QWidget *parent)
 
     m_timer = new QTimer(this);
     m_timer->setInterval(100);
-    connect(m_timer, SIGNAL(timeout()), SLOT(timeout()));
+    connect(m_timer, SIGNAL(timeout()), SLOT(updateRender()));
 }
 
 OCRGifLabelWidget::OCRGifLabelWidget(Module type, QWidget *parent)
@@ -30,6 +31,7 @@ OCRGifLabelWidget::~OCRGifLabelWidget()
 
 void OCRGifLabelWidget::setType(Module type)
 {
+    m_index = 0;
     switch(m_type = type)
     {
         case Module::CicleBlue: setFixedSize(GIF_CICLE_BLUE, GIF_CICLE_BLUE); break;
@@ -62,6 +64,20 @@ bool OCRGifLabelWidget::infinited() const
     return m_infinited;
 }
 
+void OCRGifLabelWidget::run(bool run)
+{
+    if(run)
+    {
+        show();
+        start();
+    }
+    else
+    {
+        hide();
+        stop();
+    }
+}
+
 void OCRGifLabelWidget::start()
 {
     m_timer->start();
@@ -74,7 +90,7 @@ void OCRGifLabelWidget::stop()
     m_isRunning = false;
 }
 
-void OCRGifLabelWidget::timeout()
+void OCRGifLabelWidget::updateRender()
 {
     ++m_index;
     switch(m_type)
@@ -85,11 +101,21 @@ void OCRGifLabelWidget::timeout()
                 {
                     break;
                 }
-                setStyleSheet(QString("background-image: url(':/gif/lb_cicle_blue'); margin-left:-%1px;").arg(GIF_CICLE_BLUE * m_index));
+
+                m_renderer = QPixmap(":/gif/lb_cicle_blue").copy(GIF_CICLE_BLUE * m_index, 0, width(), height());
+                update();
                 break;
             }
         default: break;
     }
+}
+
+void OCRGifLabelWidget::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event);
+
+    QPainter painter(this);
+    painter.drawPixmap(0, 0, m_renderer);
 }
 
 bool OCRGifLabelWidget::infinitedModeCheck()

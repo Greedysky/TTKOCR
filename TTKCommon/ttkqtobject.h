@@ -1,5 +1,5 @@
-#ifndef TTKVERSION_H
-#define TTKVERSION_H
+#ifndef TTKQTOBJECT_H
+#define TTKQTOBJECT_H
 
 /***************************************************************************
  * This file is part of the TTK Library Module project
@@ -19,21 +19,32 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-//update time 2023.04.15
-#define TTK_VERSION             0x02700
-#define TTK_VERSION_STR         "2.7.0.0"
-#define TTK_VERSION_TIME_STR    "(2023/04/15)"
+#include "ttkobject.h"
+#include <QCoreApplication>
 
-#define TTK_MAJOR_VERSION 2
-#define TTK_MIDLE_VERSION 7
-#define TTK_MINOR_VERSION 0
-#define TTK_PATCH_VERSION 0
+#define TTK_SERVICE_FULL        TTK::applicationPath() + TTK_SERVICE_SHL_NAME
+#define TTK_APP_MAIN_FULL       TTK::applicationPath() + TTK_PDIR + TTK_APP_SHL_NAME
 
-#define TTK_RC_FILEVERSION      2,7,0,0
-#define TTK_RC_PRODUCTVERSION   TTK_VERSION_STR
-#define TTK_RC_COMPANY          "Greedysky Studio, Ltd."
-#define TTK_RC_COPYRIGHT        "Copyright (C) 2023 Greedysky Studio"
+#ifdef Q_OS_UNIX
+#  define TTK_INIT_FULL         TTK::applicationPath() + "TTKInit.sh"
+#  define TTK_CONSOLE_FULL      TTK::applicationPath() + "TTKConsole.sh"
+#  define TTK_ROUTINECOPY_FULL  TTK::applicationPath() + "TTKRoutineCopy.sh"
+#  define TTK_ROUTINE_FULL      TTK::applicationPath() + TTK_PDIR + "TTKRoutine.sh"
+#endif
 
-#define TTK_VERSION_CHECK(major, middle, minor, patch) ((major<<12)|(middle<<8)|(minor<<4)|(patch))
 
-#endif // TTKVERSION_H
+/*! @brief The namespace of the application object.
+ * @author Greedysky <greedysky@163.com>
+ */
+namespace TTK
+{
+    /*!
+     * Get application work dir.
+     */
+    static QString applicationPath()
+    {
+        return QCoreApplication::applicationDirPath() + TTK_SEPARATOR;
+    }
+}
+
+#endif // TTKQTOBJECT_H

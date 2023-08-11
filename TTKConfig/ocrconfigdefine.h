@@ -26,14 +26,4 @@
 #define TTK_DOWNLOAD_DIR_FULL   DOWNLOAD_DIR_FULL
 #define TTK_LANGUAGE_DIR_FULL   LANGUAGE_DIR_FULL
 
-#ifdef Q_OS_WIN
-#  define TTK_SERVICE_FULL      TTK::applicationPath() + SERVICE_EXE_NAME
-#else
-#  define TTK_ROUTINE_FULL      TTK::applicationPath() + TTK_PDIR + "TTKRoutine.sh"
-#  define TTK_OCR_FULL          TTK::applicationPath() + TTK_PDIR + APP_SHL_NAME
-#  define TTK_INIT_FULL         TTK::applicationPath() + "TTKInit.sh"
-#  define TTK_SERVICE_FULL      TTK::applicationPath() + SERVICE_SHL_NAME
-#  define TTK_ROUTINECOPY_FULL  TTK::applicationPath() + "TTKRoutineCopy.sh"
-#endif
-
 #endif // OCRCONFIGDEFINE_H
