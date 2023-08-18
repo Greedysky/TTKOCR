@@ -1,12 +1,8 @@
 #include "ocrnetworkthread.h"
 #include "ocrobject.h"
+#include "ttkconcurrent.h"
 
 #include <QHostInfo>
-#if TTK_QT_VERSION_CHECK(5,0,0)
-#  include <QtConcurrent/QtConcurrent>
-#else
-#  include <QtConcurrentRun>
-#endif
 
 #define NETWORK_DETECT_INTERVAL     5000             // second
 #define NETWORK_REQUEST_ADDRESS     "www.baidu.com"  // ip
@@ -31,11 +27,10 @@ void OCRNetworkThread::start()
 
 void OCRNetworkThread::networkStateChanged()
 {
-    const auto status = QtConcurrent::run([&]()
+    TTKConcurrent(
     {
         const QHostInfo &info = QHostInfo::fromName(NETWORK_REQUEST_ADDRESS);
         m_networkState = !info.addresses().isEmpty();
         Q_EMIT networkConnectionStateChanged(m_networkState);
     });
-    Q_UNUSED(status);
 }
