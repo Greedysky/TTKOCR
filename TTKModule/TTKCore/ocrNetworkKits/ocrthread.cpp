@@ -13,27 +13,17 @@
 #define OCR_URL     "RU5EOEI3NnE1aUo0cHVQYlZST2s1eGZUVzY5dmFwemsvSFFJQXFzRjUvc0M1b21VOUFxU25yR1JpQjg9"
 
 OCRThread::OCRThread(QObject *parent)
-    : QObject(parent),
-      m_reply(nullptr)
+    : TTKAbstractNetwork(parent)
 {
-    m_manager = new QNetworkAccessManager(this);
+
 }
 
-OCRThread::~OCRThread()
-{
-    delete m_manager;
-}
-
-void OCRThread::start(OCRThreadItem *item)
+void OCRThread::startRequest(OCRThreadItem *item)
 {
     QNetworkRequest request;
     request.setOriginatingObject(item);
     request.setUrl(QUrl(TTK::Algorithm::mdII(OCR_URL, false)));
-#ifndef QT_NO_SSL
-    QSslConfiguration sslConfig = request.sslConfiguration();
-    sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
-    request.setSslConfiguration(sslConfig);
-#endif
+    TTK::setSslConfiguration(&request);
 
     QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType, this);
     QHttpPart part;
@@ -43,12 +33,12 @@ void OCRThread::start(OCRThreadItem *item)
     multiPart->append(part);
     multiPart->setBoundary("----");
 
-    m_reply = m_manager->post(request, multiPart);
-    connect(m_reply, SIGNAL(finished()), SLOT(finishedSlot()));
-    QtNetworkErrorConnect(m_reply, this, errorSlot);
+    m_reply = m_manager.post(request, multiPart);
+    connect(m_reply, SIGNAL(finished()), SLOT(downLoadFinished()));
+    QtNetworkErrorConnect(m_reply, this, replyError);
 }
 
-void OCRThread::finishedSlot()
+void OCRThread::downLoadFinished()
 {
     if(!m_reply)
     {
@@ -98,15 +88,7 @@ void OCRThread::finishedSlot()
             }
         }
     }
-    Q_EMIT findFinish();
-}
 
-void OCRThread::errorSlot(QNetworkReply::NetworkError code)
-{
-    if(!m_reply)
-    {
-        return;
-    }
-
-    TTK_ERROR_STREAM("QNetworkReply::NetworkError : " + QString::number((int)code) + " \n" + m_reply->errorString());
+    Q_EMIT downLoadDataChanged(QString());
+    deleteAll();
 }

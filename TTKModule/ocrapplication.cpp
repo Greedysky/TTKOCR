@@ -152,9 +152,9 @@ void OCRApplication::startButtonClicked()
 
     for(OCRThreadItem *item : qAsConst(m_fileList))
     {
-        OCRThread *tread = new OCRThread(item);
-        connect(tread, SIGNAL(findFinish()), SLOT(findFinish()));
-        tread->start(item);
+        OCRThread *thread = new OCRThread(item);
+        connect(thread, SIGNAL(downLoadDataChanged(QString)), SLOT(downLoadDataChanged()));
+        thread->startRequest(item);
     }
 
     stateChanged(true);
@@ -174,7 +174,7 @@ void OCRApplication::clearButtonClicked()
     m_ui->textScrollAreaWidget->clear();
 }
 
-void OCRApplication::findFinish()
+void OCRApplication::downLoadDataChanged()
 {
     ++m_count;
     if(m_count == m_fileList.count())

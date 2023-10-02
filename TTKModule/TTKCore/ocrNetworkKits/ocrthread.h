@@ -19,8 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include <QNetworkReply>
-#include "ttkmoduleexport.h"
+#include "ttkabstractnetwork.h"
 
 class QFile;
 
@@ -48,7 +47,7 @@ public:
 /*! @brief The class of the ocr thread.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT OCRThread : public QObject
+class TTK_MODULE_EXPORT OCRThread : public TTKAbstractNetwork
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(OCRThread)
@@ -57,12 +56,11 @@ public:
      * Object contsructor.
      */
     explicit OCRThread(QObject *parent = nullptr);
-    ~OCRThread();
 
     /*!
      * Start to query by thread item.
      */
-    void start(OCRThreadItem *item);
+    void startRequest(OCRThreadItem *item);
 
 Q_SIGNALS:
     /*!
@@ -72,17 +70,9 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     /*!
-     * Network download finished.
+     * Download data from net finished.
      */
-    void finishedSlot();
-    /*!
-     * Download reply error.
-     */
-    void errorSlot(QNetworkReply::NetworkError code);
-
-private:
-    QNetworkReply *m_reply;
-    QNetworkAccessManager *m_manager;
+    virtual void downLoadFinished() override final;
 
 };
 
