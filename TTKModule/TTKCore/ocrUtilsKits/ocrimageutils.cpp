@@ -7,7 +7,7 @@ QByteArray TTK::Image::generatePixmapData(const QPixmap &input)
 {
     if(input.isNull())
     {
-        return QByteArray();
+        return {};
     }
 
     QByteArray data;
