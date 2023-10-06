@@ -33,9 +33,12 @@ class TTK_MODULE_EXPORT OCRApplicationObject : public QObject
     TTK_DECLARE_MODULE(OCRApplicationObject)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit OCRApplicationObject(QObject *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~OCRApplicationObject();
 
     /*!

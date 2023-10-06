@@ -61,9 +61,12 @@ public Q_SLOTS:
 
 private:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     OCRNetworkThread();
+    /*!
+     * Object destructor.
+     */
     ~OCRNetworkThread();
 
     QTimer m_timer;

@@ -53,7 +53,7 @@ class TTK_MODULE_EXPORT OCRThread : public TTKAbstractNetwork
     TTK_DECLARE_MODULE(OCRThread)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit OCRThread(QObject *parent = nullptr);
 

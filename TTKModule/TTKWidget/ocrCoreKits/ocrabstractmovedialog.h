@@ -31,13 +31,13 @@ class TTK_MODULE_EXPORT OCRAbstractMoveDialog : public TTKAbstractMoveDialog, pr
     TTK_DECLARE_MODULE(OCRAbstractMoveDialog)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit OCRAbstractMoveDialog(QWidget *parent = nullptr);
-    /*!
-     * Object contsructor.
-     */
     explicit OCRAbstractMoveDialog(bool transparent, QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~OCRAbstractMoveDialog();
 
 public Q_SLOTS:

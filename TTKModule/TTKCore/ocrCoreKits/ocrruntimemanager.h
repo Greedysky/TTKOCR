@@ -29,7 +29,7 @@ class TTK_MODULE_EXPORT OCRRunTimeManager
     TTK_DECLARE_MODULE(OCRRunTimeManager)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     OCRRunTimeManager();
 

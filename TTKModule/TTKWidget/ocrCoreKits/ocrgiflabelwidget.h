@@ -37,13 +37,13 @@ public:
     };
 
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit OCRGifLabelWidget(QWidget *parent = nullptr);
-    /*!
-     * Object contsructor.
-     */
     explicit OCRGifLabelWidget(Module type, QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~OCRGifLabelWidget();
 
     /*!

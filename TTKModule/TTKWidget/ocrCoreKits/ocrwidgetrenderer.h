@@ -30,9 +30,9 @@ class TTK_MODULE_EXPORT OCRWidgetRenderer
     TTK_DECLARE_MODULE(OCRWidgetRenderer)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
-    explicit OCRWidgetRenderer();
+    OCRWidgetRenderer();
 
     /*!
      * Set background label.

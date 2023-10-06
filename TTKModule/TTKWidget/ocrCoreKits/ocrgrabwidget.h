@@ -31,7 +31,7 @@ class TTK_MODULE_EXPORT OCRGrabWidget : public QWidget
     TTK_DECLARE_MODULE(OCRGrabWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit OCRGrabWidget(QWidget *parent = nullptr);
 
