@@ -28,13 +28,13 @@ namespace TTK
 {
     namespace UI
     {
-		///PushButton
+        ///PushButton
         static const QString PushButtonStyle01 = " \
             QPushButton{ border:1px solid #AAAAAA; background:#FFFFFF; color:#777777;} \
             QPushButton::hover{ border:1px solid #555555; color:#444444;} \
             QPushButton::disabled{ color:#999999;}";
 
-		///ScrollBar
+        ///ScrollBar
         static const QString ScrollBarStyle01 = " \
             QScrollBar{ background:#FFFFFF; width:8px; padding-top:0px; padding-bottom:0px;} \
             QScrollBar::handle:vertical{ border-radius:4px; background:#CFCFCF; min-height: 30px;} \
