@@ -29,6 +29,7 @@ INCLUDEPATH += \
     $$PWD/../TTKConfig \
     $$PWD/../TTKModule \
     $$PWD/../TTKModule/TTKCore/ocrCoreKits \
+    $$PWD/../TTKModule/TTKCore/ocrUtilsKits \
     $$PWD/../TTKModule/TTKWidget/ocrCoreKits
 
 win32:msvc{

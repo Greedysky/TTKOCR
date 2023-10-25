@@ -1,7 +1,6 @@
 #include "ocrapplicationobject.h"
 #include "ocrapplication.h"
 #include "ocrbackgroundmanager.h"
-#include "ocrfileutils.h"
 #include "ttknumberdefine.h"
 
 #include <QTimer>
@@ -20,8 +19,8 @@ OCRApplicationObject::OCRApplicationObject(QObject *parent)
 
 OCRApplicationObject::~OCRApplicationObject()
 {
-    cleanUp();
     Q_CLEANUP_RESOURCE(TTKOCR);
+
     delete m_animation;
 }
 
@@ -39,10 +38,4 @@ void OCRApplicationObject::windowCloseAnimation()
     m_animation->start();
 
     QTimer::singleShot(MT_S2MS, qApp, SLOT(quit()));
-}
-
-void OCRApplicationObject::cleanUp()
-{
-    TTK::File::removeRecursively(DIR_PREFIX);
-    TTK::File::removeRecursively(DOWNLOAD_DIR_FULL);
 }

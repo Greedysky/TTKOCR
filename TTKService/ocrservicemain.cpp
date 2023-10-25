@@ -2,16 +2,23 @@
 #include "ocrapplication.h"
 #include "ocrruntimemanager.h"
 #include "ocrconfigobject.h"
+#include "ocrfileutils.h"
 #include "ttkobject.h"
 #include "ttkdumper.h"
 #include "ttkglobalhelper.h"
 #include "ttkplatformsystem.h"
 
-#include <QTranslator>
-
 #ifdef Q_OS_UNIX
 #  include <malloc.h>
 #endif
+
+#include <QTranslator>
+
+static void cleanupCache()
+{
+    TTK::File::removeRecursively(DIR_PREFIX);
+    TTK::File::removeRecursively(DOWNLOAD_DIR_FULL);
+}
 
 static void loadAppScaledFactor(int argc, char *argv[])
 {
@@ -55,7 +62,7 @@ int main(int argc, char *argv[])
     OCRConfigObject config;
     config.valid();
 
-    TTKDumper dumper;
+    TTKDumper dumper(std::bind(cleanupCache));
     dumper.run();
 
     OCRRunTimeManager manager;
@@ -78,5 +85,7 @@ int main(int argc, char *argv[])
     mallopt(M_MMAP_THRESHOLD, 1024 * 1024);   // 1MB mmap
     mallopt(M_TRIM_THRESHOLD, 2 * 1024 * 1024); // 2MB brk
 #endif
-    return app.exec();
+    const int ret = app.exec();
+    cleanupCache();
+    return ret;
 }

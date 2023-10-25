@@ -53,11 +53,6 @@ public Q_SLOTS:
     void windowCloseAnimation();
 
 private:
-    /*!
-     * Something temp clean up.
-     */
-    void cleanUp();
-
     QPropertyAnimation *m_animation;
 
     static OCRApplicationObject *m_instance;
