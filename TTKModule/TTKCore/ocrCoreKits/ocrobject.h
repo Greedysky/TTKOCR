@@ -29,11 +29,11 @@
 
 #define JPG_FILE_SUFFIX         "jpg"
 
-#define JPG_FILE                TTK_STRCAT(TTK_DOT, JPG_FILE_SUFFIX)
+#define JPG_FILE                TTK_STR_CAT(TTK_DOT, JPG_FILE_SUFFIX)
 
 
-#define DOWNLOAD_DIR            TTK_STRCAT("Downloads", TTK_SEPARATOR)
-#define LANGUAGE_DIR            TTK_STRCAT("GLanguage", TTK_SEPARATOR)
+#define DOWNLOAD_DIR            TTK_STR_CAT("Downloads", TTK_SEPARATOR)
+#define LANGUAGE_DIR            TTK_STR_CAT("GLanguage", TTK_SEPARATOR)
 
 #define MAIN_DIR_FULL           TTK::applicationPath() + TTK_PDIR
 //
