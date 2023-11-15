@@ -10,7 +10,7 @@
 #include <QHttpMultiPart>
 #include <QSslConfiguration>
 
-#define OCR_URL     "RU5EOEI3NnE1aUo0cHVQYlZST2s1eGZUVzY5dmFwemsvSFFJQXFzRjUvc0M1b21VOUFxU25yR1JpQjg9"
+static constexpr const char *OCR_URL = "RU5EOEI3NnE1aUo0cHVQYlZST2s1eGZUVzY5dmFwemsvSFFJQXFzRjUvc0M1b21VOUFxU25yR1JpQjg9";
 
 OCRThread::OCRThread(QObject *parent)
     : TTKAbstractNetwork(parent)

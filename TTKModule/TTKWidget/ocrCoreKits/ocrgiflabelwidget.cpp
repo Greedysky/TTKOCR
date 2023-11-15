@@ -3,7 +3,7 @@
 #include <QTimer>
 #include <QPainter>
 
-#define GIF_CICLE_BLUE          58
+static constexpr int GIF_CICLE_BLUE = 58;
 
 OCRGifLabelWidget::OCRGifLabelWidget(QWidget *parent)
     : QLabel(parent),
