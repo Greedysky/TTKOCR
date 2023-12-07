@@ -18,12 +18,10 @@
 
 TEMPLATE = app
 
-include($$PWD/../../TTKCommon/TTKRun/TTKRun.pri)
-
 DESTDIR = $$OUT_PWD/../../bin
 TARGET = TTKOCR
 
-INCLUDEPATH += $$OUT_PWD/../../Generate
+include($$PWD/../../TTKCommon/TTKRun/TTKRun.pri)
 
 SOURCES += $$PWD/ttkrunmain.cpp
 
