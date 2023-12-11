@@ -21,7 +21,7 @@
 
 #include "ttkmoduleexport.h"
 
-/*! @brief The class of the utils file.
+/*! @brief The namespace of the utils file.
  * @author Greedysky <greedysky@163.com>
  */
 namespace TTK

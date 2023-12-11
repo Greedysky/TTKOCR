@@ -1,5 +1,5 @@
-#ifndef OCRALGORITHMUTILS_H
-#define OCRALGORITHMUTILS_H
+#ifndef OCRCOREUTILS_H
+#define OCRCOREUTILS_H
 
 /***************************************************************************
  * This file is part of the TTK OCR project
@@ -20,28 +20,39 @@
  ***************************************************************************/
 
 #include "ttkmoduleexport.h"
+#include "ttknumberdefine.h"
 
-/*! @brief The namespace of the utils algorithm.
+/*! @brief The namespace of the utils core.
  * @author Greedysky <greedysky@163.com>
  */
 namespace TTK
 {
-    namespace Algorithm
+    namespace Core
     {
         /*!
-         * Get sha1 algorithm.
+         * Sleep by millisecond.
          */
-        TTK_MODULE_EXPORT QByteArray sha1(const QByteArray &data);
+        TTK_MODULE_EXPORT void sleep(int ms);
+
         /*!
-         * Get mdII(greedysky) algorithm.
+         * App version check.
          */
-        TTK_MODULE_EXPORT QString mdII(const QString &data, bool encode);
+        TTK_MODULE_EXPORT bool appVersionCheck(const QString &o, const QString &d);
+
         /*!
-         * Get mdII(greedysky) algorithm.
+         * Reset break point.
          */
-        TTK_MODULE_EXPORT QString mdII(const QString &data, const QString &key, bool encode);
+        TTK_MODULE_EXPORT void resetBreakPoint();
+        /*!
+         * Enable break point.
+         */
+        TTK_MODULE_EXPORT void enableBreakPoint(bool enable);
+        /*!
+         * Break point enabled or not.
+         */
+        TTK_MODULE_EXPORT bool isBreakPointEnabled();
 
     }
 }
 
-#endif // OCRALGORITHMUTILS_H
+#endif // OCRCOREUTILS_H
