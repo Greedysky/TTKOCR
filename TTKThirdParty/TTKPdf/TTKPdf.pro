@@ -50,7 +50,7 @@ HEADERS += \
     $$PWD/src/private/mupdf-outline_p.h \
     $$PWD/src/private/mupdf-page_p.h \
     $$PWD/src/private/mupdf-textbox_p.h
-    
+
 SOURCES += \
     $$PWD/src/mupdf-document.cpp \
     $$PWD/src/mupdf-link.cpp \
