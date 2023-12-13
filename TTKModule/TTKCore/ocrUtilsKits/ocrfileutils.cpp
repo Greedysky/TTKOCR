@@ -1,4 +1,5 @@
 #include "ocrfileutils.h"
+#include "ocrcoreutils.h"
 
 #include <QDirIterator>
 #include <QFileDialog>
@@ -6,7 +7,7 @@
 bool TTK::File::removeRecursively(const QString &dir, bool self)
 {
     QDir dr(dir);
-    if(!dr.exists())
+    if(TTK::Core::isBreakPointEnabled() || !dr.exists())
     {
         return true;
     }
