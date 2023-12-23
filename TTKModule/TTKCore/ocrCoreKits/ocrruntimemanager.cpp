@@ -7,7 +7,11 @@
 
 namespace TTK
 {
-static QString languageCore(int index)
+    static QString languageCore(int index);
+
+}
+
+QString TTK::languageCore(int index)
 {
     QString lan(LANGUAGE_DIR_FULL);
     switch(index)
@@ -17,7 +21,6 @@ static QString languageCore(int index)
         case 2: return lan.append("en.ln");
         default: return {};
     }
-}
 }
 
 
