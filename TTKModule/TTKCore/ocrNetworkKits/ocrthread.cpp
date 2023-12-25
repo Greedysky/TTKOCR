@@ -35,7 +35,7 @@ void OCRThread::startRequest(OCRThreadItem *item)
 
     m_reply = m_manager.post(request, multiPart);
     connect(m_reply, SIGNAL(finished()), SLOT(downLoadFinished()));
-    QtNetworkErrorConnect(m_reply, this, replyError);
+    QtNetworkErrorConnect(m_reply, this, replyError, TTK_SLOT);
 }
 
 void OCRThread::downLoadFinished()

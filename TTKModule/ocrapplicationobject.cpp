@@ -37,5 +37,5 @@ void OCRApplicationObject::windowCloseAnimation()
     m_animation->setEndValue(0.0f);
     m_animation->start();
 
-    TTK_SIGNLE_SHOT(TTK_DN_S2MS, qApp, quit);
+    TTK_SIGNLE_SHOT(TTK_DN_S2MS, qApp, quit, TTK_SLOT);
 }
