@@ -60,7 +60,7 @@ public:
     /*!
      * Start to query by thread item.
      */
-    void startRequest(OCRThreadItem *item);
+    void startToRequest(OCRThreadItem *item);
 
 Q_SIGNALS:
     /*!

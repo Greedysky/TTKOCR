@@ -21,7 +21,6 @@
 
 #include <QTimer>
 #include "ttksingleton.h"
-#include "ttkmoduleexport.h"
 
 #define G_NETWORK_PTR (TTKSingleton<OCRNetworkThread>::createInstance())
 

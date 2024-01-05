@@ -154,7 +154,7 @@ void OCRApplication::startButtonClicked()
     {
         OCRThread *thread = new OCRThread(item);
         connect(thread, SIGNAL(downLoadDataChanged(QString)), SLOT(downLoadDataChanged()));
-        thread->startRequest(item);
+        thread->startToRequest(item);
     }
 
     stateChanged(true);

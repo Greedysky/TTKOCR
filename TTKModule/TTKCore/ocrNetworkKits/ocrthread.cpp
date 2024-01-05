@@ -18,7 +18,7 @@ OCRThread::OCRThread(QObject *parent)
 
 }
 
-void OCRThread::startRequest(OCRThreadItem *item)
+void OCRThread::startToRequest(OCRThreadItem *item)
 {
     QNetworkRequest request;
     request.setOriginatingObject(item);
