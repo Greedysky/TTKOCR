@@ -19,6 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
+#include "ttkmoduleexport.h"
 #include "ocrconfigdefine.h"
 
 /*! @brief The class of the ocr initialize object.

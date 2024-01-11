@@ -20,9 +20,7 @@
  ***************************************************************************/
 
 #include "ocrobject.h"
-#include "ttkmoduleexport.h"
 
-//
 #define TTK_DOWNLOAD_DIR_FULL   DOWNLOAD_DIR_FULL
 #define TTK_LANGUAGE_DIR_FULL   LANGUAGE_DIR_FULL
 

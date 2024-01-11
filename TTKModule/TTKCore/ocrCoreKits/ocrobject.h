@@ -24,7 +24,6 @@
 #include "ttkqtglobal.h"
 #include "ttkqtobject.h"
 
-//
 #define DIR_PREFIX              "dir"
 
 #define JPG_FILE_SUFFIX         "jpg"
