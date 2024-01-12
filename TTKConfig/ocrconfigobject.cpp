@@ -42,7 +42,7 @@ void OCRConfigObject::checkDirectoryExist() const
 void OCRConfigObject::checkFileNeededExist() const
 {
 #ifdef Q_OS_UNIX
-    if(!QFile::exists(MAIN_DIR_FULL + ".ttk_runtime"))
+    if(!QFile::exists(MAIN_DIR_FULL + "ttk_runtime"))
     {
         copyLinuxShellFile(":/data/TTKRoutine.sh", TTK_ROUTINE_FULL);
         copyLinuxShellFile(":/data/TTKOCR.sh", TTK_APP_MAIN_FULL);
