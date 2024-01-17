@@ -34,7 +34,7 @@
 #define DOWNLOAD_DIR            TTK_STR_CAT("Downloads", TTK_SEPARATOR)
 #define LANGUAGE_DIR            TTK_STR_CAT("GLanguage", TTK_SEPARATOR)
 
-#define MAIN_DIR_FULL           TTK::applicationPath() + TTK_PDIR
+#define MAIN_DIR_FULL           TTK::applicationPath() + TTK_PARENT_DIR
 //
 #define DOWNLOAD_DIR_FULL       MAIN_DIR_FULL + DOWNLOAD_DIR
 #define LANGUAGE_DIR_FULL       TTK::applicationPath() + LANGUAGE_DIR
