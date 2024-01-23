@@ -152,9 +152,9 @@ void OCRApplication::startButtonClicked()
 
     for(OCRThreadItem *item : qAsConst(m_fileList))
     {
-        OCRThread *thread = new OCRThread(item);
-        connect(thread, SIGNAL(downLoadDataChanged(QString)), SLOT(downLoadDataChanged()));
-        thread->startToRequest(item);
+        OCRThread *request = new OCRThread(item);
+        connect(request, SIGNAL(downLoadDataChanged(QString)), SLOT(downLoadDataChanged()));
+        request->startToRequest(item);
     }
 
     stateChanged(true);
