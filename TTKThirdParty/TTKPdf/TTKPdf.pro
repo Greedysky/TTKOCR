@@ -61,4 +61,4 @@ SOURCES += \
 #load extra define
 include($$PWD/../TTKThirdParty.pri)
 
-win32:RC_FILE = $$PWD/TTKPdf.rc
+win32:RC_FILE = $$PWD/$${TARGET}.rc

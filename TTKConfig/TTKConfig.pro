@@ -50,4 +50,4 @@ SOURCES += $$PWD/ocrconfigobject.cpp
 
 RESOURCES += $$PWD/../TTKUi/OCRApp.qrc
 
-win32:RC_FILE = $$PWD/TTKConfig.rc
+win32:RC_FILE = $$PWD/$${TARGET}.rc

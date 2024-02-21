@@ -55,4 +55,4 @@ INCLUDEPATH += \
 
 SOURCES += $$PWD/ocrinitmain.cpp
 
-win32:RC_FILE = $$PWD/TTKInit.rc
+win32:RC_FILE = $$PWD/$${TARGET}.rc

@@ -50,4 +50,4 @@ include($$PWD/../TTKThirdParty.pri)
 
 include($$PWD/qjson/QJson.pri)
 
-win32:RC_FILE = $$PWD/TTKExtras.rc
+win32:RC_FILE = $$PWD/$${TARGET}.rc
