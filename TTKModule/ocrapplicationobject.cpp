@@ -1,7 +1,6 @@
 #include "ocrapplicationobject.h"
 #include "ocrapplication.h"
 #include "ocrbackgroundmanager.h"
-#include "ttknumberdefine.h"
 
 #include <QTimer>
 #include <QPropertyAnimation>
