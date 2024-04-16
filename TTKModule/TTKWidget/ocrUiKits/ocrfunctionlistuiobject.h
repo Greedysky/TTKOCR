@@ -30,13 +30,13 @@ namespace TTK
     {
         static constexpr const char *FuncClose = " \
             QToolButton{ border:none; \
-            background-image: url(:/image/btn_close_normal);} \
-            QToolButton:hover{ background-image: url(:/image/btn_close_hover);}";
+            background-image: url(:/image/btn_close_normal); } \
+            QToolButton:hover{ background-image: url(:/image/btn_close_hover); }";
 
         static constexpr const char *FuncMin= " \
             QToolButton{ border:none; \
-            background-image: url(:/image/btn_min_normal);} \
-            QToolButton:hover{ background-image: url(:/image/btn_min_hover);}";
+            background-image: url(:/image/btn_min_normal); } \
+            QToolButton:hover{ background-image: url(:/image/btn_min_hover); }";
 
     }
 }
