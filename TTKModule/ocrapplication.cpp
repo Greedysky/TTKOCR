@@ -51,18 +51,18 @@ OCRApplication::OCRApplication(QWidget *parent)
     m_ui->pixScrollArea->setFrameShape(QFrame::NoFrame);
     m_ui->pixScrollArea->setFrameShadow(QFrame::Plain);
     m_ui->pixScrollArea->setAlignment(Qt::AlignVCenter);
-    m_ui->pixScrollArea->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle03);
+    m_ui->pixScrollArea->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle01);
 
     m_ui->textScrollArea->setWidgetResizable(true);
     m_ui->textScrollArea->setFrameShape(QFrame::NoFrame);
     m_ui->textScrollArea->setFrameShadow(QFrame::Plain);
     m_ui->textScrollArea->setAlignment(Qt::AlignVCenter);
-    m_ui->textScrollArea->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle03);
-    m_ui->textScrollArea->horizontalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle04);
+    m_ui->textScrollArea->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle01);
+    m_ui->textScrollArea->horizontalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle02);
 
     m_ui->textScrollAreaWidget->setReadOnly(true);
-    m_ui->textScrollAreaWidget->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle03);
-    m_ui->textScrollAreaWidget->horizontalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle04);
+    m_ui->textScrollAreaWidget->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle01);
+    m_ui->textScrollAreaWidget->horizontalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle02);
 
     /////////// Mouse tracking
     setObjectsTracking({m_ui->background});
