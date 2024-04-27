@@ -22,7 +22,7 @@
 #include <QTimer>
 #include "ttksingleton.h"
 
-#define G_NETWORK_PTR (TTKSingleton<OCRNetworkThread>::createInstance())
+#define G_NETWORK_PTR (TTKSingleton<OCRNetworkThread>::instance())
 
 /*! @brief The class of the thread to check current network.
  * @author Greedysky <greedysky@163.com>
