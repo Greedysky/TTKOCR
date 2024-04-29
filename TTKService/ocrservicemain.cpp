@@ -1,7 +1,7 @@
 #include "ttkapplication.h"
 #include "ocrapplication.h"
 #include "ocrruntimemanager.h"
-#include "ocrconfigobject.h"
+#include "ocrconfigmodule.h"
 #include "ocrfileutils.h"
 #include "ttkobject.h"
 #include "ttkdumper.h"
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    OCRConfigObject config;
+    OCRConfigModule config;
     config.valid();
 
     TTKDumper dumper(std::bind(cleanupCache));

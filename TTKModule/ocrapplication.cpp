@@ -1,6 +1,6 @@
 #include "ocrapplication.h"
 #include "ui_ocrapplication.h"
-#include "ocrapplicationobject.h"
+#include "ocrapplicationmodule.h"
 #include "ocrfunctionlistuiobject.h"
 #include "ocrfileutils.h"
 #include "ocrgrabwidget.h"
@@ -20,10 +20,9 @@ OCRApplication::OCRApplication(QWidget *parent)
 {
     m_instance = this;
 
-    m_applicationObject = new OCRApplicationObject(this);
+    m_applicationModule = new OCRApplicationModule(this);
 
     m_ui->setupUi(this);
-
     setMinimumSize(WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
     setMaximumSize(WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
 
@@ -64,14 +63,14 @@ OCRApplication::OCRApplication(QWidget *parent)
     m_ui->textScrollAreaWidget->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle01);
     m_ui->textScrollAreaWidget->horizontalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle02);
 
-    /////////// Mouse tracking
+    /////////// Objects Mouse tracking;
     setObjectsTracking({m_ui->background});
 }
 
 OCRApplication::~OCRApplication()
 {
     deleteItems();
-    delete m_applicationObject;
+    delete m_applicationModule;
     delete m_ui;
 }
 
@@ -82,7 +81,7 @@ OCRApplication *OCRApplication::instance()
 
 void OCRApplication::quitWindowClose()
 {
-    m_applicationObject->windowCloseAnimation();
+    m_applicationModule->windowCloseAnimation();
 }
 
 void OCRApplication::openButtonClicked()

@@ -1,5 +1,5 @@
-#ifndef OCRAPPLICATIONOBJECT_H
-#define OCRAPPLICATIONOBJECT_H
+#ifndef OCRAPPLICATIONMODULE_H
+#define OCRAPPLICATIONMODULE_H
 
 /***************************************************************************
  * This file is part of the TTK OCR project
@@ -24,27 +24,27 @@
 
 class QPropertyAnimation;
 
-/*! @brief The class of the app object widget.
+/*! @brief The class of the app object module.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT OCRApplicationObject : public QObject
+class TTK_MODULE_EXPORT OCRApplicationModule : public QObject
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(OCRApplicationObject)
+    TTK_DECLARE_MODULE(OCRApplicationModule)
 public:
     /*!
      * Object constructor.
      */
-    explicit OCRApplicationObject(QObject *parent = nullptr);
+    explicit OCRApplicationModule(QObject *parent = nullptr);
     /*!
      * Object destructor.
      */
-    ~OCRApplicationObject();
+    ~OCRApplicationModule();
 
     /*!
      * Get class object instance.
      */
-    static OCRApplicationObject *instance();
+    static OCRApplicationModule *instance();
 
 public Q_SLOTS:
     /*!
@@ -53,9 +53,9 @@ public Q_SLOTS:
     void windowCloseAnimation();
 
 private:
-    QPropertyAnimation *m_animation;
+    QPropertyAnimation *m_quitAnimation;
 
-    static OCRApplicationObject *m_instance;
+    static OCRApplicationModule *m_instance;
 };
 
-#endif // OCRAPPLICATIONOBJECT_H
+#endif // OCRAPPLICATIONMODULE_H

@@ -26,10 +26,10 @@ TARGET = TTKCore
 
 HEADERS += \
     $$PWD/ocrapplication.h \
-    $$PWD/ocrapplicationobject.h
+    $$PWD/ocrapplicationmodule.h
 
 SOURCES += \
-    $$PWD/ocrapplicationobject.cpp \
+    $$PWD/ocrapplicationmodule.cpp \
     $$PWD/ocrapplication.cpp
     
 win32:RC_FILE = $$PWD/$${TARGET}.rc

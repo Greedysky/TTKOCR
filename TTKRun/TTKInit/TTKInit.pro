@@ -40,7 +40,7 @@ win32:msvc{
 
 win32{
     msvc{
-        HEADERS += $$PWD/../../TTKConfig/ocrconfigobject.h
+        HEADERS += $$PWD/../../TTKConfig/ocrconfigmodule.h
     }else{
         QMAKE_LFLAGS_CONSOLE += -mwindows
     }

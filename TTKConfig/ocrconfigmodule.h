@@ -1,5 +1,5 @@
-#ifndef OCRCONFIGOBJECT_H
-#define OCRCONFIGOBJECT_H
+#ifndef OCRCONFIGMODULE_H
+#define OCRCONFIGMODULE_H
 
 /***************************************************************************
  * This file is part of the TTK OCR project
@@ -22,17 +22,17 @@
 #include "ttkmoduleexport.h"
 #include "ocrconfigdefine.h"
 
-/*! @brief The class of the ocr initialize object.
+/*! @brief The class of the initialize module.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT OCRConfigObject : public QObject
+class TTK_MODULE_EXPORT OCRConfigModule : public QObject
 {
     Q_OBJECT
 public:
     /*!
      * Object constructor.
      */
-    explicit OCRConfigObject(QObject *parent = nullptr);
+    explicit OCRConfigModule(QObject *parent = nullptr);
 
     /*!
      * Check current setting file's validation.
@@ -77,4 +77,4 @@ private:
 
 };
 
-#endif // OCRCONFIGOBJECT_H
+#endif // OCRCONFIGMODULE_H

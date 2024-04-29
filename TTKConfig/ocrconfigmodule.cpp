@@ -1,30 +1,30 @@
-#include "ocrconfigobject.h"
+#include "ocrconfigmodule.h"
 
 #include <QProcess>
 
-OCRConfigObject::OCRConfigObject(QObject *parent)
+OCRConfigModule::OCRConfigModule(QObject *parent)
     : QObject(parent)
 {
 
 }
 
-void OCRConfigObject::valid() const
+void OCRConfigModule::valid() const
 {
     checkDirectoryExist();
     checkFileNeededExist();
 }
 
-void OCRConfigObject::initialize() const
+void OCRConfigModule::initialize() const
 {
     valid();
 }
 
-void OCRConfigObject::reset() const
+void OCRConfigModule::reset() const
 {
 
 }
 
-void OCRConfigObject::directoryExist(const QString &name) const
+void OCRConfigModule::directoryExist(const QString &name) const
 {
     QDir dir;
     if(!dir.exists(name))
@@ -33,13 +33,13 @@ void OCRConfigObject::directoryExist(const QString &name) const
     }
 }
 
-void OCRConfigObject::checkDirectoryExist() const
+void OCRConfigModule::checkDirectoryExist() const
 {
     directoryExist(TTK_DOWNLOAD_DIR_FULL);
     directoryExist(TTK_LANGUAGE_DIR_FULL);
 }
 
-void OCRConfigObject::checkFileNeededExist() const
+void OCRConfigModule::checkFileNeededExist() const
 {
 #ifdef Q_OS_UNIX
     if(!QFile::exists(MAIN_DIR_FULL + "ttk_runtime"))
@@ -53,7 +53,7 @@ void OCRConfigObject::checkFileNeededExist() const
 #endif
 }
 
-void OCRConfigObject::copyFileOverwrite(const QString &origin, const QString &des) const
+void OCRConfigModule::copyFileOverwrite(const QString &origin, const QString &des) const
 {
     if(QFile::exists(des))
     {
@@ -64,7 +64,7 @@ void OCRConfigObject::copyFileOverwrite(const QString &origin, const QString &de
     QFile::setPermissions(des, QFile::ReadOwner | QFile::WriteOwner);
 }
 
-void OCRConfigObject::copyFile(const QString &origin, const QString &des) const
+void OCRConfigModule::copyFile(const QString &origin, const QString &des) const
 {
     if(!QFile::exists(des))
     {
@@ -74,7 +74,7 @@ void OCRConfigObject::copyFile(const QString &origin, const QString &des) const
 }
 
 #ifdef Q_OS_UNIX
-void OCRConfigObject::copyLinuxShellFile(const QString &name, const QString &path) const
+void OCRConfigModule::copyLinuxShellFile(const QString &name, const QString &path) const
 {
     copyFileOverwrite(name, path);
     QProcess::execute("chmod", {"+x", path});

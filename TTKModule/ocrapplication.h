@@ -23,7 +23,7 @@
 #include "ttkabstractmoveresizewidget.h"
 
 class OCRThreadItem;
-class OCRApplicationObject;
+class OCRApplicationModule;
 
 namespace Ui {
 class OCRApplication;
@@ -94,8 +94,8 @@ private:
     Ui::OCRApplication *m_ui;
 
     int m_count;
-    OCRApplicationObject *m_applicationObject;
     QList<OCRThreadItem*> m_fileList;
+    OCRApplicationModule *m_applicationModule;
 
     static OCRApplication *m_instance;
 };

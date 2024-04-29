@@ -1,5 +1,5 @@
 #include <QCoreApplication>
-#include "ocrconfigobject.h"
+#include "ocrconfigmodule.h"
 
 #ifdef _MSC_VER
 #  pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
@@ -13,8 +13,8 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain(TTK_APP_COME_NAME);
     QCoreApplication::setApplicationName(TTK_APP_NAME);
 
-    OCRConfigObject object;
-    object.initialize();
+    OCRConfigModule config;
+    config.initialize();
     TTK_INFO_STREAM("Parameter Init success");
     return 0;
 }

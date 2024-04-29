@@ -44,9 +44,9 @@ INCLUDEPATH += \
 
 HEADERS += \
     $$PWD/ocrconfigdefine.h \
-    $$PWD/ocrconfigobject.h
+    $$PWD/ocrconfigmodule.h
 
-SOURCES += $$PWD/ocrconfigobject.cpp
+SOURCES += $$PWD/ocrconfigmodule.cpp
 
 RESOURCES += $$PWD/../TTKUi/OCRApp.qrc
 

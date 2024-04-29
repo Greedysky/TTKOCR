@@ -34,7 +34,7 @@ INCLUDEPATH += \
 
 win32:msvc{
 HEADERS += \
-    $$PWD/../TTKConfig/ocrconfigobject.h \
+    $$PWD/../TTKConfig/ocrconfigmodule.h \
     $$PWD/../TTKModule/ocrapplication.h
 }
 
