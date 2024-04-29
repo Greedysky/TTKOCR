@@ -12,6 +12,7 @@ OCRApplicationModule::OCRApplicationModule(QObject *parent)
     m_instance = this;
 
     m_quitAnimation = new QPropertyAnimation(parent, "windowOpacity", this);
+    connect(m_quitAnimation, SIGNAL(valueChanged(QVariant)), parent, SLOT(update()));
 
     G_BACKGROUND_PTR->setBackground(":/image/lb_background");
 }
@@ -30,7 +31,7 @@ OCRApplicationModule *OCRApplicationModule::instance()
 void OCRApplicationModule::windowCloseAnimation()
 {
     m_quitAnimation->stop();
-    m_quitAnimation->setDuration(TTK_DN_S2MS / 2);
+    m_quitAnimation->setDuration(TTK_DN_S2MS);
     m_quitAnimation->setStartValue(1.0f);
     m_quitAnimation->setEndValue(0.0f);
     m_quitAnimation->start();
