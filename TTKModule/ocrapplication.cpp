@@ -206,7 +206,7 @@ void OCRApplication::downLoadDataChanged()
 #ifdef Q_OS_UNIX
             content.append("==========");
 #endif
-            content.append("\r\n");
+            content.append(TTK_WLINEFEED);
         }
 
         m_ui->textScrollAreaWidget->appendPlainText(content);

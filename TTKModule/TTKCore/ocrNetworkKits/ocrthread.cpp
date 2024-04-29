@@ -67,7 +67,7 @@ void OCRThread::downLoadFinished()
                     }
 
                     value = var.toMap();
-                    content.append(value["content"].toString() + "\r\n");
+                    content.append(value["content"].toString() + TTK_WLINEFEED);
                 }
             }
 
