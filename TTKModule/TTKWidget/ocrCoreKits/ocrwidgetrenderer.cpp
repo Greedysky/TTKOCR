@@ -14,5 +14,5 @@ void OCRWidgetRenderer::setBackgroundPixmap(const QSize &size)
         return;
     }
 
-    m_background->setPixmap(QPixmap(G_BACKGROUND_PTR->background()).scaled(size));
+    m_background->setPixmap(QPixmap(G_BACKGROUND_PTR->backgroundUrl()).scaled(size));
 }

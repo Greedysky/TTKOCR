@@ -18,12 +18,12 @@ void OCRBackgroundManager::removeObserver(QObject *object)
     disconnect(this, SIGNAL(backgroundChanged()), object, SLOT(backgroundChanged()));
 }
 
-void OCRBackgroundManager::setBackground(const QString &path)
+void OCRBackgroundManager::setBackgroundUrl(const QString &path)
 {
     m_background = path;
 }
 
-QString OCRBackgroundManager::background() const
+QString OCRBackgroundManager::backgroundUrl() const
 {
     return m_background;
 }
@@ -36,9 +36,4 @@ void OCRBackgroundManager::setBackgroundColor(const QColor &color)
 QColor OCRBackgroundManager::backgroundColor() const
 {
     return m_skinColor;
-}
-
-void OCRBackgroundManager::backgroundHasChanged()
-{
-    Q_EMIT backgroundChanged();
 }
