@@ -50,15 +50,6 @@ public:
      */
     QString backgroundUrl() const;
 
-    /*!
-     * Set background picture color.
-     */
-    void setBackgroundColor(const QColor &color);
-    /*!
-     * Get background picture color.
-     */
-    QColor backgroundColor() const;
-
 Q_SIGNALS:
     /*!
      * Background image changed.
@@ -69,7 +60,7 @@ private:
     /*!
      * Object constructor.
      */
-    OCRBackgroundManager();
+    OCRBackgroundManager() = default;
 
     QColor m_skinColor;
     QObjectList m_observer;

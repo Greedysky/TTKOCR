@@ -1,11 +1,5 @@
 #include "ocrbackgroundmanager.h"
 
-OCRBackgroundManager::OCRBackgroundManager()
-    : m_skinColor(Qt::white)
-{
-
-}
-
 void OCRBackgroundManager::addObserver(QObject *object)
 {
     m_observer << object;
@@ -26,14 +20,4 @@ void OCRBackgroundManager::setBackgroundUrl(const QString &path)
 QString OCRBackgroundManager::backgroundUrl() const
 {
     return m_background;
-}
-
-void OCRBackgroundManager::setBackgroundColor(const QColor &color)
-{
-    m_skinColor = color;
-}
-
-QColor OCRBackgroundManager::backgroundColor() const
-{
-    return m_skinColor;
 }
