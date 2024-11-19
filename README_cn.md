@@ -1,22 +1,22 @@
 # TTKOCR
-[简体中文 Chinese](./README_cn.md) | [繁体中文 Chinese](./README_tc.md)
+[英文 English](./README.md) | [繁体中文 Chinese](./README_tc.md)
 
 ![TTKOCR](https://img.shields.io/badge/Greedysky-TTKOCR-green.svg?style=flat-square)
-![Version](https://img.shields.io/github/v/release/Greedysky/TTKOCR?style=flat-square&label=Version)
-![License](https://img.shields.io/badge/License-GPL%20V3-yellowgreen.svg?style=flat-square)
-![License](https://img.shields.io/badge/License-LGPL%20V3-yellow.svg?style=flat-square)
+![版本](https://img.shields.io/github/v/release/Greedysky/TTKOCR?style=flat-square&label=Version)
+![许可](https://img.shields.io/badge/License-GPL%20V3-yellowgreen.svg?style=flat-square)
+![许可](https://img.shields.io/badge/License-LGPL%20V3-yellow.svg?style=flat-square)
 
-![LOGO](https://github.com/Greedysky/TTKOCR/blob/master/TTKResource/logo_banner.png?raw=true)
+![徽标](https://github.com/Greedysky/TTKOCR/blob/master/TTKResource/logo_banner.png?raw=true)
 
-### **|[About](https://github.com/Greedysky/TTKOCR#usage)|[License](https://github.com/Greedysky/TTKOCR#license)|[Download](https://github.com/Greedysky/TTKOCR#download)|[Features](https://github.com/Greedysky/TTKOCR#features)|[Screenshots](https://github.com/Greedysky/TTKOCR#screenshots)|[Copyright](https://github.com/Greedysky/TTKOCR#copyright)|[Contribute](https://github.com/Greedysky/TTKOCR#how-to-contribute)|**
+### **|[关于](https://github.com/Greedysky/TTKOCR#使用方法)|[许可证](https://github.com/Greedysky/TTKOCR#许可证)|[下载](https://github.com/Greedysky/TTKOCR#下载)|[特性](https://github.com/Greedysky/TTKOCR#特性)|[快照](https://github.com/Greedysky/TTKOCR#快照)|[版权](https://github.com/Greedysky/TTKOCR#版权)|[贡献](https://github.com/Greedysky/TTKOCR#贡献)|**
 
-Usage
+使用方法
 --------
-**TTKOCR recognizes text from images, based on Qt for windows and linux.**
+**TTKOCR 识别图片以及PDF中的文字，支持Windows和Linux平台。**
 
-### Attention: This software is only for learning and communication.
+### 本项目代码不用于商用，仅限研究和学习使用。
 
-## CI Status
+## 构建状态
  * Qt stable version is tested on Qt4.x for windows-mingw 32bit
  * Qt stable version is tested on Qt4.x for ubuntu-linux-gcc 64bit
  * Qt stable version is tested on Qt5.x for windows-msvc 32bit
@@ -33,34 +33,34 @@ Usage
 | Windows  | 5.x MSVC                    | ![Windows](https://img.shields.io/badge/build-passing-brightgreen.svg) |
 | OS X     | Clang                       | ![OSX](https://img.shields.io/badge/build-unknown-lightgrey.svg)       |
 
-# For Developers
+# 开发者
 
-License
+许可证
 --------
-TTKOCR is free software licensed under the term of [Licence GPL v3](https://github.com/Greedysky/TTKOCR/blob/master/LICENSE). If you use TTKOCR or its constituent libraries, you must adhere to the terms of the license in question.
+TTKOCR是基于[Licence GPL v3](https://github.com/Greedysky/TTKOCR/blob/master/LICENSE)条款授权的免费软件。如果您使用TTKOCR或者它的动态库，则务必添加相关许可证到项目中。
 
-Download
+下载
 --------
-Gitee URL: **<u>https://gitee.com/Greedysky/TTKOCR</u>**
+Gitee镜像下载地址: **<u>https://gitee.com/Greedysky/TTKOCR</u>**
 
-Github URL: **<u>https://github.com/Greedysky/TTKOCR</u>**
+Github镜像下载地址: **<u>https://github.com/Greedysky/TTKOCR</u>**
 
-Features
+特性
 --------
- * **Supports image format text recognition**
- * **Supports PDF format text recognition (based on mupdf)**
+ * **支持图片格式文字识别**
+ * **支持PDF格式文字识别（依赖mupdf第三方库）**
 
-Screenshots
+快照
 --------
-![Demo](https://github.com/Greedysky/TTKOCR/blob/master/TTKResource/demo/demo.jpg?raw=true)
+![事例](https://github.com/Greedysky/TTKOCR/blob/master/TTKResource/demo/demo.jpg?raw=true)
 
-Copyright
+版权
 --------
  * This file is part of the TTK OCR project.
  * Copyright (C) 2015 - 2024 Greedysky Studio.
  * Mail: greedysky@163.com.
 
-How To Contribute
+贡献
 --------
  * Fork this project on github and make a branch. Commit in that branch, and push, then create a pull request to be reviewed and merged.
  * Create an issue if you have any problem when using project or you find a bug, etc.
