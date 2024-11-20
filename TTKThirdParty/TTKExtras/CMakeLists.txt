@@ -41,21 +41,20 @@ set(SOURCE_FILES
 if(TTK_QT_VERSION VERSION_EQUAL "4")
   qt4_wrap_cpp(MOC_FILES ${HEADER_FILES})
 
-  if(TTK_BUILD_SHARED)
-    add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${MOC_FILES} ${HEADER_FILES})
-  else()
-    add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES} ${MOC_FILES} ${HEADER_FILES})
-  endif()
-
-  target_link_libraries(${PROJECT_NAME} ${QT_QTCORE_LIBRARY})
+  list(APPEND QT_LINK_LIBS ${QT_QTCORE_LIBRARY})
 elseif(TTK_QT_VERSION VERSION_EQUAL "5")
   qt5_wrap_cpp(MOC_FILES ${HEADER_FILES})
 
-  if(TTK_BUILD_SHARED)
-    add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${MOC_FILES} ${HEADER_FILES})
-  else()
-    add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES}  ${MOC_FILES} ${HEADER_FILES})
-  endif()
+  list(APPEND QT_LINK_LIBS Qt5::Core)
+elseif(TTK_QT_VERSION VERSION_EQUAL "6")
+  qt6_wrap_cpp(MOC_FILES ${HEADER_FILES})
 
-  target_link_libraries(${PROJECT_NAME} Qt5::Core)
+  list(APPEND QT_LINK_LIBS Qt6::Core)
 endif()
+
+if(TTK_BUILD_SHARED)
+  add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${MOC_FILES} ${HEADER_FILES})
+else()
+  add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES}  ${MOC_FILES} ${HEADER_FILES})
+endif()
+target_link_libraries(${PROJECT_NAME} ${QT_LINK_LIBS})
