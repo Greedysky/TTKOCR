@@ -18,13 +18,13 @@
 
 cmake_minimum_required(VERSION 3.0.0)
 
-set_property(GLOBAL PROPERTY TTK_CORE_KITS_HEADERS
+set_property(GLOBAL PROPERTY TTK_CORE_KITS_HEADER_FILES
   ${TTK_CORE_DIR}/ocrbackgroundmanager.h
   ${TTK_CORE_DIR}/ocrruntimemanager.h
   ${TTK_CORE_DIR}/ocrobject.h
 )
 
-set_property(GLOBAL PROPERTY TTK_CORE_KITS_SOURCES
+set_property(GLOBAL PROPERTY TTK_CORE_KITS_SOURCE_FILES
   ${TTK_CORE_DIR}/ocrbackgroundmanager.cpp
   ${TTK_CORE_DIR}/ocrruntimemanager.cpp
 )
