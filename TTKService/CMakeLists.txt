@@ -39,8 +39,8 @@ set(HEADER_FILES
 )
 
 set(SOURCE_FILES
-  ocrservicemain.cpp
   ${TTKAPPLICATION_SOURCE_FILES}
+  ocrservicemain.cpp
 )
 
 if(WIN32)
