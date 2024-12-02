@@ -1,14 +1,14 @@
 # TTKOCR
-[英文 English](./README.md) | [繁体中文 Chinese](./README_tc.md)
+[英文 English](README.md) | [繁体中文 Chinese](README_tc.md)
 
 ![TTKOCR](https://img.shields.io/badge/Greedysky-TTKOCR-green.svg?style=flat-square)
 ![版本](https://img.shields.io/github/v/release/Greedysky/TTKOCR?style=flat-square&label=Version)
 ![许可](https://img.shields.io/badge/License-GPL%20V3-yellowgreen.svg?style=flat-square)
 ![许可](https://img.shields.io/badge/License-LGPL%20V3-yellow.svg?style=flat-square)
 
-![徽标](https://github.com/Greedysky/TTKOCR/blob/master/TTKResource/logo_banner.png?raw=true)
+![徽标](TTKResource/logo_banner.png?raw=true)
 
-### **|[关于](https://github.com/Greedysky/TTKOCR/blob/master/README_cn.md#使用方法)|[许可证](https://github.com/Greedysky/TTKOCR/blob/master/README_cn.md#许可证)|[下载](https://github.com/Greedysky/TTKOCR/blob/master/README_cn.md#下载)|[特性](https://github.com/Greedysky/TTKOCR/blob/master/README_cn.md#特性)|[快照](https://github.com/Greedysky/TTKOCR/blob/master/README_cn.md#快照)|[版权](https://github.com/Greedysky/TTKOCR/blob/master/README_cn.md#版权)|[贡献](https://github.com/Greedysky/TTKOCR/blob/master/README_cn.md#贡献)|**
+### **|[关于](README_cn.md#使用方法)|[许可证](README_cn.md#许可证)|[下载](README_cn.md#下载)|[特性](README_cn.md#特性)|[快照](README_cn.md#快照)|[版权](README_cn.md#版权)|[贡献](README_cn.md#贡献)|**
 
 使用方法
 --------
@@ -37,7 +37,7 @@
 
 许可证
 --------
-TTKOCR是基于[Licence GPL v3](https://github.com/Greedysky/TTKOCR/blob/master/LICENSE)条款授权的免费软件。如果您使用TTKOCR或者它的动态库，则务必添加相关许可证到项目中。
+TTKOCR是基于[Licence GPL v3](LICENSE)条款授权的免费软件。如果您使用TTKOCR或者它的动态库，则务必添加相关许可证到项目中。
 
 下载
 --------
@@ -52,7 +52,7 @@ Github镜像下载地址: **<u>https://github.com/Greedysky/TTKOCR</u>**
 
 快照
 --------
-![事例](https://github.com/Greedysky/TTKOCR/blob/master/TTKResource/demo/demo.jpg?raw=true)
+![事例](TTKResource/demo/demo.jpg?raw=true)
 
 版权
 --------
