@@ -57,7 +57,7 @@ Screenshots
 Copyright
 --------
  * This file is part of the TTK OCR project.
- * Copyright (C) 2015 - 2024 Greedysky Studio.
+ * Copyright (C) 2015 - 2025 Greedysky Studio.
  * Mail: greedysky@163.com.
 
 How To Contribute
