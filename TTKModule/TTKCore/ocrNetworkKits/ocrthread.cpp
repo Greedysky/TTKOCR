@@ -50,8 +50,7 @@ void OCRThread::downLoadFinished()
     {
         QJson::Parser json;
         bool ok = false;
-        QVariant data = json.parse(m_reply->readAll(), &ok);
-
+        const QVariant &data = json.parse(m_reply->readAll(), &ok);
         if(ok)
         {
             QString content;
