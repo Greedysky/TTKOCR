@@ -22,7 +22,7 @@
 #include "ocrobject.h"
 #include "ttkabstractmoveresizewidget.h"
 
-class OCRThreadItem;
+class OCRRequestItem;
 class OCRApplicationModule;
 
 namespace Ui {
@@ -94,7 +94,7 @@ private:
     Ui::OCRApplication *m_ui;
 
     int m_count;
-    QList<OCRThreadItem*> m_fileList;
+    QList<OCRRequestItem*> m_fileList;
     OCRApplicationModule *m_applicationModule;
 
     static OCRApplication *m_instance;

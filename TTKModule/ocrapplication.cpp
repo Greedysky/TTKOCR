@@ -102,7 +102,7 @@ void OCRApplication::openButtonClicked()
         MuPDF::Document *document = MuPDF::loadDocument(path);
         for(int i = 0; i < document->numPages(); ++i)
         {
-            OCRThreadItem *item = new OCRThreadItem(this);
+            OCRRequestItem *item = new OCRRequestItem(this);
             item->m_index = i;
             item->m_path = path;
 
@@ -113,13 +113,15 @@ void OCRApplication::openButtonClicked()
 
             m_fileList << item;
         }
+#else
+        qDebug() << "Don't support pdf files";
 #endif
         return;
     }
 
     for(int i = 0; i < list.count(); ++i)
     {
-        OCRThreadItem *item = new OCRThreadItem(this);
+        OCRRequestItem *item = new OCRRequestItem(this);
         item->m_index = i;
         item->m_path = list[i];
 
@@ -149,9 +151,9 @@ void OCRApplication::startButtonClicked()
     m_count = 0;
     TTK::File::removeRecursively(DIR_PREFIX);
 
-    for(OCRThreadItem *item : qAsConst(m_fileList))
+    for(OCRRequestItem *item : qAsConst(m_fileList))
     {
-        OCRThread *request = new OCRThread(item);
+        OCRNetworkRequest *request = new OCRNetworkRequest(item);
         connect(request, SIGNAL(downLoadDataChanged(QString)), SLOT(downLoadDataChanged()));
         request->startToRequest(item);
     }
@@ -217,15 +219,16 @@ void OCRApplication::downLoadDataChanged()
 
 void OCRApplication::pixmapChanged(const QPixmap &pix)
 {
-    if(!QDir().exists(DOWNLOAD_DIR_FULL))
+    QDir dir;
+    if(!dir.exists(DOWNLOAD_DIR_FULL))
     {
-        QDir().mkpath(DOWNLOAD_DIR_FULL);
+        dir.mkpath(DOWNLOAD_DIR_FULL);
     }
 
     const QString &filename = DOWNLOAD_DIR_FULL + QDateTime::currentDateTime().toString("yyyyMMddhhmmss") + JPG_FILE;
     pix.save(filename, nullptr, 100);
 
-    OCRThreadItem *item = new OCRThreadItem(this);
+    OCRRequestItem *item = new OCRRequestItem(this);
     item->m_index = m_fileList.count();
     item->m_path = filename;
 
@@ -241,7 +244,7 @@ void OCRApplication::deleteItems()
 {
     while(!m_fileList.isEmpty())
     {
-        OCRThreadItem *item = m_fileList.takeLast();
+        OCRRequestItem *item = m_fileList.takeLast();
         delete item->m_obj;
         delete item;
     }

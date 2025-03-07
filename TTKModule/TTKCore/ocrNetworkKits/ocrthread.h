@@ -26,11 +26,11 @@ class QFile;
 /*! @brief The class of the ocr thread item.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT OCRThreadItem : public QObject
+class TTK_MODULE_EXPORT OCRRequestItem : public QObject
 {
     Q_OBJECT
 public:
-    explicit OCRThreadItem(QObject *parent = nullptr)
+    explicit OCRRequestItem(QObject *parent = nullptr)
         : QObject(parent),
           m_index(-1),
           m_obj(nullptr)
@@ -44,23 +44,23 @@ public:
 
 };
 
-/*! @brief The class of the ocr thread.
+/*! @brief The class of the ocr network request.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT OCRThread : public TTKAbstractNetwork
+class TTK_MODULE_EXPORT OCRNetworkRequest : public TTKAbstractNetwork
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(OCRThread)
+    TTK_DECLARE_MODULE(OCRNetworkRequest)
 public:
     /*!
      * Object constructor.
      */
-    explicit OCRThread(QObject *parent = nullptr);
+    explicit OCRNetworkRequest(QObject *parent = nullptr);
 
     /*!
      * Start to query by thread item.
      */
-    void startToRequest(OCRThreadItem *item);
+    void startToRequest(OCRRequestItem *item);
 
 Q_SIGNALS:
     /*!

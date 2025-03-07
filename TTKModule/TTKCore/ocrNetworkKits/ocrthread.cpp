@@ -8,21 +8,20 @@
 #include <QDir>
 #include <QPixmap>
 #include <QHttpMultiPart>
-#include <QSslConfiguration>
 
-static constexpr const char *OCR_URL = "RU5EOEI3NnE1aUo0cHVQYlZST2s1eGZUVzY5dmFwemsvSFFJQXFzRjUvc0M1b21VOUFxU25yR1JpQjg9";
+static constexpr const char *BASE_URL = "RU5EOEI3NnE1aUo0cHVQYlZST2s1eGZUVzY5dmFwemsvSFFJQXFzRjUvc0M1b21VOUFxU25yR1JpQjg9";
 
-OCRThread::OCRThread(QObject *parent)
+OCRNetworkRequest::OCRNetworkRequest(QObject *parent)
     : TTKAbstractNetwork(parent)
 {
 
 }
 
-void OCRThread::startToRequest(OCRThreadItem *item)
+void OCRNetworkRequest::startToRequest(OCRRequestItem *item)
 {
     QNetworkRequest request;
     request.setOriginatingObject(item);
-    request.setUrl(QUrl(TTK::Algorithm::mdII(OCR_URL, false)));
+    request.setUrl(TTK::Algorithm::mdII(BASE_URL, false));
     TTK::setSslConfiguration(&request);
 
     QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType, this);
@@ -38,7 +37,7 @@ void OCRThread::startToRequest(OCRThreadItem *item)
     QtNetworkErrorConnect(m_reply, this, replyError, TTK_SLOT);
 }
 
-void OCRThread::downLoadFinished()
+void OCRNetworkRequest::downLoadFinished()
 {
     if(!m_reply)
     {
@@ -72,7 +71,7 @@ void OCRThread::downLoadFinished()
 
             if(!content.isEmpty())
             {
-                OCRThreadItem *item = qobject_cast<OCRThreadItem*>(m_reply->request().originatingObject());
+                OCRRequestItem *item = qobject_cast<OCRRequestItem*>(m_reply->request().originatingObject());
                 if(!QDir(DIR_PREFIX).exists())
                 {
                     QDir().mkdir(DIR_PREFIX);
