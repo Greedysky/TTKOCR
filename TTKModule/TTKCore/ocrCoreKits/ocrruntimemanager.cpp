@@ -27,11 +27,6 @@ QString TTK::languageCore(int index)
 }
 
 
-OCRRunTimeManager::OCRRunTimeManager()
-{
-
-}
-
 void OCRRunTimeManager::run() const
 {
     TTK_INFO_STREAM("OCRApplication Run");

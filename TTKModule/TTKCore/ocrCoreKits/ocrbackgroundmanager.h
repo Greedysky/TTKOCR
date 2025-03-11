@@ -44,11 +44,11 @@ public:
     /*!
      * Set background picture by path.
      */
-    void setBackgroundUrl(const QString &path);
+    void setBackgroundUrl(const QString &path) noexcept;
     /*!
      * Get background picture path.
      */
-    QString backgroundUrl() const;
+    QString backgroundUrl() const noexcept;
 
 Q_SIGNALS:
     /*!
