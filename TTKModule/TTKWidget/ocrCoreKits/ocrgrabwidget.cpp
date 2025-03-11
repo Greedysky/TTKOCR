@@ -1,5 +1,5 @@
 #include "ocrgrabwidget.h"
-#include "ttkdesktopwrapper.h"
+#include "ttkdesktopscreen.h"
 
 #include <QMenu>
 #include <QPainter>
@@ -15,11 +15,11 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     setAttribute(Qt::WA_QuitOnClose, true);
 
     setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
-    setFixedSize(TTKDesktopWrapper::geometry().size());
+    setFixedSize(TTKDesktopScreen::geometry().size());
     setCursor(Qt::CrossCursor);
 
-    const QRect &rect = TTKDesktopWrapper::availableGeometry();
-    m_originPixmap = TTKDesktopWrapper::grabWindow(rect.x(), rect.y(), width(), height());
+    const QRect &rect = TTKDesktopScreen::availableGeometry();
+    m_originPixmap = TTKDesktopScreen::grabWindow(rect.x(), rect.y(), width(), height());
 }
 
 void OCRGrabWidget::mouseMoveEvent(QMouseEvent *event)
@@ -100,8 +100,8 @@ void OCRGrabWidget::keyPressEvent(QKeyEvent *event)
     {
         const int width = m_ptEnd.x() - m_ptStart.x();
         const int height = m_ptEnd.y() - m_ptStart.y();
-        const QRect &rect = TTKDesktopWrapper::availableGeometry();
-        const QPixmap &pix = TTKDesktopWrapper::grabWindow(m_ptStart.x() + rect.x(), m_ptStart.y() + rect.y(), width, height);
+        const QRect &rect = TTKDesktopScreen::availableGeometry();
+        const QPixmap &pix = TTKDesktopScreen::grabWindow(m_ptStart.x() + rect.x(), m_ptStart.y() + rect.y(), width, height);
         Q_EMIT pixmapChanged(pix);
         close();
     }
