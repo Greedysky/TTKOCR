@@ -37,6 +37,7 @@
 #define MAIN_DIR_FULL           TTK::applicationPath() + TTK_PARENT_DIR
 //
 #define DOWNLOAD_DIR_FULL       MAIN_DIR_FULL + DOWNLOAD_DIR
+#define DIR_PREFIX_FULL         TTK::applicationPath() + DIR_PREFIX
 #define LANGUAGE_DIR_FULL       TTK::applicationPath() + LANGUAGE_DIR
 
 

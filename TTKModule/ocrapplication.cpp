@@ -149,7 +149,7 @@ void OCRApplication::startButtonClicked()
     }
 
     m_count = 0;
-    TTK::File::removeRecursively(DIR_PREFIX);
+    TTK::File::removeRecursively(DIR_PREFIX_FULL);
 
     for(OCRRequestItem *item : qAsConst(m_fileList))
     {
@@ -171,7 +171,7 @@ void OCRApplication::clearButtonClicked()
     m_count = 0;
     deleteItems();
 
-    TTK::File::removeRecursively(DIR_PREFIX);
+    TTK::File::removeRecursively(DIR_PREFIX_FULL);
     m_ui->textScrollAreaWidget->clear();
 }
 
@@ -180,7 +180,7 @@ void OCRApplication::downLoadDataChanged()
     ++m_count;
     if(m_count == m_fileList.count())
     {
-        const QStringList files(QDir(DIR_PREFIX).entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
+        const QStringList files(QDir(DIR_PREFIX_FULL).entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
         TTKIntList data;
         for(const QString &path : qAsConst(files))
         {
@@ -192,7 +192,7 @@ void OCRApplication::downLoadDataChanged()
         QString content;
         for(int i = 0; i < m_fileList.count(); ++i)
         {
-            QFile file(QString("%1/%2").arg(DIR_PREFIX).arg(i));
+            QFile file(QString("%1/%2").arg(DIR_PREFIX_FULL).arg(i));
             if(file.open(QIODevice::ReadOnly))
             {
                 content.append(file.readAll());
@@ -211,7 +211,7 @@ void OCRApplication::downLoadDataChanged()
         }
 
         m_ui->textScrollAreaWidget->appendPlainText(content);
-        TTK::File::removeRecursively(DIR_PREFIX);
+        TTK::File::removeRecursively(DIR_PREFIX_FULL);
 
         stateChanged(false);
     }
