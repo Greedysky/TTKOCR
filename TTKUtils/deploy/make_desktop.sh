@@ -13,7 +13,7 @@ execpath="$PWD/../TTKOCR"
 
 echo -n "[Desktop Entry]
 Type=Application
-Version=3.0.0.0
+Version=3.1.0.0
 Name=TTKOCR
 Name[zh_CN]=文字识别
 Name[zh_TW]=文字識別
