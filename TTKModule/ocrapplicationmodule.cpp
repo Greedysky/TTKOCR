@@ -19,7 +19,7 @@ OCRApplicationModule::OCRApplicationModule(QObject *parent)
 
 OCRApplicationModule::~OCRApplicationModule()
 {
-    Q_CLEANUP_RESOURCE(TTKOCR);
+    Q_CLEANUP_RESOURCE(TTKModule);
     delete m_quitAnimation;
 }
 

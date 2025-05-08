@@ -49,6 +49,6 @@ HEADERS += \
 
 SOURCES += $$PWD/ocrconfigmodule.cpp
 
-RESOURCES += $$PWD/../TTKUi/OCRApp.qrc
+RESOURCES += $$PWD/../TTKUi/TTKApp.qrc
 
 win32:RC_FILE = $$PWD/$${TARGET}.rc
