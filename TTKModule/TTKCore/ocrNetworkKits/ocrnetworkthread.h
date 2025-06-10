@@ -31,6 +31,7 @@ class TTK_MODULE_EXPORT OCRNetworkThread : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(OCRNetworkThread)
+    TTK_DECLARE_SINGLETON_CLASS(OCRNetworkThread)
 public:
     /*!
      * Strat thread now.
@@ -70,8 +71,6 @@ private:
 
     QTimer m_timer;
     bool m_networkState;
-
-    TTK_DECLARE_SINGLETON_CLASS(OCRNetworkThread)
 
 };
 
