@@ -1,18 +1,17 @@
 #!/bin/sh
 
-path=share/applications
-if [ ! -d $path ]; then
-  mkdir $path
-fi
-
 curpath=$PWD/deploy
 if [ $# -eq 0 ]; then
   curpath=$PWD
 fi
 
-datapath=$path/TTKOCR.desktop
-packpath="$curpath/$datapath"
-userpath=~/.local/$datapath
+path=$curpath/share/applications
+if [ ! -d $path ]; then
+  mkdir $path
+fi
+
+packpath=$path/TTKOCR.desktop
+userpath=~/.local/share/applications
 iconpath="$curpath/share/pixmaps/ttkocr.png"
 execpath="$curpath/../TTKOCR"
 
