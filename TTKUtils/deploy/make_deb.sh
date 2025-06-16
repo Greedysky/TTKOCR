@@ -22,7 +22,7 @@ Architecture: amd64
 Installed-Size: $(du -s ${packname} | sed -e 's/[ \t].*//')
 Maintainer: Greedysky <greedysky@163.com>
 Homepage: https://github.com/Greedysky/${packname}
-Description: 识别图片以及PDF中的文字
+Description: TTK 识别图片以及PDF中的文字
  OCR 识别图片以及PDF中的文字，based on Qt for windows and linux.\n" > ${datapath}/control
 
 # create postinst file
