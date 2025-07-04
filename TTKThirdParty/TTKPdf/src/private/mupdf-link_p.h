@@ -12,7 +12,7 @@ class LinkPrivate
 {
 public:
     LinkPrivate(fz_link *l) : link(l), dest(l->dest) {}
-    LinkPrivate(fz_link_dest d) : link(NULL), dest(d) {}
+    LinkPrivate(fz_link_dest d) : link(nullptr), dest(d) {}
 
     fz_link *link;
     fz_link_dest dest;

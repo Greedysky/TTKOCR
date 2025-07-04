@@ -43,7 +43,7 @@ OutlineItem Outline::topLevelItem() const
 }
 
 OutlineItem::OutlineItem()
-    : d(NULL)
+    : d(nullptr)
 {
 
 }
@@ -64,7 +64,7 @@ OutlineItem::OutlineItem(const OutlineItem &item)
     if (item.isValid()) {
         d = new OutlineItemPrivate(item.d->outline);
     } else {
-        d = NULL;
+        d = nullptr;
     }
 }
 
@@ -74,7 +74,7 @@ OutlineItem & OutlineItem::operator=(const OutlineItem &item)
     if (item.isValid()) {
         d = new OutlineItemPrivate(item.d->outline);
     } else {
-        d = NULL;
+        d = nullptr;
     }
     return *this;
 }
@@ -115,7 +115,7 @@ OutlineItemPrivate::OutlineItemPrivate(fz_outline *o)
         break;
 
     default:
-        link = NULL;
+        link = nullptr;
         delete linkp;
         break;
     }
@@ -169,7 +169,7 @@ Link * OutlineItem::link() const
 OutlineItem OutlineItem::next() const
 {
     fz_outline *outline = d->outline->next;
-    OutlineItemPrivate *itemp = NULL;
+    OutlineItemPrivate *itemp = nullptr;
 
     if (outline) {
         itemp = new OutlineItemPrivate(outline);
@@ -189,7 +189,7 @@ OutlineItem OutlineItem::next() const
 OutlineItem OutlineItem::down() const
 {
     fz_outline *outline = d->outline->down;
-    OutlineItemPrivate *itemp = NULL;
+    OutlineItemPrivate *itemp = nullptr;
 
     if (outline) {
         itemp = new OutlineItemPrivate(outline);

@@ -21,7 +21,7 @@ public:
     {
         if (outline) {
             fz_drop_outline(context, outline);
-            outline = NULL;
+            outline = nullptr;
         }
     }
 

@@ -174,17 +174,17 @@ QRectF mapFromOrigin(const QRectF &rect, float scaleX, float scaleY, float rotat
 Page::~Page()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 PagePrivate::PagePrivate(DocumentPrivate *dp, int index)
     : documentp(dp)
     , context(documentp->context)
     , document(documentp->document)
-    , page(NULL)
-    , display_list(NULL)
-    , text_sheet(NULL)
-    , text_page(NULL)
+    , page(nullptr)
+    , display_list(nullptr)
+    , text_sheet(nullptr)
+    , text_page(nullptr)
     , transparent(documentp->transparent)
     , b(documentp->b), g(documentp->g), r(documentp->r), a(documentp->a)
 {
@@ -200,7 +200,7 @@ PagePrivate::PagePrivate(DocumentPrivate *dp, int index)
         // display list
         display_list = fz_new_display_list(context);
         list_device = fz_new_list_device(context, display_list);
-        fz_run_page(context, page, list_device, &fz_identity, NULL);
+        fz_run_page(context, page, list_device, &fz_identity, nullptr);
         fz_drop_device(context, list_device);
 
         // create text sheet and text page
@@ -208,7 +208,7 @@ PagePrivate::PagePrivate(DocumentPrivate *dp, int index)
         text_page = fz_new_text_page(context);
         text_device = fz_new_text_device(context, text_sheet, text_page);
         fz_bound_page(context, page, &bounds);
-        fz_run_display_list(context, display_list, text_device, &fz_identity, &bounds, NULL);
+        fz_run_display_list(context, display_list, text_device, &fz_identity, &bounds, nullptr);
         fz_drop_device(context, text_device);
     }
     fz_catch(context)
@@ -238,9 +238,9 @@ bool Page::isValid() const
  */
 QImage Page::renderImage(float scaleX, float scaleY, float rotation) const
 {
-    fz_pixmap *pixmap = NULL;
-    unsigned char *samples = NULL;
-    unsigned char *copyed_samples = NULL;
+    fz_pixmap *pixmap = nullptr;
+    unsigned char *samples = nullptr;
+    unsigned char *copyed_samples = nullptr;
     int width = 0;
     int height = 0;
     int size = 0;
@@ -258,7 +258,7 @@ QImage Page::renderImage(float scaleX, float scaleY, float rotation) const
     fz_round_rect(&bbox, &bounds);
 
     // render to pixmap
-    fz_device *dev = NULL;
+    fz_device *dev = nullptr;
     fz_try(d->context)
     {
         // fz_pixmap will always include a separate alpha channel
@@ -287,26 +287,26 @@ QImage Page::renderImage(float scaleX, float scaleY, float rotation) const
             }
         }
         dev = fz_new_draw_device(d->context, pixmap);
-        fz_run_display_list(d->context, d->display_list, dev, &transform, &bounds, NULL);
+        fz_run_display_list(d->context, d->display_list, dev, &transform, &bounds, nullptr);
     }
     fz_always(d->context)
     {
         if (dev) {
             fz_drop_device(d->context, dev);
         }
-        dev = NULL;
+        dev = nullptr;
     }
     fz_catch(d->context)
     {
         if (pixmap) {
             fz_drop_pixmap(d->context, pixmap);
         }
-        pixmap = NULL;
+        pixmap = nullptr;
     }
 
     // render to QImage
     QImage image;
-    if (NULL == pixmap) {
+    if (nullptr == pixmap) {
         return image;
     }
     copyed_samples = new unsigned char[size];

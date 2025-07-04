@@ -28,10 +28,10 @@ Document * loadDocument(const QString &filePath)
     // Create DocumentPrivate
     documentp = new DocumentPrivate(filePath);
     if (!documentp)
-        return NULL;
+        return nullptr;
     else if (!documentp->context || !documentp->document) {
         delete documentp;
-        return NULL;
+        return nullptr;
     }
 
     // Create Document
@@ -54,10 +54,10 @@ Document * loadDocument(const QByteArray &bytes)
     // Create DocumentPrivate
     documentp = new DocumentPrivate((unsigned char *)bytes.data(), bytes.length());
     if (!documentp)
-        return NULL;
+        return nullptr;
     else if (!documentp->context || !documentp->document) {
         delete documentp;
-        return NULL;
+        return nullptr;
     }
 
     // Create Document
@@ -66,12 +66,12 @@ Document * loadDocument(const QByteArray &bytes)
 }
 
 DocumentPrivate::DocumentPrivate(const QString &filePath)
-    : context(NULL), document(NULL)
+    : context(nullptr), document(nullptr)
     , transparent(false)
     , b(-1), g(-1), r(-1), a(-1)
 {
     // create context
-    context = fz_new_context(NULL, NULL, FZ_STORE_UNLIMITED);
+    context = fz_new_context(nullptr, nullptr, FZ_STORE_UNLIMITED);
     if (!context)
         return;
 
@@ -90,12 +90,12 @@ DocumentPrivate::DocumentPrivate(const QString &filePath)
 }
 
 DocumentPrivate::DocumentPrivate(unsigned char *bytes, int len)
-    : context(NULL), document(NULL)
+    : context(nullptr), document(nullptr)
     , transparent(false)
     , b(-1), g(-1), r(-1), a(-1)
 {
     // create context
-    context = fz_new_context(NULL, NULL, FZ_STORE_UNLIMITED);
+    context = fz_new_context(nullptr, nullptr, FZ_STORE_UNLIMITED);
     if (!context)
         return;
 
@@ -122,7 +122,7 @@ DocumentPrivate::DocumentPrivate(unsigned char *bytes, int len)
 Document::~Document()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 /**
@@ -180,10 +180,10 @@ Page * Document::page(int index) const
     // Create PagePrivate
     pagep = new PagePrivate(d, index);
     if (!pagep)
-        return NULL;
+        return nullptr;
     else if (!pagep->page) {
         delete pagep;
-        return NULL;
+        return nullptr;
     }
 
     // Create Page
@@ -212,7 +212,7 @@ Outline * Document::outline() const
         return new Outline(outlinep);
     }
 
-    return NULL;
+    return nullptr;
 }
 
 /**

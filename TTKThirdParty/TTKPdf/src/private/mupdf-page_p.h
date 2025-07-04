@@ -20,19 +20,19 @@ public:
     {
         if (display_list) {
             fz_drop_display_list(context, display_list);
-            display_list = NULL;
+            display_list = nullptr;
         }
         if (text_sheet) {
             fz_drop_text_sheet(context, text_sheet);
-            text_sheet = NULL;
+            text_sheet = nullptr;
         }
         if (text_page) {
             fz_drop_text_page(context, text_page);
-            text_page = NULL;
+            text_page = nullptr;
         }
         if (page) {
             fz_drop_page(context, page);
-            page = NULL;
+            page = nullptr;
         }
     }
 

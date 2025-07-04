@@ -25,11 +25,11 @@ public:
     {
         if (document) {
             fz_drop_document(context, document);
-            document = NULL;
+            document = nullptr;
         }
         if (context) {
             fz_drop_context(context);
-            context = NULL;
+            context = nullptr;
         }
     }
 
