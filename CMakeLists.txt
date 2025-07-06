@@ -194,7 +194,7 @@ else()
 endif()
 
 
-if(UNIX)
+if(UNIX AND NOT APPLE)
   find_program(RENAME_EXECUTABLE rename /usr/bin)
   if(RENAME_EXECUTABLE)
     message(STATUS "Found rename executable: " ${RENAME_EXECUTABLE})
