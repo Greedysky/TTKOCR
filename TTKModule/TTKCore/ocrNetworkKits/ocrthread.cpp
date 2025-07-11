@@ -3,7 +3,7 @@
 #include "ocrimageutils.h"
 #include "ocrobject.h"
 
-#include "qjson/parser.h"
+#include "qjson/json.h"
 
 #include <QDir>
 #include <QPixmap>
@@ -47,13 +47,12 @@ void OCRNetworkRequest::downLoadFinished()
 
     if(m_reply->error() == QNetworkReply::NoError)
     {
-        QJson::Parser json;
-        bool ok = false;
-        const QVariant &data = json.parse(m_reply->readAll(), &ok);
-        if(ok)
+        QJsonParseError ok;
+        const QJsonDocument &json = QJsonDocument::fromJson(m_reply->readAll(), &ok);
+        if(QJsonParseError::NoError == ok.error)
         {
             QString content;
-            QVariantMap value = data.toMap();
+            QVariantMap value = json.toVariant().toMap();
             if(value["success"].toInt() == 1)
             {
                 QVariantList datas = value["result"].toList();

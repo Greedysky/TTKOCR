@@ -21,21 +21,25 @@ cmake_minimum_required(VERSION 3.0.0)
 project(TTKExtras)
 
 set(HEADER_FILES
-  qjson/parser.h
-  qjson/parserrunnable.h
-  qjson/qobjecthelper.h
-  qjson/serializer.h
-  qjson/serializerrunnable.h
+  qjson/json.h
+  qjson/QJsonArray.h
+  qjson/QJsonDocument.h
+  qjson/QJsonObject.h
+  qjson/QJsonParseError.h
+  qjson/QJsonValue.h
+  qjson/QJsonValueRef.h
+  qjson/QJsonParser.h
+  qjson/QJsonRoot.h
 )
 
 set(SOURCE_FILES
-  qjson/parser.cpp
-  qjson/qobjecthelper.cpp
-  qjson/json_scanner.cpp
-  qjson/json_parser.cc
-  qjson/parserrunnable.cpp
-  qjson/serializer.cpp
-  qjson/serializerrunnable.cpp
+  qjson/QJsonArray.cpp
+  qjson/QJsonDocument.cpp
+  qjson/QJsonObject.cpp
+  qjson/QJsonParseError.cpp
+  qjson/QJsonValue.cpp
+  qjson/QJsonValueRef.cpp
+  qjson/QJsonParser.cpp
 )
 
 if(TTK_QT_VERSION VERSION_EQUAL "4")
