@@ -74,9 +74,9 @@ public:
     bool infinited() const;
 
     /*!
-     * Run the gif.
+     * Execute the gif.
      */
-    void run(bool run);
+    void execute(bool run);
     /*!
      * Get current running state.
      */

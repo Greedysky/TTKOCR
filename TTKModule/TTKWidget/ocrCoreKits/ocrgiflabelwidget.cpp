@@ -64,7 +64,7 @@ bool OCRGifLabelWidget::infinited() const
     return m_infinited;
 }
 
-void OCRGifLabelWidget::run(bool run)
+void OCRGifLabelWidget::execute(bool run)
 {
     if(run)
     {

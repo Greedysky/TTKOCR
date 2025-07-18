@@ -29,9 +29,9 @@ class TTK_MODULE_EXPORT OCRRunTimeManager
     TTK_DECLARE_MODULE(OCRRunTimeManager)
 public:
     /*!
-     * Run.
+     * Execute module.
      */
-    void run() const;
+    void execute() const;
 
     /*!
      * Get translator path.
