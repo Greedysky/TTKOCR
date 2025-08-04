@@ -1,5 +1,4 @@
 #include "ocrruntimemanager.h"
-#include "ocrcodecutils.h"
 #include "ocrobject.h"
 
 #include <QFont>
@@ -29,11 +28,7 @@ QString TTK::languageCore(int index)
 
 void OCRRunTimeManager::execute() const
 {
-    TTK_INFO_STREAM("OCRApplication Run");
-
-#if !TTK_QT_VERSION_CHECK(5,0,0)
-    TTK::Codec::setLocalCodec();
-#endif
+    TTK_INFO_STREAM("OCRApplication Run")
 
 #ifdef Q_OS_UNIX
     QFont font;
