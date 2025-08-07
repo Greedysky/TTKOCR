@@ -7,11 +7,6 @@ if [ "${dirpath%${tmp}}" != "/" ]; then
   dirpath=$PWD/${dirpath}
 fi
 
-deskpath=${dirpath}/share/applications
-if [ ! -d ${deskpath} ]; then
-  mkdir -p ${deskpath}
-fi
-
 username=`logname`
 if [ "${username}" = "root" ]; then
   homepath=/root
@@ -20,7 +15,7 @@ else
 fi
 
 packvern=3.1.0.0
-packpath=${deskpath}/TTKOCR.desktop
+packpath=${dirpath}/TTKOCR.desktop
 userpath=${homepath}/.local/share/applications
 iconpath="${dirpath}/share/pixmaps/ttkocr.png"
 execpath="${dirpath}/../TTKOCR"
@@ -45,6 +40,5 @@ Categories=ocr;Qt;
 MimeType=
 X-KDE-StartupNotify=false\n" > ${packpath}
 
-cp -rv ${packpath} ${userpath}
-rm -R ${deskpath}
+mv -fv ${packpath} ${userpath}
 chmod +x ${userpath}
