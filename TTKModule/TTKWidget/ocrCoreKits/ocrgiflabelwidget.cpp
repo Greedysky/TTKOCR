@@ -44,9 +44,9 @@ OCRGifLabelWidget::Module OCRGifLabelWidget::type() const
     return m_type;
 }
 
-void OCRGifLabelWidget::setInterval(int value)
+void OCRGifLabelWidget::setInterval(int msec)
 {
-    m_timer->setInterval(value);
+    m_timer->setInterval(msec);
 }
 
 int OCRGifLabelWidget::interval() const
