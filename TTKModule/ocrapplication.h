@@ -35,7 +35,6 @@ class OCRApplication;
 class TTK_MODULE_EXPORT OCRApplication : public TTKAbstractMoveResizeWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(OCRApplication)
 public:
     /*!
      * Object constructor.

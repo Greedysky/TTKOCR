@@ -30,7 +30,6 @@
 class TTK_MODULE_EXPORT OCRBackgroundManager : public QObject
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(OCRBackgroundManager)
     TTK_DECLARE_SINGLETON_CLASS(OCRBackgroundManager)
 public:
     /*!

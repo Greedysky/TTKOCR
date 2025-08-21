@@ -26,7 +26,6 @@
  */
 class TTK_MODULE_EXPORT OCRRunTimeManager
 {
-    TTK_DECLARE_MODULE(OCRRunTimeManager)
 public:
     /*!
      * Execute module.

@@ -30,7 +30,6 @@ class QPropertyAnimation;
 class TTK_MODULE_EXPORT OCRApplicationModule : public QObject
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(OCRApplicationModule)
 public:
     /*!
      * Object constructor.

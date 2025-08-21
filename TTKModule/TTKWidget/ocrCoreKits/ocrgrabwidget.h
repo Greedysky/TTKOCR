@@ -28,7 +28,6 @@
 class TTK_MODULE_EXPORT OCRGrabWidget : public QWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(OCRGrabWidget)
 public:
     /*!
      * Object constructor.

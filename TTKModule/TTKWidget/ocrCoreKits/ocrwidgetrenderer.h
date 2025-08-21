@@ -27,7 +27,6 @@
  */
 class TTK_MODULE_EXPORT OCRWidgetRenderer
 {
-    TTK_DECLARE_MODULE(OCRWidgetRenderer)
 public:
     /*!
      * Object constructor.

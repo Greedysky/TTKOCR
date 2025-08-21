@@ -50,7 +50,6 @@ public:
 class TTK_MODULE_EXPORT OCRNetworkRequest : public TTKAbstractNetwork
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(OCRNetworkRequest)
 public:
     /*!
      * Object constructor.

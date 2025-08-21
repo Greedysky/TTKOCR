@@ -28,7 +28,6 @@
 class TTK_MODULE_EXPORT OCRAbstractMoveWidget : public TTKAbstractMoveWidget, protected OCRWidgetRenderer
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(OCRAbstractMoveWidget)
 public:
     /*!
      * Object constructor.
