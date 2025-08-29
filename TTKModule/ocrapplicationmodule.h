@@ -19,10 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "ocrobject.h"
 #include "ttkmoduleexport.h"
-
-class QPropertyAnimation;
 
 /*! @brief The class of the app object module.
  * @author Greedysky <greedysky@163.com>
@@ -47,14 +44,13 @@ public:
 
 public Q_SLOTS:
     /*!
-     * Window close animation.
+     * Application quit.
      */
-    void windowCloseAnimation();
+    void quit();
 
 private:
-    QPropertyAnimation *m_quitAnimation;
-
     static OCRApplicationModule *m_instance;
+
 };
 
 #endif // OCRAPPLICATIONMODULE_H

@@ -81,7 +81,7 @@ OCRApplication *OCRApplication::instance()
 
 void OCRApplication::quitWindowClose()
 {
-    m_applicationModule->windowCloseAnimation();
+    m_applicationModule->quit();
 }
 
 void OCRApplication::openButtonClicked()
