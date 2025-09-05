@@ -18,7 +18,7 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     setFixedSize(TTKDesktopScreen::geometry().size());
     setCursor(Qt::CrossCursor);
 
-    const QRect &rect = TTKDesktopScreen::availableGeometry();
+    const QRect &rect = TTKDesktopScreen::currentGeometry();
     m_originPixmap = TTKDesktopScreen::grabWindow(rect.x(), rect.y(), width(), height());
 }
 
