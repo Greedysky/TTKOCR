@@ -106,10 +106,10 @@ void OCRApplication::openButtonClicked()
             item->m_index = i;
             item->m_path = path;
 
-            QLabel *ll = new QLabel(m_ui->pixScrollAreaWidget);
-            ll->setPixmap(QPixmap::fromImage(document->page(i)->renderImage()).scaled(405, 405, Qt::KeepAspectRatio));
-            m_ui->pixScrollAreaWidgetLayout->addWidget(ll);
-            item->m_obj = ll;
+            QLabel *v = new QLabel(m_ui->pixScrollAreaWidget);
+            v->setPixmap(QPixmap::fromImage(document->page(i)->renderImage()).scaled(405, 405, Qt::KeepAspectRatio));
+            m_ui->pixScrollAreaWidgetLayout->addWidget(v);
+            item->m_obj = v;
 
             m_fileList << item;
         }
@@ -125,10 +125,10 @@ void OCRApplication::openButtonClicked()
         item->m_index = i;
         item->m_path = list[i];
 
-        QLabel *ll = new QLabel(m_ui->pixScrollAreaWidget);
-        ll->setPixmap(QPixmap(item->m_path).scaled(405, 405, Qt::KeepAspectRatio));
-        m_ui->pixScrollAreaWidgetLayout->addWidget(ll);
-        item->m_obj = ll;
+        QLabel *v = new QLabel(m_ui->pixScrollAreaWidget);
+        v->setPixmap(QPixmap(item->m_path).scaled(405, 405, Qt::KeepAspectRatio));
+        m_ui->pixScrollAreaWidgetLayout->addWidget(v);
+        item->m_obj = v;
 
         m_fileList << item;
     }

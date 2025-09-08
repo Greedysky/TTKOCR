@@ -51,8 +51,9 @@ private:
     virtual void keyPressEvent(QKeyEvent *event) override final;
 
     bool m_isDrawing;
+    QWidget *m_parent;
     QPixmap m_originPixmap;
-    QPoint m_ptCursor, m_ptStart, m_ptEnd;
+    QPoint m_startPoint, m_endPoint;
 
 };
 
