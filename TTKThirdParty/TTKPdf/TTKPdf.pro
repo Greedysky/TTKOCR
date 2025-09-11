@@ -27,7 +27,7 @@ CONFIG += plugin lib
 include($$PWD/../../TTKVersion.pri)
 include($$PWD/../../TTKBuild.pri)
 
-DESTDIR = $$OUT_PWD/../../bin/$$TTKPdf
+DESTDIR = $$OUT_PWD/../../bin/$$TTK_VERSION
 TARGET = TTKPdf
 
 LIBS += -L$$DESTDIR -lmupdf -lfreetype -ljbig2dec -ljpeg -lmujs -lopenjpeg -lz
