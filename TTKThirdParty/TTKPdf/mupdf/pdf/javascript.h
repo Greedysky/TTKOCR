@@ -1,70 +1,43 @@
+// Copyright (C) 2004-2025 Artifex Software, Inc.
+//
+// This file is part of MuPDF.
+//
+// MuPDF is free software: you can redistribute it and/or modify it under the
+// terms of the GNU Affero General Public License as published by the Free
+// Software Foundation, either version 3 of the License, or (at your option)
+// any later version.
+//
+// MuPDF is distributed in the hope that it will be useful, but WITHOUT ANY
+// WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+// FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+// details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with MuPDF. If not, see <https://www.gnu.org/licenses/agpl-3.0.en.html>
+//
+// Alternative licensing terms are available from the licensor.
+// For commercial licensing, see <https://www.artifex.com/> or contact
+// Artifex Software, Inc., 39 Mesa Street, Suite 108A, San Francisco,
+// CA 94129, USA, for further information.
+
 #ifndef MUPDF_PDF_JAVASCRIPT_H
 #define MUPDF_PDF_JAVASCRIPT_H
 
-typedef struct pdf_js_event_s
-{
-	pdf_obj *target;
-	char *value;
-	int rc;
-} pdf_js_event;
+#include "mupdf/pdf/document.h"
+#include "mupdf/pdf/form.h"
 
 void pdf_enable_js(fz_context *ctx, pdf_document *doc);
 void pdf_disable_js(fz_context *ctx, pdf_document *doc);
 int pdf_js_supported(fz_context *ctx, pdf_document *doc);
+void pdf_drop_js(fz_context *ctx, pdf_js *js);
 
-void pdf_js_setup_event(pdf_js *js, pdf_js_event *e);
-pdf_js_event *pdf_js_get_event(pdf_js *js);
-void pdf_js_execute(pdf_js *js, char *code);
-void pdf_js_execute_count(pdf_js *js, char *code, int count);
+void pdf_js_event_init(pdf_js *js, pdf_obj *target, const char *value, int willCommit);
+int pdf_js_event_result(pdf_js *js);
+int pdf_js_event_result_validate(pdf_js *js, char **newvalue);
+char *pdf_js_event_value(pdf_js *js);
+void pdf_js_event_init_keystroke(pdf_js *js, pdf_obj *target, pdf_keystroke_event *evt);
+int pdf_js_event_result_keystroke(pdf_js *js, pdf_keystroke_event *evt);
 
-/*
- * Javascript engine interface
- */
-typedef struct pdf_jsimp_s pdf_jsimp;
-typedef struct pdf_jsimp_type_s pdf_jsimp_type;
-typedef struct pdf_jsimp_obj_s pdf_jsimp_obj;
-
-typedef void (pdf_jsimp_dtr)(void *jsctx, void *obj);
-typedef pdf_jsimp_obj *(pdf_jsimp_method)(void *jsctx, void *obj, int argc, pdf_jsimp_obj *args[]);
-typedef pdf_jsimp_obj *(pdf_jsimp_getter)(void *jsctx, void *obj);
-typedef void (pdf_jsimp_setter)(void *jsctx, void *obj, pdf_jsimp_obj *val);
-
-enum
-{
-	JS_TYPE_UNKNOWN,
-	JS_TYPE_NULL,
-	JS_TYPE_STRING,
-	JS_TYPE_NUMBER,
-	JS_TYPE_ARRAY,
-	JS_TYPE_BOOLEAN
-};
-
-pdf_jsimp *pdf_new_jsimp(fz_context *ctx, void *jsctx);
-void pdf_drop_jsimp(pdf_jsimp *imp);
-
-pdf_jsimp_type *pdf_jsimp_new_type(pdf_jsimp *imp, pdf_jsimp_dtr *dtr, char *name);
-void pdf_jsimp_drop_type(pdf_jsimp *imp, pdf_jsimp_type *type);
-void pdf_jsimp_addmethod(pdf_jsimp *imp, pdf_jsimp_type *type, char *name, pdf_jsimp_method *meth);
-void pdf_jsimp_addproperty(pdf_jsimp *imp, pdf_jsimp_type *type, char *name, pdf_jsimp_getter *get, pdf_jsimp_setter *set);
-void pdf_jsimp_set_global_type(pdf_jsimp *imp, pdf_jsimp_type *type);
-
-pdf_jsimp_obj *pdf_jsimp_new_obj(pdf_jsimp *imp, pdf_jsimp_type *type, void *obj);
-void pdf_jsimp_drop_obj(pdf_jsimp *imp, pdf_jsimp_obj *obj);
-
-int pdf_jsimp_to_type(pdf_jsimp *imp, pdf_jsimp_obj *obj);
-
-pdf_jsimp_obj *pdf_jsimp_from_string(pdf_jsimp *imp, char *str);
-char *pdf_jsimp_to_string(pdf_jsimp *imp, pdf_jsimp_obj *obj);
-
-pdf_jsimp_obj *pdf_jsimp_from_number(pdf_jsimp *imp, double num);
-double pdf_jsimp_to_number(pdf_jsimp *imp, pdf_jsimp_obj *obj);
-
-int pdf_jsimp_array_len(pdf_jsimp *imp, pdf_jsimp_obj *obj);
-pdf_jsimp_obj *pdf_jsimp_array_item(pdf_jsimp *imp, pdf_jsimp_obj *obj, int i);
-
-pdf_jsimp_obj *pdf_jsimp_property(pdf_jsimp *imp, pdf_jsimp_obj *obj, char *prop);
-
-void pdf_jsimp_execute(pdf_jsimp *imp, char *code);
-void pdf_jsimp_execute_count(pdf_jsimp *imp, char *code, int count);
+void pdf_js_execute(pdf_js *js, const char *name, const char *code, char **result);
 
 #endif

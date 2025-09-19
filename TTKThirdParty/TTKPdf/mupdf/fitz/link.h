@@ -1,142 +1,39 @@
+// Copyright (C) 2004-2022 Artifex Software, Inc.
+//
+// This file is part of MuPDF.
+//
+// MuPDF is free software: you can redistribute it and/or modify it under the
+// terms of the GNU Affero General Public License as published by the Free
+// Software Foundation, either version 3 of the License, or (at your option)
+// any later version.
+//
+// MuPDF is distributed in the hope that it will be useful, but WITHOUT ANY
+// WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+// FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+// details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with MuPDF. If not, see <https://www.gnu.org/licenses/agpl-3.0.en.html>
+//
+// Alternative licensing terms are available from the licensor.
+// For commercial licensing, see <https://www.artifex.com/> or contact
+// Artifex Software, Inc., 39 Mesa Street, Suite 108A, San Francisco,
+// CA 94129, USA, for further information.
+
 #ifndef MUPDF_FITZ_LINK_H
 #define MUPDF_FITZ_LINK_H
 
 #include "mupdf/fitz/system.h"
 #include "mupdf/fitz/context.h"
-#include "mupdf/fitz/math.h"
+#include "mupdf/fitz/geometry.h"
+#include "mupdf/fitz/types.h"
 
-/*
-	Links
+typedef struct fz_link fz_link;
+typedef void (fz_link_set_rect_fn)(fz_context *ctx, fz_link *link, fz_rect rect);
+typedef void (fz_link_set_uri_fn)(fz_context *ctx, fz_link *link, const char *uri);
+typedef void (fz_link_drop_link_fn)(fz_context *ctx, fz_link *link);
 
-	NOTE: The link destination struct is scheduled for imminent change!
-	Use at your own peril.
-*/
-
-typedef struct fz_link_s fz_link;
-
-typedef struct fz_link_dest_s fz_link_dest;
-
-typedef enum fz_link_kind_e
-{
-	FZ_LINK_NONE = 0,
-	FZ_LINK_GOTO,
-	FZ_LINK_URI,
-	FZ_LINK_LAUNCH,
-	FZ_LINK_NAMED,
-	FZ_LINK_GOTOR
-} fz_link_kind;
-
-enum {
-	fz_link_flag_l_valid = 1, /* lt.x is valid */
-	fz_link_flag_t_valid = 2, /* lt.y is valid */
-	fz_link_flag_r_valid = 4, /* rb.x is valid */
-	fz_link_flag_b_valid = 8, /* rb.y is valid */
-	fz_link_flag_fit_h = 16, /* Fit horizontally */
-	fz_link_flag_fit_v = 32, /* Fit vertically */
-	fz_link_flag_r_is_zoom = 64 /* rb.x is actually a zoom figure */
-};
-
-/*
-	fz_link_dest: This structure represents the destination of
-	an fz_link; this may be a page to display, a new file to open,
-	a javascript action to perform, etc.
-
-	kind: This identifies the kind of link destination. Different
-	kinds use different sections of the union.
-
-	For FZ_LINK_GOTO or FZ_LINK_GOTOR:
-
-		gotor.page: The target page number to move to (0 being the
-		first page in the document). In the FZ_LINK_GOTOR case, the
-		page number either refers to to the file specified by
-		gotor.file_spec, or the page number is -1 suggesting that
-		the destination is given by gotor.dest.
-
-		gotor.dest: If set, the target destination name to be
-		resolved in the file specified by gotor.file_spec. Always
-		NULL in the FZ_LINK_GOTO case.
-
-		gotor.flags: A bitfield consisting of fz_link_flag_*
-		describing the validity and meaning of the different parts
-		of gotor.lt and gotor.rb. Link destinations are constructed
-		(as far as possible) so that lt and rb can be treated as a
-		bounding box, though the validity flags indicate which of the
-		values was actually specified in the file.
-
-		gotor.lt: The top left corner of the destination bounding box.
-
-		gotor.rb: The bottom right corner of the destination bounding
-		box. If fz_link_flag_r_is_zoom is set, then the r figure
-		should actually be interpretted as a zoom ratio.
-
-		gotor.file_spec: If set, this destination should cause a new
-		file to be opened; this field holds a pointer to a remote
-		file specification (UTF-8). Always NULL in the FZ_LINK_GOTO
-		case.
-
-		gotor.new_window: If true, the destination should open in a
-		new window. Always false in the FZ_LINK_GOTO case.
-
-	For FZ_LINK_URI:
-
-		uri.uri: A UTF-8 encoded URI to launch.
-
-		uri.is_map: If true, the x and y coords (as ints, in user
-		space) should be appended to the URI before launch.
-
-	For FZ_LINK_LAUNCH:
-
-		launch.file_spec: A UTF-8 file specification to launch.
-
-		launch.new_window: If true, the destination should be launched
-		in a new window.
-
-		launch.is_uri: If true, launch.file_spec is a URI to launch.
-
-	For FZ_LINK_NAMED:
-
-		named.named: The named action to perform. Likely to be
-		client specific.
-*/
-struct fz_link_dest_s
-{
-	fz_link_kind kind;
-	union
-	{
-		struct
-		{
-			int page;
-			char *dest;
-			int flags;
-			fz_point lt;
-			fz_point rb;
-			char *file_spec;
-			int new_window;
-		}
-		gotor;
-		struct
-		{
-			char *uri;
-			int is_map;
-		}
-		uri;
-		struct
-		{
-			char *file_spec;
-			int new_window;
-			int is_uri;
-		}
-		launch;
-		struct
-		{
-			char *named;
-		}
-		named;
-	}
-	ld;
-};
-
-/*
+/**
 	fz_link is a list of interactive links on a page.
 
 	There is no relation between the order of the links in the
@@ -149,30 +46,85 @@ struct fz_link_dest_s
 	rect: The hot zone. The area that can be clicked in
 	untransformed coordinates.
 
-	dest: Link destinations come in two forms: Page and area that
-	an application should display when this link is activated. Or
-	as an URI that can be given to a browser.
+	uri: Link destinations come in two forms: internal and external.
+	Internal links refer to other pages in the same document.
+	External links are URLs to other documents.
 
 	next: A pointer to the next link on the same page.
 */
-struct fz_link_s
+typedef struct fz_link
 {
 	int refs;
+	struct fz_link *next;
 	fz_rect rect;
-	fz_link_dest dest;
-	fz_link *next;
-};
+	char *uri;
+	fz_link_set_rect_fn *set_rect_fn;
+	fz_link_set_uri_fn *set_uri_fn;
+	fz_link_drop_link_fn *drop;
+} fz_link;
 
-fz_link *fz_new_link(fz_context *ctx, const fz_rect *bbox, fz_link_dest dest);
+typedef enum
+{
+	FZ_LINK_DEST_FIT,
+	FZ_LINK_DEST_FIT_B,
+	FZ_LINK_DEST_FIT_H,
+	FZ_LINK_DEST_FIT_BH,
+	FZ_LINK_DEST_FIT_V,
+	FZ_LINK_DEST_FIT_BV,
+	FZ_LINK_DEST_FIT_R,
+	FZ_LINK_DEST_XYZ
+} fz_link_dest_type;
+
+typedef struct
+{
+	fz_location loc;
+	fz_link_dest_type type;
+	float x, y, w, h, zoom;
+} fz_link_dest;
+
+fz_link_dest fz_make_link_dest_none(void);
+fz_link_dest fz_make_link_dest_xyz(int chapter, int page, float x, float y, float z);
+
+/**
+	Create a new link record.
+
+	next is set to NULL with the expectation that the caller will
+	handle the linked list setup. Internal function.
+
+	Different document types will be implemented by deriving from
+	fz_link. This macro allocates such derived structures, and
+	initialises the base sections.
+*/
+fz_link *fz_new_link_of_size(fz_context *ctx, int size, fz_rect rect, const char *uri);
+#define fz_new_derived_link(CTX,TYPE,RECT,URI) \
+	   ((TYPE *)Memento_label(fz_new_link_of_size(CTX,sizeof(TYPE),RECT,URI),#TYPE))
+
+/**
+	Increment the reference count for a link. The same pointer is
+	returned.
+
+	Never throws exceptions.
+*/
 fz_link *fz_keep_link(fz_context *ctx, fz_link *link);
 
-/*
-	fz_drop_link: Drop and free a list of links.
+/**
+	Decrement the reference count for a link. When the reference
+	count reaches zero, the link is destroyed.
 
-	Does not throw exceptions.
+	When a link is freed, the reference for any linked link (next)
+	is dropped too, thus an entire linked list of fz_link's can be
+	freed by just dropping the head.
 */
 void fz_drop_link(fz_context *ctx, fz_link *link);
 
-void fz_drop_link_dest(fz_context *ctx, fz_link_dest *dest);
+/**
+	Query whether a link is external to a document (determined by
+	uri containing a ':', intended to match with '://' which
+	separates the scheme from the scheme specific parts in URIs).
+*/
+int fz_is_external_link(fz_context *ctx, const char *uri);
+
+void fz_set_link_rect(fz_context *ctx, fz_link *link, fz_rect rect);
+void fz_set_link_uri(fz_context *ctx, fz_link *link, const char *uri);
 
 #endif

@@ -7,7 +7,7 @@
 #include "ocrthread.h"
 #include "ocruiobject.h"
 #ifdef TTK_BUILD_BY_PDF
-#  include "include/mupdf-qt.h"
+#  include "document.h"
 #endif
 #include <QScrollBar>
 
@@ -98,21 +98,23 @@ void OCRApplication::openButtonClicked()
     if(TTK_FILE_SUFFIX(QFileInfo(path)) == "pdf")
     {
 #ifdef TTK_BUILD_BY_PDF
-        list.clear();
-        MuPDF::Document *document = MuPDF::loadDocument(path);
+        MuPDF::Document *document = new MuPDF::Document(path);
         for(int i = 0; i < document->numPages(); ++i)
         {
             OCRRequestItem *item = new OCRRequestItem(this);
             item->m_index = i;
-            item->m_path = path;
 
+            MuPDF::Page *page = document->page(i);
+            item->m_image = QPixmap::fromImage(page->renderImage());
             QLabel *v = new QLabel(m_ui->pixScrollAreaWidget);
-            v->setPixmap(QPixmap::fromImage(document->page(i)->renderImage()).scaled(405, 405, Qt::KeepAspectRatio));
+            v->setPixmap(item->m_image.scaled(405, 405, Qt::KeepAspectRatio));
+            delete page;
             m_ui->pixScrollAreaWidgetLayout->addWidget(v);
             item->m_obj = v;
 
             m_fileList << item;
         }
+        delete document;
 #else
         qDebug() << "Don't support pdf files";
 #endif
@@ -123,10 +125,11 @@ void OCRApplication::openButtonClicked()
     {
         OCRRequestItem *item = new OCRRequestItem(this);
         item->m_index = i;
-        item->m_path = list[i];
+        item->m_image = QPixmap(list[i]);
 
         QLabel *v = new QLabel(m_ui->pixScrollAreaWidget);
-        v->setPixmap(QPixmap(item->m_path).scaled(405, 405, Qt::KeepAspectRatio));
+        v->setPixmap(item->m_image.scaled(405, 405, Qt::KeepAspectRatio));
+        m_ui->pixScrollAreaWidgetLayout->setAlignment(Qt::AlignHCenter);
         m_ui->pixScrollAreaWidgetLayout->addWidget(v);
         item->m_obj = v;
 
@@ -230,7 +233,7 @@ void OCRApplication::pixmapChanged(const QPixmap &pix)
 
     OCRRequestItem *item = new OCRRequestItem(this);
     item->m_index = m_fileList.count();
-    item->m_path = filename;
+    item->m_image = pix;
 
     QLabel *ll = new QLabel(m_ui->pixScrollAreaWidget);
     ll->setPixmap(pix.scaled(405, 405, Qt::KeepAspectRatio));

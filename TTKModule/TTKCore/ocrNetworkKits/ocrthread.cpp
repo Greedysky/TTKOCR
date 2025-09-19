@@ -28,7 +28,7 @@ void OCRNetworkRequest::startToRequest(OCRRequestItem *item)
     QHttpPart part;
     part.setRawHeader("Content-Disposition", "form-data; name=\"pic\"; filename=\"pic.jpg\"");
     part.setRawHeader("Content-Type", "image/jpeg");
-    part.setBody(TTK::Image::generatePixmapData(QPixmap(item->m_path)));
+    part.setBody(TTK::Image::generatePixmapData(item->m_image));
     multiPart->append(part);
     multiPart->setBoundary("----");
 
@@ -71,16 +71,19 @@ void OCRNetworkRequest::downLoadFinished()
             if(!content.isEmpty())
             {
                 OCRRequestItem *item = qobject_cast<OCRRequestItem*>(m_reply->request().originatingObject());
-                if(!QDir(DIR_PREFIX_FULL).exists())
+                if(item)
                 {
-                    QDir().mkdir(DIR_PREFIX_FULL);
-                }
+                    if(!QDir(DIR_PREFIX_FULL).exists())
+                    {
+                        QDir().mkdir(DIR_PREFIX_FULL);
+                    }
 
-                QFile file(QString("%1/%2").arg(DIR_PREFIX_FULL).arg(item->m_index));
-                if(file.open(QIODevice::WriteOnly))
-                {
-                    file.write(content.toUtf8());
-                    file.close();
+                    QFile file(QString("%1/%2").arg(DIR_PREFIX_FULL).arg(item->m_index));
+                    if(file.open(QIODevice::WriteOnly))
+                    {
+                        file.write(content.toUtf8());
+                        file.close();
+                    }
                 }
             }
         }

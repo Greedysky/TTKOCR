@@ -21,7 +21,7 @@
 
 #include "ttkabstractnetwork.h"
 
-class QFile;
+#include <QPixmap>
 
 /*! @brief The class of the ocr thread item.
  * @author Greedysky <greedysky@163.com>
@@ -38,9 +38,9 @@ public:
 
     }
 
-    QString m_path;
     int m_index;
     QWidget *m_obj;
+    QPixmap m_image;
 
 };
 

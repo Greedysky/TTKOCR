@@ -30,33 +30,13 @@ include($$PWD/../../TTKBuild.pri)
 DESTDIR = $$OUT_PWD/../../bin/$$TTK_VERSION
 TARGET = TTKPdf
 
-LIBS += -L$$DESTDIR -lmupdf -lfreetype -ljbig2dec -ljpeg -lmujs -lopenjpeg -lz
+LIBS += -L$$DESTDIR -lmupdf -lmupdf-third
 
-INCLUDEPATH += \
-    $$PWD \
-    $$PWD/include \
-    $$PWD/src/private \
-    $$PWD/mupdf
+INCLUDEPATH += $$PWD
 
-HEADERS += \
-    $$PWD/include/mupdf-document.h \
-    $$PWD/include/mupdf-link.h \
-    $$PWD/include/mupdf-outline.h \
-    $$PWD/include/mupdf-page.h \
-    $$PWD/include/mupdf-qt.h \
-    $$PWD/include/mupdf-textbox.h \
-    $$PWD/src/private/mupdf-document_p.h \
-    $$PWD/src/private/mupdf-link_p.h \
-    $$PWD/src/private/mupdf-outline_p.h \
-    $$PWD/src/private/mupdf-page_p.h \
-    $$PWD/src/private/mupdf-textbox_p.h
+HEADERS += $$PWD/document.h
 
-SOURCES += \
-    $$PWD/src/mupdf-document.cpp \
-    $$PWD/src/mupdf-link.cpp \
-    $$PWD/src/mupdf-outline.cpp \
-    $$PWD/src/mupdf-page.cpp \
-    $$PWD/src/mupdf-textbox.cpp
+SOURCES += $$PWD/document.cpp
 
 #load extra define
 include($$PWD/../TTKThirdParty.pri)

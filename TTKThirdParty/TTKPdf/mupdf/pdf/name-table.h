@@ -1,744 +1,621 @@
-enum
-{
-	PDF_OBJ_ENUM__DUMMY,
-#define PDF_NAME_3D  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_3D)
-	PDF_OBJ_ENUM_NAME_3D,
-#define PDF_NAME_A  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_A)
-	PDF_OBJ_ENUM_NAME_A,
-#define PDF_NAME_A85  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_A85)
-	PDF_OBJ_ENUM_NAME_A85,
-#define PDF_NAME_AA  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_AA)
-	PDF_OBJ_ENUM_NAME_AA,
-#define PDF_NAME_AESV2  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_AESV2)
-	PDF_OBJ_ENUM_NAME_AESV2,
-#define PDF_NAME_AESV3  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_AESV3)
-	PDF_OBJ_ENUM_NAME_AESV3,
-#define PDF_NAME_AHx  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_AHx)
-	PDF_OBJ_ENUM_NAME_AHx,
-#define PDF_NAME_AP  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_AP)
-	PDF_OBJ_ENUM_NAME_AP,
-#define PDF_NAME_AS  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_AS)
-	PDF_OBJ_ENUM_NAME_AS,
-#define PDF_NAME_ASCII85Decode  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ASCII85Decode)
-	PDF_OBJ_ENUM_NAME_ASCII85Decode,
-#define PDF_NAME_ASCIIHexDecode  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ASCIIHexDecode)
-	PDF_OBJ_ENUM_NAME_ASCIIHexDecode,
-#define PDF_NAME_AcroForm  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_AcroForm)
-	PDF_OBJ_ENUM_NAME_AcroForm,
-#define PDF_NAME_Adobe_PPKLite  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Adobe_PPKLite)
-	PDF_OBJ_ENUM_NAME_Adobe_PPKLite,
-#define PDF_NAME_AllOff  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_AllOff)
-	PDF_OBJ_ENUM_NAME_AllOff,
-#define PDF_NAME_AllOn  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_AllOn)
-	PDF_OBJ_ENUM_NAME_AllOn,
-#define PDF_NAME_Alpha  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Alpha)
-	PDF_OBJ_ENUM_NAME_Alpha,
-#define PDF_NAME_Alternate  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Alternate)
-	PDF_OBJ_ENUM_NAME_Alternate,
-#define PDF_NAME_Annot  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Annot)
-	PDF_OBJ_ENUM_NAME_Annot,
-#define PDF_NAME_Annots  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Annots)
-	PDF_OBJ_ENUM_NAME_Annots,
-#define PDF_NAME_AnyOff  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_AnyOff)
-	PDF_OBJ_ENUM_NAME_AnyOff,
-#define PDF_NAME_ArtBox  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ArtBox)
-	PDF_OBJ_ENUM_NAME_ArtBox,
-#define PDF_NAME_Ascent  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Ascent)
-	PDF_OBJ_ENUM_NAME_Ascent,
-#define PDF_NAME_B  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_B)
-	PDF_OBJ_ENUM_NAME_B,
-#define PDF_NAME_BBox  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BBox)
-	PDF_OBJ_ENUM_NAME_BBox,
-#define PDF_NAME_BC  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BC)
-	PDF_OBJ_ENUM_NAME_BC,
-#define PDF_NAME_BG  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BG)
-	PDF_OBJ_ENUM_NAME_BG,
-#define PDF_NAME_BM  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BM)
-	PDF_OBJ_ENUM_NAME_BM,
-#define PDF_NAME_BPC  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BPC)
-	PDF_OBJ_ENUM_NAME_BPC,
-#define PDF_NAME_BS  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BS)
-	PDF_OBJ_ENUM_NAME_BS,
-#define PDF_NAME_Background  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Background)
-	PDF_OBJ_ENUM_NAME_Background,
-#define PDF_NAME_BaseEncoding  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BaseEncoding)
-	PDF_OBJ_ENUM_NAME_BaseEncoding,
-#define PDF_NAME_BaseFont  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BaseFont)
-	PDF_OBJ_ENUM_NAME_BaseFont,
-#define PDF_NAME_BaseState  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BaseState)
-	PDF_OBJ_ENUM_NAME_BaseState,
-#define PDF_NAME_BitsPerComponent  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BitsPerComponent)
-	PDF_OBJ_ENUM_NAME_BitsPerComponent,
-#define PDF_NAME_BitsPerCoordinate  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BitsPerCoordinate)
-	PDF_OBJ_ENUM_NAME_BitsPerCoordinate,
-#define PDF_NAME_BitsPerFlag  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BitsPerFlag)
-	PDF_OBJ_ENUM_NAME_BitsPerFlag,
-#define PDF_NAME_BitsPerSample  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BitsPerSample)
-	PDF_OBJ_ENUM_NAME_BitsPerSample,
-#define PDF_NAME_BlackIs1  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BlackIs1)
-	PDF_OBJ_ENUM_NAME_BlackIs1,
-#define PDF_NAME_BleedBox  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_BleedBox)
-	PDF_OBJ_ENUM_NAME_BleedBox,
-#define PDF_NAME_Blinds  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Blinds)
-	PDF_OBJ_ENUM_NAME_Blinds,
-#define PDF_NAME_Bounds  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Bounds)
-	PDF_OBJ_ENUM_NAME_Bounds,
-#define PDF_NAME_Box  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Box)
-	PDF_OBJ_ENUM_NAME_Box,
-#define PDF_NAME_Bt  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Bt)
-	PDF_OBJ_ENUM_NAME_Bt,
-#define PDF_NAME_Btn  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Btn)
-	PDF_OBJ_ENUM_NAME_Btn,
-#define PDF_NAME_ByteRange  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ByteRange)
-	PDF_OBJ_ENUM_NAME_ByteRange,
-#define PDF_NAME_C  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_C)
-	PDF_OBJ_ENUM_NAME_C,
-#define PDF_NAME_C0  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_C0)
-	PDF_OBJ_ENUM_NAME_C0,
-#define PDF_NAME_C1  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_C1)
-	PDF_OBJ_ENUM_NAME_C1,
-#define PDF_NAME_CA  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CA)
-	PDF_OBJ_ENUM_NAME_CA,
-#define PDF_NAME_CCF  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CCF)
-	PDF_OBJ_ENUM_NAME_CCF,
-#define PDF_NAME_CCITTFaxDecode  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CCITTFaxDecode)
-	PDF_OBJ_ENUM_NAME_CCITTFaxDecode,
-#define PDF_NAME_CF  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CF)
-	PDF_OBJ_ENUM_NAME_CF,
-#define PDF_NAME_CFM  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CFM)
-	PDF_OBJ_ENUM_NAME_CFM,
-#define PDF_NAME_CIDFontType0  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CIDFontType0)
-	PDF_OBJ_ENUM_NAME_CIDFontType0,
-#define PDF_NAME_CIDFontType0C  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CIDFontType0C)
-	PDF_OBJ_ENUM_NAME_CIDFontType0C,
-#define PDF_NAME_CIDFontType2  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CIDFontType2)
-	PDF_OBJ_ENUM_NAME_CIDFontType2,
-#define PDF_NAME_CIDSystemInfo  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CIDSystemInfo)
-	PDF_OBJ_ENUM_NAME_CIDSystemInfo,
-#define PDF_NAME_CIDToGIDMap  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CIDToGIDMap)
-	PDF_OBJ_ENUM_NAME_CIDToGIDMap,
-#define PDF_NAME_CMYK  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CMYK)
-	PDF_OBJ_ENUM_NAME_CMYK,
-#define PDF_NAME_CS  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CS)
-	PDF_OBJ_ENUM_NAME_CS,
-#define PDF_NAME_CalCMYK  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CalCMYK)
-	PDF_OBJ_ENUM_NAME_CalCMYK,
-#define PDF_NAME_CalGray  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CalGray)
-	PDF_OBJ_ENUM_NAME_CalGray,
-#define PDF_NAME_CalRGB  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CalRGB)
-	PDF_OBJ_ENUM_NAME_CalRGB,
-#define PDF_NAME_CapHeight  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CapHeight)
-	PDF_OBJ_ENUM_NAME_CapHeight,
-#define PDF_NAME_Caret  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Caret)
-	PDF_OBJ_ENUM_NAME_Caret,
-#define PDF_NAME_Catalog  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Catalog)
-	PDF_OBJ_ENUM_NAME_Catalog,
-#define PDF_NAME_Ch  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Ch)
-	PDF_OBJ_ENUM_NAME_Ch,
-#define PDF_NAME_CharProcs  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CharProcs)
-	PDF_OBJ_ENUM_NAME_CharProcs,
-#define PDF_NAME_Circle  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Circle)
-	PDF_OBJ_ENUM_NAME_Circle,
-#define PDF_NAME_ColorSpace  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ColorSpace)
-	PDF_OBJ_ENUM_NAME_ColorSpace,
-#define PDF_NAME_ColorTransform  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ColorTransform)
-	PDF_OBJ_ENUM_NAME_ColorTransform,
-#define PDF_NAME_Colors  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Colors)
-	PDF_OBJ_ENUM_NAME_Colors,
-#define PDF_NAME_Columns  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Columns)
-	PDF_OBJ_ENUM_NAME_Columns,
-#define PDF_NAME_Configs  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Configs)
-	PDF_OBJ_ENUM_NAME_Configs,
-#define PDF_NAME_Contents  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Contents)
-	PDF_OBJ_ENUM_NAME_Contents,
-#define PDF_NAME_Coords  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Coords)
-	PDF_OBJ_ENUM_NAME_Coords,
-#define PDF_NAME_Count  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Count)
-	PDF_OBJ_ENUM_NAME_Count,
-#define PDF_NAME_Cover  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Cover)
-	PDF_OBJ_ENUM_NAME_Cover,
-#define PDF_NAME_Creator  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Creator)
-	PDF_OBJ_ENUM_NAME_Creator,
-#define PDF_NAME_CropBox  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_CropBox)
-	PDF_OBJ_ENUM_NAME_CropBox,
-#define PDF_NAME_Crypt  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Crypt)
-	PDF_OBJ_ENUM_NAME_Crypt,
-#define PDF_NAME_D  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_D)
-	PDF_OBJ_ENUM_NAME_D,
-#define PDF_NAME_DA  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DA)
-	PDF_OBJ_ENUM_NAME_DA,
-#define PDF_NAME_DC  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DC)
-	PDF_OBJ_ENUM_NAME_DC,
-#define PDF_NAME_DCT  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DCT)
-	PDF_OBJ_ENUM_NAME_DCT,
-#define PDF_NAME_DCTDecode  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DCTDecode)
-	PDF_OBJ_ENUM_NAME_DCTDecode,
-#define PDF_NAME_DOS  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DOS)
-	PDF_OBJ_ENUM_NAME_DOS,
-#define PDF_NAME_DP  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DP)
-	PDF_OBJ_ENUM_NAME_DP,
-#define PDF_NAME_DR  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DR)
-	PDF_OBJ_ENUM_NAME_DR,
-#define PDF_NAME_DV  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DV)
-	PDF_OBJ_ENUM_NAME_DV,
-#define PDF_NAME_DW  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DW)
-	PDF_OBJ_ENUM_NAME_DW,
-#define PDF_NAME_DW2  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DW2)
-	PDF_OBJ_ENUM_NAME_DW2,
-#define PDF_NAME_DamagedRowsBeforeError  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DamagedRowsBeforeError)
-	PDF_OBJ_ENUM_NAME_DamagedRowsBeforeError,
-#define PDF_NAME_Decode  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Decode)
-	PDF_OBJ_ENUM_NAME_Decode,
-#define PDF_NAME_DecodeParms  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DecodeParms)
-	PDF_OBJ_ENUM_NAME_DecodeParms,
-#define PDF_NAME_Default  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Default)
-	PDF_OBJ_ENUM_NAME_Default,
-#define PDF_NAME_DescendantFonts  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DescendantFonts)
-	PDF_OBJ_ENUM_NAME_DescendantFonts,
-#define PDF_NAME_Descent  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Descent)
-	PDF_OBJ_ENUM_NAME_Descent,
-#define PDF_NAME_Dest  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Dest)
-	PDF_OBJ_ENUM_NAME_Dest,
-#define PDF_NAME_Dests  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Dests)
-	PDF_OBJ_ENUM_NAME_Dests,
-#define PDF_NAME_DeviceCMYK  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DeviceCMYK)
-	PDF_OBJ_ENUM_NAME_DeviceCMYK,
-#define PDF_NAME_DeviceGray  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DeviceGray)
-	PDF_OBJ_ENUM_NAME_DeviceGray,
-#define PDF_NAME_DeviceN  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DeviceN)
-	PDF_OBJ_ENUM_NAME_DeviceN,
-#define PDF_NAME_DeviceRGB  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_DeviceRGB)
-	PDF_OBJ_ENUM_NAME_DeviceRGB,
-#define PDF_NAME_Di  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Di)
-	PDF_OBJ_ENUM_NAME_Di,
-#define PDF_NAME_Differences  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Differences)
-	PDF_OBJ_ENUM_NAME_Differences,
-#define PDF_NAME_Dissolve  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Dissolve)
-	PDF_OBJ_ENUM_NAME_Dissolve,
-#define PDF_NAME_Dm  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Dm)
-	PDF_OBJ_ENUM_NAME_Dm,
-#define PDF_NAME_Domain  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Domain)
-	PDF_OBJ_ENUM_NAME_Domain,
-#define PDF_NAME_Dur  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Dur)
-	PDF_OBJ_ENUM_NAME_Dur,
-#define PDF_NAME_E  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_E)
-	PDF_OBJ_ENUM_NAME_E,
-#define PDF_NAME_EarlyChange  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_EarlyChange)
-	PDF_OBJ_ENUM_NAME_EarlyChange,
-#define PDF_NAME_Encode  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Encode)
-	PDF_OBJ_ENUM_NAME_Encode,
-#define PDF_NAME_EncodedByteAlign  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_EncodedByteAlign)
-	PDF_OBJ_ENUM_NAME_EncodedByteAlign,
-#define PDF_NAME_Encoding  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Encoding)
-	PDF_OBJ_ENUM_NAME_Encoding,
-#define PDF_NAME_Encrypt  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Encrypt)
-	PDF_OBJ_ENUM_NAME_Encrypt,
-#define PDF_NAME_EncryptMetadata  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_EncryptMetadata)
-	PDF_OBJ_ENUM_NAME_EncryptMetadata,
-#define PDF_NAME_EndOfBlock  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_EndOfBlock)
-	PDF_OBJ_ENUM_NAME_EndOfBlock,
-#define PDF_NAME_EndOfLine  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_EndOfLine)
-	PDF_OBJ_ENUM_NAME_EndOfLine,
-#define PDF_NAME_Exclude  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Exclude)
-	PDF_OBJ_ENUM_NAME_Exclude,
-#define PDF_NAME_ExtGState  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ExtGState)
-	PDF_OBJ_ENUM_NAME_ExtGState,
-#define PDF_NAME_Extend  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Extend)
-	PDF_OBJ_ENUM_NAME_Extend,
-#define PDF_NAME_F  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_F)
-	PDF_OBJ_ENUM_NAME_F,
-#define PDF_NAME_FL  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FL)
-	PDF_OBJ_ENUM_NAME_FL,
-#define PDF_NAME_FRM  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FRM)
-	PDF_OBJ_ENUM_NAME_FRM,
-#define PDF_NAME_FS  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FS)
-	PDF_OBJ_ENUM_NAME_FS,
-#define PDF_NAME_FT  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FT)
-	PDF_OBJ_ENUM_NAME_FT,
-#define PDF_NAME_Fade  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Fade)
-	PDF_OBJ_ENUM_NAME_Fade,
-#define PDF_NAME_Ff  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Ff)
-	PDF_OBJ_ENUM_NAME_Ff,
-#define PDF_NAME_Fields  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Fields)
-	PDF_OBJ_ENUM_NAME_Fields,
-#define PDF_NAME_FileAttachment  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FileAttachment)
-	PDF_OBJ_ENUM_NAME_FileAttachment,
-#define PDF_NAME_Filter  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Filter)
-	PDF_OBJ_ENUM_NAME_Filter,
-#define PDF_NAME_First  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_First)
-	PDF_OBJ_ENUM_NAME_First,
-#define PDF_NAME_FirstChar  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FirstChar)
-	PDF_OBJ_ENUM_NAME_FirstChar,
-#define PDF_NAME_Fit  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Fit)
-	PDF_OBJ_ENUM_NAME_Fit,
-#define PDF_NAME_FitB  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FitB)
-	PDF_OBJ_ENUM_NAME_FitB,
-#define PDF_NAME_FitBH  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FitBH)
-	PDF_OBJ_ENUM_NAME_FitBH,
-#define PDF_NAME_FitBV  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FitBV)
-	PDF_OBJ_ENUM_NAME_FitBV,
-#define PDF_NAME_FitH  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FitH)
-	PDF_OBJ_ENUM_NAME_FitH,
-#define PDF_NAME_FitR  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FitR)
-	PDF_OBJ_ENUM_NAME_FitR,
-#define PDF_NAME_FitV  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FitV)
-	PDF_OBJ_ENUM_NAME_FitV,
-#define PDF_NAME_Fl  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Fl)
-	PDF_OBJ_ENUM_NAME_Fl,
-#define PDF_NAME_Flags  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Flags)
-	PDF_OBJ_ENUM_NAME_Flags,
-#define PDF_NAME_FlateDecode  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FlateDecode)
-	PDF_OBJ_ENUM_NAME_FlateDecode,
-#define PDF_NAME_Fly  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Fly)
-	PDF_OBJ_ENUM_NAME_Fly,
-#define PDF_NAME_Font  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Font)
-	PDF_OBJ_ENUM_NAME_Font,
-#define PDF_NAME_FontBBox  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FontBBox)
-	PDF_OBJ_ENUM_NAME_FontBBox,
-#define PDF_NAME_FontDescriptor  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FontDescriptor)
-	PDF_OBJ_ENUM_NAME_FontDescriptor,
-#define PDF_NAME_FontFile  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FontFile)
-	PDF_OBJ_ENUM_NAME_FontFile,
-#define PDF_NAME_FontFile2  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FontFile2)
-	PDF_OBJ_ENUM_NAME_FontFile2,
-#define PDF_NAME_FontFile3  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FontFile3)
-	PDF_OBJ_ENUM_NAME_FontFile3,
-#define PDF_NAME_FontMatrix  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FontMatrix)
-	PDF_OBJ_ENUM_NAME_FontMatrix,
-#define PDF_NAME_FontName  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FontName)
-	PDF_OBJ_ENUM_NAME_FontName,
-#define PDF_NAME_Form  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Form)
-	PDF_OBJ_ENUM_NAME_Form,
-#define PDF_NAME_FormType  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FormType)
-	PDF_OBJ_ENUM_NAME_FormType,
-#define PDF_NAME_FreeText  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FreeText)
-	PDF_OBJ_ENUM_NAME_FreeText,
-#define PDF_NAME_Function  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Function)
-	PDF_OBJ_ENUM_NAME_Function,
-#define PDF_NAME_FunctionType  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_FunctionType)
-	PDF_OBJ_ENUM_NAME_FunctionType,
-#define PDF_NAME_Functions  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Functions)
-	PDF_OBJ_ENUM_NAME_Functions,
-#define PDF_NAME_G  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_G)
-	PDF_OBJ_ENUM_NAME_G,
-#define PDF_NAME_Glitter  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Glitter)
-	PDF_OBJ_ENUM_NAME_Glitter,
-#define PDF_NAME_GoTo  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_GoTo)
-	PDF_OBJ_ENUM_NAME_GoTo,
-#define PDF_NAME_GoToR  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_GoToR)
-	PDF_OBJ_ENUM_NAME_GoToR,
-#define PDF_NAME_Group  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Group)
-	PDF_OBJ_ENUM_NAME_Group,
-#define PDF_NAME_H  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_H)
-	PDF_OBJ_ENUM_NAME_H,
-#define PDF_NAME_Height  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Height)
-	PDF_OBJ_ENUM_NAME_Height,
-#define PDF_NAME_Highlight  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Highlight)
-	PDF_OBJ_ENUM_NAME_Highlight,
-#define PDF_NAME_I  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_I)
-	PDF_OBJ_ENUM_NAME_I,
-#define PDF_NAME_ICCBased  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ICCBased)
-	PDF_OBJ_ENUM_NAME_ICCBased,
-#define PDF_NAME_ID  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ID)
-	PDF_OBJ_ENUM_NAME_ID,
-#define PDF_NAME_IM  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_IM)
-	PDF_OBJ_ENUM_NAME_IM,
-#define PDF_NAME_Identity  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Identity)
-	PDF_OBJ_ENUM_NAME_Identity,
-#define PDF_NAME_Identity_H  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Identity_H)
-	PDF_OBJ_ENUM_NAME_Identity_H,
-#define PDF_NAME_Identity_V  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Identity_V)
-	PDF_OBJ_ENUM_NAME_Identity_V,
-#define PDF_NAME_Image  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Image)
-	PDF_OBJ_ENUM_NAME_Image,
-#define PDF_NAME_ImageMask  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ImageMask)
-	PDF_OBJ_ENUM_NAME_ImageMask,
-#define PDF_NAME_Index  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Index)
-	PDF_OBJ_ENUM_NAME_Index,
-#define PDF_NAME_Indexed  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Indexed)
-	PDF_OBJ_ENUM_NAME_Indexed,
-#define PDF_NAME_Info  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Info)
-	PDF_OBJ_ENUM_NAME_Info,
-#define PDF_NAME_Ink  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Ink)
-	PDF_OBJ_ENUM_NAME_Ink,
-#define PDF_NAME_InkList  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_InkList)
-	PDF_OBJ_ENUM_NAME_InkList,
-#define PDF_NAME_Intent  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Intent)
-	PDF_OBJ_ENUM_NAME_Intent,
-#define PDF_NAME_Interpolate  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Interpolate)
-	PDF_OBJ_ENUM_NAME_Interpolate,
-#define PDF_NAME_IsMap  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_IsMap)
-	PDF_OBJ_ENUM_NAME_IsMap,
-#define PDF_NAME_ItalicAngle  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ItalicAngle)
-	PDF_OBJ_ENUM_NAME_ItalicAngle,
-#define PDF_NAME_JBIG2Decode  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_JBIG2Decode)
-	PDF_OBJ_ENUM_NAME_JBIG2Decode,
-#define PDF_NAME_JBIG2Globals  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_JBIG2Globals)
-	PDF_OBJ_ENUM_NAME_JBIG2Globals,
-#define PDF_NAME_JPXDecode  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_JPXDecode)
-	PDF_OBJ_ENUM_NAME_JPXDecode,
-#define PDF_NAME_JS  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_JS)
-	PDF_OBJ_ENUM_NAME_JS,
-#define PDF_NAME_JavaScript  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_JavaScript)
-	PDF_OBJ_ENUM_NAME_JavaScript,
-#define PDF_NAME_K  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_K)
-	PDF_OBJ_ENUM_NAME_K,
-#define PDF_NAME_Kids  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Kids)
-	PDF_OBJ_ENUM_NAME_Kids,
-#define PDF_NAME_L  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_L)
-	PDF_OBJ_ENUM_NAME_L,
-#define PDF_NAME_LC  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_LC)
-	PDF_OBJ_ENUM_NAME_LC,
-#define PDF_NAME_LJ  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_LJ)
-	PDF_OBJ_ENUM_NAME_LJ,
-#define PDF_NAME_LW  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_LW)
-	PDF_OBJ_ENUM_NAME_LW,
-#define PDF_NAME_LZ  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_LZ)
-	PDF_OBJ_ENUM_NAME_LZ,
-#define PDF_NAME_LZW  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_LZW)
-	PDF_OBJ_ENUM_NAME_LZW,
-#define PDF_NAME_LZWDecode  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_LZWDecode)
-	PDF_OBJ_ENUM_NAME_LZWDecode,
-#define PDF_NAME_Lab  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Lab)
-	PDF_OBJ_ENUM_NAME_Lab,
-#define PDF_NAME_LastChar  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_LastChar)
-	PDF_OBJ_ENUM_NAME_LastChar,
-#define PDF_NAME_Launch  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Launch)
-	PDF_OBJ_ENUM_NAME_Launch,
-#define PDF_NAME_Length  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Length)
-	PDF_OBJ_ENUM_NAME_Length,
-#define PDF_NAME_Length1  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Length1)
-	PDF_OBJ_ENUM_NAME_Length1,
-#define PDF_NAME_Length2  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Length2)
-	PDF_OBJ_ENUM_NAME_Length2,
-#define PDF_NAME_Length3  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Length3)
-	PDF_OBJ_ENUM_NAME_Length3,
-#define PDF_NAME_Limits  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Limits)
-	PDF_OBJ_ENUM_NAME_Limits,
-#define PDF_NAME_Line  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Line)
-	PDF_OBJ_ENUM_NAME_Line,
-#define PDF_NAME_Linearized  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Linearized)
-	PDF_OBJ_ENUM_NAME_Linearized,
-#define PDF_NAME_Link  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Link)
-	PDF_OBJ_ENUM_NAME_Link,
-#define PDF_NAME_Luminosity  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Luminosity)
-	PDF_OBJ_ENUM_NAME_Luminosity,
-#define PDF_NAME_M  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_M)
-	PDF_OBJ_ENUM_NAME_M,
-#define PDF_NAME_MK  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_MK)
-	PDF_OBJ_ENUM_NAME_MK,
-#define PDF_NAME_ML  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ML)
-	PDF_OBJ_ENUM_NAME_ML,
-#define PDF_NAME_MMType1  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_MMType1)
-	PDF_OBJ_ENUM_NAME_MMType1,
-#define PDF_NAME_Mac  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Mac)
-	PDF_OBJ_ENUM_NAME_Mac,
-#define PDF_NAME_Mask  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Mask)
-	PDF_OBJ_ENUM_NAME_Mask,
-#define PDF_NAME_Matrix  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Matrix)
-	PDF_OBJ_ENUM_NAME_Matrix,
-#define PDF_NAME_Matte  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Matte)
-	PDF_OBJ_ENUM_NAME_Matte,
-#define PDF_NAME_MaxLen  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_MaxLen)
-	PDF_OBJ_ENUM_NAME_MaxLen,
-#define PDF_NAME_MediaBox  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_MediaBox)
-	PDF_OBJ_ENUM_NAME_MediaBox,
-#define PDF_NAME_MissingWidth  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_MissingWidth)
-	PDF_OBJ_ENUM_NAME_MissingWidth,
-#define PDF_NAME_Movie  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Movie)
-	PDF_OBJ_ENUM_NAME_Movie,
-#define PDF_NAME_N  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_N)
-	PDF_OBJ_ENUM_NAME_N,
-#define PDF_NAME_Name  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Name)
-	PDF_OBJ_ENUM_NAME_Name,
-#define PDF_NAME_Named  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Named)
-	PDF_OBJ_ENUM_NAME_Named,
-#define PDF_NAME_Names  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Names)
-	PDF_OBJ_ENUM_NAME_Names,
-#define PDF_NAME_NewWindow  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_NewWindow)
-	PDF_OBJ_ENUM_NAME_NewWindow,
-#define PDF_NAME_Next  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Next)
-	PDF_OBJ_ENUM_NAME_Next,
-#define PDF_NAME_None  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_None)
-	PDF_OBJ_ENUM_NAME_None,
-#define PDF_NAME_Normal  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Normal)
-	PDF_OBJ_ENUM_NAME_Normal,
-#define PDF_NAME_O  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_O)
-	PDF_OBJ_ENUM_NAME_O,
-#define PDF_NAME_OC  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_OC)
-	PDF_OBJ_ENUM_NAME_OC,
-#define PDF_NAME_OCG  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_OCG)
-	PDF_OBJ_ENUM_NAME_OCG,
-#define PDF_NAME_OCGs  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_OCGs)
-	PDF_OBJ_ENUM_NAME_OCGs,
-#define PDF_NAME_OCMD  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_OCMD)
-	PDF_OBJ_ENUM_NAME_OCMD,
-#define PDF_NAME_OCProperties  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_OCProperties)
-	PDF_OBJ_ENUM_NAME_OCProperties,
-#define PDF_NAME_OE  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_OE)
-	PDF_OBJ_ENUM_NAME_OE,
-#define PDF_NAME_OFF  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_OFF)
-	PDF_OBJ_ENUM_NAME_OFF,
-#define PDF_NAME_ON  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ON)
-	PDF_OBJ_ENUM_NAME_ON,
-#define PDF_NAME_ObjStm  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ObjStm)
-	PDF_OBJ_ENUM_NAME_ObjStm,
-#define PDF_NAME_Of  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Of)
-	PDF_OBJ_ENUM_NAME_Of,
-#define PDF_NAME_Off  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Off)
-	PDF_OBJ_ENUM_NAME_Off,
-#define PDF_NAME_OpenType  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_OpenType)
-	PDF_OBJ_ENUM_NAME_OpenType,
-#define PDF_NAME_Opt  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Opt)
-	PDF_OBJ_ENUM_NAME_Opt,
-#define PDF_NAME_Ordering  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Ordering)
-	PDF_OBJ_ENUM_NAME_Ordering,
-#define PDF_NAME_Outlines  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Outlines)
-	PDF_OBJ_ENUM_NAME_Outlines,
-#define PDF_NAME_P  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_P)
-	PDF_OBJ_ENUM_NAME_P,
-#define PDF_NAME_PDF  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_PDF)
-	PDF_OBJ_ENUM_NAME_PDF,
-#define PDF_NAME_PS  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_PS)
-	PDF_OBJ_ENUM_NAME_PS,
-#define PDF_NAME_Page  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Page)
-	PDF_OBJ_ENUM_NAME_Page,
-#define PDF_NAME_PageMode  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_PageMode)
-	PDF_OBJ_ENUM_NAME_PageMode,
-#define PDF_NAME_Pages  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Pages)
-	PDF_OBJ_ENUM_NAME_Pages,
-#define PDF_NAME_PaintType  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_PaintType)
-	PDF_OBJ_ENUM_NAME_PaintType,
-#define PDF_NAME_Parent  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Parent)
-	PDF_OBJ_ENUM_NAME_Parent,
-#define PDF_NAME_Pattern  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Pattern)
-	PDF_OBJ_ENUM_NAME_Pattern,
-#define PDF_NAME_PatternType  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_PatternType)
-	PDF_OBJ_ENUM_NAME_PatternType,
-#define PDF_NAME_PolyLine  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_PolyLine)
-	PDF_OBJ_ENUM_NAME_PolyLine,
-#define PDF_NAME_Polygon  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Polygon)
-	PDF_OBJ_ENUM_NAME_Polygon,
-#define PDF_NAME_Popup  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Popup)
-	PDF_OBJ_ENUM_NAME_Popup,
-#define PDF_NAME_Predictor  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Predictor)
-	PDF_OBJ_ENUM_NAME_Predictor,
-#define PDF_NAME_Prev  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Prev)
-	PDF_OBJ_ENUM_NAME_Prev,
-#define PDF_NAME_Print  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Print)
-	PDF_OBJ_ENUM_NAME_Print,
-#define PDF_NAME_PrinterMark  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_PrinterMark)
-	PDF_OBJ_ENUM_NAME_PrinterMark,
-#define PDF_NAME_ProcSet  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ProcSet)
-	PDF_OBJ_ENUM_NAME_ProcSet,
-#define PDF_NAME_Producer  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Producer)
-	PDF_OBJ_ENUM_NAME_Producer,
-#define PDF_NAME_Properties  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Properties)
-	PDF_OBJ_ENUM_NAME_Properties,
-#define PDF_NAME_Push  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Push)
-	PDF_OBJ_ENUM_NAME_Push,
-#define PDF_NAME_Q  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Q)
-	PDF_OBJ_ENUM_NAME_Q,
-#define PDF_NAME_QuadPoints  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_QuadPoints)
-	PDF_OBJ_ENUM_NAME_QuadPoints,
-#define PDF_NAME_R  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_R)
-	PDF_OBJ_ENUM_NAME_R,
-#define PDF_NAME_RGB  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_RGB)
-	PDF_OBJ_ENUM_NAME_RGB,
-#define PDF_NAME_RI  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_RI)
-	PDF_OBJ_ENUM_NAME_RI,
-#define PDF_NAME_RL  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_RL)
-	PDF_OBJ_ENUM_NAME_RL,
-#define PDF_NAME_Range  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Range)
-	PDF_OBJ_ENUM_NAME_Range,
-#define PDF_NAME_Rect  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Rect)
-	PDF_OBJ_ENUM_NAME_Rect,
-#define PDF_NAME_Ref  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Ref)
-	PDF_OBJ_ENUM_NAME_Ref,
-#define PDF_NAME_Registry  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Registry)
-	PDF_OBJ_ENUM_NAME_Registry,
-#define PDF_NAME_ResetForm  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ResetForm)
-	PDF_OBJ_ENUM_NAME_ResetForm,
-#define PDF_NAME_Resources  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Resources)
-	PDF_OBJ_ENUM_NAME_Resources,
-#define PDF_NAME_Root  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Root)
-	PDF_OBJ_ENUM_NAME_Root,
-#define PDF_NAME_Rotate  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Rotate)
-	PDF_OBJ_ENUM_NAME_Rotate,
-#define PDF_NAME_Rows  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Rows)
-	PDF_OBJ_ENUM_NAME_Rows,
-#define PDF_NAME_RunLengthDecode  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_RunLengthDecode)
-	PDF_OBJ_ENUM_NAME_RunLengthDecode,
-#define PDF_NAME_S  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_S)
-	PDF_OBJ_ENUM_NAME_S,
-#define PDF_NAME_SMask  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_SMask)
-	PDF_OBJ_ENUM_NAME_SMask,
-#define PDF_NAME_SMaskInData  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_SMaskInData)
-	PDF_OBJ_ENUM_NAME_SMaskInData,
-#define PDF_NAME_Screen  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Screen)
-	PDF_OBJ_ENUM_NAME_Screen,
-#define PDF_NAME_Separation  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Separation)
-	PDF_OBJ_ENUM_NAME_Separation,
-#define PDF_NAME_Shading  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Shading)
-	PDF_OBJ_ENUM_NAME_Shading,
-#define PDF_NAME_ShadingType  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ShadingType)
-	PDF_OBJ_ENUM_NAME_ShadingType,
-#define PDF_NAME_Si  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Si)
-	PDF_OBJ_ENUM_NAME_Si,
-#define PDF_NAME_Sig  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Sig)
-	PDF_OBJ_ENUM_NAME_Sig,
-#define PDF_NAME_SigFlags  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_SigFlags)
-	PDF_OBJ_ENUM_NAME_SigFlags,
-#define PDF_NAME_Size  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Size)
-	PDF_OBJ_ENUM_NAME_Size,
-#define PDF_NAME_Sound  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Sound)
-	PDF_OBJ_ENUM_NAME_Sound,
-#define PDF_NAME_Split  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Split)
-	PDF_OBJ_ENUM_NAME_Split,
-#define PDF_NAME_Square  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Square)
-	PDF_OBJ_ENUM_NAME_Square,
-#define PDF_NAME_Squiggly  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Squiggly)
-	PDF_OBJ_ENUM_NAME_Squiggly,
-#define PDF_NAME_Stamp  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Stamp)
-	PDF_OBJ_ENUM_NAME_Stamp,
-#define PDF_NAME_Standard  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Standard)
-	PDF_OBJ_ENUM_NAME_Standard,
-#define PDF_NAME_StdCF  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_StdCF)
-	PDF_OBJ_ENUM_NAME_StdCF,
-#define PDF_NAME_StmF  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_StmF)
-	PDF_OBJ_ENUM_NAME_StmF,
-#define PDF_NAME_StrF  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_StrF)
-	PDF_OBJ_ENUM_NAME_StrF,
-#define PDF_NAME_StrikeOut  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_StrikeOut)
-	PDF_OBJ_ENUM_NAME_StrikeOut,
-#define PDF_NAME_SubFilter  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_SubFilter)
-	PDF_OBJ_ENUM_NAME_SubFilter,
-#define PDF_NAME_Subtype  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Subtype)
-	PDF_OBJ_ENUM_NAME_Subtype,
-#define PDF_NAME_Subtype2  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Subtype2)
-	PDF_OBJ_ENUM_NAME_Subtype2,
-#define PDF_NAME_T  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_T)
-	PDF_OBJ_ENUM_NAME_T,
-#define PDF_NAME_TR  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_TR)
-	PDF_OBJ_ENUM_NAME_TR,
-#define PDF_NAME_TR2  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_TR2)
-	PDF_OBJ_ENUM_NAME_TR2,
-#define PDF_NAME_Text  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Text)
-	PDF_OBJ_ENUM_NAME_Text,
-#define PDF_NAME_TilingType  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_TilingType)
-	PDF_OBJ_ENUM_NAME_TilingType,
-#define PDF_NAME_Title  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Title)
-	PDF_OBJ_ENUM_NAME_Title,
-#define PDF_NAME_ToUnicode  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ToUnicode)
-	PDF_OBJ_ENUM_NAME_ToUnicode,
-#define PDF_NAME_Trans  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Trans)
-	PDF_OBJ_ENUM_NAME_Trans,
-#define PDF_NAME_Transparency  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Transparency)
-	PDF_OBJ_ENUM_NAME_Transparency,
-#define PDF_NAME_TrapNet  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_TrapNet)
-	PDF_OBJ_ENUM_NAME_TrapNet,
-#define PDF_NAME_TrimBox  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_TrimBox)
-	PDF_OBJ_ENUM_NAME_TrimBox,
-#define PDF_NAME_TrueType  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_TrueType)
-	PDF_OBJ_ENUM_NAME_TrueType,
-#define PDF_NAME_Tx  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Tx)
-	PDF_OBJ_ENUM_NAME_Tx,
-#define PDF_NAME_Type  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Type)
-	PDF_OBJ_ENUM_NAME_Type,
-#define PDF_NAME_Type0  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Type0)
-	PDF_OBJ_ENUM_NAME_Type0,
-#define PDF_NAME_Type1  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Type1)
-	PDF_OBJ_ENUM_NAME_Type1,
-#define PDF_NAME_Type1C  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Type1C)
-	PDF_OBJ_ENUM_NAME_Type1C,
-#define PDF_NAME_Type3  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Type3)
-	PDF_OBJ_ENUM_NAME_Type3,
-#define PDF_NAME_U  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_U)
-	PDF_OBJ_ENUM_NAME_U,
-#define PDF_NAME_UE  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_UE)
-	PDF_OBJ_ENUM_NAME_UE,
-#define PDF_NAME_UF  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_UF)
-	PDF_OBJ_ENUM_NAME_UF,
-#define PDF_NAME_URI  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_URI)
-	PDF_OBJ_ENUM_NAME_URI,
-#define PDF_NAME_URL  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_URL)
-	PDF_OBJ_ENUM_NAME_URL,
-#define PDF_NAME_Unchanged  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Unchanged)
-	PDF_OBJ_ENUM_NAME_Unchanged,
-#define PDF_NAME_Uncover  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Uncover)
-	PDF_OBJ_ENUM_NAME_Uncover,
-#define PDF_NAME_Underline  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Underline)
-	PDF_OBJ_ENUM_NAME_Underline,
-#define PDF_NAME_Unix  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Unix)
-	PDF_OBJ_ENUM_NAME_Unix,
-#define PDF_NAME_Usage  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Usage)
-	PDF_OBJ_ENUM_NAME_Usage,
-#define PDF_NAME_UseCMap  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_UseCMap)
-	PDF_OBJ_ENUM_NAME_UseCMap,
-#define PDF_NAME_UseOutlines  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_UseOutlines)
-	PDF_OBJ_ENUM_NAME_UseOutlines,
-#define PDF_NAME_UserUnit  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_UserUnit)
-	PDF_OBJ_ENUM_NAME_UserUnit,
-#define PDF_NAME_V  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_V)
-	PDF_OBJ_ENUM_NAME_V,
-#define PDF_NAME_V2  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_V2)
-	PDF_OBJ_ENUM_NAME_V2,
-#define PDF_NAME_VE  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_VE)
-	PDF_OBJ_ENUM_NAME_VE,
-#define PDF_NAME_Version  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Version)
-	PDF_OBJ_ENUM_NAME_Version,
-#define PDF_NAME_VerticesPerRow  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_VerticesPerRow)
-	PDF_OBJ_ENUM_NAME_VerticesPerRow,
-#define PDF_NAME_W  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_W)
-	PDF_OBJ_ENUM_NAME_W,
-#define PDF_NAME_W2  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_W2)
-	PDF_OBJ_ENUM_NAME_W2,
-#define PDF_NAME_WMode  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_WMode)
-	PDF_OBJ_ENUM_NAME_WMode,
-#define PDF_NAME_Watermark  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Watermark)
-	PDF_OBJ_ENUM_NAME_Watermark,
-#define PDF_NAME_Widget  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Widget)
-	PDF_OBJ_ENUM_NAME_Widget,
-#define PDF_NAME_Width  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Width)
-	PDF_OBJ_ENUM_NAME_Width,
-#define PDF_NAME_Widths  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Widths)
-	PDF_OBJ_ENUM_NAME_Widths,
-#define PDF_NAME_WinAnsiEncoding  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_WinAnsiEncoding)
-	PDF_OBJ_ENUM_NAME_WinAnsiEncoding,
-#define PDF_NAME_Wipe  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_Wipe)
-	PDF_OBJ_ENUM_NAME_Wipe,
-#define PDF_NAME_XHeight  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_XHeight)
-	PDF_OBJ_ENUM_NAME_XHeight,
-#define PDF_NAME_XObject  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_XObject)
-	PDF_OBJ_ENUM_NAME_XObject,
-#define PDF_NAME_XRef  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_XRef)
-	PDF_OBJ_ENUM_NAME_XRef,
-#define PDF_NAME_XRefStm  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_XRefStm)
-	PDF_OBJ_ENUM_NAME_XRefStm,
-#define PDF_NAME_XStep  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_XStep)
-	PDF_OBJ_ENUM_NAME_XStep,
-#define PDF_NAME_XYZ  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_XYZ)
-	PDF_OBJ_ENUM_NAME_XYZ,
-#define PDF_NAME_YStep  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_YStep)
-	PDF_OBJ_ENUM_NAME_YStep,
-#define PDF_NAME_adbe_pkcs7_detached  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_adbe_pkcs7_detached)
-	PDF_OBJ_ENUM_NAME_adbe_pkcs7_detached,
-#define PDF_NAME_ca  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_ca)
-	PDF_OBJ_ENUM_NAME_ca,
-#define PDF_NAME_n0  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_n0)
-	PDF_OBJ_ENUM_NAME_n0,
-#define PDF_NAME_n1  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_n1)
-	PDF_OBJ_ENUM_NAME_n1,
-#define PDF_NAME_n2  ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME_n2)
-	PDF_OBJ_ENUM_NAME_n2,
-#define PDF_OBJ_NAME__LIMIT ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NAME__LIMIT)
-	PDF_OBJ_ENUM_NAME__LIMIT,
-#define PDF_OBJ_FALSE ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_BOOL_FALSE)
-	PDF_OBJ_ENUM_BOOL_FALSE = PDF_OBJ_ENUM_NAME__LIMIT,
-#define PDF_OBJ_TRUE ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_BOOL_TRUE)
-	PDF_OBJ_ENUM_BOOL_TRUE,
-#define PDF_OBJ_NULL ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM_NULL)
-	PDF_OBJ_ENUM_NULL,
-#define PDF_OBJ__LIMIT ((pdf_obj *)(intptr_t)PDF_OBJ_ENUM__LIMIT)
-	PDF_OBJ_ENUM__LIMIT
-};
+// Copyright (C) 2004-2025 Artifex Software, Inc.
+//
+// This file is part of MuPDF.
+//
+// MuPDF is free software: you can redistribute it and/or modify it under the
+// terms of the GNU Affero General Public License as published by the Free
+// Software Foundation, either version 3 of the License, or (at your option)
+// any later version.
+//
+// MuPDF is distributed in the hope that it will be useful, but WITHOUT ANY
+// WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+// FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+// details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with MuPDF. If not, see <https://www.gnu.org/licenses/agpl-3.0.en.html>
+//
+// Alternative licensing terms are available from the licensor.
+// For commercial licensing, see <https://www.artifex.com/> or contact
+// Artifex Software, Inc., 39 Mesa Street, Suite 108A, San Francisco,
+// CA 94129, USA, for further information.
+
+/* Alphabetically sorted list of all PDF names to be available as constants */
+PDF_MAKE_NAME("1.2", 1_2)
+PDF_MAKE_NAME("1.5", 1_5)
+PDF_MAKE_NAME("3D", 3D)
+PDF_MAKE_NAME("A", A)
+PDF_MAKE_NAME("A85", A85)
+PDF_MAKE_NAME("AA", AA)
+PDF_MAKE_NAME("AC", AC)
+PDF_MAKE_NAME("AESV2", AESV2)
+PDF_MAKE_NAME("AESV3", AESV3)
+PDF_MAKE_NAME("AF", AF)
+PDF_MAKE_NAME("AFRelationship", AFRelationship)
+PDF_MAKE_NAME("AHx", AHx)
+PDF_MAKE_NAME("AP", AP)
+PDF_MAKE_NAME("AS", AS)
+PDF_MAKE_NAME("ASCII85Decode", ASCII85Decode)
+PDF_MAKE_NAME("ASCIIHexDecode", ASCIIHexDecode)
+PDF_MAKE_NAME("AbsoluteColorimetric", AbsoluteColorimetric)
+PDF_MAKE_NAME("AcroForm", AcroForm)
+PDF_MAKE_NAME("Action", Action)
+PDF_MAKE_NAME("ActualText", ActualText)
+PDF_MAKE_NAME("Adobe.PPKLite", Adobe_PPKLite)
+PDF_MAKE_NAME("All", All)
+PDF_MAKE_NAME("AllOff", AllOff)
+PDF_MAKE_NAME("AllOn", AllOn)
+PDF_MAKE_NAME("Alpha", Alpha)
+PDF_MAKE_NAME("Alt", Alt)
+PDF_MAKE_NAME("Alternate", Alternate)
+PDF_MAKE_NAME("Alternative", Alternative)
+PDF_MAKE_NAME("Annot", Annot)
+PDF_MAKE_NAME("Annots", Annots)
+PDF_MAKE_NAME("AnyOff", AnyOff)
+PDF_MAKE_NAME("App", App)
+PDF_MAKE_NAME("Approved", Approved)
+PDF_MAKE_NAME("Art", Art)
+PDF_MAKE_NAME("ArtBox", ArtBox)
+PDF_MAKE_NAME("Artifact", Artifact)
+PDF_MAKE_NAME("AsIs", AsIs)
+PDF_MAKE_NAME("Ascent", Ascent)
+PDF_MAKE_NAME("Aside", Aside)
+PDF_MAKE_NAME("AuthEvent", AuthEvent)
+PDF_MAKE_NAME("Author", Author)
+PDF_MAKE_NAME("B", B)
+PDF_MAKE_NAME("BBox", BBox)
+PDF_MAKE_NAME("BC", BC)
+PDF_MAKE_NAME("BE", BE)
+PDF_MAKE_NAME("BG", BG)
+PDF_MAKE_NAME("BM", BM)
+PDF_MAKE_NAME("BPC", BPC)
+PDF_MAKE_NAME("BS", BS)
+PDF_MAKE_NAME("Background", Background)
+PDF_MAKE_NAME("BaseEncoding", BaseEncoding)
+PDF_MAKE_NAME("BaseFont", BaseFont)
+PDF_MAKE_NAME("BaseState", BaseState)
+PDF_MAKE_NAME("BibEntry", BibEntry)
+PDF_MAKE_NAME("BitsPerComponent", BitsPerComponent)
+PDF_MAKE_NAME("BitsPerCoordinate", BitsPerCoordinate)
+PDF_MAKE_NAME("BitsPerFlag", BitsPerFlag)
+PDF_MAKE_NAME("BitsPerSample", BitsPerSample)
+PDF_MAKE_NAME("BlackIs1", BlackIs1)
+PDF_MAKE_NAME("BlackPoint", BlackPoint)
+PDF_MAKE_NAME("BleedBox", BleedBox)
+PDF_MAKE_NAME("Blinds", Blinds)
+PDF_MAKE_NAME("BlockQuote", BlockQuote)
+PDF_MAKE_NAME("Border", Border)
+PDF_MAKE_NAME("Bounds", Bounds)
+PDF_MAKE_NAME("Box", Box)
+PDF_MAKE_NAME("Br", Br)
+PDF_MAKE_NAME("BrotliDecode", BrotliDecode)
+PDF_MAKE_NAME("Bt", Bt)
+PDF_MAKE_NAME("Btn", Btn)
+PDF_MAKE_NAME("Butt", Butt)
+PDF_MAKE_NAME("ByteRange", ByteRange)
+PDF_MAKE_NAME("C", C)
+PDF_MAKE_NAME("C0", C0)
+PDF_MAKE_NAME("C1", C1)
+PDF_MAKE_NAME("CA", CA)
+PDF_MAKE_NAME("CCF", CCF)
+PDF_MAKE_NAME("CCITTFaxDecode", CCITTFaxDecode)
+PDF_MAKE_NAME("CF", CF)
+PDF_MAKE_NAME("CFM", CFM)
+PDF_MAKE_NAME("CI", CI)
+PDF_MAKE_NAME("CIDFontType0", CIDFontType0)
+PDF_MAKE_NAME("CIDFontType0C", CIDFontType0C)
+PDF_MAKE_NAME("CIDFontType2", CIDFontType2)
+PDF_MAKE_NAME("CIDSystemInfo", CIDSystemInfo)
+PDF_MAKE_NAME("CIDToGIDMap", CIDToGIDMap)
+PDF_MAKE_NAME("CL", CL)
+PDF_MAKE_NAME("CMYK", CMYK)
+PDF_MAKE_NAME("CO", CO)
+PDF_MAKE_NAME("CP", CP)
+PDF_MAKE_NAME("CS", CS)
+PDF_MAKE_NAME("CalCMYK", CalCMYK)
+PDF_MAKE_NAME("CalGray", CalGray)
+PDF_MAKE_NAME("CalRGB", CalRGB)
+PDF_MAKE_NAME("Cap", Cap)
+PDF_MAKE_NAME("CapHeight", CapHeight)
+PDF_MAKE_NAME("Caption", Caption)
+PDF_MAKE_NAME("Caret", Caret)
+PDF_MAKE_NAME("Catalog", Catalog)
+PDF_MAKE_NAME("Cert", Cert)
+PDF_MAKE_NAME("Ch", Ch)
+PDF_MAKE_NAME("Changes", Changes)
+PDF_MAKE_NAME("CharProcs", CharProcs)
+PDF_MAKE_NAME("CheckSum", CheckSum)
+PDF_MAKE_NAME("Circle", Circle)
+PDF_MAKE_NAME("ClosedArrow", ClosedArrow)
+PDF_MAKE_NAME("Code", Code)
+PDF_MAKE_NAME("Collection", Collection)
+PDF_MAKE_NAME("ColorSpace", ColorSpace)
+PDF_MAKE_NAME("ColorTransform", ColorTransform)
+PDF_MAKE_NAME("Colorants", Colorants)
+PDF_MAKE_NAME("Colors", Colors)
+PDF_MAKE_NAME("Columns", Columns)
+PDF_MAKE_NAME("Confidential", Confidential)
+PDF_MAKE_NAME("Configs", Configs)
+PDF_MAKE_NAME("ContactInfo", ContactInfo)
+PDF_MAKE_NAME("Contents", Contents)
+PDF_MAKE_NAME("Coords", Coords)
+PDF_MAKE_NAME("Count", Count)
+PDF_MAKE_NAME("Cover", Cover)
+PDF_MAKE_NAME("CreationDate", CreationDate)
+PDF_MAKE_NAME("Creator", Creator)
+PDF_MAKE_NAME("CropBox", CropBox)
+PDF_MAKE_NAME("Crypt", Crypt)
+PDF_MAKE_NAME("D", D)
+PDF_MAKE_NAME("DA", DA)
+PDF_MAKE_NAME("DC", DC)
+PDF_MAKE_NAME("DCT", DCT)
+PDF_MAKE_NAME("DCTDecode", DCTDecode)
+PDF_MAKE_NAME("DL", DL)
+PDF_MAKE_NAME("DOS", DOS)
+PDF_MAKE_NAME("DP", DP)
+PDF_MAKE_NAME("DR", DR)
+PDF_MAKE_NAME("DS", DS)
+PDF_MAKE_NAME("DV", DV)
+PDF_MAKE_NAME("DW", DW)
+PDF_MAKE_NAME("DW2", DW2)
+PDF_MAKE_NAME("DamagedRowsBeforeError", DamagedRowsBeforeError)
+PDF_MAKE_NAME("Data", Data)
+PDF_MAKE_NAME("Date", Date)
+PDF_MAKE_NAME("Decode", Decode)
+PDF_MAKE_NAME("DecodeParms", DecodeParms)
+PDF_MAKE_NAME("Default", Default)
+PDF_MAKE_NAME("DefaultCMYK", DefaultCMYK)
+PDF_MAKE_NAME("DefaultGray", DefaultGray)
+PDF_MAKE_NAME("DefaultRGB", DefaultRGB)
+PDF_MAKE_NAME("Departmental", Departmental)
+PDF_MAKE_NAME("Desc", Desc)
+PDF_MAKE_NAME("DescendantFonts", DescendantFonts)
+PDF_MAKE_NAME("Descent", Descent)
+PDF_MAKE_NAME("Design", Design)
+PDF_MAKE_NAME("Dest", Dest)
+PDF_MAKE_NAME("DestOutputProfile", DestOutputProfile)
+PDF_MAKE_NAME("Dests", Dests)
+PDF_MAKE_NAME("DeviceCMYK", DeviceCMYK)
+PDF_MAKE_NAME("DeviceGray", DeviceGray)
+PDF_MAKE_NAME("DeviceN", DeviceN)
+PDF_MAKE_NAME("DeviceRGB", DeviceRGB)
+PDF_MAKE_NAME("Di", Di)
+PDF_MAKE_NAME("Diamond", Diamond)
+PDF_MAKE_NAME("Differences", Differences)
+PDF_MAKE_NAME("DigestLocation", DigestLocation)
+PDF_MAKE_NAME("DigestMethod", DigestMethod)
+PDF_MAKE_NAME("DigestValue", DigestValue)
+PDF_MAKE_NAME("Dissolve", Dissolve)
+PDF_MAKE_NAME("Div", Div)
+PDF_MAKE_NAME("Dm", Dm)
+PDF_MAKE_NAME("DocMDP", DocMDP)
+PDF_MAKE_NAME("Document", Document)
+PDF_MAKE_NAME("DocumentFragment", DocumentFragment)
+PDF_MAKE_NAME("Domain", Domain)
+PDF_MAKE_NAME("Draft", Draft)
+PDF_MAKE_NAME("Dur", Dur)
+PDF_MAKE_NAME("E", E)
+PDF_MAKE_NAME("EF", EF)
+PDF_MAKE_NAME("EarlyChange", EarlyChange)
+PDF_MAKE_NAME("Em", Em)
+PDF_MAKE_NAME("EmbeddedFile", EmbeddedFile)
+PDF_MAKE_NAME("EmbeddedFiles", EmbeddedFiles)
+PDF_MAKE_NAME("Encode", Encode)
+PDF_MAKE_NAME("EncodedByteAlign", EncodedByteAlign)
+PDF_MAKE_NAME("Encoding", Encoding)
+PDF_MAKE_NAME("Encrypt", Encrypt)
+PDF_MAKE_NAME("EncryptMetadata", EncryptMetadata)
+PDF_MAKE_NAME("EncryptedPayload", EncryptedPayload)
+PDF_MAKE_NAME("EndOfBlock", EndOfBlock)
+PDF_MAKE_NAME("EndOfLine", EndOfLine)
+PDF_MAKE_NAME("Exclude", Exclude)
+PDF_MAKE_NAME("Experimental", Experimental)
+PDF_MAKE_NAME("Expired", Expired)
+PDF_MAKE_NAME("ExtGState", ExtGState)
+PDF_MAKE_NAME("Extend", Extend)
+PDF_MAKE_NAME("F", F)
+PDF_MAKE_NAME("FENote", FENote)
+PDF_MAKE_NAME("FL", FL)
+PDF_MAKE_NAME("FRM", FRM)
+PDF_MAKE_NAME("FS", FS)
+PDF_MAKE_NAME("FT", FT)
+PDF_MAKE_NAME("Fade", Fade)
+PDF_MAKE_NAME("Ff", Ff)
+PDF_MAKE_NAME("FieldMDP", FieldMDP)
+PDF_MAKE_NAME("Fields", Fields)
+PDF_MAKE_NAME("Figure", Figure)
+PDF_MAKE_NAME("FileAttachment", FileAttachment)
+PDF_MAKE_NAME("FileSize", FileSize)
+PDF_MAKE_NAME("Filespec", Filespec)
+PDF_MAKE_NAME("Filter", Filter)
+PDF_MAKE_NAME("Final", Final)
+PDF_MAKE_NAME("Fingerprint", Fingerprint)
+PDF_MAKE_NAME("First", First)
+PDF_MAKE_NAME("FirstChar", FirstChar)
+PDF_MAKE_NAME("FirstPage", FirstPage)
+PDF_MAKE_NAME("Fit", Fit)
+PDF_MAKE_NAME("FitB", FitB)
+PDF_MAKE_NAME("FitBH", FitBH)
+PDF_MAKE_NAME("FitBV", FitBV)
+PDF_MAKE_NAME("FitH", FitH)
+PDF_MAKE_NAME("FitR", FitR)
+PDF_MAKE_NAME("FitV", FitV)
+PDF_MAKE_NAME("Fl", Fl)
+PDF_MAKE_NAME("Flags", Flags)
+PDF_MAKE_NAME("FlateDecode", FlateDecode)
+PDF_MAKE_NAME("Fly", Fly)
+PDF_MAKE_NAME("Font", Font)
+PDF_MAKE_NAME("FontBBox", FontBBox)
+PDF_MAKE_NAME("FontDescriptor", FontDescriptor)
+PDF_MAKE_NAME("FontFile", FontFile)
+PDF_MAKE_NAME("FontFile2", FontFile2)
+PDF_MAKE_NAME("FontFile3", FontFile3)
+PDF_MAKE_NAME("FontMatrix", FontMatrix)
+PDF_MAKE_NAME("FontName", FontName)
+PDF_MAKE_NAME("ForComment", ForComment)
+PDF_MAKE_NAME("ForPublicRelease", ForPublicRelease)
+PDF_MAKE_NAME("Form", Form)
+PDF_MAKE_NAME("FormData", FormData)
+PDF_MAKE_NAME("FormEx", FormEx)
+PDF_MAKE_NAME("FormType", FormType)
+PDF_MAKE_NAME("Formula", Formula)
+PDF_MAKE_NAME("FreeText", FreeText)
+PDF_MAKE_NAME("FreeTextCallout", FreeTextCallout)
+PDF_MAKE_NAME("FreeTextTypeWriter", FreeTextTypeWriter)
+PDF_MAKE_NAME("Function", Function)
+PDF_MAKE_NAME("FunctionType", FunctionType)
+PDF_MAKE_NAME("Functions", Functions)
+PDF_MAKE_NAME("G", G)
+PDF_MAKE_NAME("GTS_PDFX", GTS_PDFX)
+PDF_MAKE_NAME("Gamma", Gamma)
+PDF_MAKE_NAME("Glitter", Glitter)
+PDF_MAKE_NAME("GoTo", GoTo)
+PDF_MAKE_NAME("GoToR", GoToR)
+PDF_MAKE_NAME("Group", Group)
+PDF_MAKE_NAME("H", H)
+PDF_MAKE_NAME("H1", H1)
+PDF_MAKE_NAME("H2", H2)
+PDF_MAKE_NAME("H3", H3)
+PDF_MAKE_NAME("H4", H4)
+PDF_MAKE_NAME("H5", H5)
+PDF_MAKE_NAME("H6", H6)
+PDF_MAKE_NAME("Height", Height)
+PDF_MAKE_NAME("Helv", Helv)
+PDF_MAKE_NAME("Highlight", Highlight)
+PDF_MAKE_NAME("HistoryPos", HistoryPos)
+PDF_MAKE_NAME("I", I)
+PDF_MAKE_NAME("IC", IC)
+PDF_MAKE_NAME("ICCBased", ICCBased)
+PDF_MAKE_NAME("ID", ID)
+PDF_MAKE_NAME("IM", IM)
+PDF_MAKE_NAME("IRT", IRT)
+PDF_MAKE_NAME("IT", IT)
+PDF_MAKE_NAME("Identity", Identity)
+PDF_MAKE_NAME("Identity-H", Identity_H)
+PDF_MAKE_NAME("Identity-V", Identity_V)
+PDF_MAKE_NAME("Image", Image)
+PDF_MAKE_NAME("ImageB", ImageB)
+PDF_MAKE_NAME("ImageC", ImageC)
+PDF_MAKE_NAME("ImageI", ImageI)
+PDF_MAKE_NAME("ImageMask", ImageMask)
+PDF_MAKE_NAME("Include", Include)
+PDF_MAKE_NAME("Index", Index)
+PDF_MAKE_NAME("Indexed", Indexed)
+PDF_MAKE_NAME("Info", Info)
+PDF_MAKE_NAME("Ink", Ink)
+PDF_MAKE_NAME("InkList", InkList)
+PDF_MAKE_NAME("Intent", Intent)
+PDF_MAKE_NAME("Interpolate", Interpolate)
+PDF_MAKE_NAME("IsMap", IsMap)
+PDF_MAKE_NAME("ItalicAngle", ItalicAngle)
+PDF_MAKE_NAME("JBIG2Decode", JBIG2Decode)
+PDF_MAKE_NAME("JBIG2Globals", JBIG2Globals)
+PDF_MAKE_NAME("JPXDecode", JPXDecode)
+PDF_MAKE_NAME("JS", JS)
+PDF_MAKE_NAME("JavaScript", JavaScript)
+PDF_MAKE_NAME("K", K)
+PDF_MAKE_NAME("Keywords", Keywords)
+PDF_MAKE_NAME("Kids", Kids)
+PDF_MAKE_NAME("L", L)
+PDF_MAKE_NAME("LBody", LBody)
+PDF_MAKE_NAME("LC", LC)
+PDF_MAKE_NAME("LE", LE)
+PDF_MAKE_NAME("LI", LI)
+PDF_MAKE_NAME("LJ", LJ)
+PDF_MAKE_NAME("LL", LL)
+PDF_MAKE_NAME("LLE", LLE)
+PDF_MAKE_NAME("LLO", LLO)
+PDF_MAKE_NAME("LW", LW)
+PDF_MAKE_NAME("LZ", LZ)
+PDF_MAKE_NAME("LZW", LZW)
+PDF_MAKE_NAME("LZWDecode", LZWDecode)
+PDF_MAKE_NAME("Lab", Lab)
+PDF_MAKE_NAME("Label", Label)
+PDF_MAKE_NAME("Lang", Lang)
+PDF_MAKE_NAME("Last", Last)
+PDF_MAKE_NAME("LastChar", LastChar)
+PDF_MAKE_NAME("LastPage", LastPage)
+PDF_MAKE_NAME("Launch", Launch)
+PDF_MAKE_NAME("Layer", Layer)
+PDF_MAKE_NAME("Lbl", Lbl)
+PDF_MAKE_NAME("Length", Length)
+PDF_MAKE_NAME("Length1", Length1)
+PDF_MAKE_NAME("Length2", Length2)
+PDF_MAKE_NAME("Length3", Length3)
+PDF_MAKE_NAME("Limits", Limits)
+PDF_MAKE_NAME("Line", Line)
+PDF_MAKE_NAME("LineArrow", LineArrow)
+PDF_MAKE_NAME("LineDimension", LineDimension)
+PDF_MAKE_NAME("Linearized", Linearized)
+PDF_MAKE_NAME("Link", Link)
+PDF_MAKE_NAME("List", List)
+PDF_MAKE_NAME("Location", Location)
+PDF_MAKE_NAME("Lock", Lock)
+PDF_MAKE_NAME("Locked", Locked)
+PDF_MAKE_NAME("Luminosity", Luminosity)
+PDF_MAKE_NAME("M", M)
+PDF_MAKE_NAME("MCID", MCID)
+PDF_MAKE_NAME("MK", MK)
+PDF_MAKE_NAME("ML", ML)
+PDF_MAKE_NAME("MMType1", MMType1)
+PDF_MAKE_NAME("Mac", Mac)
+PDF_MAKE_NAME("Mask", Mask)
+PDF_MAKE_NAME("Matrix", Matrix)
+PDF_MAKE_NAME("Matte", Matte)
+PDF_MAKE_NAME("MaxLen", MaxLen)
+PDF_MAKE_NAME("MediaBox", MediaBox)
+PDF_MAKE_NAME("Metadata", Metadata)
+PDF_MAKE_NAME("MissingWidth", MissingWidth)
+PDF_MAKE_NAME("ModDate", ModDate)
+PDF_MAKE_NAME("Movie", Movie)
+PDF_MAKE_NAME("Msg", Msg)
+PDF_MAKE_NAME("Multiply", Multiply)
+PDF_MAKE_NAME("N", N)
+PDF_MAKE_NAME("Name", Name)
+PDF_MAKE_NAME("Named", Named)
+PDF_MAKE_NAME("Names", Names)
+PDF_MAKE_NAME("NewWindow", NewWindow)
+PDF_MAKE_NAME("Next", Next)
+PDF_MAKE_NAME("NextPage", NextPage)
+PDF_MAKE_NAME("NonEFontNoWarn", NonEFontNoWarn)
+PDF_MAKE_NAME("NonStruct", NonStruct)
+PDF_MAKE_NAME("None", None)
+PDF_MAKE_NAME("Normal", Normal)
+PDF_MAKE_NAME("NotApproved", NotApproved)
+PDF_MAKE_NAME("NotForPublicRelease", NotForPublicRelease)
+PDF_MAKE_NAME("Note", Note)
+PDF_MAKE_NAME("NumSections", NumSections)
+PDF_MAKE_NAME("Nums", Nums)
+PDF_MAKE_NAME("O", O)
+PDF_MAKE_NAME("OC", OC)
+PDF_MAKE_NAME("OCG", OCG)
+PDF_MAKE_NAME("OCGs", OCGs)
+PDF_MAKE_NAME("OCMD", OCMD)
+PDF_MAKE_NAME("OCProperties", OCProperties)
+PDF_MAKE_NAME("OE", OE)
+PDF_MAKE_NAME("OFF", OFF)
+PDF_MAKE_NAME("ON", ON)
+PDF_MAKE_NAME("OP", OP)
+PDF_MAKE_NAME("OPM", OPM)
+PDF_MAKE_NAME("OS", OS)
+PDF_MAKE_NAME("ObjStm", ObjStm)
+PDF_MAKE_NAME("Of", Of)
+PDF_MAKE_NAME("Off", Off)
+PDF_MAKE_NAME("Open", Open)
+PDF_MAKE_NAME("OpenArrow", OpenArrow)
+PDF_MAKE_NAME("OpenType", OpenType)
+PDF_MAKE_NAME("Opt", Opt)
+PDF_MAKE_NAME("Order", Order)
+PDF_MAKE_NAME("Ordering", Ordering)
+PDF_MAKE_NAME("Outlines", Outlines)
+PDF_MAKE_NAME("OutputCondition", OutputCondition)
+PDF_MAKE_NAME("OutputConditionIdentifier", OutputConditionIdentifier)
+PDF_MAKE_NAME("OutputIntent", OutputIntent)
+PDF_MAKE_NAME("OutputIntents", OutputIntents)
+PDF_MAKE_NAME("P", P)
+PDF_MAKE_NAME("PDF", PDF)
+PDF_MAKE_NAME("PS", PS)
+PDF_MAKE_NAME("Page", Page)
+PDF_MAKE_NAME("PageLabels", PageLabels)
+PDF_MAKE_NAME("PageMode", PageMode)
+PDF_MAKE_NAME("Pages", Pages)
+PDF_MAKE_NAME("PaintType", PaintType)
+PDF_MAKE_NAME("Params", Params)
+PDF_MAKE_NAME("Parent", Parent)
+PDF_MAKE_NAME("ParentTree", ParentTree)
+PDF_MAKE_NAME("Part", Part)
+PDF_MAKE_NAME("Pattern", Pattern)
+PDF_MAKE_NAME("PatternType", PatternType)
+PDF_MAKE_NAME("Perceptual", Perceptual)
+PDF_MAKE_NAME("Perms", Perms)
+PDF_MAKE_NAME("PieceInfo", PieceInfo)
+PDF_MAKE_NAME("PolyLine", PolyLine)
+PDF_MAKE_NAME("PolyLineDimension", PolyLineDimension)
+PDF_MAKE_NAME("Polygon", Polygon)
+PDF_MAKE_NAME("PolygonCloud", PolygonCloud)
+PDF_MAKE_NAME("PolygonDimension", PolygonDimension)
+PDF_MAKE_NAME("Popup", Popup)
+PDF_MAKE_NAME("PreRelease", PreRelease)
+PDF_MAKE_NAME("Predictor", Predictor)
+PDF_MAKE_NAME("Prev", Prev)
+PDF_MAKE_NAME("PrevPage", PrevPage)
+PDF_MAKE_NAME("Preview", Preview)
+PDF_MAKE_NAME("Print", Print)
+PDF_MAKE_NAME("PrinterMark", PrinterMark)
+PDF_MAKE_NAME("Private", Private)
+PDF_MAKE_NAME("ProcSet", ProcSet)
+PDF_MAKE_NAME("Producer", Producer)
+PDF_MAKE_NAME("Prop_AuthTime", Prop_AuthTime)
+PDF_MAKE_NAME("Prop_AuthType", Prop_AuthType)
+PDF_MAKE_NAME("Prop_Build", Prop_Build)
+PDF_MAKE_NAME("Properties", Properties)
+PDF_MAKE_NAME("PubSec", PubSec)
+PDF_MAKE_NAME("Push", Push)
+PDF_MAKE_NAME("Q", Q)
+PDF_MAKE_NAME("QuadPoints", QuadPoints)
+PDF_MAKE_NAME("Quote", Quote)
+PDF_MAKE_NAME("R", R)
+PDF_MAKE_NAME("RB", RB)
+PDF_MAKE_NAME("RBGroups", RBGroups)
+PDF_MAKE_NAME("RC", RC)
+PDF_MAKE_NAME("RClosedArrow", RClosedArrow)
+PDF_MAKE_NAME("RD", RD)
+PDF_MAKE_NAME("REx", REx)
+PDF_MAKE_NAME("RGB", RGB)
+PDF_MAKE_NAME("RI", RI)
+PDF_MAKE_NAME("RL", RL)
+PDF_MAKE_NAME("RO", RO)
+PDF_MAKE_NAME("ROpenArrow", ROpenArrow)
+PDF_MAKE_NAME("RP", RP)
+PDF_MAKE_NAME("RT", RT)
+PDF_MAKE_NAME("RV", RV)
+PDF_MAKE_NAME("Range", Range)
+PDF_MAKE_NAME("Reason", Reason)
+PDF_MAKE_NAME("Rect", Rect)
+PDF_MAKE_NAME("Redact", Redact)
+PDF_MAKE_NAME("Ref", Ref)
+PDF_MAKE_NAME("Reference", Reference)
+PDF_MAKE_NAME("Registry", Registry)
+PDF_MAKE_NAME("RelativeColorimetric", RelativeColorimetric)
+PDF_MAKE_NAME("ResetForm", ResetForm)
+PDF_MAKE_NAME("Resources", Resources)
+PDF_MAKE_NAME("RoleMap", RoleMap)
+PDF_MAKE_NAME("Root", Root)
+PDF_MAKE_NAME("Rotate", Rotate)
+PDF_MAKE_NAME("Rows", Rows)
+PDF_MAKE_NAME("Ruby", Ruby)
+PDF_MAKE_NAME("RunLengthDecode", RunLengthDecode)
+PDF_MAKE_NAME("S", S)
+PDF_MAKE_NAME("SMask", SMask)
+PDF_MAKE_NAME("SMaskInData", SMaskInData)
+PDF_MAKE_NAME("Saturation", Saturation)
+PDF_MAKE_NAME("Schema", Schema)
+PDF_MAKE_NAME("Screen", Screen)
+PDF_MAKE_NAME("Sect", Sect)
+PDF_MAKE_NAME("Separation", Separation)
+PDF_MAKE_NAME("Shading", Shading)
+PDF_MAKE_NAME("ShadingType", ShadingType)
+PDF_MAKE_NAME("Si", Si)
+PDF_MAKE_NAME("Sig", Sig)
+PDF_MAKE_NAME("SigFlags", SigFlags)
+PDF_MAKE_NAME("SigQ", SigQ)
+PDF_MAKE_NAME("SigRef", SigRef)
+PDF_MAKE_NAME("Size", Size)
+PDF_MAKE_NAME("Slash", Slash)
+PDF_MAKE_NAME("Sold", Sold)
+PDF_MAKE_NAME("Sound", Sound)
+PDF_MAKE_NAME("Source", Source)
+PDF_MAKE_NAME("Span", Span)
+PDF_MAKE_NAME("Split", Split)
+PDF_MAKE_NAME("Square", Square)
+PDF_MAKE_NAME("Squiggly", Squiggly)
+PDF_MAKE_NAME("St", St)
+PDF_MAKE_NAME("Stamp", Stamp)
+PDF_MAKE_NAME("StampImage", StampImage)
+PDF_MAKE_NAME("StampSnapshot", StampSnapshot)
+PDF_MAKE_NAME("Standard", Standard)
+PDF_MAKE_NAME("StdCF", StdCF)
+PDF_MAKE_NAME("StemV", StemV)
+PDF_MAKE_NAME("StmF", StmF)
+PDF_MAKE_NAME("StrF", StrF)
+PDF_MAKE_NAME("StrikeOut", StrikeOut)
+PDF_MAKE_NAME("Strong", Strong)
+PDF_MAKE_NAME("StructParent", StructParent)
+PDF_MAKE_NAME("StructParents", StructParents)
+PDF_MAKE_NAME("StructTreeRoot", StructTreeRoot)
+PDF_MAKE_NAME("Sub", Sub)
+PDF_MAKE_NAME("SubFilter", SubFilter)
+PDF_MAKE_NAME("Subject", Subject)
+PDF_MAKE_NAME("Subtype", Subtype)
+PDF_MAKE_NAME("Subtype2", Subtype2)
+PDF_MAKE_NAME("Supplement", Supplement)
+PDF_MAKE_NAME("Symb", Symb)
+PDF_MAKE_NAME("T", T)
+PDF_MAKE_NAME("TBody", TBody)
+PDF_MAKE_NAME("TD", TD)
+PDF_MAKE_NAME("TFoot", TFoot)
+PDF_MAKE_NAME("TH", TH)
+PDF_MAKE_NAME("THead", THead)
+PDF_MAKE_NAME("TI", TI)
+PDF_MAKE_NAME("TOC", TOC)
+PDF_MAKE_NAME("TOCI", TOCI)
+PDF_MAKE_NAME("TR", TR)
+PDF_MAKE_NAME("TR2", TR2)
+PDF_MAKE_NAME("TU", TU)
+PDF_MAKE_NAME("Table", Table)
+PDF_MAKE_NAME("Text", Text)
+PDF_MAKE_NAME("Thumb", Thumb)
+PDF_MAKE_NAME("TilingType", TilingType)
+PDF_MAKE_NAME("Times", Times)
+PDF_MAKE_NAME("Title", Title)
+PDF_MAKE_NAME("ToUnicode", ToUnicode)
+PDF_MAKE_NAME("Top", Top)
+PDF_MAKE_NAME("TopSecret", TopSecret)
+PDF_MAKE_NAME("Trans", Trans)
+PDF_MAKE_NAME("TransformMethod", TransformMethod)
+PDF_MAKE_NAME("TransformParams", TransformParams)
+PDF_MAKE_NAME("Transparency", Transparency)
+PDF_MAKE_NAME("TrapNet", TrapNet)
+PDF_MAKE_NAME("TrimBox", TrimBox)
+PDF_MAKE_NAME("TrueType", TrueType)
+PDF_MAKE_NAME("TrustedMode", TrustedMode)
+PDF_MAKE_NAME("Tx", Tx)
+PDF_MAKE_NAME("Type", Type)
+PDF_MAKE_NAME("Type0", Type0)
+PDF_MAKE_NAME("Type1", Type1)
+PDF_MAKE_NAME("Type1C", Type1C)
+PDF_MAKE_NAME("Type3", Type3)
+PDF_MAKE_NAME("U", U)
+PDF_MAKE_NAME("UE", UE)
+PDF_MAKE_NAME("UF", UF)
+PDF_MAKE_NAME("URI", URI)
+PDF_MAKE_NAME("URL", URL)
+PDF_MAKE_NAME("Unchanged", Unchanged)
+PDF_MAKE_NAME("Uncover", Uncover)
+PDF_MAKE_NAME("Underline", Underline)
+PDF_MAKE_NAME("Unix", Unix)
+PDF_MAKE_NAME("Unspecified", Unspecified)
+PDF_MAKE_NAME("Usage", Usage)
+PDF_MAKE_NAME("UseBlackPtComp", UseBlackPtComp)
+PDF_MAKE_NAME("UseCMap", UseCMap)
+PDF_MAKE_NAME("UseOutlines", UseOutlines)
+PDF_MAKE_NAME("UserUnit", UserUnit)
+PDF_MAKE_NAME("V", V)
+PDF_MAKE_NAME("V2", V2)
+PDF_MAKE_NAME("VE", VE)
+PDF_MAKE_NAME("Version", Version)
+PDF_MAKE_NAME("Vertices", Vertices)
+PDF_MAKE_NAME("VerticesPerRow", VerticesPerRow)
+PDF_MAKE_NAME("View", View)
+PDF_MAKE_NAME("W", W)
+PDF_MAKE_NAME("W2", W2)
+PDF_MAKE_NAME("WMode", WMode)
+PDF_MAKE_NAME("WP", WP)
+PDF_MAKE_NAME("WT", WT)
+PDF_MAKE_NAME("Warichu", Warichu)
+PDF_MAKE_NAME("Watermark", Watermark)
+PDF_MAKE_NAME("WhitePoint", WhitePoint)
+PDF_MAKE_NAME("Widget", Widget)
+PDF_MAKE_NAME("Width", Width)
+PDF_MAKE_NAME("Widths", Widths)
+PDF_MAKE_NAME("WinAnsiEncoding", WinAnsiEncoding)
+PDF_MAKE_NAME("Wipe", Wipe)
+PDF_MAKE_NAME("XFA", XFA)
+PDF_MAKE_NAME("XHeight", XHeight)
+PDF_MAKE_NAME("XML", XML)
+PDF_MAKE_NAME("XObject", XObject)
+PDF_MAKE_NAME("XRef", XRef)
+PDF_MAKE_NAME("XRefStm", XRefStm)
+PDF_MAKE_NAME("XStep", XStep)
+PDF_MAKE_NAME("XYZ", XYZ)
+PDF_MAKE_NAME("YStep", YStep)
+PDF_MAKE_NAME("Yes", Yes)
+PDF_MAKE_NAME("ZaDb", ZaDb)
+PDF_MAKE_NAME("a", a)
+PDF_MAKE_NAME("adbe.pkcs7.detached", adbe_pkcs7_detached)
+PDF_MAKE_NAME("ca", ca)
+PDF_MAKE_NAME("n0", n0)
+PDF_MAKE_NAME("n1", n1)
+PDF_MAKE_NAME("n2", n2)
+PDF_MAKE_NAME("op", op)
+PDF_MAKE_NAME("r", r)

@@ -1,192 +1,255 @@
+// Copyright (C) 2004-2025 Artifex Software, Inc.
+//
+// This file is part of MuPDF.
+//
+// MuPDF is free software: you can redistribute it and/or modify it under the
+// terms of the GNU Affero General Public License as published by the Free
+// Software Foundation, either version 3 of the License, or (at your option)
+// any later version.
+//
+// MuPDF is distributed in the hope that it will be useful, but WITHOUT ANY
+// WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+// FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+// details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with MuPDF. If not, see <https://www.gnu.org/licenses/agpl-3.0.en.html>
+//
+// Alternative licensing terms are available from the licensor.
+// For commercial licensing, see <https://www.artifex.com/> or contact
+// Artifex Software, Inc., 39 Mesa Street, Suite 108A, San Francisco,
+// CA 94129, USA, for further information.
+
 #ifndef MUPDF_FITZ_SYSTEM_H
 #define MUPDF_FITZ_SYSTEM_H
 
-/* The very first decision we need to make is, are we using the 64bit
- * file pointers code. This must happen before the stdio.h include. */
-#ifdef FZ_LARGEFILE
-/* Set _LARGEFILE64_SOURCE so that we know fopen64 et al will be declared. */
-#ifndef _LARGEFILE64_SOURCE
-#define _LARGEFILE64_SOURCE
+/* Turn on valgrind pacification in debug builds. */
+#ifndef NDEBUG
+#ifndef PACIFY_VALGRIND
+#define PACIFY_VALGRIND
 #endif
 #endif
 
-/*
+/**
 	Include the standard libc headers.
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
-#include <stdarg.h>
-#include <string.h>
-#include <math.h>
+#include <stddef.h> /* needed for size_t */
+#include <stdarg.h> /* needed for va_list vararg functions */
+#include <setjmp.h> /* needed for the try/catch macros */
+#include <stdio.h> /* useful for debug printfs */
 
-#include <assert.h>
-#include <errno.h>
-#include <limits.h> /* INT_MAX & co */
-#include <float.h> /* FLT_EPSILON, FLT_MAX & co */
-#include <fcntl.h> /* O_RDONLY & co */
-#include <time.h>
+#ifdef __cplusplus
+/* C++ doesn't support flexible array members... */
+#define FZ_FLEXIBLE_ARRAY 1
+#else
+#define FZ_FLEXIBLE_ARRAY
+#endif
 
-#include <setjmp.h>
+#include "export.h"
+
+#if defined(_MSC_VER) && (_MSC_VER < 1700) /* MSVC older than VS2012 */
+typedef signed char int8_t;
+typedef short int int16_t;
+typedef int int32_t;
+typedef __int64 int64_t;
+typedef unsigned char uint8_t;
+typedef unsigned short int uint16_t;
+typedef unsigned int uint32_t;
+typedef unsigned __int64 uint64_t;
+#ifndef INT64_MAX
+#define INT64_MAX 9223372036854775807i64
+#endif
+#else
+#include <stdint.h> /* needed for int64_t */
+#endif
 
 #include "mupdf/memento.h"
+#include "mupdf/fitz/track-usage.h"
 
 #define nelem(x) (sizeof(x)/sizeof((x)[0]))
 
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
+#ifndef PATH_MAX
+#define PATH_MAX 4096
 #endif
 
-#ifndef M_SQRT2
-#define M_SQRT2 1.41421356237309504880
+#define FZ_PI 3.14159265f
+#define FZ_RADIAN 57.2957795f
+#define FZ_DEGREE 0.017453292f
+#define FZ_SQRT2 1.41421356f
+#define FZ_LN2 0.69314718f
+
+/**
+	Spot architectures where we have optimisations.
+*/
+
+/* ARCH_ARM is only used for 32bit ARM stuff. */
+#if defined(__arm__) || defined(__thumb__)
+#ifndef ARCH_ARM
+#define ARCH_ARM
+#endif
 #endif
 
-/*
+/* Detect NEON */
+#ifndef ARCH_HAS_NEON
+#if defined(__ARM_NEON) || defined(__ARM_NEON__)
+#define ARCH_HAS_NEON 1
+#endif
+#endif
+
+#ifndef ARCH_HAS_NEON
+#define ARCH_HAS_NEON 0
+#endif
+
+
+/* We assume that pretty much any X86 or X64 machine has SSE these days. */
+#ifndef ARCH_HAS_SSE
+#if defined(_M_IX86) || defined(_M_AMD64) || defined(_M_X64)
+#define ARCH_HAS_SSE 1
+#endif
+#endif
+
+#ifndef ARCH_HAS_SSE
+#define ARCH_HAS_SSE 0
+#endif
+
+
+/**
 	Some differences in libc can be smoothed over
 */
 
-#ifdef __APPLE__
-#define HAVE_SIGSETJMP
-#elif defined(__unix) && !defined(__NACL__)
-#define HAVE_SIGSETJMP
+#ifndef __STRICT_ANSI__
+#if defined(__APPLE__)
+#ifndef HAVE_SIGSETJMP
+#define HAVE_SIGSETJMP 1
+#endif
+#elif defined(__unix)
+#ifndef __EMSCRIPTEN__
+#ifndef HAVE_SIGSETJMP
+#define HAVE_SIGSETJMP 1
+#endif
+#endif
+#endif
+#endif
+#ifndef HAVE_SIGSETJMP
+#define HAVE_SIGSETJMP 0
 #endif
 
-/*
-	Where possible (i.e. on platforms on which they are provided), use
-	sigsetjmp/siglongjmp in preference to setjmp/longjmp. We don't alter
-	signal handlers within mupdf, so there is no need for us to
-	store/restore them - hence we use the non-restoring variants. This
-	makes a large speed difference on MacOSX (and probably other
-	platforms too.
+/**
+	Where possible (i.e. on platforms on which they are provided),
+	use sigsetjmp/siglongjmp in preference to setjmp/longjmp. We
+	don't alter signal handlers within mupdf, so there is no need
+	for us to store/restore them - hence we use the non-restoring
+	variants. This makes a large speed difference on MacOSX (and
+	probably other platforms too.
 */
-#ifdef HAVE_SIGSETJMP
+#if HAVE_SIGSETJMP
 #define fz_setjmp(BUF) sigsetjmp(BUF, 0)
 #define fz_longjmp(BUF,VAL) siglongjmp(BUF, VAL)
-#define fz_jmp_buf sigjmp_buf
+typedef sigjmp_buf fz_jmp_buf;
 #else
 #define fz_setjmp(BUF) setjmp(BUF)
 #define fz_longjmp(BUF,VAL) longjmp(BUF,VAL)
-#define fz_jmp_buf jmp_buf
+typedef jmp_buf fz_jmp_buf;
+#endif
+
+/* these constants mirror the corresponding macros in stdio.h */
+#ifndef EOF
+#define EOF (-1)
+#endif
+#ifndef SEEK_SET
+#define SEEK_SET 0
+#endif
+#ifndef SEEK_CUR
+#define SEEK_CUR 1
+#endif
+#ifndef SEEK_END
+#define SEEK_END 2
 #endif
 
 #ifdef _MSC_VER /* Microsoft Visual C */
 
 /* MSVC up to VS2012 */
 #if _MSC_VER < 1800
-#define va_copy(a, oa) do { a=oa; } while (0)
-#define va_copy_end(a) do {} while(0)
-#else
-#define va_copy_end(a) va_end(a)
+static __inline int signbit(double x)
+{
+	union
+	{
+		double d;
+		__int64 i;
+	} u;
+	u.d = x;
+	return (int)(u.i>>63);
+}
 #endif
-
-typedef signed char int8_t;
-typedef short int int16_t;
-typedef int int32_t;
-typedef __int64 int64_t;
-
-typedef unsigned char uint8_t;
-typedef unsigned short int uint16_t;
-typedef unsigned int uint32_t;
-typedef unsigned __int64 uint64_t;
 
 #pragma warning( disable: 4244 ) /* conversion from X to Y, possible loss of data */
 #pragma warning( disable: 4701 ) /* Potentially uninitialized local variable 'name' used */
 #pragma warning( disable: 4996 ) /* 'function': was declared deprecated */
 
-#include <io.h>
-
-struct timeval;
-struct timezone;
-int gettimeofday(struct timeval *tv, struct timezone *tz);
-
-#define snprintf _snprintf
-#if _MSC_VER < 1800
+#if _MSC_VER <= 1700 /* MSVC 2012 */
 #define isnan(x) _isnan(x)
 #define isinf(x) (!_finite(x))
 #endif
+
+#if _MSC_VER <= 1920 /* MSVC 2019 */
 #define hypotf _hypotf
+#endif
+#define atoll _atoi64
 
-FILE *fz_fopen_utf8(const char *name, const char *mode);
+#endif
 
-#define fz_fopen fz_fopen_utf8
+#ifdef _WIN32
 
-char *fz_utf8_from_wchar(const wchar_t *s);
-wchar_t *fz_wchar_from_utf8(const char *s);
+/* really a FILE* but we don't want to include stdio.h here */
+void *fz_fopen_utf8(const char *name, const char *mode);
+int fz_remove_utf8(const char *name);
 
-FILE *fz_fopen_utf8(const char *name, const char *mode);
 char **fz_argv_from_wargv(int argc, wchar_t **wargv);
 void fz_free_argv(int argc, char **argv);
 
-#define fseeko64 _fseeki64
-#define ftello64 _ftelli64
-#define atoll _atoi64
-
-#else /* Unix or close enough */
-
-#include <stdint.h>
-#include <unistd.h>
-
-#ifndef O_BINARY
-#define O_BINARY 0
 #endif
 
-#define va_copy_end(a) va_end(a)
-
+/* Cope with systems (such as Windows) with no S_ISDIR */
+#ifndef S_ISDIR
+#define S_ISDIR(mode) ((mode) & S_IFDIR)
 #endif
 
-#ifdef FZ_LARGEFILE
-#ifndef fz_fopen
-#define fz_fopen fopen64
-#endif
-typedef int64_t fz_off_t;
-#define fz_fseek fseeko64
-#define fz_ftell ftello64
-#define fz_atoo_imp atoll
-#define FZ_OFF_MAX 0x7fffffffffffffffLL
-#else
-#ifndef fz_fopen
-#define fz_fopen fopen
-#endif
-#define fz_fseek fseek
-#define fz_ftell ftell
-typedef int fz_off_t;
-#define FZ_OFF_MAX INT_MAX
-#define fz_atoo_imp atoi
-#endif
+int64_t fz_stat_ctime(const char *path);
+int64_t fz_stat_mtime(const char *path);
+int fz_mkdir(char *path);
 
 
-#ifdef __ANDROID__
-#include <android/log.h>
-#define LOG_TAG "libmupdf"
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
-#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
-#else
-#define LOGI(...) do {} while(0)
-#define LOGE(...) do {} while(0)
-#endif
-
-/* inline is standard in C++. For some compilers we can enable it within C too. */
+/* inline is standard in C++. For some compilers we can enable it within
+ * C too. Some compilers think they know better than we do about when
+ * to actually honour inline (particularly for large functions); use
+ * fz_forceinline to kick them into really inlining. */
 
 #ifndef __cplusplus
-#if __STDC_VERSION__ == 199901L /* C99 */
-#elif _MSC_VER >= 1500 /* MSVC 9 or newer */
+#if defined (__STDC_VERSION_) && (__STDC_VERSION__ >= 199901L) /* C99 */
+#elif defined(_MSC_VER) && (_MSC_VER >= 1500) /* MSVC 9 or newer */
 #define inline __inline
-#elif __GNUC__ >= 3 /* GCC 3 or newer */
+#define fz_forceinline __forceinline
+#elif defined(__GNUC__) && (__GNUC__ >= 3) /* GCC 3 or newer */
 #define inline __inline
 #else /* Unknown or ancient */
 #define inline
 #endif
 #endif
 
+#ifndef fz_forceinline
+#define fz_forceinline inline
+#endif
+
 /* restrict is standard in C99, but not in all C++ compilers. */
-#if __STDC_VERSION__ == 199901L /* C99 */
-#elif _MSC_VER >= 1500 /* MSVC 9 or newer */
-#define restrict __restrict
-#elif __GNUC__ >= 3 /* GCC 3 or newer */
-#define restrict __restrict
+#if defined (__STDC_VERSION_) && (__STDC_VERSION__ >= 199901L) /* C99 */
+#define FZ_RESTRICT restrict
+#elif defined(_MSC_VER) && (_MSC_VER >= 1600) /* MSVC 10 or newer */
+#define FZ_RESTRICT __restrict
+#elif defined(__GNUC__) && (__GNUC__ >= 3) /* GCC 3 or newer */
+#define FZ_RESTRICT __restrict
 #else /* Unknown or ancient */
-#define restrict
+#define FZ_RESTRICT
 #endif
 
 /* noreturn is a GCC extension */
@@ -200,61 +263,88 @@ typedef int fz_off_t;
 #endif
 #endif
 
-/* Flag unused parameters, for use with 'static inline' functions in headers. */
-#if __GNUC__ > 2 || __GNUC__ == 2 && __GNUC_MINOR__ >= 7
+/* Flag unused parameters, for use with 'static inline' functions in
+ * headers. */
+#if defined(__GNUC__) && (__GNUC__ > 2 || __GNUC__ == 2 && __GNUC_MINOR__ >= 7)
 #define FZ_UNUSED __attribute__((__unused__))
 #else
 #define FZ_UNUSED
 #endif
 
 /* GCC can do type checking of printf strings */
-#ifndef __printflike
-#if __GNUC__ > 2 || __GNUC__ == 2 && __GNUC_MINOR__ >= 7
-#define __printflike(fmtarg, firstvararg) \
-	__attribute__((__format__ (__printf__, fmtarg, firstvararg)))
+#ifdef __printflike
+#define FZ_PRINTFLIKE(F,V) __printflike(F,V)
 #else
-#define __printflike(fmtarg, firstvararg)
+#if defined(__GNUC__) && (__GNUC__ > 2 || __GNUC__ == 2 && __GNUC_MINOR__ >= 7)
+#define FZ_PRINTFLIKE(F,V) __attribute__((__format__ (__printf__, F, V)))
+#else
+#define FZ_PRINTFLIKE(F,V)
 #endif
 #endif
-
-/*
-	Shut the compiler up about unused variables
-*/
-#define UNUSED(x) do { x = x; } while (0)
 
 /* ARM assembly specific defines */
 
 #ifdef ARCH_ARM
-#ifdef NDK_PROFILER
-extern void __gnu_mcount_nc(void);
-#define ENTER_PG "push {lr}\nbl __gnu_mcount_nc\n"
-#else
-#define ENTER_PG
-#endif
 
 /* If we're compiling as thumb code, then we need to tell the compiler
  * to enter and exit ARM mode around our assembly sections. If we move
- * the ARM functions to a separate file and arrange for it to be compiled
- * without thumb mode, we can save some time on entry.
+ * the ARM functions to a separate file and arrange for it to be
+ * compiled without thumb mode, we can save some time on entry.
  */
 /* This is slightly suboptimal; __thumb__ and __thumb2__ become defined
  * and undefined by #pragma arm/#pragma thumb - but we can't define a
  * macro to track that. */
 #if defined(__thumb__) || defined(__thumb2__)
-#define ENTER_ARM ".balign 4\nmov r12,pc\nbx r12\n0:.arm\n" ENTER_PG
-#define ENTER_THUMB "9:.thumb\n" ENTER_PG
+#define ENTER_ARM ".balign 4\nmov r12,pc\nbx r12\n0:.arm\n"
+#define ENTER_THUMB "9:.thumb\n"
 #else
 #define ENTER_ARM
 #define ENTER_THUMB
 #endif
+
+#endif
+
+/* Memory block alignment */
+
+/* Most architectures are happy with blocks being aligned to the size
+ * of void *'s. Some (notably sparc) are not.
+ *
+ * Some architectures (notably amd64) are happy for pointers to be 32bit
+ * aligned even on 64bit systems. By making use of this we can save lots
+ * of memory in data structures (notably the display list).
+ *
+ * We attempt to cope with these vagaries via the following definitions.
+ */
+
+/* All blocks allocated by mupdf's allocators are expected to be
+ * returned aligned to FZ_MEMORY_BLOCK_ALIGN_MOD. This is sizeof(void *)
+ * unless overwritten by a predefinition, or by a specific architecture
+ * being detected. */
+#ifndef FZ_MEMORY_BLOCK_ALIGN_MOD
+#if defined(sparc) || defined(__sparc) || defined(__sparc__)
+#define FZ_MEMORY_BLOCK_ALIGN_MOD 8
+#else
+#define FZ_MEMORY_BLOCK_ALIGN_MOD sizeof(void *)
+#endif
+#endif
+
+/* MuPDF will ensure that its use of pointers in packed structures
+ * (such as the display list) will be aligned to FZ_POINTER_ALIGN_MOD.
+ * This is the same as FZ_MEMORY_BLOCK_ALIGN_MOD unless overridden by
+ * a predefinition, or by a specific architecture being detected. */
+#ifndef FZ_POINTER_ALIGN_MOD
+#if defined(__amd64) || defined(__amd64__) || defined(__x86_64) || defined(__x86_64__)
+#define FZ_POINTER_ALIGN_MOD 4
+#else
+#define FZ_POINTER_ALIGN_MOD FZ_MEMORY_BLOCK_ALIGN_MOD
+#endif
 #endif
 
 #ifdef CLUSTER
-#define LOCAL_TRIG_FNS
-#endif
-
-#ifdef LOCAL_TRIG_FNS
-/*
+/* Include this first so our defines don't clash with the system
+ * definitions */
+#include <math.h>
+/**
  * Trig functions
  */
 static float
@@ -332,28 +422,32 @@ static inline float my_sinf(float x)
 	float x2, xn;
 	int i;
 	/* Map x into the -PI to PI range. We could do this using:
-	 * x = fmodf(x, (float)(2.0 * M_PI));
+	 * x = fmodf(x, 2.0f * FZ_PI);
 	 * but that's C99, and seems to misbehave with negative numbers
 	 * on some platforms. */
-	x -= (float)M_PI;
-	i = x / (float)(2.0f * M_PI);
-	x -= i * (float)(2.0f * M_PI);
+	x -= FZ_PI;
+	i = x / (2.0f * FZ_PI);
+	x -= i * 2.0f * FZ_PI;
 	if (x < 0.0f)
-		x += (float)(2.0f * M_PI);
-	x -= (float)M_PI;
-	if (x <= (float)(-M_PI/2.0))
-		x = -(float)M_PI-x;
-	else if (x >= (float)(M_PI/2.0))
-		x = (float)M_PI-x;
-	x2 = x*x;
-	xn = x*x2/6.0f;
+		x += 2.0f * FZ_PI;
+	x -= FZ_PI;
+	if (x <= -FZ_PI / 2.0f)
+		x = -FZ_PI - x;
+	else if (x >= FZ_PI / 2.0f)
+		x = FZ_PI-x;
+	x2 = x * x;
+	xn = x * x2 / 6.0f;
 	x -= xn;
-	xn *= x2/20.0f;
+	xn *= x2 / 20.0f;
 	x += xn;
-	xn *= x2/42.0f;
+	xn *= x2 / 42.0f;
 	x -= xn;
-	xn *= x2/72.0f;
+	xn *= x2 / 72.0f;
 	x += xn;
+	if (x > 1)
+		x = 1;
+	else if (x < -1)
+		x = -1;
 	return x;
 }
 
@@ -366,33 +460,36 @@ static inline float my_atan2f(float o, float a)
 		if (a > 0)
 			return 0.0f;
 		else
-			return (float)M_PI;
+			return FZ_PI;
 	}
 	if (o < 0)
 		o = -o, negate = 1;
 	if (a < 0)
 		a = -a, flip = 1;
 	if (o < a)
-		i = (int)(65536.0f*o/a + 0.5f);
+		i = 65536.0f * o / a + 0.5f;
 	else
-		i = (int)(65536.0f*a/o + 0.5f);
-	r = my_atan_table[i>>8];
-	s = my_atan_table[(i>>8)+1];
-	r += (s-r)*(i&255)/256.0f;
+		i = 65536.0f * a / o + 0.5f;
+	r = my_atan_table[i >> 8];
+	s = my_atan_table[(i >> 8) + 1];
+	r += (s - r) * (i & 255) / 256.0f;
 	if (o >= a)
-		r = (float)(M_PI/2.0f) - r;
+		r = FZ_PI / 2.0f - r;
 	if (flip)
-		r = (float)M_PI - r;
+		r = FZ_PI - r;
 	if (negate)
 		r = -r;
 	return r;
 }
 
 #define sinf(x) my_sinf(x)
-#define cosf(x) my_sinf(((float)(M_PI/2.0f)) + (x))
+#define cosf(x) my_sinf(FZ_PI / 2.0f + (x))
 #define atan2f(x,y) my_atan2f((x),(y))
 #endif
 
-int fz_strcasecmp(const char *a, const char *b);
+static inline int fz_is_pow2(int a)
+{
+	return (a != 0) && (a & (a-1)) == 0;
+}
 
 #endif
