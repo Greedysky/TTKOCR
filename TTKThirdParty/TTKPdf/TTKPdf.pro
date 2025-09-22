@@ -30,9 +30,9 @@ include($$PWD/../../TTKBuild.pri)
 DESTDIR = $$OUT_PWD/../../bin/$$TTK_VERSION
 TARGET = TTKPdf
 
-LIBS += -L$$DESTDIR -lmupdf -lmupdf-third
+LIBS += -L$$PWD/mupdf/build/release -lmupdf -lmupdf-third
 
-INCLUDEPATH += $$PWD
+INCLUDEPATH += $$PWD/mupdf/include
 
 HEADERS += $$PWD/document.h
 

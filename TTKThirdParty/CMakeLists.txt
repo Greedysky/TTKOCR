@@ -19,3 +19,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 
 add_subdirectory(TTKExtras)
+
+if(TTK_BUILD_PDF)
+  add_subdirectory(TTKPdf)
+endif()

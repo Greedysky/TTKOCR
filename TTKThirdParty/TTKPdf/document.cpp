@@ -1,7 +1,7 @@
 ﻿#include "document.h"
 
 extern "C" {
-#include <mupdf/pdf.h>
+#include "mupdf/pdf.h"
 }
 
 namespace MuPDF

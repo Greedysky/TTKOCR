@@ -75,6 +75,10 @@ if(${OPENSSL_DIR})
   endif()
 endif()
 
+if(TTK_BUILD_PDF)
+  list(APPEND QT_LINK_LIBS TTKPdf)
+endif()
+
 if(TTK_QT_VERSION VERSION_EQUAL "4")
   qt4_wrap_ui(UIC_FILES ${UI_FILES})
   qt4_wrap_cpp(MOC_FILES ${HEADER_FILES})

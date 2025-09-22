@@ -60,6 +60,7 @@ if(WIN32)
   string(APPEND CMAKE_RC_FLAGS " --use-temp-file")
 endif()
 
+option(TTK_BUILD_PDF "TTK build pdf module" OFF)
 option(TTK_INSTALL_CTL "TTK install common tools library" OFF)
 option(TTK_BUILD_SHARED "TTK build shared library" ON)
 if(TTK_BUILD_SHARED)
@@ -206,6 +207,10 @@ else()
   message(FATAL_ERROR "Could not find lrelease executable")
 endif()
 
+if(TTK_BUILD_PDF)
+  add_definitions(-DTTK_BUILD_BY_PDF)
+  include_directories(${TTK_THIRDPARTY_DIR}/TTKPdf)
+endif()
 
 add_subdirectory(TTKCommon)
 add_subdirectory(TTKLanguage)
