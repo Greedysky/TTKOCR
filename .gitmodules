@@ -1,0 +1,3 @@
+[submodule "TTKThirdParty/TTKPdf/mupdf"]
+	path = TTKThirdParty/TTKPdf/mupdf
+	url = https://github.com/ArtifexSoftware/mupdf.git
