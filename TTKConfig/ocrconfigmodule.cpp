@@ -19,11 +19,6 @@ void OCRConfigModule::initialize() const
     valid();
 }
 
-void OCRConfigModule::reset() const
-{
-
-}
-
 void OCRConfigModule::directoryExist(const QString &name) const
 {
     QDir dir;
