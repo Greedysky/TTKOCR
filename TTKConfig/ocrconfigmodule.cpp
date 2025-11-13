@@ -8,7 +8,7 @@ OCRConfigModule::OCRConfigModule(QObject *parent)
 
 }
 
-void OCRConfigModule::valid() const
+void OCRConfigModule::execute() const
 {
     checkDirectoryExist();
     checkFileNeededExist();
@@ -16,7 +16,7 @@ void OCRConfigModule::valid() const
 
 void OCRConfigModule::initialize() const
 {
-    valid();
+    execute();
 }
 
 void OCRConfigModule::directoryExist(const QString &name) const
