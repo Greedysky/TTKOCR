@@ -33,7 +33,7 @@ class TTK_MODULE_EXPORT OCRGifLabelWidget : public QLabel
 public:
     enum class Module
     {
-        CicleBlue             /*!< gif cicle blue*/
+        CicleBlue   /*!< gif cicle blue */
     };
 
     /*!
