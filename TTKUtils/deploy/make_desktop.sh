@@ -14,31 +14,12 @@ else
   homepath=/home/${username}
 fi
 
-packvern=3.1.0.0
 packpath=${dirpath}/TTKOCR.desktop
 userpath=${homepath}/.local/share/applications
 iconpath="${dirpath}/share/pixmaps/ttkocr.png"
 execpath="${dirpath}/../TTKOCR"
 
-echo -n "[Desktop Entry]
-Type=Application
-Version=${packvern}
-Name=TTKOCR
-Name[zh_CN]=文字识别
-Name[zh_TW]=文字識別
-GenericName=TTKOCR
-GenericName[zh_CN]=文字识别
-GenericName[zh_TW]=文字識別
-Comment=TTKOCR
-Comment[zh_CN]=文字识别
-Comment[zh_TW]=文字識別
-Icon=${iconpath}
-Exec=${execpath}
-Terminal=false
-Keywords=multimedia;ocr;
-Categories=ocr;Qt;
-MimeType=
-X-KDE-StartupNotify=false\n" > ${packpath}
+sh ${dirpath}/make_desktop_raw.sh ${packpath} ${iconpath} ${execpath}
 
 mv -fv ${packpath} ${userpath}
 chmod +x ${userpath}
