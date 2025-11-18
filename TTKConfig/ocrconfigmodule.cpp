@@ -30,7 +30,6 @@ void OCRConfigModule::directoryExist(const QString &name) const
 
 void OCRConfigModule::checkDirectoryExist() const
 {
-    directoryExist(TTK_DOWNLOAD_DIR_FULL);
     directoryExist(TTK_LANGUAGE_DIR_FULL);
 }
 

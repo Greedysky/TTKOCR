@@ -24,8 +24,6 @@
 #include "ttkqtglobal.h"
 #include "ttkqtobject.h"
 
-#define DIR_PREFIX              "dir"
-
 #define JPG_FILE_SUFFIX         "jpg"
 
 #define JPG_FILE                TTK_STR_CAT(TTK_DOT, JPG_FILE_SUFFIX)
@@ -36,10 +34,8 @@
 
 #define MAIN_DIR_FULL           TTK::applicationPath() + TTK_PARENT_DIR
 //
-#define DOWNLOAD_DIR_FULL       MAIN_DIR_FULL + DOWNLOAD_DIR
-#define DIR_PREFIX_FULL         TTK::applicationPath() + DIR_PREFIX
 #define LANGUAGE_DIR_FULL       TTK::applicationPath() + LANGUAGE_DIR
-
+#define CACHE_DIR_FULL          QDir::tempPath() + TTK_SEPARATOR + TTK_APP_NAME
 
 #define WINDOW_WIDTH_MIN        850
 #define WINDOW_HEIGHT_MIN       550

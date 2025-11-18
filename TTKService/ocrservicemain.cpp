@@ -9,8 +9,7 @@
 
 static void cleanupCache()
 {
-    TTK::File::removeRecursively(DIR_PREFIX_FULL);
-    TTK::File::removeRecursively(DOWNLOAD_DIR_FULL);
+    TTK::File::removeRecursively(CACHE_DIR_FULL);
     TTK_INFO_STREAM("Application cache cleanup");
 }
 

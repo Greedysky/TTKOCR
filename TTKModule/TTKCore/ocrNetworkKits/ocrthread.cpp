@@ -73,12 +73,12 @@ void OCRNetworkRequest::downLoadFinished()
                 OCRRequestItem *item = qobject_cast<OCRRequestItem*>(m_reply->request().originatingObject());
                 if(item)
                 {
-                    if(!QDir(DIR_PREFIX_FULL).exists())
+                    if(!QDir(CACHE_DIR_FULL).exists())
                     {
-                        QDir().mkdir(DIR_PREFIX_FULL);
+                        QDir().mkdir(CACHE_DIR_FULL);
                     }
 
-                    QFile file(QString("%1/%2").arg(DIR_PREFIX_FULL).arg(item->m_index));
+                    QFile file(QString("%1/%2").arg(CACHE_DIR_FULL).arg(item->m_index));
                     if(file.open(QIODevice::WriteOnly))
                     {
                         file.write(content.toUtf8());

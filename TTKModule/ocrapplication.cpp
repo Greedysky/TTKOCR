@@ -152,7 +152,7 @@ void OCRApplication::startButtonClicked()
     }
 
     m_count = 0;
-    TTK::File::removeRecursively(DIR_PREFIX_FULL);
+    TTK::File::removeRecursively(CACHE_DIR_FULL);
 
     for(OCRRequestItem *item : qAsConst(m_fileList))
     {
@@ -174,7 +174,7 @@ void OCRApplication::clearButtonClicked()
     m_count = 0;
     deleteItems();
 
-    TTK::File::removeRecursively(DIR_PREFIX_FULL);
+    TTK::File::removeRecursively(CACHE_DIR_FULL);
     m_ui->textScrollAreaWidget->clear();
 }
 
@@ -183,7 +183,7 @@ void OCRApplication::downLoadDataChanged()
     ++m_count;
     if(m_count == m_fileList.count())
     {
-        const QStringList files(QDir(DIR_PREFIX_FULL).entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
+        const QStringList files(QDir(CACHE_DIR_FULL).entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
         TTKIntList data;
         for(const QString &path : qAsConst(files))
         {
@@ -195,7 +195,7 @@ void OCRApplication::downLoadDataChanged()
         QString content;
         for(int i = 0; i < m_fileList.count(); ++i)
         {
-            QFile file(QString("%1/%2").arg(DIR_PREFIX_FULL).arg(i));
+            QFile file(QString("%1/%2").arg(CACHE_DIR_FULL).arg(i));
             if(file.open(QIODevice::ReadOnly))
             {
                 content.append(file.readAll());
@@ -214,7 +214,7 @@ void OCRApplication::downLoadDataChanged()
         }
 
         m_ui->textScrollAreaWidget->appendPlainText(content);
-        TTK::File::removeRecursively(DIR_PREFIX_FULL);
+        TTK::File::removeRecursively(CACHE_DIR_FULL);
 
         stateChanged(false);
     }
@@ -222,23 +222,14 @@ void OCRApplication::downLoadDataChanged()
 
 void OCRApplication::pixmapChanged(const QPixmap &pix)
 {
-    QDir dir;
-    if(!dir.exists(DOWNLOAD_DIR_FULL))
-    {
-        dir.mkpath(DOWNLOAD_DIR_FULL);
-    }
-
-    const QString &filename = DOWNLOAD_DIR_FULL + QDateTime::currentDateTime().toString("yyyyMMddhhmmss") + JPG_FILE;
-    pix.save(filename, nullptr, 100);
-
     OCRRequestItem *item = new OCRRequestItem(this);
     item->m_index = m_fileList.count();
     item->m_image = pix;
 
-    QLabel *ll = new QLabel(m_ui->pixScrollAreaWidget);
-    ll->setPixmap(pix.scaled(405, 405, Qt::KeepAspectRatio));
-    m_ui->pixScrollAreaWidgetLayout->addWidget(ll);
-    item->m_obj = ll;
+    QLabel *label = new QLabel(m_ui->pixScrollAreaWidget);
+    label->setPixmap(pix.scaled(405, 405, Qt::KeepAspectRatio));
+    m_ui->pixScrollAreaWidgetLayout->addWidget(label);
+    item->m_obj = label;
 
     m_fileList << item;
 }
