@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright (C) 2015 - 2025 Greedysky Studio -->
 <component type="desktop-application">
-  <id>TTKOCR.desktop</id>
+  <id>com.greedysky.TTKOCR</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0</project_license>
   <name>TTKOCR</name>
-  <pkgname>TTKOCR</pkgname>
   <summary>The ttk ocr</summary>
   <description>
     <p>
@@ -23,7 +22,9 @@
   <url type="bugtracker">https://github.com/Greedysky/TTKOCR/issues</url>
   <url type="help">https://github.com/Greedysky/TTKOCR</url>
   <url type="homepage">https://github.com/Greedysky/TTKOCR</url>
+  <content_rating type="oars-1.1" />
   <developer_name>Greedysky Studio</developer_name>
+  <launchable type="desktop-id">TTKOCR.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <image type="source">https://github.com/Greedysky/TTKOCR/blob/master/TTKResource/demo/demo.jpg?raw=true</image>
