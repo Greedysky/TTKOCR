@@ -42,6 +42,15 @@ set(SOURCE_FILES
   ocrservicemain.cpp
 )
 
+if(MSVC)
+  get_property(TTK_LIBRARY_KITS_HEADER_FILES GLOBAL PROPERTY "TTK_LIBRARY_KITS_HEADER_FILES")
+  list(APPEND HEADER_FILES
+    ${TTK_CONFIG_DIR}/ocrconfigmodule.h
+    ${TTK_MODULE_DIR}/ocrapplication.h
+    ${TTK_LIBRARY_KITS_HEADER_FILES}
+  )
+endif()
+
 if(WIN32)
   list(APPEND SOURCE_FILES ${PROJECT_NAME}.rc)
 endif()
