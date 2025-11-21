@@ -33,7 +33,7 @@ HEADERS += \
 SOURCES += \
     $$PWD/QJsonArray.cpp \
     $$PWD/QJsonDocument.cpp \
-    $$PWD/QJsonDummy.h \
+    $$PWD/QJsonDummy.cpp \
     $$PWD/QJsonObject.cpp \
     $$PWD/QJsonParseError.cpp \
     $$PWD/QJsonValue.cpp \
