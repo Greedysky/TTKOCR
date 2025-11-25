@@ -65,6 +65,11 @@ OCRApplication::OCRApplication(QWidget *parent)
 
     // Objects Mouse tracking
     setObjectsTracking({m_ui->background});
+
+#ifndef QT_NO_SSL
+    // ssl support check
+    TTK_INFO_STREAM("Application network support ssl:" << (QSslSocket::supportsSsl() ? "true" : "false"));
+#endif
 }
 
 OCRApplication::~OCRApplication()
