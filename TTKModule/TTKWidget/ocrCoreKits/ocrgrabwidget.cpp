@@ -35,8 +35,8 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
 void OCRGrabWidget::mouseMoveEvent(QMouseEvent *event)
 {
     QWidget::mouseMoveEvent(event);
-    m_endPoint.setX(QtMouseX(event));
-    m_endPoint.setY(QtMouseY(event));
+    m_endPoint.setX(QtPositionX(event));
+    m_endPoint.setY(QtPositionY(event));
     update();
 }
 
