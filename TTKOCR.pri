@@ -70,8 +70,6 @@ win32{
         QMAKE_CXXFLAGS += -Wunused-function -Wswitch
         LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras
     }
-
-    equals(QT_MAJOR_VERSION, 4):QT += multimedia
 }
 
 unix:!mac{
