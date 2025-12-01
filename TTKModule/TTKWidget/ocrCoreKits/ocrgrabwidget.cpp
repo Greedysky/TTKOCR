@@ -60,15 +60,15 @@ void OCRGrabWidget::paintEvent(QPaintEvent *event)
     painter.drawRect(m_startPoint.x() - 1, m_startPoint.y() - 1, w + 1, h + 1);
 
     QPolygon listMarker;
-    listMarker.push_back(QPoint(m_startPoint.x(), m_startPoint.y()));
-    listMarker.push_back(QPoint(m_startPoint.x() + w, m_startPoint.y()));
-    listMarker.push_back(QPoint(m_startPoint.x(), h + m_startPoint.y()));
-    listMarker.push_back(QPoint(m_startPoint.x() + w, h + m_startPoint.y()));
+    listMarker.append(QPoint(m_startPoint.x(), m_startPoint.y()));
+    listMarker.append(QPoint(m_startPoint.x() + w, m_startPoint.y()));
+    listMarker.append(QPoint(m_startPoint.x(), h + m_startPoint.y()));
+    listMarker.append(QPoint(m_startPoint.x() + w, h + m_startPoint.y()));
 
-    listMarker.push_back(QPoint(m_startPoint.x() + (w >> 1), m_startPoint.y()));
-    listMarker.push_back(QPoint(m_startPoint.x() + (w >> 1), h + m_startPoint.y()));
-    listMarker.push_back(QPoint(m_startPoint.x(), m_startPoint.y() + (h >> 1)));
-    listMarker.push_back(QPoint(m_startPoint.x() + w, m_startPoint.y() + (h >> 1)));
+    listMarker.append(QPoint(m_startPoint.x() + (w >> 1), m_startPoint.y()));
+    listMarker.append(QPoint(m_startPoint.x() + (w >> 1), h + m_startPoint.y()));
+    listMarker.append(QPoint(m_startPoint.x(), m_startPoint.y() + (h >> 1)));
+    listMarker.append(QPoint(m_startPoint.x() + w, m_startPoint.y() + (h >> 1)));
 
     pen.setWidth(4);
     pen.setColor(Qt::red);
