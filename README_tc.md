@@ -59,7 +59,7 @@ Github鏡像下載地址: **<u>https://github.com/Greedysky/TTKOCR</u>**
 版權
 --------
  * This file is part of the TTK OCR project.
- * Copyright (C) 2015 - 2025 Greedysky Studio.
+ * Copyright (C) 2015 - 2026 Greedysky Studio.
  * Mail: greedysky@163.com.
 
 貢獻
