@@ -40,19 +40,26 @@
     </message>
 </context>
 <context>
-    <name>QJson::ParserRunnable</name>
-    <message>
-        <location filename="../TTKThirdParty/TTKExtras/qjson/parserrunnable.cpp" line="63"/>
-        <source>An error occurred while parsing json: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QObject</name>
     <message>
-        <location filename="../TTKModule/TTKCore/ocrUtilsKits/ocrfileutils.cpp" line="58"/>
+        <location filename="../TTKModule/TTKCore/ocrUtilsKits/ocrfileutils.cpp" line="59"/>
         <source>choose a filename to open under</source>
         <translation>打开文件</translation>
+    </message>
+    <message>
+        <location filename="../TTKCommon/TTKLibrary/ttkfileassociation.cpp" line="77"/>
+        <source>File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../TTKCommon/TTKLibrary/ttkfileassociation.cpp" line="83"/>
+        <source>Use Module Play</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../TTKCommon/TTKLibrary/ttkfileassociation.cpp" line="89"/>
+        <source>Add To Module Playlist</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
