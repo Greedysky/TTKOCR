@@ -22,10 +22,12 @@ HEADERS += \
     $$PWD/ocralgorithmutils.h \
     $$PWD/ocrcoreutils.h \
     $$PWD/ocrfileutils.h \
-    $$PWD/ocrimageutils.h
+    $$PWD/ocrimageutils.h \
+    $$PWD/ocrwidgetutils.h
 
 SOURCES += \
     $$PWD/ocralgorithmutils.cpp \
     $$PWD/ocrcoreutils.cpp \
     $$PWD/ocrfileutils.cpp \
-    $$PWD/ocrimageutils.cpp
+    $$PWD/ocrimageutils.cpp \
+    $$PWD/ocrwidgetutils.cpp

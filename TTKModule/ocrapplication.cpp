@@ -2,6 +2,7 @@
 #include "ui_ocrapplication.h"
 #include "ocrapplicationmodule.h"
 #include "ocrfunctionlistuiobject.h"
+#include "ocrwidgetutils.h"
 #include "ocrfileutils.h"
 #include "ocrgrabwidget.h"
 #include "ocrthread.h"
@@ -70,6 +71,7 @@ OCRApplication::OCRApplication(QWidget *parent)
     // ssl support check
     TTK_INFO_STREAM("Application network support ssl:" << (QSslSocket::supportsSsl() ? "true" : "false"));
 #endif
+    TTK::Widget::adjustWidgetPosition(this);
 }
 
 OCRApplication::~OCRApplication()

@@ -23,6 +23,7 @@ set_property(GLOBAL PROPERTY TTK_CORE_UTILS_KITS_HEADER_FILES
   ${TTK_CORE_UTILS_DIR}/ocrcoreutils.h
   ${TTK_CORE_UTILS_DIR}/ocrfileutils.h
   ${TTK_CORE_UTILS_DIR}/ocrimageutils.h
+  ${TTK_CORE_UTILS_DIR}/ocrwidgetutils.h
 )
 
 set_property(GLOBAL PROPERTY TTK_CORE_UTILS_KITS_SOURCE_FILES
@@ -30,4 +31,5 @@ set_property(GLOBAL PROPERTY TTK_CORE_UTILS_KITS_SOURCE_FILES
   ${TTK_CORE_UTILS_DIR}/ocrcoreutils.cpp
   ${TTK_CORE_UTILS_DIR}/ocrfileutils.cpp
   ${TTK_CORE_UTILS_DIR}/ocrimageutils.cpp
+  ${TTK_CORE_UTILS_DIR}/ocrwidgetutils.cpp
 )
