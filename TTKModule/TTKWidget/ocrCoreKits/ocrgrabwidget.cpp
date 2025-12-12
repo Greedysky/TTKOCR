@@ -21,8 +21,8 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     m_parent->hide();
     TTK::Core::sleep(500);
 
-    setAttribute(Qt::WA_DeleteOnClose, true);
-    setAttribute(Qt::WA_QuitOnClose, true);
+    setAttribute(Qt::WA_DeleteOnClose);
+    setAttribute(Qt::WA_QuitOnClose);
 
     setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
     setFixedSize(currentAvailableGeometry().size());
