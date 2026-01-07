@@ -50,6 +50,7 @@ void OCRGrabWidget::paintEvent(QPaintEvent *event)
     }
 
     QPainter painter(this);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     QPen pen(QColor(0x15, 0x8F, 0xE1), 1);
     painter.setPen(pen);
 
