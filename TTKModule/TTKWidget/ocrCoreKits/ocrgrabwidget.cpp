@@ -6,16 +6,15 @@
 #include <QPainter>
 #include <QMouseEvent>
 
-static QRect currentAvailableGeometry()
+static QRect currentGeometry()
 {
     const int index = TTKDesktopScreen::currentIndex();
-    return TTKDesktopScreen::availableGeometry(index);
+    return TTKDesktopScreen::screenGeometry(index);
 }
 
 
 OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     : QWidget(nullptr),
-      m_isDrawing(false),
       m_parent(parent)
 {
     m_parent->hide();
@@ -25,10 +24,12 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     setAttribute(Qt::WA_QuitOnClose);
 
     setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
-    setFixedSize(currentAvailableGeometry().size());
     setCursor(Qt::CrossCursor);
 
-    const QRect &rect = currentAvailableGeometry();
+    const QRect &rect = currentGeometry();
+    setGeometry(rect);
+    showFullScreen();
+
     m_originPixmap = TTKDesktopScreen::grabWindow(rect.x(), rect.y(), width(), height());
 }
 
@@ -51,10 +52,10 @@ void OCRGrabWidget::paintEvent(QPaintEvent *event)
 
     QPainter painter(this);
     painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+    painter.drawPixmap(0, 0, m_originPixmap);
+
     QPen pen(QColor(0x15, 0x8F, 0xE1), 1);
     painter.setPen(pen);
-
-    painter.drawPixmap(0, 0, width(), height(), m_originPixmap);
 
     const int w = m_endPoint.x() - m_startPoint.x();
     const int h = m_endPoint.y() - m_startPoint.y();
@@ -84,7 +85,6 @@ void OCRGrabWidget::mousePressEvent(QMouseEvent *event)
     {
         m_startPoint = event->pos();
         m_endPoint = m_startPoint;
-        m_isDrawing = true;
     }
     update();
 }
@@ -95,7 +95,6 @@ void OCRGrabWidget::mouseReleaseEvent(QMouseEvent *event)
     if(event->button() == Qt::LeftButton)
     {
         m_endPoint = event->pos();
-        m_isDrawing = false;
     }
 }
 
@@ -109,9 +108,9 @@ void OCRGrabWidget::keyPressEvent(QKeyEvent *event)
             std::swap(m_startPoint, m_endPoint);
         }
 
+        const QRect &rect = currentGeometry();
         const int width = m_endPoint.x() - m_startPoint.x();
         const int height = m_endPoint.y() - m_startPoint.y();
-        const QRect &rect = currentAvailableGeometry();
         const QPixmap &pix = TTKDesktopScreen::grabWindow(m_startPoint.x() + rect.x(), m_startPoint.y() + rect.y(), width, height);
         Q_EMIT pixmapChanged(pix);
 

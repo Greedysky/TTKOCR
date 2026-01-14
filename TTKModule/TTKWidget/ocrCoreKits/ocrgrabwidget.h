@@ -50,7 +50,6 @@ private:
     virtual void mouseReleaseEvent(QMouseEvent *event) override final;
     virtual void keyPressEvent(QKeyEvent *event) override final;
 
-    bool m_isDrawing;
     QWidget *m_parent;
     QPixmap m_originPixmap;
     QPoint m_startPoint, m_endPoint;
