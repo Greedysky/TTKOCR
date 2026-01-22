@@ -74,7 +74,7 @@ public Q_SLOTS:
     /*!
      * Find finished.
      */
-    void downLoadDataChanged();
+    void downloadDataChanged();
     /*!
      * Pixmap data Changed.
      */

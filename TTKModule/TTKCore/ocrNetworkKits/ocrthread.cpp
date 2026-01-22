@@ -33,11 +33,11 @@ void OCRNetworkRequest::startToRequest(OCRRequestItem *item)
     multiPart->setBoundary("----");
 
     m_reply = m_manager.post(request, multiPart);
-    connect(m_reply, SIGNAL(finished()), SLOT(downLoadFinished()));
+    connect(m_reply, SIGNAL(finished()), SLOT(downloadFinished()));
     QtNetworkErrorConnect(m_reply, this, replyError, TTK_SLOT);
 }
 
-void OCRNetworkRequest::downLoadFinished()
+void OCRNetworkRequest::downloadFinished()
 {
     if(!m_reply)
     {
@@ -89,6 +89,6 @@ void OCRNetworkRequest::downLoadFinished()
         }
     }
 
-    Q_EMIT downLoadDataChanged({});
+    Q_EMIT downloadDataChanged({});
     deleteAll();
 }

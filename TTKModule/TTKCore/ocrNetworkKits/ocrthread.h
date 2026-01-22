@@ -71,7 +71,7 @@ private Q_SLOTS:
     /*!
      * Download data from net finished.
      */
-    virtual void downLoadFinished() override final;
+    virtual void downloadFinished() override final;
 
 };
 

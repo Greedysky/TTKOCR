@@ -164,7 +164,7 @@ void OCRApplication::startButtonClicked()
     for(OCRRequestItem *item : qAsConst(m_fileList))
     {
         OCRNetworkRequest *request = new OCRNetworkRequest(item);
-        connect(request, SIGNAL(downLoadDataChanged(QString)), SLOT(downLoadDataChanged()));
+        connect(request, SIGNAL(downloadDataChanged(QString)), SLOT(downloadDataChanged()));
         request->startToRequest(item);
     }
 
@@ -185,7 +185,7 @@ void OCRApplication::clearButtonClicked()
     m_ui->textScrollAreaWidget->clear();
 }
 
-void OCRApplication::downLoadDataChanged()
+void OCRApplication::downloadDataChanged()
 {
     ++m_count;
     if(m_count == m_fileList.count())
