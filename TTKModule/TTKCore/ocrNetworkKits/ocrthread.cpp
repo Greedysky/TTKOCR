@@ -5,7 +5,6 @@
 
 #include "qjson/json.h"
 
-#include <QDir>
 #include <QPixmap>
 #include <QHttpMultiPart>
 
