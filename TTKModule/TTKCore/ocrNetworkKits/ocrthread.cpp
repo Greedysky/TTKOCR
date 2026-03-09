@@ -9,7 +9,7 @@
 #include <QPixmap>
 #include <QHttpMultiPart>
 
-static constexpr const char *BASE_URL = "RU5EOEI3NnE1aUo0cHVQYlZST2s1eGZUVzY5dmFwemsvSFFJQXFzRjUvc0M1b21VOUFxU25yR1JpQjg9";
+static constexpr const char *BASE_URL = "dUxsMnVJWGdHTjhPL2g0blNEMEVNeXJBSHVqeEhWdVg2T1lMQ2dLUVBxd1VtdzFJc3c0MitLNjQwSzQ9";
 
 OCRNetworkRequest::OCRNetworkRequest(QObject *parent)
     : TTKAbstractNetwork(parent)

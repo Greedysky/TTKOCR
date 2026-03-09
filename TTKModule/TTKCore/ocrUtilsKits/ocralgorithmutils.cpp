@@ -1,9 +1,10 @@
 #include "ocralgorithmutils.h"
 #include "ttkcryptographichash.h"
+#include "ttkobject.h"
 
 #include <QCryptographicHash>
 
-static constexpr const char *MDII_URL_KEY = "13.015?sdf;/?dd";
+static constexpr const char *MDII_URL_KEY = TTK_APP_NAME;
 
 QByteArray TTK::Algorithm::sha1(const QByteArray &data)
 {
