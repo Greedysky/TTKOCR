@@ -21,6 +21,7 @@ void OCRNetworkRequest::startToRequest(OCRRequestItem *item)
     QNetworkRequest request;
     request.setOriginatingObject(item);
     request.setUrl(TTK::Algorithm::mdII(BASE_URL, false));
+    TTK::setUserAgentHeader(&request);
     TTK::setSslConfiguration(&request);
 
     QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType, this);
