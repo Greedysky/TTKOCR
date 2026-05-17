@@ -8,3 +8,4 @@ else
 fi
 
 rm -f ${homepath}/.local/share/applications/TTKOCR.desktop
+rm -f ${homepath}/.local/share/metainfo/ttkocr.metainfo.xml
