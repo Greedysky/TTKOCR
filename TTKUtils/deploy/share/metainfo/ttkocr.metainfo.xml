@@ -7,9 +7,7 @@
   <name>TTKOCR</name>
   <summary>The ttk ocr</summary>
   <description>
-    <p>
-      TTKOCR recognizes text from images, based on Qt for windows and linux.
-    </p>
+    <p>TTKOCR recognizes text from images, based on Qt for windows and linux.</p>
   </description>
   <categories>
     <category>OCR</category>
