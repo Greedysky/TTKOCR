@@ -6,13 +6,6 @@
 #include <QPainter>
 #include <QMouseEvent>
 
-static QRect currentGeometry()
-{
-    const int index = TTKDesktopScreen::currentIndex();
-    return TTKDesktopScreen::screenGeometry(index);
-}
-
-
 OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     : QWidget(nullptr),
       m_parent(parent)
@@ -26,11 +19,12 @@ OCRGrabWidget::OCRGrabWidget(QWidget *parent)
     setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
     setCursor(Qt::CrossCursor);
 
-    const QRect &rect = currentGeometry();
+    const QRect &rect = TTKDesktopScreen::currentGeometry();
     setGeometry(rect);
     showFullScreen();
 
     m_originPixmap = TTKDesktopScreen::grabWindow(rect.x(), rect.y(), width(), height());
+    update();
 }
 
 void OCRGrabWidget::mouseMoveEvent(QMouseEvent *event)
@@ -108,10 +102,10 @@ void OCRGrabWidget::keyPressEvent(QKeyEvent *event)
             std::swap(m_startPoint, m_endPoint);
         }
 
-        const QRect &rect = currentGeometry();
+        const QRect &rect = TTKDesktopScreen::currentGeometry();
         const int width = m_endPoint.x() - m_startPoint.x();
         const int height = m_endPoint.y() - m_startPoint.y();
-        const QPixmap &pix = TTKDesktopScreen::grabWindow(m_startPoint.x() + rect.x(), m_startPoint.y() + rect.y(), width, height);
+        const QPixmap &pix = m_originPixmap.copy(m_startPoint.x() + rect.x(), m_startPoint.y() + rect.y(), width, height);
         Q_EMIT pixmapChanged(pix);
 
         m_parent->show();

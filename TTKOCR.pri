@@ -31,7 +31,7 @@ DESTDIR = $$OUT_PWD/../bin/$$TTK_VERSION
 
 include($$PWD/TTKBuild.pri)
 
-##openssl lib check
+#openssl lib check
 win32{
     SSL_DEPENDENCY = $$DESTDIR/ssleay32.dll
     SSL_DEPENDENCY = $$replace(SSL_DEPENDENCY, /, \\)
