@@ -39,13 +39,15 @@ void OCRGrabWidget::paintEvent(QPaintEvent *event)
 {
     QWidget::paintEvent(event);
 
+    QPainter painter(this);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+
     if(m_originPixmap.isNull())
     {
+        painter.fillRect(rect(), Qt::black);
         return;
     }
 
-    QPainter painter(this);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     painter.drawPixmap(0, 0, m_originPixmap);
 
     QPen pen(QColor(0x15, 0x8F, 0xE1), 1);
