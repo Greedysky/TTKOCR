@@ -87,7 +87,7 @@ OCRApplication::~OCRApplication()
     delete m_ui;
 }
 
-OCRApplication *OCRApplication::instance()
+OCRApplication* OCRApplication::instance()
 {
     return m_instance;
 }

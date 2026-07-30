@@ -99,7 +99,7 @@ public:
 private:
     // disable copy
     Document(const Document &);
-    Document &operator=(const Document &);
+    Document& operator=(const Document &);
 
 private:
     Private *d;

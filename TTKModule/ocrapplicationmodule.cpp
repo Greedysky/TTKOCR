@@ -18,7 +18,7 @@ OCRApplicationModule::~OCRApplicationModule()
     Q_CLEANUP_RESOURCE(TTKModule);
 }
 
-OCRApplicationModule *OCRApplicationModule::instance()
+OCRApplicationModule* OCRApplicationModule::instance()
 {
     return m_instance;
 }

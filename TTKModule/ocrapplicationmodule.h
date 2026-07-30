@@ -40,7 +40,7 @@ public:
     /*!
      * Get class object instance.
      */
-    static OCRApplicationModule *instance();
+    static OCRApplicationModule* instance();
 
 public Q_SLOTS:
     /*!

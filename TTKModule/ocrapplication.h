@@ -48,7 +48,7 @@ public:
     /*!
      * Get class object instance.
      */
-    static OCRApplication *instance();
+    static OCRApplication* instance();
 
 public Q_SLOTS:
     /*!
